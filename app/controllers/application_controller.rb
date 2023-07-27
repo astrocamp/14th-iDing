@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  def homeeeee
+  def fvheoipjvf
     
   end
 end
