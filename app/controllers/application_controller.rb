@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  def method_name
+  def home
     
   end
 end
