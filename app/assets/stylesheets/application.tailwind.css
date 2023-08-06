@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
+.action-btn {
+  @apply select-none hover:bg-teal-900 rounded-full inline-block text-white px-4 py-1 bg-teal-700;
 }
-
-*/

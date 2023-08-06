@@ -1,0 +1,41 @@
+<%= form_with(model: model, data:{ turbo: false }) do |f| %> 
+  <div>
+    <%= f.label :name, "姓名*" %> <br>
+    <%= f.text_field :name ,class: "rounded-lg"%>
+  </div>
+
+  <div>
+    <%= f.label :tel, '電話*' %><br>
+    <%= f.text_field :tel ,class: "rounded-lg" %>
+  </div>
+  
+  <div>
+    <%= f.label :purpose, '用餐目的' %><br>
+    <%= f.text_field :purpose, placeholder:"慶生、約會... ", class: "rounded-lg" %>
+  </div>
+
+  <div>
+    <%= f.label :note, '備註' %><br>
+    <%= f.text_field :note, placeholder:"吃素、食物過敏... " ,class: "rounded-lg"%>
+  </div>
+
+  <div>
+    <%= f.label :email %><br>
+    <%= f.email_field :email ,class: "rounded-lg" %>
+  </div>
+
+  <div>
+    <%= f.label :date, '日期' %><br>
+    <%= f.date_field :date %>
+  </div>
+
+  <div>
+    <%= f.label :time, '時間' %><br>
+    <%= f.select :time, ['17:00', '18:00', '19:00'] %>
+  </div>
+
+
+
+
+  <%= f.submit "新增訂位",  class: 'action-btn' %>
+<% end %>
