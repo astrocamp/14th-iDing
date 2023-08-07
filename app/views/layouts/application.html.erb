@@ -9,6 +9,8 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    import 'preline';
+
   </head>
 
   <body>
@@ -17,6 +19,5 @@
     <main class="container mx-auto mt-28 px-5">
       <%= yield %>
     </main>
-    <script src="./node_modules/preline/dist/preline.js"></script>
   </body>
 </html>
