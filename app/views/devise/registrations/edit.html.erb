@@ -26,6 +26,46 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+    <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tel %><br />
+    <%= f.telephone_field :tel %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, size: 50 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.text_field :image, size: 50 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :close_weekday %><br />
+    <%= f.text_field :close_weekday %>
+  </div>
+
+  <div class="field">
+    <%= f.label :open_hour %><br />
+    <%= f.text_field :open_hour %>
+  </div>
+
+  <div class="field">
+    <%= f.label :UBN , "UBN" %><br />
+    <%= f.text_field :UBN %>
+  </div>
+
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
