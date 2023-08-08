@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_04_171324) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_05_123651) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_04_171324) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "tel"
+    t.string "address"
+    t.text "description"
+    t.string "image"
+    t.string "close_weekday"
+    t.string "open_hour"
+    t.string "UBN"
     t.index ["email"], name: "index_restaurants_on_email", unique: true
     t.index ["reset_password_token"], name: "index_restaurants_on_reset_password_token", unique: true
   end
