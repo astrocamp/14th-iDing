@@ -6,8 +6,8 @@ class Restaurants::OmniauthCallbacksController < Devise::OmniauthCallbacksContro
     @restaurant = Restaurant.create_from_provider_data(request.env["omniauth.auth"])
 
     if @restaurant.persisted?
-      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
       sign_in_and_redirect @restaurant, :event => :authentication
+      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
     else
       session["devise.google_data"] = request.env["omniauth.auth"]
       redirect_to new_restaurant_registration_url
