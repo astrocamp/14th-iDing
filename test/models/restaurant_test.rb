@@ -10,6 +10,16 @@
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string           not null
+#  tel                    :string           not null
+#  address                :string           not null
+#  description            :text
+#  image                  :string
+#  close_weekday          :string           not null
+#  open_hour              :string           not null
+#  UBN                    :string
+#  provider               :string
+#  uid                    :string
 #
 require "test_helper"
 
