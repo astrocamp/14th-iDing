@@ -1,8 +1,8 @@
 <header class="fixed top-0 left-0 sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-3 sm:py-0 dark:bg-gray-800 dark:border-gray-700">
-  <nav class="relative max-w-7xl w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8" aria-label="Global" height="80">
+  <nav class="relative max-w-7xl w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8" aria-label="Global">
     <div class="flex items-center justify-between">
-      <a class="flex text-xl font-semibold dark:text-white" href="#" aria-label="Brand">
-        <%= image_tag "logo_column.png", class: "w-20 h-30" %>
+      <a class="flex" href="#" aria-label="iDing_logo">
+        <%= image_tag "logo_column.png", class:"w-60 md:w-30 xl:w-30" %>
       </a>
       <div class="sm:hidden">
         <button type="button" class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800" data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation" aria-label="Toggle navigation">
@@ -86,8 +86,8 @@
 <!-- Hero -->
 <!-- Features -->
 <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-  <div class="aspect-w-16 aspect-h-7">
-    <img class="w-full object-cover" src="https://images.unsplash.com/photo-1624571409412-1f253e1ecc89?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" alt="Image Description">
+  <div class="aspect-w-16 aspect-h-7 flex">
+    <%= image_tag "finedinning.webp", class:"top-10 w-full object-cover" %>
   </div>
 
   <!-- Grid -->
@@ -178,3 +178,8 @@
 </div>
 <!-- End Features -->
 <!-- End Hero -->
+<!-- footer -->
+<footer class="flex justify-center">
+<p class="text-xs sm:text-sm text-gray-600 dark:text-gray-500">© 2023 iDing. A product of <a class="text-slate-900 decoration-2 hover:underline font-semibold dark:text-gray-300" href="http://iding.cc/" target="_blank">Hello 劍龍</a></p>
+</footer>
+<!-- End footer -->
