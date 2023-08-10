@@ -32,8 +32,3 @@
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
-
-
-
-.DS_Store
-*/.DS_Store
