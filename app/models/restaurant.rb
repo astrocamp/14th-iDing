@@ -15,15 +15,15 @@ class Restaurant < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: [:google_oauth2]
 
   validates :name, presence: true
   validates :tel, presence: true
   validates :address, presence: true
   validates :close_weekday, presence: true
   validates :open_hour, presence: true
-            :recoverable, :rememberable, :validatable,
-            :omniauthable, omniauth_providers: [:google_oauth2]
+
 
   def self.create_from_provider_data(provider_data)
     where(email: provider_data.info.email).first_or_create do |restaurant|
