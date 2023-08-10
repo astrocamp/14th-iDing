@@ -22,13 +22,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_123651) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
-    t.string "tel"
-    t.string "address"
+    t.string "name", null: false
+    t.string "tel", null: false
+    t.string "address", null: false
     t.text "description"
     t.string "image"
-    t.string "close_weekday"
-    t.string "open_hour"
+    t.string "close_weekday", null: false
+    t.string "open_hour", null: false
     t.string "UBN"
     t.index ["email"], name: "index_restaurants_on_email", unique: true
     t.index ["reset_password_token"], name: "index_restaurants_on_reset_password_token", unique: true
