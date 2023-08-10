@@ -3,13 +3,9 @@
 # Table name: customers
 #
 #  id         :bigint           not null, primary key
-#  name       :string
-#  tel        :string
+#  name       :string           not null
+#  tel        :string           not null
 #  email      :string
-#  date       :date
-#  time       :time
-#  purpose    :string
-#  note       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
