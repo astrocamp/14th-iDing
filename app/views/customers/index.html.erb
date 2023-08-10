@@ -8,11 +8,11 @@
 <ul>
   <% @customers.each do |customer| %>
     <li>
-			<span><%= link_to customer.name, customer_path(customer) %></span>
-      <span><%= customer.tel %></span>
+			<%= link_to customer.name, customer_path(customer) %>
+      <%= customer.tel %>
       <%= link_to '更新', edit_customer_path(customer) ,class:"action-btn" %>
       <%= link_to '刪除', customer_path(customer), data: { turbo_method: 'delete',
-                                                        turbo_confirm: '確定刪除嗎?'   }, class:"action-btn" %>
+          turbo_confirm: '確定刪除嗎?'   }, class:"action-btn" %>
 		</li>
   <% end %>
 </ul>
