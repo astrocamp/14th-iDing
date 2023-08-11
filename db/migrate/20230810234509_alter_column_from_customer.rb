@@ -1,4 +1,4 @@
-class RemoveColumnFromCustomer < ActiveRecord::Migration[7.0]
+class AlterColumnFromCustomer < ActiveRecord::Migration[7.0]
   def change
     remove_column :customers, :date, :date
     remove_column :customers, :time, :time
