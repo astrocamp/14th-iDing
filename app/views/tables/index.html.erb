@@ -8,6 +8,7 @@
     <li>
         桌號：<%= table.name%>
         最大人數：<%= table.seat%>
+        桌型：<%= table.category%>
         <%= link_to '更新', edit_table_path(table),class:"action-btn"%>
         <%= link_to '刪除', table_path(table),
                             data:{ turbo_method: 'delete',
