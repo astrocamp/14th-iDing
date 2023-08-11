@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_234509) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "gender"
   end
 
   create_table "restaurants", force: :cascade do |t|
