@@ -7,5 +7,6 @@ Rails.application.routes.draw do
                                         }
   resources :customers
 
+  resources :tables
 end
   
