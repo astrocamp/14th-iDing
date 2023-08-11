@@ -1,9 +1,9 @@
 class TablesController < ApplicationController
 
-    before_action :find_table, only: [:show,:edit,:update,:destroy]
+    before_action :find_table, only: [:show, :edit, :update, :destroy]
 
     def index
-        @tables = Table.order(id: :desc)
+      @tables = Table.order(id: :desc)
     end
 
     def show
@@ -16,7 +16,7 @@ class TablesController < ApplicationController
     def create
       @table = Table.new(table_params)
         if @table.save
-          redirect_to tables_path,notice: "桌子建立成功"
+          redirect_to tables_path, notice: "桌子建立成功"
         else
           render :new
         end
@@ -27,7 +27,7 @@ class TablesController < ApplicationController
 
     def update
         if @table.update(table_params)
-            redirect_to tables_path,notice: "桌子已更新"
+            redirect_to tables_path, notice: "桌子已更新"
         else
             render :edit
         end
@@ -36,7 +36,7 @@ class TablesController < ApplicationController
     def destroy
         @table.destroy
         
-        redirect_to tables_path,notice:'刪除成功'
+        redirect_to tables_path, notice:'刪除成功'
     end
 
     private
