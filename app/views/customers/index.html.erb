@@ -1,16 +1,14 @@
 <h1 class="text-2xl">顧客列表</h1>
 <div>
-  <%= link_to "新增顧客", new_customer_path	, class: 'action-btn' %>
+  <%= link_to "新增顧客", new_customer_path, class:'action-btn' %>
 </div>
 <ul>
   <% @customers.each do |customer| %>
     <li>
 			<%= link_to customer.name, customer_path(customer) %>
       <%= customer.tel %>
-      <%= link_to '更新', edit_customer_path(customer), class:"action-btn" %>
-      <%= link_to '刪除', customer_path(customer), data: { turbo_method: 'delete', 
-                                                          turbo_confirm: '確定刪除嗎?'}, 
-                                                  class:"action-btn" %>
+      <%= link_to '更新', edit_customer_path(customer) %>
+      <%= link_to '刪除', customer_path(customer), data: {turbo_method: 'delete', turbo_confirm:'確定刪除嗎?'} %>
 		</li>
   <% end %>
 </ul>
