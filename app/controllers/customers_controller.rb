@@ -28,7 +28,7 @@ class CustomersController < ApplicationController
 
   def update 
     if @customer.update(customer_params)
-      redirect_to customer_path, notice: "更新成功"
+      redirect_to customers_path, notice: "更新成功"
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class CustomersController < ApplicationController
 
   def destroy 
     @customer.destroy
-    redirect_to customer_path, notice: '刪除成功'
+    redirect_to customers_path, notice: '刪除成功'
   end
 
 

@@ -9,4 +9,5 @@ Rails.application.routes.draw do
 
   resources :tables
   
+  resources :customers
 end
