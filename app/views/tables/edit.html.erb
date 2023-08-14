@@ -1,0 +1,22 @@
+<h1 class="text-2xl">TABLE EDIT</h1>
+
+<%= form_with(model:@table, data:{ turbo: false }) do |f| %>
+
+<div>
+    <%= f.label :name, '桌號' %>
+    <%= f.text_field :name %>
+</div>
+
+<div>
+    <%= f.label :category, '桌型' %>
+    <%= f.select :category %>
+</div>
+
+<div>
+    <%= f.label :seat_num, '座位數' %>
+    <%= f.number_field :seat_num %>
+</div>
+
+<%= f.submit class: 'action-btn' %>
+
+<% end %>
