@@ -1,10 +1,7 @@
 <h1 class="text-2xl">顧客列表</h1>
-
 <div>
   <%= link_to "新增顧客", new_customer_path	, class: 'action-btn' %>
 </div>
-
-
 <ul>
   <% @customers.each do |customer| %>
     <li>
