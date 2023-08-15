@@ -1,0 +1,21 @@
+
+<%= form_with(model: model, data:{ turbo: false }) do |f| %>
+
+<div>
+    <%= f.label :name, '桌號' %>
+    <%= f.text_field :name %>
+</div>
+
+<div>
+    <%= f.label :category, '桌型' %>
+    <%= f.select :category, Table.categories.map { |k,_| [k.to_s,k.to_s] }  %>
+</div>
+
+<div>
+    <%= f.label :seat_num, '座位數' %>
+    <%= f.number_field :seat_num %>
+</div>
+
+<%= f.submit class: 'action-btn' %>
+
+<% end %>
