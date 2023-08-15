@@ -1,0 +1,12 @@
+<h1>你的餐廳列表</h1>
+
+
+<%= link_to '新增餐廳', new_restaurant_path %>
+
+<ul> 
+  <% @restaurants.each do |restaurant| %>
+    <li>餐廳名稱：<%= link_to restaurant.name, restaurant_path(restaurant)  %></li>
+    <li><%= link_to '修改餐廳資訊', edit_restaurant_path(restaurant) %></li>
+    <li><%= link_to '刪除此餐廳', restaurant_path(restaurant), data:{ turbo_method: 'delete', turbo_confirm: '確認刪除？'} %></li>
+  <% end %>
+</ul>
