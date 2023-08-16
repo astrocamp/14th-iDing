@@ -1,4 +1,4 @@
-<%= form_with(model: @restaurant, data: { turbo: false }) do |f| %>
+<%= form_with(model: [ :admin, @restaurant ], data: { turbo: false }) do |f| %>
 
   <div>
     <%= f.label :name, "餐廳名稱" %>
@@ -6,8 +6,8 @@
   </div>
 
   <div>
-    <%= f.label :english_name, "餐廳英文名稱" %>
-    <%= f.text_field :english_name %>
+    <%= f.label :URL, "網址名稱" %>
+    <%= f.text_field :URL %>
   </div>
 
   <div>

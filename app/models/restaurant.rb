@@ -1,6 +1,6 @@
 class Restaurant < ApplicationRecord
   validates :name, presence: true
-  validates :english_name, presence: true
+  validates :URL, presence: true
   validates :tel, presence: true
   validates :address, presence: true
 
