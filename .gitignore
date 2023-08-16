@@ -36,4 +36,4 @@
 .DS_Store
 */.DS_Store
 
-test/fixtures/reservations.yml
+.vscode/settings.json
