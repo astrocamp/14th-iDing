@@ -1,5 +1,5 @@
 class Admin::RestaurantsController < ApplicationController
-  before_action :set_user_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   def index
@@ -46,7 +46,7 @@ class Admin::RestaurantsController < ApplicationController
           .permit(:name, :URL, :tel, :address, :description, :UBN, :image)
   end
 
-  def set_user_restaurant
+  def set_restaurant
     @restaurant = current_user.restaurants.find(params[:id])
   end
 end
