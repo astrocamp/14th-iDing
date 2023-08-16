@@ -1,29 +1,64 @@
-<h2>註冊</h2>
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col lg:flex-row-reverse w-full">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
+    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <div class="card-body">
+        <div class="form-control">
+          <%= image_tag "iding_logo.png", class:" w-36 py-2 m-auto md:w-30 xl:w-30" %> 
+          <div class="field">
+            <label class="label">
+              <%= f.label :email %>
+            </label>
+             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-bordered w-full"%>
+          </div>
+        </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+        <div class="form-control">
+          <div class="field">
+            <label class="label">
+              <%= f.label :password %>
+            </label>
+            <% if @minimum_password_length %>
+            <span class="text-sm">(<%= @minimum_password_length %> characters minimum)</span>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", placeholder: "password", class: "input input-bordered w-full" %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :email, "Email帳號" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="form-control">
+          <div class="field">
+            <label class="label">
+            <%= f.label :password_confirmation %>
+            </label>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "password", class: "input input-bordered w-full"%>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <div class="field">
+            <%= f.submit "Sign up", class: "w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300" %>
+          </div>
+        </div>
+    <% end %>
+    
+
+        <div class="my-1 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
+          <p class="mx-4 mb-0 text-center font-semibold dark:text-neutral-200">OR</p>
+        </div>
+
+        <%= render "users/shared/links" %>
+          
+        <p class="mt-8 mx-2 text-sm">Already have an account? <%= link_to "Login here", new_session_path(resource_name), class:"text-blue-500 hover:text-blue-700 font-semibold mx-2" %> 
+        </p>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password, "密碼" %>
-    <% if @minimum_password_length %>
-    <em>(最少 <%= @minimum_password_length %> 個字元)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="text-center lg:text-left w-100">
+    <%= image_tag "logo_column.png", class:" w-full py-2 m-auto md:w-30 xl:w-30" %> 
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "密碼確認" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit "註冊" %>
-  </div>
-<% end %>
 
-<%= render "users/shared/links" %>
+
