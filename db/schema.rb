@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_08_16_073436) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2023_08_15_102635) do
+>>>>>>> 31414e9 (feat: relationship of customer and reservation)
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_073436) do
     t.index ["deleted_at"], name: "index_customers_on_deleted_at"
   end
 
+<<<<<<< HEAD
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
     t.string "URL", null: false
@@ -34,6 +39,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_073436) do
     t.string "UBN"
     t.string "image"
     t.integer "user_id"
+=======
+  create_table "reservations", force: :cascade do |t|
+    t.string "restaurant_id"
+    t.string "customer_id"
+    t.date "date", null: false
+    t.time "time", null: false
+    t.integer "adult_num", null: false
+    t.integer "kid_num", null: false
+    t.string "purpose"
+    t.text "note"
+    t.string "serial"
+>>>>>>> 31414e9 (feat: relationship of customer and reservation)
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
