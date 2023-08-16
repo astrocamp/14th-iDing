@@ -7,10 +7,12 @@ Rails.application.routes.draw do
                                     omniauth_callbacks: "users/omniauth_callbacks"
                                   }
   
+  namespace :admin do
+    resources :restaurants
+  end
+
   resources :tables
-  
+
   resources :customers
   
-  resources :restaurants
-
 end
