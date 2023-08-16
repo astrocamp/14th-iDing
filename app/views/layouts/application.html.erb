@@ -10,12 +10,15 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <script src="https://kit.fontawesome.com/683a09c054.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com" defer></script>
+
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <main class="container mx-auto mt-28 px-5">
+    <p class="notice hidden"><%= notice %></p>
+    <p class="alert hidden"><%= alert %></p>
+    <main>
       <%= yield %>
     </main>
   </body>

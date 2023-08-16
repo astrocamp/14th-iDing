@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TablesController < ApplicationController
-  before_action :find_table, only: %i[show edit update destroy]
+  before_action :set_table, only: %i[show edit update destroy]
 
   def index
     @tables = Table.order(id: :asc)
@@ -43,7 +43,7 @@ class TablesController < ApplicationController
     params.require(:table).permit(:name, :seat_num, :category)
   end
 
-  def find_table
+  def set_table
     @table = Table.find(params[:id])
   end
 end
