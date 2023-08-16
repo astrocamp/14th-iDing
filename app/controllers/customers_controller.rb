@@ -1,6 +1,5 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :destroy]
-  # before_action :set_reservation, only: [:show, :destroy]
   before_action :authorize_reservation, only: [:destroy]
   
   def index 
@@ -14,15 +13,12 @@ class CustomersController < ApplicationController
 
 def create 
   @customer = Customer.new(customer_params)
-  # @reservation = @customer.reservations.new(rsvt_params) # 創建預訂記錄
-
   if @customer.save # 同時保存客戶和預訂記錄
     redirect_to customer_path(@customer), notice: "訂位新增成功"
   else
     render :new 
   end
 end
-
 
   def show
   end
@@ -37,17 +33,9 @@ end
       params.require(:customer).permit(:id, :name, :tel, :email, :gender, reservations_attributes: [:id, :adult_num, :kid_num, :date, :time, :purpose, :note, :_destroy])
     end
 
-    # def rsvt_params 
-    #   params.require(:reservation).permit(:id, :adult_num, :kid_num, :date, :time, :purpose, :note, :_destroy)
-    # end
-
     def set_customer
       @customer = Customer.find(params[:id])
     end
-
-    # def set_reservation
-    #   @reservation = Reservation.find(params[:id])
-    # end
 
     def authorize_reservation
       if @reservation.serial.blank? || @reservation.serial != params[:serial]
