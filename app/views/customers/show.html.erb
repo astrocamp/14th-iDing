@@ -1,6 +1,13 @@
-<h1 class="text-2xl"><%= @customer.name %></h1>
+<h1 class="text-2xl">訂位人大名：
+<%= @customer.name %></h1>
 
-<article>
-  <p><%= @customer.tel %></p>
-  <p><%= @customer.email %></p>
-</article>
+<div>
+  <p>聯絡電話：<%= @customer.tel %></p>
+  <% @customer.reservations.each do |reservation| %>
+    <p>訂位編號：<%= reservation.serial %></p>
+    <p>日期：<%= reservation.date %></p>
+    <p>時間：<%= reservation.time %></p>
+    <p>大人數：<%= reservation.adult_num %></p>
+    <!-- 如果需要的話，這裡可以繼續顯示其他預訂記錄的相關數據 -->
+  <% end %>
+</div>
