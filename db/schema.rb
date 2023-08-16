@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_14_091934) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_16_073436) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,24 +25,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_091934) do
     t.index ["deleted_at"], name: "index_customers_on_deleted_at"
   end
 
-  create_table "tables", force: :cascade do |t|
-    t.string "name"
-    t.integer "seat_num"
-    t.string "status"
-    t.integer "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
-    t.string "english_name", null: false
+    t.string "URL", null: false
     t.string "tel", null: false
     t.string "address", null: false
     t.text "description"
     t.string "UBN"
     t.string "image"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tables", force: :cascade do |t|
+    t.string "name"
+    t.integer "seat_num"
+    t.string "status"
+    t.integer "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

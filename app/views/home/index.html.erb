@@ -69,11 +69,11 @@
           </svg>
           <ul>
             <% if user_signed_in? %>
-              <li><%= current_user.email.split("@").first.capitalize %></li>
+              <li><%= user_name %></li>
               <li><%= link_to "登出", destroy_user_session_path,
                                           data: { turbo_method: "delete" }%></li>
               <li><%= link_to '更改密碼', edit_user_registration_path %></li>
-              <li><%= link_to '新增餐廳', new_restaurant_path %></li>
+              <li><%= link_to '餐廳列表', admin_restaurants_path %></li>
             <% else %>
               <li><%= link_to "登入", new_user_session_path %></li>
               <li><%= link_to "註冊", new_user_registration_path %></li>
