@@ -1,0 +1,218 @@
+<section class="flex">
+  <div>
+    <div class="drawer-open">
+      <input class="drawer-toggle" />
+
+      <div class="drawer-content">
+        <label for="my-drawer-2" class="hidden"></label>
+      </div>
+
+      <div class="drawer-side">
+        <label for="my-drawer-2" class="drawer-overlay"></label>
+
+        <ul
+          class="menu w-40 h-screen bg-base-200 text-base-content flex flex-col justify-between"
+        >
+          <div>
+            <div>
+              <%= image_tag "iding_logo.png", class:" w-36 md:w-30 xl:w-30 m-auto py-2" %>
+            </div>
+
+            <li class="font-semibold text-slate-700 mt-5 my-3"><a class="m-auto">訂位列表</a></li>
+            <li class="font-semibold text-slate-700 my-3"><a class="m-auto">歷史紀錄</a></li>
+            <li class="font-semibold text-slate-700 my-3"><a class="m-auto flex"><span>搜</span><span>尋</span></a></li>
+            <li class="font-semibold text-slate-700 my-3"><a class="m-auto flex"><span>設</span><span>定</span></a></li>
+          </div>
+
+          <div>
+            <li class="font-semibold text-slate-700 my-3"><a class="m-auto flex"><span>通</span><span>知</span></a></li>
+            <li class="font-semibold text-slate-700 my-3"><a class="m-auto flex"><span>客</span><span>服</span></a></li>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="navbar bg-base-100 w-[88vw] mx-2 my-3 border-2 rounded-xl">
+      <div>
+        <a class="btn btn-ghost normal-case">返回</a>
+      </div>
+      <div class="ml-auto">
+        <a class="btn btn-ghost normal-case text-xl">行事曆</a>
+      </div>
+      <div class="ml-auto">
+        <a class="btn btn-ghost normal-case">時間軸</a>
+        <a class="btn btn-ghost normal-case">列表</a>
+        <a class="btn btn-ghost normal-case">桌位圖</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="flex h-full mx-2 w-1/4">
+        <div>
+          <div class="mt-5 bg-white rounded-lg shadow">
+            <div class="flex justify-center">
+              <div>
+                <%= image_tag "logo.png", class:" w-14 md:w-30 xl:w-30 py-2" %>
+              </div>
+              <div class="py-5 overflow-hidden">
+                <h1 class="text-2xl font-semibold">新增訂位</h1>
+              </div>
+            </div>
+            <div class="px-5 pb-5">
+              <div class="flex gap-2">
+                <input
+                  type="date"
+                  class="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+                />
+
+                <input
+                  type="time"
+                  class="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+                />
+              </div>
+
+              <div class="flex gap-2">
+                <input
+                  placeholder="大人"
+                  class="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+                />
+
+                <input
+                  placeholder="小孩"
+                  class="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+                />
+              </div>
+
+              <input
+                placeholder="姓名"
+                class="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+              />
+              <input
+                placeholder="電話"
+                class="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+              />
+
+              <textarea
+                placeholder="備註"
+                class="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+              ></textarea>
+
+              <input
+                placeholder="桌號"
+                class="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+              />
+            </div>
+
+            <div class="flex flex-row-reverse py-10">
+              <div class="flex-initial m-auto">
+                <button
+                  type="button"
+                  class="flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize bg-black rounded-md hover:bg-gray-800 focus:outline-none focus:bg-gray-900 transition duration-300 transform active:scale-95 ease-in-out"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 0 24 24"
+                    width="24px"
+                    fill="#FFFFFF"
+                  >
+                    <path d="M0 0h24v24H0V0z" fill="none"></path>
+                    <path
+                      d="M5 5v14h14V7.83L16.17 5H5zm7 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-8H6V6h9v4z"
+                      opacity=".3"
+                    ></path>
+                    <path
+                      d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm2 16H5V5h11.17L19 7.83V19zm-7-7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zM6 6h9v4H6z"
+                    ></path>
+                  </svg>
+                  <span class="pl-2 mx-1">建立訂位</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="mt-5 mx-5 w-[60vw] bg-white rounded-lg shadow">
+            <table class="table">
+              <tr>
+                <th>18:00</th>
+              </tr>
+              <tr>
+                <td>
+                  <div class="flex items-center">
+                    <div class="avatar">
+                      <div class="mask mask-squircle w-24 h-24">
+                        <%= image_tag "cat-default-avatar.png"%>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="font-bold text-lg">黃色的 先生</div>
+                      <div class="text-sm opacity-50">0983 000 000</div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="flex items-center gap-10">
+                    <div class="text-3xl">2</div>
+                    <div>
+                      <button class="inline border-2 py-2 px-5 rounded-lg">
+                        A1
+                      </button>
+                    </div>
+                  </div>
+                </td>
+                <td>備註寫這裡...</td>
+
+                <td>
+                  <p class="text-2xl">18:00</p>
+                </td>
+                <th>
+                  <button class="btn btn-ghost btn-xs">D</button>
+                </th>
+              </tr>
+
+              <tr>
+                <th>19:00</th>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="flex items-center">
+                    <div class="avatar">
+                      <div class="mask mask-squircle w-24 h-24">
+                        <%= image_tag "cat-default-avatar.png"%>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="font-bold text-lg">綠色的 小姐</div>
+                      <div class="text-sm opacity-50">0983 000 000</div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="flex items-center gap-10">
+                    <div class="text-3xl">6</div>
+                    <div>
+                      <button class="inline border-2 py-2 px-5 rounded-lg">
+                        A2
+                      </button>
+                    </div>
+                  </div>
+                </td>
+                <td>備註寫這裡...</td>
+                <td>
+                  <p class="text-2xl">19:30</p>
+                </td>
+                <th>
+                  <button class="btn btn-ghost btn-xs">D</button>
+                </th>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
