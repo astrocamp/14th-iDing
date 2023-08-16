@@ -1,6 +1,7 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  
+  before_action :set_customer, only: [:show, :destroy]
+  # before_action :set_reservation, only: [:show, :destroy]
+  before_action :authorize_reservation, only: [:destroy]
   
   def index 
     @customers = Customer.order(id: :desc)
@@ -8,46 +9,49 @@ class CustomersController < ApplicationController
 
   def new 
     @customer = Customer.new
+    @customer.reservations.new
   end
 
-  def create 
-    @customer = Customer.new(customer_params)
-    if @customer.save 
-      redirect_to customers_path, notice: "訂位新增成功"
-    else
-      render :new 
-    end
+def create 
+  @customer = Customer.new(customer_params)
+  # @reservation = @customer.reservations.new(rsvt_params) # 創建預訂記錄
+
+  if @customer.save # 同時保存客戶和預訂記錄
+    redirect_to customer_path(@customer), notice: "訂位新增成功"
+  else
+    render :new 
   end
+end
+
 
   def show
   end
 
-  def edit 
-  end
-
-
-  def update 
-    if @customer.update(customer_params)
-      redirect_to customers_path, notice: "更新成功"
-    else
-      render :edit
-    end
-  end
-
-
   def destroy 
-    @customer.destroy
-    redirect_to customers_path, notice: '刪除成功'
+    @reservation.destroy
+    redirect_to customer_path, notice: '訂位刪除成功'
   end
-
-
 
   private
-    def customer_params 
-      params.require(:customer).permit(:name, :tel, :email, :gender)
+    def customer_params
+      params.require(:customer).permit(:id, :name, :tel, :email, :gender, reservations_attributes: [:id, :adult_num, :kid_num, :date, :time, :purpose, :note, :_destroy])
     end
+
+    # def rsvt_params 
+    #   params.require(:reservation).permit(:id, :adult_num, :kid_num, :date, :time, :purpose, :note, :_destroy)
+    # end
 
     def set_customer
       @customer = Customer.find(params[:id])
+    end
+
+    # def set_reservation
+    #   @reservation = Reservation.find(params[:id])
+    # end
+
+    def authorize_reservation
+      if @reservation.serial.blank? || @reservation.serial != params[:serial]
+        redirect_to root_path, alert: "您無權執行此操作"
+      end
     end
 end
