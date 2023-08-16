@@ -11,20 +11,20 @@ class CustomersController < ApplicationController
     @customer.reservations.new
   end
 
-def create 
-  @customer = Customer.new(customer_params)
-  if @customer.save # 同時保存客戶和預訂記錄
-    redirect_to customer_path(@customer), notice: "訂位新增成功"
-  else
-    render :new 
+  def create 
+    @customer = Customer.new(customer_params)
+    if @customer.save # 同時保存客戶和預訂記錄
+      redirect_to customer_path(@customer), notice: "訂位新增成功"
+    else
+      render :new 
+    end
   end
-end
 
   def show
   end
 
   def destroy 
-    @reservation.destroy
+    @customer.destroy
     redirect_to customer_path, notice: '訂位刪除成功'
   end
 
