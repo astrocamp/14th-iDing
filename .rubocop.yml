@@ -11,7 +11,6 @@ AllCops:
     - "bin/*"
     - "tmp/**/*"
     - ".git/**/*"
-    - app/controllers/users/omniauth_callbacks_controller.rb
 
 Style/Documentation:
   Enabled: false
@@ -30,3 +29,9 @@ Metrics/BlockLength:
     - "**/*.rake"
     - "spec/**/*.rb"
     - "**/*.gemspec"
+
+Metrics/AbcSize:
+  Enabled: false
+
+Lint/NestedMethodDefinition:
+  Enabled: false
