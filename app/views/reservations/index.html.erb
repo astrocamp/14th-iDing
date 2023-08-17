@@ -3,19 +3,18 @@
 <%= link_to '新增訂位', new_reservation_path %>
 
 <ul> 
-    <% @reservations.each do |r| %>
-        <% if r.date.to_date == Date.today %>
-        <li>
-            <%= r.customer.name %>
-            <%= r.customer.tel %>
-            大:<%= r.adult_num %>
-            小:<%= r.kid_num %>
-            <%= link_to '更新', edit_reservation_path(r) %>
-            <%= link_to '刪除', reservation_path(r),
-                                data:{ turbo_method: 'delete',
-                                    turbo_confirm: '確認刪除？'
-                                    } %>
-        </li>
-        <% end %> 
-    <% end %> 
+  <% @reservations.each do |r| %>
+    <% if r.date.to_date == Date.today %>
+      <li>
+        <%= r.customer.name %>
+        <%= r.customer.tel %>
+        大:<%= r.adult_num %>
+        小:<%= r.kid_num %>
+        <%= link_to '更新', edit_reservation_path(r) %>
+        <%= link_to '刪除', reservation_path(r), data:{ turbo_method: 'delete',
+                                                turbo_confirm: '確認刪除？'
+                                                } %>
+      </li>
+      <% end %> 
+  <% end %> 
 </ul>
