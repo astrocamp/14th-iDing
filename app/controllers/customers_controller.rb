@@ -1,6 +1,5 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :destroy]
-  before_action :authorize_reservation, only: [:destroy]
   
   def index 
     @customers = Customer.order(id: :desc)
@@ -25,7 +24,7 @@ class CustomersController < ApplicationController
 
   def destroy 
     @customer.destroy
-    redirect_to customer_path, notice: '訂位刪除成功'
+    redirect_to customers_path, notice: '訂位刪除成功'
   end
 
   private
@@ -35,11 +34,5 @@ class CustomersController < ApplicationController
 
     def set_customer
       @customer = Customer.find(params[:id])
-    end
-
-    def authorize_reservation
-      if @reservation.serial.blank? || @reservation.serial != params[:serial]
-        redirect_to root_path, alert: "您無權執行此操作"
-      end
     end
 end
