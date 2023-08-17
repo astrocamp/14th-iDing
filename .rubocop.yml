@@ -1,0 +1,32 @@
+# .rubocop.yml
+
+AllCops:
+  Exclude:
+    - Rakefile
+    - Gemfile
+    - config/**/*
+    - spec/**/*
+    - lib/tasks/**/*
+    - db/**/*
+    - "bin/*"
+    - "tmp/**/*"
+    - ".git/**/*"
+    - app/controllers/users/omniauth_callbacks_controller.rb
+
+Style/Documentation:
+  Enabled: false
+
+# Method 長度限制
+Metrics/MethodLength:
+  Max: 30
+
+# Line 長度限制
+Layout/LineLength:
+  Max: 200
+
+Metrics/BlockLength:
+  Exclude:
+    - "Rakefile"
+    - "**/*.rake"
+    - "spec/**/*.rb"
+    - "**/*.gemspec"
