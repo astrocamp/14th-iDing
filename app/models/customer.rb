@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Customer < ApplicationRecord
   acts_as_paranoid
   validates :name, presence: true
@@ -7,4 +9,3 @@ class Customer < ApplicationRecord
   accepts_nested_attributes_for :reservations,
                                 allow_destroy: true
 end
-

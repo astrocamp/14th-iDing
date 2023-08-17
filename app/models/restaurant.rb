@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Restaurant < ApplicationRecord
   mount_uploader :image, ImageUploader
 
