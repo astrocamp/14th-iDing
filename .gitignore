@@ -36,4 +36,4 @@
 .DS_Store
 */.DS_Store
 
-.vscode/settings.json
+*/settings.json
