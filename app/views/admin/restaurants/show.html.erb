@@ -1,8 +1,15 @@
 <h1><%= @restaurant.name %></h1>
 
-餐廳網址名稱：<%= @restaurant.URL %>
-餐廳電話：<%= @restaurant.tel %>
-餐廳地址：<%= @restaurant.address %>
-餐廳介紹：<%= @restaurant.description %>
-統編：<%= @restaurant.UBN %>
-餐廳形象照：
+<ul>
+  <li>餐廳網址名稱：<%= @restaurant.URL %></li>
+  <li>餐廳電話：<%= @restaurant.tel %></li>
+  <li>餐廳地址：<%= @restaurant.address %></li>
+  <li>餐廳介紹：<%= @restaurant.description %></li>
+  <li>統編：<%= @restaurant.UBN %></li>
+  <li>餐廳形象照：<%= image_tag(@restaurant.image_url) if @restaurant.image? %></li>
+</ul>
+
+
+
+
+

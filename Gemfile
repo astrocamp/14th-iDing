@@ -76,7 +76,9 @@ end
 
 gem "devise", "~> 4.9"
 gem "annotate", "~> 3.2"
-
+gem 'carrierwave', '~> 3.0', '>= 3.0.2'
+gem 'mini_magick', '~> 4.12'
+gem 'fog-aws', '~> 3.19'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
