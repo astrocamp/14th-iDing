@@ -30,7 +30,7 @@ class CustomersController < ApplicationController
 
   private
     def customer_params
-      params.require(:customer).permit( :name, :tel, :email, :gender, reservations_attributes: [ :adult_num, :kid_num, :date, :time, :purpose, :note, :_destroy])
+    params.require(:customer).permit( :name, :tel, :email, :gender, reservations_attributes: [ :adult_num, :kid_num, :date, :time, :purpose, :note, :_destroy])
     end
 
     def set_customer
