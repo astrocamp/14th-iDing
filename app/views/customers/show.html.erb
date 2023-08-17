@@ -9,5 +9,9 @@
     <p>時間：<%= reservation.time %></p>
     <p>大人數：<%= reservation.adult_num %></p>
     <!-- 如果需要的話，這裡可以繼續顯示其他預訂記錄的相關數據 -->
+  <%= link_to '取消訂位', customer_path(@customer),
+                            data:{ turbo_method: 'delete',
+                                   turbo_confirm: '確認取消？'
+                                 } %>
   <% end %>
 </div>
