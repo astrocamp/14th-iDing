@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.order(date: :desc)
