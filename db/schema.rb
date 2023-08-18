@@ -26,8 +26,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_17_110916) do
   end
 
   create_table "open_times", force: :cascade do |t|
-    t.time "opening_time"
-    t.time "closed_time"
+    t.time "start_time"
+    t.time "close_time"
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

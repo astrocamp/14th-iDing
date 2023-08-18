@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resources :restaurants
+      resources :opening_times, shallow: true, only: [:index, :create, :edit, :update, :destroy]
   end
 
   resources :tables
