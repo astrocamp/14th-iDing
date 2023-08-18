@@ -12,5 +12,5 @@ class Restaurant < ApplicationRecord
 
   has_many :tables
   has_many :reservations
-  
+  has_many :open_times
 end
