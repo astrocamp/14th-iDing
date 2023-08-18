@@ -8,11 +8,12 @@ Rails.application.routes.draw do
                                   }
   
   namespace :admin do
-    resources :restaurants
+    resources :restaurants do
+      resources :tables
+    end
   end
 
-  resources :tables
-
+  
   resources :customers
   get "/testcss" ,to: 'home#show'
   
