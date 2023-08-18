@@ -9,4 +9,6 @@ class Restaurant < ApplicationRecord
   validates :address, presence: true
 
   belongs_to :user
+  
+  has_many :tables
 end
