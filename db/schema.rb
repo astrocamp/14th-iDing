@@ -25,19 +25,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_073436) do
     t.index ["deleted_at"], name: "index_customers_on_deleted_at"
   end
 
-  create_table "restaurants", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "URL", null: false
-    t.string "tel", null: false
-    t.string "address", null: false
-    t.text "description"
-    t.string "UBN"
-    t.string "image"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "reservations", force: :cascade do |t|
     t.string "restaurant_id"
     t.string "customer_id"
@@ -48,6 +35,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_073436) do
     t.string "purpose"
     t.text "note"
     t.string "serial"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "URL", null: false
+    t.string "tel", null: false
+    t.string "address", null: false
+    t.text "description"
+    t.string "UBN"
+    t.string "image"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
