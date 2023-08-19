@@ -1,0 +1,15 @@
+<div class='flex items-center p-2 m-auto mb-2 text-sm border rounded'
+     id='<%= dom_id(open_time)%>'
+>
+  <%= open_time.start_time.strftime('%R') %> -
+  <%= open_time.close_time.strftime('%R') %>
+  <%= link_to edit_admin_open_time_path(open_time), class: 'mx-2 major-btn' do %>
+    <i class="fa-solid fa-pen-to-square"></i>
+  <% end %>
+    <%= link_to admin_open_time_path(open_time), data: {turbo_method: 'delete', confirm: '確定刪除?', remote: true}, class: 'bg-red-600 major-btn hover:bg-red-800' do %>
+    <i class="fa-solid fa-trash"></i>
+  <% end %>
+</div>
+
+
+<script src="https://kit.fontawesome.com/6f85487004.js" crossorigin="anonymous"></script>

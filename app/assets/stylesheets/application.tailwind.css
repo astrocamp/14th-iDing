@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .action-btn {
-  @apply select-none hover:bg-teal-900 rounded-full inline-block text-white px-4 py-1 bg-teal-700;
+  @apply select-none hover:bg-teal-900 rounded inline-block text-white px-4 py-1 bg-teal-700;
 }
 
 .iding-input {
