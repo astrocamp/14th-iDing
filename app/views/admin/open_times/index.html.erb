@@ -5,18 +5,18 @@
       <div>
         <h3 class='inline py-2 text-xl font-bold'>新增營業時段</h3>
         
-        <%= form_with(model: @opening_time, 
-                      url: backstage_restaurant_opening_times_path(@restaurant),
+        <%= form_with(model: @open_time, 
+                      url: admin_restaurant_open_times_path(@restaurant),
                       local: false) do |f| %>
           <div data-controller='opening-time-form'>
-            <%= f.label :opening_time, '時段：'%>
+            <%= f.label :start_time, '時段：'%>
             <div class='text-center'>
               <div>
-                <%= f.time_select :opening_time, {minute_step: 15}, data: {opening_time_form_target: 'StartTime', action: 'change->opening-time-form#getOpeningTime'}%>
+                <%= f.time_select :start_time, {minute_step: 15}, data: {opening_time_form_target: 'StartTime', action: 'change->opening-time-form#getOpeningTime'}%>
               </div>
               <div>至</div>
               <div class='mb-4'>
-                <%= f.time_select :closed_time, {minute_step: 15}, data: {opening_time_form_target: 'CloseTime', action: 'change->opening-time-form#getClosedTime'} %>
+                <%= f.time_select :close_time, {minute_step: 15}, data: {opening_time_form_target: 'CloseTime', action: 'change->opening-time-form#getClosedTime'} %>
               </div>
               <%= f.submit '儲存', class: 'disabled-btn', data: {opening_time_form_target: 'submit'} %>
             </div>
@@ -24,7 +24,7 @@
         <% end %>
       </div>
       <div class='list'>
-       <%= render @opening_times %>
+       <%= render @open_times %>
       </div>
     </div>
   </section>
