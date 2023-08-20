@@ -1,23 +1,19 @@
-<h1 class="text-2xl">桌子index</h1>
+    <h1 class="text-2xl">桌子index</h1>
 
+    <%= link_to '新增桌子', new_admin_restaurant_table_path, class: "action-btn" %>
 
-<%= link_to '新增桌子', new_admin_restaurant_table_path, class: "action-btn" %>
-
-<ul> 
-
-    <% @tables.each do |table| %>
-    <% @restaurant = table.restaurant %>
-    <li>
+    <ul> 
+      <% @tables.each do |table| %>
+      <li>
         桌號：<%= table.name %>
         最大人數：<%= table.seat_num %>
         桌型：<%= table.category %>
-        <%= link_to '更新', edit_admin_restaurant_table_path(@restaurant,table), class: "action-btn" %>
-        <%= link_to '刪除', admin_restaurant_table_path(@restaurant,table),
+        <%= link_to '更新', edit_admin_restaurant_table_path(table.restaurant,table), class: "action-btn" %>
+        <%= link_to '刪除', admin_restaurant_table_path(table.restaurant,table),
                             data:{ turbo_method: 'delete',
-                                   turbo_confirm: '確認刪除？'
-                                 }, 
+                                turbo_confirm: '確認刪除？'
+                                }, 
                             class: "action-btn" %>
-    </li>
-    <% end %> 
-
-</ul>
+      </li>
+      <% end %> 
+    </ul>

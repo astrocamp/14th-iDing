@@ -1,24 +1,18 @@
 class Admin::TablesController < ApplicationController
 
-  before_action :set_table, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_table, only: [:edit, :update, :destroy]
+  before_action :set_restaurant, only: [:index, :new, :create]
 
   def index
-    # @tables = current_user.restaurants.tables.order(id: :asc)
-    @tables = Table.includes(restaurant: :user).where(users: { id: current_user.id }).order(id: :asc)
-
-  end
-
-  def show
+    @tables = @restaurant.tables.order(id: :asc)
   end
 
   def new
-    @restaurant = current_user.restaurants.find(params[:restaurant_id])
     @table = @restaurant.tables.new
   end
 
   def create
-    @restaurant = current_user.restaurants.find(params[:restaurant_id])
     @table = @restaurant.tables.new(table_params)
     
     if @table.save
@@ -29,20 +23,19 @@ class Admin::TablesController < ApplicationController
   end
 
   def edit
-    @restaurant = @table.restaurant
   end
 
   def update
     if @table.update(table_params)
-        redirect_to admin_restaurant_tables_path(@restaurant), notice: "桌子已更新"
+      redirect_to admin_restaurant_tables_path(@restaurant), notice: "桌子已更新"
     else
-        render :edit
+      render :edit
     end
   end
 
   def destroy
     @table.destroy
-      redirect_to admin_restaurant_tables_path, notice:'刪除成功'
+    redirect_to admin_restaurant_tables_path, notice:'刪除成功'
   end
 
   private
@@ -52,8 +45,12 @@ class Admin::TablesController < ApplicationController
   end
 
   def set_table
-    @restaurant = current_user.restaurants.find(params[:restaurant_id])
+    set_restaurant
     @table = @restaurant.tables.find(params[:id])
+  end
+
+  def set_restaurant
+    @restaurant = current_user.restaurants.find(params[:restaurant_id])
   end
   
 end
