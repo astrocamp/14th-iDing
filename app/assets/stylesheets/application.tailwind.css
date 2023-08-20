@@ -7,24 +7,9 @@
 }
 
 .major-btn {
-  @apply border 
-          text-sm 
-          bg-teal-700	 
-          text-white 
-          rounded 
-          py-1 
-          px-2 
-          hover:bg-yellow-600
-          border-none;
+  @apply border text-sm bg-teal-700	text-white rounded py-1 px-2 hover:bg-yellow-600 border-none;
 }
 
-.disabled-btn {
-  @apply border 
-          text-white
-          bg-gray-200 
-          rounded 
-          py-1 
-          px-2 
-          border-none
-          cursor-auto;
+.void-btn {
+  @apply border text-white bg-gray-200 rounded py-1 px-2 border-none cursor-auto;
 }
