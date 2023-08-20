@@ -2,32 +2,32 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="opentime"
 export default class extends Controller {
-  static targets = ["SrartTime", "CloseTime", "submit"];
+  static targets = ["startTime", "closeTime", "submit"];
 
   connect() {
-    this.getOpeningTime();
+    this.getstartTime();
   }
 
-  getOpeningTime() {
-    const openingTimeHr = this.openingTimeTargets[0].value;
-    const openingTimeMin = this.openingTimeTargets[1].value;
-    this.openingTime = new Date(
-      `2000-01-01 ${openingTimeHr}:${openingTimeMin}:00 +0800`
+  getstartTime() {
+    const startTimeHr = this.startTimeTargets[0].value;
+    const startTimeMin = this.startTimeTargets[1].value;
+    this.startTime = new Date(
+      `2000-01-01 ${startTimeHr}:${startTimeMin}:00 +0800`
     );
     this.compareTime();
   }
 
-  getClosedTime() {
-    const closedTimeHr = this.closedTimeTargets[0].value;
-    const closedTimeMin = this.closedTimeTargets[1].value;
-    this.closedTime = new Date(
-      `2000-01-01 ${closedTimeHr}:${closedTimeMin}:00 +0800`
+  getcloseTime() {
+    const closeTimeHr = this.closeTimeTargets[0].value;
+    const closeTimeMin = this.closeTimeTargets[1].value;
+    this.closeTime = new Date(
+      `2000-01-01 ${closeTimeHr}:${closeTimeMin}:00 +0800`
     );
     this.compareTime();
   }
 
   compareTime() {
-    if (this.openingTime < this.closedTime) {
+    if (this.startTime < this.closeTime) {
       this.submitTarget.classList.remove("disabled-btn");
       this.submitTarget.classList.add("major-btn");
     } else {

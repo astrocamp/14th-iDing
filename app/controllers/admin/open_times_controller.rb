@@ -9,22 +9,9 @@ class Admin::OpenTimesController < ApplicationController
     @open_times = @restaurant.open_times.includes(:restaurant)
   end
 
-
   def create
-    start_time = Time.new(  
-      params[:open_time]['start_time(1i)'].to_i,
-      params[:open_time]['start_time(2i)'].to_i,
-      params[:open_time]['start_time(3i)'].to_i,
-      params[:open_time]['start_time(4i)'].to_i,
-      params[:open_time]['start_time(5i)'].to_i
-    )
-    close_time = Time.new(
-      params[:open_time]['close_time(1i)'].to_i,
-      params[:open_time]['close_time(2i)'].to_i,
-      params[:open_time]['close_time(3i)'].to_i,
-      params[:open_time]['close_time(4i)'].to_i,
-      params[:open_time]['close_time(5i)'].to_i
-    )
+    start_time = build_time('start_time')
+    close_time = build_time('close_time')
 
     if start_time < close_time
       @start_time = @restaurant.open_times.new(opentime_params)
@@ -57,16 +44,17 @@ class Admin::OpenTimesController < ApplicationController
     @restaurant = current_user.restaurants.find(params[:restaurant_id])
   end
 
-  # def build_time_from_params(time_input)
-  #   # Time.new(
-  #   #   params[:open_time]["#{time_input}(1i)"].to_i,
-  #   #   params[:open_time]["#{time_input}(2i)"].to_i,
-  #   #   params[:open_time]["#{time_input}(3i)"].to_i,
-  #   #   params[:open_time]["#{time_input}(4i)"].to_i,
-  #   #   params[:open_time]["#{time_input}(5i)"].to_i
-  #   # )
-  # end
   def find_open_time
     @open_time = OpenTime.find(params[:id])
+  end
+
+  def build_time(prefix)
+    Time.new(
+      params[:open_time]["#{prefix}(1i)"].to_i,
+      params[:open_time]["#{prefix}(2i)"].to_i,
+      params[:open_time]["#{prefix}(3i)"].to_i,
+      params[:open_time]["#{prefix}(4i)"].to_i,
+      params[:open_time]["#{prefix}(5i)"].to_i
+    )
   end
 end
