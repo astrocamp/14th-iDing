@@ -7,4 +7,5 @@
   <li>餐廳介紹：<%= @restaurant.description %></li>
   <li>統編：<%= @restaurant.UBN %></li>
   <li>餐廳形象照：<%= image_tag(@restaurant.image_url) if @restaurant.image? %></li>
+  <%= link_to '查看餐廳內的桌子', admin_restaurant_tables_path(@restaurant),class: "action-btn" %>
 </ul>
