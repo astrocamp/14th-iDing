@@ -1,5 +1,4 @@
-<main class='grid h-screen grid-cols-3 grid-rows-2 gap-4 p-6 ml-20 bg-hoverGray'>
-  <section class='mb-auto bg-white border rounded' data-controller='opening-time'>
+  <section class='w-6/12 mb-auto bg-white border rounded'>
     <h2 class='py-2 text-2xl font-bold text-center border-b '>營業時段</h2>
     <div class='grid grid-cols-2 p-6 text-left'>
       <div>
@@ -8,17 +7,17 @@
         <%= form_with(model: @open_time, 
                       url: admin_restaurant_open_times_path(@restaurant),
                       local: false) do |f| %>
-          <div data-controller='opening-time-form'>
+          <div data-controller='opentime'>
             <%= f.label :start_time, '時段：'%>
             <div class='text-center'>
               <div>
-                <%= f.time_select :start_time, {minute_step: 15}, data: {opening_time_form_target: 'StartTime', action: 'change->opening-time-form#getOpeningTime'}%>
+                <%= f.time_select :start_time, {minute_step: 15}, data: {opentime_target: 'startTime', action: 'change->opentime#getstartTime'}%>
               </div>
               <div>至</div>
               <div class='mb-4'>
-                <%= f.time_select :close_time, {minute_step: 15}, data: {opening_time_form_target: 'CloseTime', action: 'change->opening-time-form#getClosedTime'} %>
+                <%= f.time_select :close_time, {minute_step: 15}, data: {opentime_target: 'closeTime', action: 'change->opentime#getcloseTime'} %>
               </div>
-              <%= f.submit '儲存', class: 'disabled-btn', data: {opening_time_form_target: 'submit'} %>
+              <%= f.submit '儲存', class: 'major-btn', data: {opentime_target: 'submit'} %>
             </div>
           </div>
         <% end %>
@@ -29,6 +28,5 @@
     </div>
   </section>
 
-</main>
 
 
