@@ -11,9 +11,9 @@ class Admin::OpenTimesController < ApplicationController
 
   def create
     start_time = build_time('start_time')
-    close_time = build_time('close_time')
+    end_time = build_time('end_time')
 
-    if start_time < close_time
+    if start_time < end_time
       @start_time = @restaurant.open_times.new(opentime_params)
       @start_time.save
     end
@@ -37,7 +37,7 @@ class Admin::OpenTimesController < ApplicationController
   private
 
   def opentime_params
-    params.require(:open_time).permit(:start_time, :close_time)
+    params.require(:open_time).permit(:start_time, :end_time)
   end
 
   def find_restaurant
