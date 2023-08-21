@@ -17,7 +17,7 @@
               <div class='mb-4'>
                 <%= f.time_select :end_time, {minute_step: 15}, data: {opentime_target: 'endTime', action: 'change->opentime#checkendTime'} %>
               </div>
-              <%= f.submit '儲存', class: 'major-btn', data: {opentime_target: 'submit'} %>
+              <%= f.submit '儲存', class: 'action-btn', data: {opentime_target: 'submit'}, disabled: true %>
             </div>
           </div>
         <% end %>
