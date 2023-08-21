@@ -9,6 +9,8 @@ module Admin
       @tables = @restaurant.tables.order(:id)
     end
 
+    def show; end
+
     def new
       @table = @restaurant.tables.new
     end
@@ -35,7 +37,7 @@ module Admin
 
     def destroy
       @table.destroy
-      redirect_to admin_restaurant_tables_path, notice: '刪除成功'
+      redirect_to admin_restaurant_tables_path, notice: '桌子刪除成功'
     end
 
     private
