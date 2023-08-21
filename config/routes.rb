@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     end
   end
 
-  
   resources :customers
+
   get "/testcss" ,to: 'home#show'
   
 end
