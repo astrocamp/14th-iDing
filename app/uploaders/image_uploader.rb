@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
@@ -9,7 +11,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  process resize_to_fit: [500,500]
+  process resize_to_fit: [500, 500]
 
   # Process files as they are uploaded:
   # process scale: [200, 300]
@@ -24,7 +26,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   def extension_allowlist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
-
 end
