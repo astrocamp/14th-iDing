@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 module Admin
-  class RestaurantsController < ApplicationController
+  class RestaurantsController < Admin::BaseController
     before_action :set_restaurant, only: %i[show edit update destroy]
-    before_action :authenticate_user!
 
     def index
       @restaurants = current_user.restaurants.order(id: :desc)
