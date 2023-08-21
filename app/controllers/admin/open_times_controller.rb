@@ -11,9 +11,8 @@ module Admin
     end
 
     def create
-      start_time = build_time('start_time')
-      end_time = build_time('end_time')
-
+      start_time = Time.zone.parse(params[:open_time][:start_time])
+      end_time = Time.zone.parse(params[:open_time][:end_time])
       return unless start_time < end_time
 
       @open_time = @restaurant.open_times.new(opentime_params)
@@ -46,16 +45,6 @@ module Admin
 
     def set_open_time
       @open_time = OpenTime.find(params[:id])
-    end
-
-    def build_time(prefix)
-      Time.new(
-        params[:open_time]["#{prefix}(1i)"].to_i,
-        params[:open_time]["#{prefix}(2i)"].to_i,
-        params[:open_time]["#{prefix}(3i)"].to_i,
-        params[:open_time]["#{prefix}(4i)"].to_i,
-        params[:open_time]["#{prefix}(5i)"].to_i
-      )
     end
   end
 end

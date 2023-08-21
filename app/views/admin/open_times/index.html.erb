@@ -11,11 +11,11 @@
             <%= f.label :start_time, '時段：'%>
             <div class='text-center'>
               <div>
-                <%= f.time_select :start_time, {minute_step: 15}, data: {opentime_target: 'startTime', action: 'change->opentime#checkstartTime'}%>
+                <%= f.time_field :start_time, data: {opentime_target: 'startTime', action: 'change->opentime#compareTime'}%>
               </div>
               <div>至</div>
               <div class='mb-4'>
-                <%= f.time_select :end_time, {minute_step: 15}, data: {opentime_target: 'endTime', action: 'change->opentime#checkendTime'} %>
+                <%= f.time_field :end_time, data: {opentime_target: 'endTime', action: 'change->opentime#compareTime'} %>
               </div>
               <%= f.submit '儲存', class: 'action-btn', data: {opentime_target: 'submit'}, disabled: true %>
             </div>
