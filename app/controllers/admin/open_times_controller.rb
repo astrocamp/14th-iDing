@@ -2,8 +2,8 @@
 
 module Admin
   class OpenTimesController < ApplicationController
-    before_action :find_restaurant, only: %i[create index]
-    before_action :find_open_time, only: %i[edit update destroy]
+    before_action :set_restaurant, only: %i[create index]
+    before_action :set_open_time, only: %i[edit update destroy]
 
     def index
       @open_time = OpenTime.new
@@ -16,8 +16,8 @@ module Admin
 
       return unless start_time < end_time
 
-      @start_time = @restaurant.open_times.new(opentime_params)
-      @start_time.save
+      @open_time = @restaurant.open_times.new(opentime_params)
+      @open_time.save
     end
 
     def edit
@@ -40,11 +40,11 @@ module Admin
       params.require(:open_time).permit(:start_time, :end_time)
     end
 
-    def find_restaurant
+    def set_restaurant
       @restaurant = current_user.restaurants.find(params[:restaurant_id])
     end
 
-    def find_open_time
+    def set_open_time
       @open_time = OpenTime.find(params[:id])
     end
 
