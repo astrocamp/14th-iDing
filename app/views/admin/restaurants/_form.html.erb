@@ -31,6 +31,19 @@
   </div>
 
   <div>
+    <%= f.label :mealtime, "用餐時間" %>
+    <%= f.number_field :mealtime, step: 5 %>
+  </div>
+
+  <div>
+    <%= f.label :reserve_interval, "訂位間隔" %>
+    <%= f.number_field :reserve_interval, step: 5 %><span>分鐘</span>
+  </div>
+
+   <div>
+      <%= f.label :bookday_advance, '提前訂位日：',class:"w-20" %>
+      <%= f.number_field :bookday_advance, min: 1 %>
+  <div>
     <%= f.label :image, "餐廳形象照"%>
     <em>(檔案類型：jpg jpeg gif png)</em><br />
     <%= f.file_field :image %>
