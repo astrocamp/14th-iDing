@@ -3,11 +3,7 @@
 @tailwind utilities;
 
 .action-btn {
-  @apply select-none hover:bg-teal-900 rounded inline-block text-white px-4 py-1 bg-teal-700;
-}
-
-.major-btn {
-  @apply border text-sm bg-teal-700	text-white rounded py-1 px-2 hover:bg-yellow-600 border-none;
+  @apply select-none hover:bg-teal-900 rounded inline-block text-white px-2 py-1 bg-teal-700 cursor-pointer;
 }
 
 .void-btn {

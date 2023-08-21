@@ -25,19 +25,10 @@ export default class extends Controller {
     this.compareTime();
   }
 
-  // compareTime() {
-  //   if (this.startTime < this.endTime) {
-  //     this.submitTarget.classList.remove("disabled-btn");
-  //     this.submitTarget.classList.add("major-btn");
-  //   } else {
-  //     this.submitTarget.classList.add("disabled-btn");
-  //     this.submitTarget.classList.remove("major-btn");
-  //   }
-  // }
-
   compareTime() {
     const TimeCorrect = this.startTime < this.endTime;
     this.submitTarget.classList.toggle("void-btn", !TimeCorrect);
-    this.submitTarget.classList.toggle("major-btn", TimeCorrect);
+    this.submitTarget.classList.toggle("action-btn", TimeCorrect);
+    this.submitTarget.disabled = !TimeCorrect;
   }
 }
