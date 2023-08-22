@@ -1,20 +1,33 @@
-<h1>訂位總覽</h1>
+<h1><%= @restaurant.name %>訂位總覽</h1>
 
-<%= link_to '新增訂位', new_reservation_path %>
+<%= link_to '新增訂位', new_restaurant_reservation_path, class: 'action-btn' %>
 
 <ul> 
   <% @reservations.each do |r| %>
-    <% if r.date.to_date == Date.today %>
-      <li>
-        <%= r.customer.name %>
-        <%= r.customer.tel %>
-        大:<%= r.adult_num %>
-        小:<%= r.kid_num %>
-        <%= link_to '更新', edit_reservation_path(r) %>
-        <%= link_to '刪除', reservation_path(r), data:{ turbo_method: 'delete',
+    <%# if r.date.to_date == Date.today %>
+    <li>
+      <div class="border-2 ">
+        <div class="flex ">
+          日期：<%= r.date %>
+          時間：<%= r.time %>
+        </div>
+        <div class="flex">
+          大人：<%= r.adult_num %>
+          小孩：<%= r.kid_num %>
+        </div>
+        <div>
+          用餐目的：<%= r.purpose %>
+        </div>
+        <div>
+          用餐備註：<%= r.note %>
+        </div>
+        <%= link_to '更新', edit_restaurant_reservation_path(r.restaurant, r), class: 'action-btn' %>
+        <%= link_to '刪除', restaurant_reservation_path(r.restaurant,r), data:{ turbo_method: 'delete',
                                                 turbo_confirm: '確認刪除？'
-                                                } %>
-      </li>
-      <% end %> 
+                                                },
+                                                class: 'action-btn' %>
+      </div>  
+    </li>
+      <%# end %> 
   <% end %> 
 </ul>
