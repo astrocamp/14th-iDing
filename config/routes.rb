@@ -24,4 +24,8 @@ Rails.application.routes.draw do
 
   get "/testcss" ,to: 'home#show'
   
+  
+  resources :restaurants, only: [:show]
+
+
 end

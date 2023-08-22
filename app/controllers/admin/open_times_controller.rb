@@ -7,7 +7,7 @@ module Admin
 
     def index
       @open_time = OpenTime.new
-      @open_times = @restaurant.open_times.includes(:restaurant)
+      @open_times = @restaurant.open_times.includes(:restaurant).order(start_time: :asc)
     end
 
     def create
