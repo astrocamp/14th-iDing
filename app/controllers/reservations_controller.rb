@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
 
   before_action :set_reservation, only: %i[edit update destroy]
   before_action :set_restaurant, only: %i[index new create]
-
+  before_action :set_opentime, only: %i[new edit create]
 
   def index
     @reservations = @restaurant.reservations.order(date: :desc)
@@ -59,6 +59,9 @@ class ReservationsController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
+  def set_opentime
+    @open_time = @restaurant.open_times.order(start_time: :asc)
+  end
 
   # def update_table_id(reservation)
   #   reservation.update_column(:table_id, reservation.restraurant.table) if reservation.restraurant.table.present?
