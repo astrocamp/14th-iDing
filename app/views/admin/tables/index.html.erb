@@ -10,9 +10,10 @@
         桌型：<%= table.category %>
         <%= link_to '更新', edit_admin_restaurant_table_path(table.restaurant,table), class: "action-btn" %>
         <%= link_to '刪除', admin_restaurant_table_path(table.restaurant,table),
-                            data:{ turbo_method: 'delete',
-                                turbo_confirm: '確認刪除？'
-                                }, 
+                            data:{ 
+                              turbo_method: 'delete',
+                              turbo_confirm: '確認刪除？'
+                            }, 
                             class: "action-btn" %>
       </li>
       <% end %> 
