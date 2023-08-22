@@ -9,7 +9,7 @@
       <div class="border-2 ">
         <div class="flex ">
           日期：<%= r.date %>
-          時間：<%= r.time %>
+          時間：<%= r.time.strftime('%R') %>
         </div>
         <div class="flex">
           大人：<%= r.adult_num %>
