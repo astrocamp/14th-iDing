@@ -1,0 +1,109 @@
+<main class="max-w-screen-lg px-4 mx-auto mt-24"
+      data-controller='reservation'  
+      data-key='<%= @key %>'  
+      data-id='<%= params[:id] %>'
+>
+  <section>
+    <h1 class='mx-auto mb-4 text-xl font-bold text-center'>確認訂位與填寫聯絡資訊</h1>
+  </section>
+
+  <div class='gap-4 md:grid md:grid-cols-1-2'>
+    <section class='mb-4'>
+      <div class='px-4 py-5 border rounded'>
+        <div class='pb-2 mb-4 border-b-2'>
+          <h2 class='text-xl font-bold'>
+            <%= @restaurant.title %>
+            <%= @restaurant.branch %>
+          </h2>
+          <h3 class='text-gray-500'>
+            <%= @restaurant.address %>
+          </h3>
+        </div>
+        <div class='flex items-center'>
+          <i class="mr-2 fa-regular fa-user"></i>
+          <p class='mr-2'><%= params[:adult_quantity] %>位大人</p>
+          <p><%= params[:child_quantity] %>位小孩</p>
+        </div>
+
+        <div class='flex items-center my-4'>
+          <i class="mr-2 fa-regular fa-clock"></i>
+          <p><%= (params[:arrival_time]) %></p>
+        </div>
+
+        <div class='flex items-center'>
+          <i class="mr-2 fa-regular fa-calendar-days"></i>
+          <p><%= params[:arrival_date] %></p>
+        </div>
+
+        <div class='flex items-center mt-4'>
+          <i class="mr-2 fa-regular fa-clock"></i>
+          <p><%= @restaurant.dining_time %>分鐘用餐時間</p>
+        </div>
+        
+      </div>
+    </section>
+   
+    <section class='px-4 py-5 border rounded'>
+      <div class='text-center'>
+        <span data-controller='timer' id='<%= params[:id] %>' data-key='<%= @key %>' class='text-xl text-major'></span>
+        <span>後離開</span>
+      </div>
+     
+      <%= form_with model: @user, url: users_path, class: "form", data: {controller: "reservation-form"} do |form| %>
+      
+        <div data-reservation-form-target="nameWarn"></div>                
+        <div class='mb-3 reservation-input'>
+          <%= form.label :name, '訂位人姓名', class: 'mb-3' %>
+            <div class='grid grid-cols-2 gap-3'>
+              <%= form.text_field :name, class: 'input-border-click', data: {reservation_form_target: "nameInput",
+                                                                             action: "input->reservation-form#input blur->reservation-form#nameFieldBlur"} %>
+              <%= form.select :gender, User.genders.keys, {}, {class: 'input-border-click w-full'} %>
+            </div>
+        </div>
+        <div data-reservation-form-target="emailWarn"></div>
+        <div class='mb-3 reservation-input'>
+          <%= form.label :email, 'Email', class: 'mb-3' %>
+          <%= form.email_field :email, 
+            class: 'input-border-click', 
+            data: {reservation_form_target: "emailInput",
+                    action: "input->reservation-form#input
+                             blur->reservation-form#emailFieldBlur"
+                  }
+          %>
+        </div>
+        <div data-reservation-form-target="phoneWarn"></div>
+        <div class='mb-3 reservation-input'>
+          <%= form.label :phone, '手機號碼', class: 'mb-3' %>
+          <%= form.telephone_field :phone, 
+            class: 'input-border-click',
+            maxlength: "10",                         
+            data: {reservation_form_target: "phoneInput",
+                    action: "input->reservation-form#input
+                             blur->reservation-form#phoneFieldBlur"
+                  } 
+          %>
+        </div>
+      
+        <input type="hidden" name="seat_id" value="<%= @seat.id %>">
+        <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>">
+        <input type="hidden" name="key" value="<%= @key %>">
+        <%= form.text_field :arrival_date, class: 'hidden',value: params[:arrival_date] %>
+        <%= form.text_field :arrival_time, class: 'hidden', value: params[:arrival_time] %>
+        <%= form.text_field :end_time, class: 'hidden', value: @end_time %>
+        <%= form.number_field :adult_quantity, class: "hidden", value: params[:adult_quantity] %>
+        <%= form.number_field :child_quantity, class: "hidden", value: params[:child_quantity] %>
+          
+        <div>
+          <%= form.submit "確認訂位", class: "disabled-btn w-full py-3 text-lg mb-3 cursor-pointer",
+                                     disabled: true,
+                                     data: {reservation_form_target: "submit" } %>
+          <%= link_to "回上一頁", restaurant_path(@restaurant), class: 'gray-btn block text-center text-lg py-3' %>
+        </div>
+      <% end %>
+
+    </section>
+    
+  </div>
+
+</main>
+
