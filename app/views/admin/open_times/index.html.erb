@@ -1,0 +1,32 @@
+  <section class='w-6/12 mb-auto bg-white border rounded'>
+    <h2 class='py-2 text-2xl font-bold text-center border-b '>營業時段</h2>
+    <div class='grid grid-cols-2 p-6 text-left'>
+      <div>
+        <h3 class='inline py-2 text-xl font-bold'>新增營業時段</h3>
+        
+        <%= form_with(model: @open_time, 
+                      url: admin_restaurant_open_times_path(@restaurant),
+                      local: false) do |f| %>
+          <div data-controller='opentime'>
+            <%= f.label :start_time, '時段：'%>
+            <div class='text-center'>
+              <div>
+                <%= f.time_field :start_time, data: {opentime_target: 'startTime', action: 'change->opentime#compareTime'}%>
+              </div>
+              <div>至</div>
+              <div class='mb-4'>
+                <%= f.time_field :end_time, data: {opentime_target: 'endTime', action: 'change->opentime#compareTime'} %>
+              </div>
+              <%= f.submit '儲存', class: 'action-btn', data: {opentime_target: 'submit'}, disabled: true %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class='list'>
+       <%= render @open_times %>
+      </div>
+    </div>
+  </section>
+
+
+

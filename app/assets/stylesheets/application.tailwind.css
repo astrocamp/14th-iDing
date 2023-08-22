@@ -3,5 +3,13 @@
 @tailwind utilities;
 
 .action-btn {
-  @apply select-none hover:bg-teal-900 rounded-full inline-block text-white px-4 py-1 bg-teal-700;
+  @apply select-none hover:bg-teal-900 rounded inline-block text-white px-2 py-1 bg-teal-700 cursor-pointer;
+}
+
+.void-btn {
+  @apply border text-white bg-gray-200 rounded py-1 px-2 border-none cursor-auto;
+}
+
+.selection-btn {
+  @apply border focus:bg-emerald-700	 focus:text-white	 active:drop-shadow-md;
 }

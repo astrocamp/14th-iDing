@@ -1,0 +1,14 @@
+<div class='flex items-center p-2 m-auto mb-2 w-56 text-sm border rounded'
+     id='<%= dom_id(open_time)%>'
+>
+  <div class="w-24">
+    <%= open_time.start_time.strftime('%R') %> -
+    <%= open_time.end_time.strftime('%R') %>
+  </div>
+  <%= link_to edit_admin_open_time_path(open_time), class: 'mx-2 action-btn' do %>
+    <i class="fa-solid fa-user-pen"></i>
+  <% end %>
+    <%= link_to admin_open_time_path(open_time), data: {turbo_method: 'delete', confirm: '確定刪除?', remote: true}, class: 'action-btn' do %>
+    <i class="fa-solid fa-xmark"></i>
+  <% end %>
+</div>

@@ -1,0 +1,29 @@
+<section>
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <div class="w-full rounded-lg shadow dark:border md:mt-0 md:max-w-lg xl:p-0">
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+
+          <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+            編輯時段
+          </h1>
+
+          <%= form_with(model: @open_time, url:  admin_open_time_path(@open_time)) do |f| %>
+            <div>
+              <%= f.label :open_time, '時段：', class: 'text-xl font-bold'%>
+              <div class='text-center'>
+                <div>
+                  <%= f.time_select :start_time, {minute_step: 15} %>
+                </div>
+                <div>至</div>
+                <div class='mb-4'>
+                  <%= f.time_select :end_time, {minute_step: 15} %>
+                </div>
+                <%= f.submit '儲存', class: 'action-btn' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</section>
+

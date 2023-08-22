@@ -1,1 +1,21 @@
-show
+<main class="max-w-screen-lg mx-auto my-14">
+  <section>
+ 
+          
+  <div>            
+    <% time_range = RestaurantsHelper::TimeRange.new(@open_time, @restaurant.reserve_interval) %>
+    <h4 class='reservation-font'>用餐時間</h4>
+    <div class='grid grid-cols-5 gap-3 md:grid-cols-7'  data-restaurant-reservation-target='timeBtn'>
+      <% time_range.makelist.each do |time_point| %>
+        <button class="selection-btn">
+          <%= time_point %>
+        </button>
+      <% end %>
+      <input type="hidden" name="arrival_time" data-restaurant-reservation-target='timeInput'>
+    </div>
+  </div>
+   
+  </section>
+
+  
+</main>

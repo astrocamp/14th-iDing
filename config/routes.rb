@@ -8,7 +8,9 @@ Rails.application.routes.draw do
                                   }
   
   namespace :admin do
-    resources :restaurants
+    resources :restaurants do
+      resources :open_times, shallow: true, only: [:index, :create, :edit, :update, :destroy]
+    end
   end
 
   resources :tables
@@ -21,4 +23,8 @@ Rails.application.routes.draw do
 
   get "/testcss" ,to: 'home#show'
   
+  
+  resources :restaurants, only: [:show]
+
+
 end
