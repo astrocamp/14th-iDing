@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: %i[show reserve occupied]
+  before_action :set_restaurant, only: %i[show]
 
   def index
   end
