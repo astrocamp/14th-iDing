@@ -13,7 +13,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :customers
+  resources :tables
+
+  resources :restaurants do
+    resources :customers
+    resources :reservations
+  end
+
 
   get "/testcss" ,to: 'home#show'
   
