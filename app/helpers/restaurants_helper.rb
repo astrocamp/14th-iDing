@@ -5,13 +5,14 @@ module RestaurantsHelper
       @reserve_interval = reserve_interval.minutes.to_i
     end
 
-    def time_collection
-      @time_points = @open_time.reduce([]) { |arr, time| arr << (time.start_time.to_i..time.end_time.to_i) }
+    def time_slot
+      @time_period = @open_time.reduce([]) { |arr, time| arr.push(time.start_time.to_i..time.end_time.to_i) }
     end
 
-    def reserve_interval
-      @time_points.each_with_object([]) do |time, arr|
-        time.step(@reserve_interval) { |t| arr << Time.at(t).strftime('%R') }
+    def makelist
+      time_slot
+      @time_period.each_with_object([]) do |time, arr|
+        time.step(@reserve_interval) { |t| arr.push(Time.at(t).utc.strftime('%R')) }
       end
     end
   end

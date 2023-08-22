@@ -4,18 +4,10 @@
           
   <div>            
     <% time_range = RestaurantsHelper::TimeRange.new(@open_time, @restaurant.reserve_interval) %>
-    <% time_range.time_collection %>
-    <% time_range.reserve_interval %>
     <h4 class='reservation-font'>用餐時間</h4>
     <div class='grid grid-cols-5 gap-3 md:grid-cols-7'  data-restaurant-reservation-target='timeBtn'>
-      <% time_range.reserve_interval.each do |time_point| %>
-        <button class='py-1 disabled-btn'
-                data-action='click->restaurant-reservation#getTime'
-                data-restaurant-reservation-target='time'
-                data-date=''
-                value='<%= time_point %>'
-                data-id='<%=@restaurant.id%>'
-                disabled>
+      <% time_range.makelist.each do |time_point| %>
+        <button class="selection-btn">
           <%= time_point %>
         </button>
       <% end %>

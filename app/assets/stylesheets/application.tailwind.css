@@ -9,3 +9,7 @@
 .void-btn {
   @apply border text-white bg-gray-200 rounded py-1 px-2 border-none cursor-auto;
 }
+
+.selection-btn {
+  @apply border focus:bg-emerald-700	 focus:text-white	 active:drop-shadow-md;
+}

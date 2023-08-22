@@ -8,7 +8,7 @@ class RestaurantsController < ApplicationController
     @open_time = @restaurant.open_times.order(start_time: :asc)
   end
 
-
+  private
   def set_restaurant
     @restaurant = Restaurant.find(params[:id])
   end
