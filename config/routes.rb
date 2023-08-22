@@ -18,4 +18,8 @@ Rails.application.routes.draw do
   resources :customers
   get "/testcss" ,to: 'home#show'
   
+  
+  resources :restaurants, only: [:show]
+
+
 end
