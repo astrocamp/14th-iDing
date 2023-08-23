@@ -104,6 +104,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
     excon (0.100.0)
     faraday (2.7.10)
@@ -145,6 +149,10 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jwt (2.7.1)
+    launchy (2.5.2)
+      addressable (~> 2.8)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -314,9 +322,11 @@ DEPENDENCIES
   carrierwave (~> 3.0, >= 3.0.2)
   debug
   devise (~> 4.9)
+  dotenv-rails (~> 2.8)
   fog-aws (~> 3.19)
   importmap-rails
   jbuilder
+  letter_opener (~> 1.8)
   mini_magick (~> 4.12)
   omniauth
   omniauth-google-oauth2
