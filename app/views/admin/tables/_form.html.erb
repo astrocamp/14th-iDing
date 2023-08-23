@@ -1,9 +1,4 @@
-<%= form_with( model: [:admin, @restaurant, @table], 
-               data: { 
-                turbo: false, 
-                controller: "alert", 
-                action: "submit->alert#validateAndSubmit" 
-               }) do |f| %>
+<%= form_with( model: [:admin, @restaurant, @table], data: { turbo: false}) do |f| %>
 
 <div>
   <%= f.label :name, '桌號' %>
