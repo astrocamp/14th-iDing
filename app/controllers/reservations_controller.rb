@@ -11,7 +11,6 @@ class ReservationsController < ApplicationController
   def show; end
 
   def new
-    # @restaurant = Restaurant.find(params[:restaurant_id])
     @reservation = @restaurant.reservations.new
   end
 
