@@ -13,8 +13,6 @@ module Admin
     def create
       start_time = Time.zone.parse(params[:open_time][:start_time])
       end_time = Time.zone.parse(params[:open_time][:end_time])
-      return unless start_time < end_time
-
       @open_time = @restaurant.open_times.new(opentime_params)
       @open_time.save
     end

@@ -53,8 +53,4 @@ class ReservationsController < ApplicationController
   def set_restaurant
     @restaurant = Restaurant.find(params[:restaurant_id])
   end
-
-  # def update_table_id(reservation)
-  #   reservation.update_column(:table_id, reservation.restraurant.table) if reservation.restraurant.table.present?
-  # end
 end
