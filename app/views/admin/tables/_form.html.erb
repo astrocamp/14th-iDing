@@ -1,13 +1,18 @@
-<%= form_with(model: [ :admin, @restaurant, @table ], data: { turbo: false }) do |f| %>
+<%= form_with( model: [:admin, @restaurant, @table], 
+               data: { 
+                turbo: false, 
+                controller: "alert", 
+                action: "submit->alert#validateAndSubmit" 
+               }) do |f| %>
 
 <div>
   <%= f.label :name, '桌號' %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name , data: { alert_target: "field" } %>
 </div>
 
 <div>
   <%= f.label :category, '桌型' %>
-  <%= f.select :category, Table.categories.map { |k,_| [k.to_s,k.to_s] } %>
+  <%= f.select :category, Table.categories.map { |k, _| [k.to_s, k.to_s] } %>
 </div>
 
 <div>
@@ -15,6 +20,9 @@
   <%= f.number_field :seat_num %>
 </div>
 
-<%= f.submit class: 'action-btn' %>
+<div>
+  <%= f.submit class: 'action-btn' %>
+</div>
 
 <% end %>
+
