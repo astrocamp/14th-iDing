@@ -21,7 +21,7 @@ module Admin
       if @table.save
         redirect_to admin_restaurant_tables_path, notice: '桌子建立成功'
       else
-        flash[:alert] = "桌號不得重複或空白"
+        flash[:alert] = '桌號不得重複或空白'
         render :new
       end
     end

@@ -76,6 +76,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_22_071011) do
     t.integer "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "restaurant_id", null: false
+    t.index ["restaurant_id"], name: "index_tables_on_restaurant_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -94,4 +96,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_22_071011) do
 
   add_foreign_key "open_times", "restaurants"
   add_foreign_key "reservations", "restaurants"
+  add_foreign_key "tables", "restaurants"
 end

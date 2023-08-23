@@ -1,6 +1,6 @@
 <header class="fixed top-0 left-0 z-50 w-full px-3 py-2 bg-white drop-shadow md:flex md-items-center md:justify-between">
   <div class="flex items-center justify-between w-full px-4">
-    <div class="top-40 w-40 md:w-1/4 lg:w-1/8 xl:w-1/12">
+    <div class="w-40 md:w-1/4 lg:w-1/8 xl:w-1/12">
       <a href="#" class="block">
         <%= image_tag "logo_column.png", class: "w-full align-middle" %>
       </a>
@@ -13,7 +13,7 @@
         </svg>
       </label>
 
-      <ul tabindex="0" class="hidden menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 w-28 place-content-center absolute top-24 right-0" data-hamburger-target="nav">
+      <ul tabindex="0" class="hidden menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 w-28 place-content-center absolute top-20 right-0" data-hamburger-target="nav">
         <li><a href="#" class="block p-4 py-3">餐廳介紹</a></li>
         <li><a href="#booking" class="block p-4 py-3">立即訂位</a></li>
         <li><a href="#" class="block p-4 py-3">美食菜單</a></li>
@@ -34,7 +34,7 @@
   </div>
 </div>
 
-<div class="my-6 mx-12 border-b border-gray-200 dark:border-gray-700">
+<div class="my-8 mx-12 lg:my-8 lg:mx-28 border-b border-gray-200 dark:border-gray-700">
   <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
     <li class="mr-2">
       <a href="#" name="booking" id="booking" class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg text-lg hover:text-blue-600 hover:border-blue-300 dark:hover:text-blue-300 group"><i class="fa-solid fa-calendar-days"> 我要訂位</i>
@@ -47,7 +47,7 @@
   </ul>
 </div>
 
-<div class="my-6 mx-12 ">
+<div class="my-8 mx-12 lg:my-8 lg:mx-28">
   <h1 class="m-4 text-3xl font-extrabold dark:text-white">貳樓 敦南店</h1>
   <p class="m-6"><i class="fa-solid fa-thumbs-up"> 4.0 <a href="" class="underline hover:text-blue-400">58 則評論</a></i></p>
   <p class="m-6">台北市敦化南路二段63巷14號</p>
@@ -58,7 +58,7 @@
   <hr>
 </div>
 
-<div class="my-6 mx-12" name="booking">
+<div class="my-8 mx-12 lg:my-8 lg:mx-28" name="booking">
   <%= form_with(model: @reservations, data: { turbo: false }) do |f| %>
     <div class="my-6">
       <div class="flex flex-col sm:flex-row justify-between gap-4">
@@ -79,11 +79,11 @@
   <% end %>
   <hr>
 </div>
-<div class="my-6 mx-12">
-  <p class="mx-6 mb-1">用餐時段</p>
-  <span class="mx-6 my-1 text-sm">* 灰色表示該時間已客滿，可點選檢視其他可訂位日期。</span>
+<div class="my-8 mx-4 lg:my-8 lg:mx-28 justify-center">
+  <p class="my-4 mx-4">用餐時段</p>
+  <span class="my-4 mx-4 text-sm">* 灰色表示該時間已客滿，可點選檢視其他可訂位日期。</span>
   <p class="m-6">早上</p><hr>
-  <div>
+  <div class="sm:columns-2 md:columns-1">
     <button type="button" class="m-8 focus:outline-none text-black bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xl w-32 px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">09:00</button>
     <button type="button" class="m-8 focus:outline-none text-black bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xl w-32 px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">09:30</button>
     <button type="button" class="m-8 focus:outline-none text-black bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xl w-32 px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">10:00</button>
@@ -92,7 +92,7 @@
     <button type="button" class="m-8 focus:outline-none text-black bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xl w-32 px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">11:30</button>
   </div>
   <p class="m-6">中午</p><hr>
-  <div>
+  <div class="sm:columns-2 md:columns-1">
     <button type="button" class="m-8 focus:outline-none text-black bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xl w-32 px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">12:00</button>
     <button type="button" class="m-8 focus:outline-none text-black bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xl w-32 px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">12:15</button>
     <button type="button" class="m-8 focus:outline-none text-black bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xl w-32 px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">12:30</button>
@@ -100,7 +100,7 @@
     <button type="button" class="m-8 focus:outline-none text-black bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xl w-32 px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">13:00</button>
   </div>
   <p class="m-6">晚上</p><hr>
-  <div>
+  <div class="mb-20 sm:columns-2 md:columns-1">
     <button type="button" class="m-8 focus:outline-none text-black bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xl w-32 px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">17:00</button>
     <button type="button" class="m-8 focus:outline-none text-black bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xl w-32 px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">17:30</button>
     <button type="button" class="m-8 focus:outline-none text-black bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xl w-32 px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">18:00</button>
