@@ -1,0 +1,6 @@
+tw:
+  helper:
+    submit:
+      restaurant:
+        create: "建立餐廳"
+        update: "更新餐廳資訊"

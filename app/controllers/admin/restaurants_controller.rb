@@ -5,7 +5,7 @@ module Admin
     before_action :set_restaurant, only: %i[show edit update destroy]
 
     def index
-      @restaurants = current_user.restaurants.order(id: :desc)
+      @restaurants = current_user.restaurants.order(:id)
     end
 
     def show; end
@@ -19,6 +19,7 @@ module Admin
       if @restaurant.save
         redirect_to admin_restaurants_path, notice: '餐廳新增成功'
       else
+        flash[:alert] = "姓名、統編、地址、電話 <br> 不得空白"
         render :new
       end
     end
