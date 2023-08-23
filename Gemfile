@@ -85,3 +85,5 @@ gem 'omniauth-rails_csrf_protection'
 gem "paranoia", "~> 2.2"
 
 gem "wicked", "~> 2.0"
+
+gem "rubocop", "~> 1.56"
