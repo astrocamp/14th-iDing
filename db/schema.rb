@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_062348) do
     t.string "name", null: false
     t.string "email"
     t.integer "gender"
-    t.string "tel"
+    t.string "tel", null: false
     t.index ["restaurant_id"], name: "index_reservations_on_restaurant_id"
   end
 
@@ -77,10 +77,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_062348) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
