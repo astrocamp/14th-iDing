@@ -61,7 +61,7 @@
                 <ul class="w-40 p-2 bg-gray-100">
                   <li><%= link_to "登出", destroy_user_session_path, data: { turbo_method: "delete" }, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
                   <li><%= link_to '更改密碼', edit_user_registration_path, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-                  <li><%= link_to '我的餐廳', admin_restaurants_path, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+                  <li><%= link_to '我的餐廳', admin_restaurants_path, class: "font-medium text-base text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
                 </ul>
               </details>
             </li>
@@ -73,7 +73,6 @@
     </div>
   </div>
 </header>
-
 
 <section class="w-2/3 mx-auto py-32">
   <div>
@@ -99,12 +98,12 @@
               <li class="my-2">統編：<%= restaurant.UBN %></li>
             </div>
 
-              <div class="flex gap-5">
-              <%= link_to '#', class:"action-btn" do %>
-                <i class="fa-solid fa-gear"><span class="font-normal mx-2">管理訂單</span></i>
-              <% end %>
+            <%= link_to '#', class:"action-btn my-5 w-32" do %>
+              <i class="fa-solid fa-gear"><span class="font-normal mx-2">管理訂單</span></i>
+            <% end %>
+            <div class="flex gap-5">
               <%= link_to edit_admin_restaurant_path(restaurant), class:"action-btn" do %>
-                <i class="fa-solid fa-pen"><span class="font-normal mx-2">修改餐廳資訊</span></i>
+                <i class="fa-solid fa-pen"><span class="hidden lg:inline font-normal mx-2">修改資訊</span></i>
               <% end %>
               <%= link_to admin_restaurant_path(restaurant), data:{ turbo_method: 'delete', turbo_confirm: '確認刪除？'}, class:"action-btn" do %>
               <%= link_to "編輯營業時間", admin_restaurant_open_times_path(restaurant), class: 'action-btn' %>
@@ -117,8 +116,4 @@
       </div>
     </ul>
   </div>
-</div>
-</div>
-
-
 </section>
