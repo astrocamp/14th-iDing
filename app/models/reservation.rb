@@ -7,7 +7,11 @@ class Reservation < ApplicationRecord
   validates :date, presence: true
   validates :time, presence: true
   validates :adult_num, presence: true, numericality: { greater_than: 0 }
+<<<<<<< HEAD
   validates :kid_num, presence: true, numericality: true
+=======
+  validates :kid_num, presence: true, numericality: { greater_than: 0 }
+>>>>>>> a5defaf (fix: first-page-data to be saved)
 
   # def generate_serial
   #   return unless date.present?
