@@ -3,7 +3,7 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[show]
 
-  def show 
+  def show
     @open_time = @restaurant.open_times.order(start_time: :asc)
   end
 

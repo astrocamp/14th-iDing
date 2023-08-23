@@ -13,4 +13,5 @@
 #
 class OpenTime < ApplicationRecord
   belongs_to :restaurant
+  validates :end_time, comparison: { greater_than: :start_time }
 end
