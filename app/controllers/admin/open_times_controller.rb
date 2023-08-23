@@ -25,7 +25,6 @@ module Admin
 
     def update
       return unless @open_time.update(opentime_params)
-
       redirect_to admin_restaurant_open_times_path(@open_time.restaurant), notice: '已更新時段'
     end
 
