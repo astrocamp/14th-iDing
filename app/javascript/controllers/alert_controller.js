@@ -2,7 +2,10 @@ import { Controller } from "@hotwired/stimulus";
 import Swal from "sweetalert2";
 
 export default class extends Controller {
-  connect() {
+  static targets = ["field"];
+
+  validateAndSubmit(event) {
+    const nameValue = this.fieldTarget.value.trim();
     const Toast = Swal.mixin({
       toast: true,
       position: "top-end",
@@ -11,18 +14,12 @@ export default class extends Controller {
       timerProgressBar: true,
     });
 
-    const notice = this.data.get("notice");
-    const alert = this.data.get("alert");
-
-    if (notice) {
+    if (nameValue === "") {
+      event.preventDefault();
       Toast.fire({
-        icon: "success",
-        title: notice,
-      });
-    } else if (alert) {
-      Toast.fire({
+        title: "錯誤",
+        text: "桌號不可空白",
         icon: "error",
-        title: alert,
       });
     }
   }
