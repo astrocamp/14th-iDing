@@ -11,8 +11,6 @@ class Reservation < ApplicationRecord
   validates :adult_num, presence: true, numericality: { greater_than: 0 }
   validates :kid_num, presence: true, numericality: { greater_than: 0 }
 
-  private
-
   # def generate_serial
   #   return unless date.present?
 
