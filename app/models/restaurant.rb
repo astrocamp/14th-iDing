@@ -26,7 +26,7 @@ class Restaurant < ApplicationRecord
 
   belongs_to :user
 
-  has_many :tables
   has_many :reservations
   has_many :open_times
+  has_many :tables, dependent: :destroy
 end

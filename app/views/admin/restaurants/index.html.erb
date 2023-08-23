@@ -1,13 +1,124 @@
-<h1>你的餐廳列表</h1>
+<header class="fixed top-0 left-0 justify-start z-30 w-full bg-white border-b border-gray-200 text-sm py-0 lg:px-20">
+  <div class="navbar bg-base-100">
+    <div class="drawer bg-base-100 flex justify-between z-10">
+      <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+      <div>
+        <%= image_tag "logo_column.png", class: "w-36 py-2 lg:w-44" %>
+      </div>
 
-<%= link_to '回首頁', root_path %>
-<%= link_to '新增餐廳', new_admin_restaurant_path %>
+      <div class="drawer-content lg:hidden">
+        <label for="my-drawer" class="mx-12">
+          <%= image_tag "hamberger-icon.svg"%>
+        </label>
+      </div>
 
-<ul> 
-  <% @restaurants.each do |restaurant| %>
-    <li>餐廳名稱：<%= link_to restaurant.name, admin_restaurant_path(restaurant)  %></li>
-    <li><%= link_to '修改餐廳資訊', edit_admin_restaurant_path(restaurant) %></li>
-    <li><%= link_to '刪除此餐廳', admin_restaurant_path(restaurant), data:{ turbo_method: 'delete', turbo_confirm: '確認刪除？'} %></li>
-    <li><%= link_to "編輯營業時間", admin_restaurant_open_times_path(restaurant), class: 'action-btn' %></li>
-  <% end %>
-</ul>
+      <div class="drawer-side">
+        <label for="my-drawer" class="drawer-overlay"></label>
+        <ul class="menu p-4 w-60 h-full bg-base-200 text-base-content">
+          <div>
+            <%= image_tag "logo_column.png", class: "w-40 m-auto py-2 lg:hidden" %>
+            <li><%= link_to '關於iDing', "#", class: "text-lg m-4 text-gray-800 py-6" %></li>
+            <li><%= link_to '立即註冊', new_user_registration_path, class: 'text-lg m-4 text-gray-800 py-6' %></li>
+            <% if user_signed_in? %>
+              <li>
+                <details>
+                  <summary class="font-medium m-4 lg:my-10 text-gray-800 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500">
+                    <div class="flex">
+                      <div>
+                        <%= image_tag "head-icon.svg", class: "w-6" %>
+                      </div>
+                      <div class="text-lg px-4">
+                        <%= user_name %>
+                      </div>
+                    </div>
+                  </summary>
+
+                  <ul class="w-40 lg:p-2 lg:bg-gray-100">
+                    <li><%= link_to "登出", destroy_user_session_path, data: { turbo_method: "delete" }, class: "text-base font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+                    <li><%= link_to '更改密碼', edit_user_registration_path, class: "font-medium text-gray-700 text-base hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+                    <li><%= link_to '我的餐廳', admin_restaurants_path, class: "font-medium text-base text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+                  </ul>
+                </details>
+              </li>
+            <% else %>
+              <li><%= link_to "登入", new_user_session_path, class: "text-lg m-4 font-medium text-gray-700 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+            <% end %>
+          </div>
+        </ul>
+      </div>
+
+      <div class="hidden lg:flex">
+        <ul class="menu menu-horizontal">
+          <li><%= link_to '關於iDing', "#", class: "font-medium text-gray-800 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" %></li>
+          <li><%= link_to '立即註冊', new_user_registration_path, class: 'font-medium text-gray-800 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500' %></li>
+          <% if user_signed_in? %>
+            <li>
+              <details>
+                <summary class="font-medium text-gray-800 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500">
+                  <%= image_tag "head-icon.svg", class: "w-6" %>
+                  <%= user_name %>
+                </summary>
+                <ul class="w-40 p-2 bg-gray-100">
+                  <li><%= link_to "登出", destroy_user_session_path, data: { turbo_method: "delete" }, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+                  <li><%= link_to '更改密碼', edit_user_registration_path, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+                  <li><%= link_to '我的餐廳', admin_restaurants_path, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+                </ul>
+              </details>
+            </li>
+          <% else %>
+            <li><%= link_to "登入", new_user_session_path, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<section class="w-2/3 mx-auto py-32">
+  <div>
+    <h1 class="text-2xl">您的餐廳</h1>
+
+    <%= link_to '返回首頁', root_path, class: "action-btn" %>
+    <%= link_to '新增餐廳', new_admin_restaurant_path, class: "action-btn" %>
+
+    <ul> 
+      <div>
+        <% @restaurants.each do |restaurant| %> 
+        <div class="flex flex-col w-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 md:flex-row my-5">
+          <div>
+            <%= image_tag "https://picsum.photos/300/300", class: "w-full rounded-t-lg object-cover md:h-auto md:!rounded-none md:!rounded-l-lg" %>
+            <%#= restaurant.image %>
+          </div>
+          <div class="flex flex-col justify-between m-5">
+            <div>
+              <li class="my-2">名稱：<%= link_to restaurant.name, admin_restaurant_path(restaurant) %></li>
+              <li class="my-2">電話：<%= restaurant.tel %></li>
+              <li class="my-2">地址：<%= restaurant.address %></li>
+              <li class="my-2">描述：<%= restaurant.description %></li>
+              <li class="my-2">統編：<%= restaurant.UBN %></li>
+            </div>
+
+              <div class="flex gap-5">
+              <%= link_to '#', class:"action-btn" do %>
+                <i class="fa-solid fa-gear"><span class="font-normal mx-2">管理訂單</span></i>
+              <% end %>
+              <%= link_to edit_admin_restaurant_path(restaurant), class:"action-btn" do %>
+                <i class="fa-solid fa-pen"><span class="font-normal mx-2">修改餐廳資訊</span></i>
+              <% end %>
+              <%= link_to admin_restaurant_path(restaurant), data:{ turbo_method: 'delete', turbo_confirm: '確認刪除？'}, class:"action-btn" do %>
+              <%= link_to "編輯營業時間", admin_restaurant_open_times_path(restaurant), class: 'action-btn' %>
+              <i class="fa-solid fa-trash"><span class="font-normal mx-2">刪除此餐廳</span></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </ul>
+  </div>
+</div>
+</div>
+
+
+</section>

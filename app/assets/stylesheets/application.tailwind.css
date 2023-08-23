@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .action-btn {
-  @apply select-none hover:bg-teal-900 rounded inline-block text-white px-4 py-1 bg-teal-700;
+  @apply inline-block px-4 py-1 text-white bg-teal-700 rounded select-none hover:bg-teal-900;
 }
 
 .iding-input {
@@ -14,17 +14,21 @@
   @apply text-black h-32 placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500;
 }
 .major-btn {
-  @apply select-none hover:bg-teal-900 rounded inline-block text-white px-2 py-1 bg-teal-700 cursor-pointer;
+  @apply inline-block px-2 py-1 text-white bg-teal-700 rounded cursor-pointer select-none hover:bg-teal-900;
 }
 
 .void-btn {
-  @apply border text-white bg-gray-200 rounded py-1 px-2 border-none cursor-auto;
+  @apply px-2 py-1 text-white bg-gray-200 border border-none rounded cursor-auto;
 }
 
 .simulate-btn {
-  @apply inline-block py-2 px-4 border border-gray-300 bg-gray-100 cursor-pointer transition duration-200 hover:bg-gray-200;
+  @apply inline-block px-4 py-2 transition duration-200 bg-gray-100 border border-gray-300 cursor-pointer hover:bg-gray-200;
 }
 
 .time-btn {
-  @apply py-2 px-4 inline-block border focus:bg-teal-700 focus:text-white active:ring-1 active:ring-gray-400 rounded cursor-pointer;
+  @apply inline-block px-4 py-2 border rounded cursor-pointer focus:bg-teal-700 focus:text-white active:ring-1 active:ring-gray-400;
+}
+
+.iding-customer-input {
+  @apply text-black w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500 focus:border-transparent;
 }

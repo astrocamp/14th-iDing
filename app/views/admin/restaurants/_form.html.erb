@@ -1,53 +1,58 @@
-<%= form_with(model: [ :admin, @restaurant ], data: { turbo: false }) do |f| %>
+<%= form_with(model: [:admin, @restaurant], data: { turbo: false }) do |f| %>
 
-  <div>
-    <%= f.label :name, "餐廳名稱" %>
-    <%= f.text_field :name %>
+  <div class="m-1">
+    <%= f.label :name, "餐廳名稱", class:"leading-loose text-base"%>
+    <%= f.text_field :name, class: 'iding-customer-input' %>
   </div>
 
-  <div>
-    <%= f.label :URL, "網址名稱" %>
-    <%= f.text_field :URL %>
+  <div class="m-1">
+    <%= f.label :URL, "網址名稱", class:"leading-loose text-base"  %>
+    <%= f.text_field :URL, class: 'iding-customer-input' %>
   </div>
 
-  <div>
-    <%= f.label :tel, "餐廳電話"%>
-    <%= f.text_field :tel %>
+  <div class="m-1">
+    <%= f.label :tel, "餐廳電話", class: 'leading-loose text-base' %>
+    <%= f.text_field :tel, class: 'iding-customer-input' %>
   </div>
 
-  <div>
-    <%= f.label :address, "餐廳地址" %>
-    <%= f.text_field :address, size: 50 %>
+  <div class="m-1">
+    <%= f.label :address, "餐廳地址", class: 'leading-loose text-base' %>
+    <%= f.text_field :address, size: 50, class: 'iding-customer-input' %>
   </div>
 
-  <div>
-    <%= f.label :description, "餐廳介紹" %>
-    <%= f.text_area :description %>
+  <div class="m-1">
+    <%= f.label :description, "餐廳介紹", class: 'leading-loose text-base' %>
+    <%= f.text_area :description, class: 'iding-customer-input' %>
   </div>
 
-  <div>
-    <%= f.label :UBN, "統編" %>
-    <%= f.text_field :UBN %>
+  <div class="m-1">
+    <%= f.label :UBN, "統編", class: 'leading-loose text-base' %>
+    <%= f.text_field :UBN, class: 'iding-customer-input' %>
   </div>
 
-  <div>
+  <div class="m-1">
     <%= f.label :mealtime, "用餐時間" %>
-    <%= f.number_field :mealtime, step: 5 %>
+    <%= f.number_field :mealtime, step: 5, class: 'iding-customer-input' %>
   </div>
 
-  <div>
+  <div class="m-1">
     <%= f.label :reserve_interval, "訂位間隔" %>
-    <%= f.number_field :reserve_interval, step: 5 %><span>分鐘</span>
+    <%= f.number_field :reserve_interval, step: 5, class: 'iding-customer-input'  %><span>分鐘</span>
   </div>
 
-   <div>
-      <%= f.label :bookday_advance, '提前訂位日：',class:"w-20" %>
-      <%= f.number_field :bookday_advance, min: 1 %>
+   <div class="m-1">
+      <%= f.label :bookday_advance, '提前訂位日：', class:"w-20" %>
+      <%= f.number_field :bookday_advance, min: 1, class: 'iding-customer-input'  %>
   <div>
-    <%= f.label :image, "餐廳形象照"%>
-    <em>(檔案類型：jpg jpeg gif png)</em><br />
-    <%= f.file_field :image %>
+
+  <div class="m-1 my-2">
+    <%= f.label :image, "餐廳形象照", class: 'leading-loose text-base' %>
+    <span class="text-sm"><em>(檔案類型：jpg / jpeg / gif / png)</em><br /></span>
+    <%= f.file_field :image, class: 'border w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none ring-gray-200 focus:ring-2 ring-offset-2 border-gray-500 focus:border-transparent' %>
   </div>
 
-  <%= f.submit %>
+  <div class="pt-4 flex items-center space-x-4">
+    <%= f.submit  class: "flex m-auto mt-8 px-5 py-2.5 font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 ease-in-out" %>
+  </div>
+
 <% end %>
