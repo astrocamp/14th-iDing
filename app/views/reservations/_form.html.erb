@@ -1,61 +1,62 @@
 <%= form_with(model: [ @restaurant, @reservation ], data:{ turbo: false }) do |f| %>
 
-<div class="m-5">
-  <div class="flex m-2">
-    <div>
-      <%= f.label :date, '日期' %>
-      <%= f.date_field :date %>
+  <div class="m-5">
+    <div class="flex m-2">
+      <div>
+        <%= f.label :date, '日期' %>
+        <%= f.date_field :date %>
+      </div>
     </div>
-  </div>
-  
-  <div class="flex m-2">
-    <div>
-      <%= f.label :time, '時間' %>
-      <%= f.time_field :time, readonly:true %>
-    </div>
-  </div>
-
-  <div class="flex m-2">
-    <div>
-      <%= f.label :name, '名字' %>
-      <%= f.text_field :name  %>
+    
+    <div class="flex m-2">
+      <div>
+        <%= f.label :time, '時間' %>
+        <%= f.time_field :time, readonly:true %>
+      </div>
     </div>
 
-    <div>
-      <%= f.label :gender, '性別' %>
-      <%= f.text_field :gender  %>
+    <div class="flex m-2">
+      <div>
+        <%= f.label :name, '名字' %>
+        <%= f.text_field :name  %>
+      </div>
+
+      <div>
+        <%= f.label :gender, '性別' %>
+        <%= f.text_field :gender  %>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <%= f.label :phone, '電話' %>
-    <%= f.text_field :phone  %>
-  </div>
+    <div>
+      <%= f.label :phone, '電話' %>
+      <%= f.text_field :phone  %>
+    </div>
 
-  <div>
-    <%= f.label :email, 'Email' %>
-    <%= f.text_field :email  %>
-  </div>
+    <div>
+      <%= f.label :email, 'Email' %>
+      <%= f.text_field :email  %>
+    </div>
 
-  <div>
-    <%= f.label :adult_num, '大人' %>
-    <%= f.number_field :adult_num %>
-  </div>
+    <div>
+      <%= f.label :adult_num, '大人' %>
+      <%= f.number_field :adult_num %>
+    </div>
 
-  <div>
-    <%= f.label :kid_num, '小孩' %>
-    <%= f.number_field :kid_num %>
-  </div>
+    <div>
+      <%= f.label :kid_num, '小孩' %>
+      <%= f.number_field :kid_num %>
+    </div>
 
-  <div>
-    <%= f.label :purpose, '用餐目的' %>
-    <%= f.text_field :purpose %>
-  </div>
+    <div>
+      <%= f.label :purpose, '用餐目的' %>
+      <%= f.text_field :purpose %>
+    </div>
 
-  <div>
-    <%= f.label :note, '備註' %>
-    <%= f.text_area :note %>
+    <div>
+      <%= f.label :note, '備註' %>
+      <%= f.text_area :note %>
+    </div>
+    
+    <%= f.submit "預定" , class: 'action-btn'  %>
   </div>
-  
-  <%= f.submit "預定" , class: 'action-btn'  %>
 <% end %>
