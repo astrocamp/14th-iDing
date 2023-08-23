@@ -1,21 +1,24 @@
-<main class="max-w-screen-lg mx-auto my-14">
-  <section>
- 
-          
-  <div>            
-    <% time_range = RestaurantsHelper::TimeRange.new(@open_time, @restaurant.reserve_interval) %>
-    <h4 class='reservation-font'>用餐時間</h4>
-    <div class='grid grid-cols-5 gap-3 md:grid-cols-7'  data-restaurant-reservation-target='timeBtn'>
-      <% time_range.makelist.each do |time_point| %>
-        <button class="selection-btn">
-          <%= time_point %>
-        </button>
-      <% end %>
-      <input type="hidden" name="arrival_time" data-restaurant-reservation-target='timeInput'>
-    </div>
-  </div>
-   
-  </section>
+<%# 餐廳資訊 %>
 
-  
-</main>
+
+
+<%# 訂位時間 %>  
+
+<section class="max-w-screen-lg mx-auto my-14">
+  <%= form_with(model: Reservation.new, url: restaurant_reservations_path(@restaurant), data:{ turbo: false }) do |f| %>
+    <div>
+      <% time_range = RestaurantsHelper::TimeRange.new(@open_time, @restaurant.reserve_interval) %>
+      <h4 class='reservation-font'>用餐時間</h4>
+      <div class='grid grid-cols-5 gap-3 md:grid-cols-7'>
+        <% time_range.makelist.each do |time_point| %>
+          <label class="simulate-btn">
+            <%= f.radio_button :time, time_point %>
+            <%= label_tag "reservation_time_#{time_point}", time_point %>
+          </label>
+        <% end %>
+      </div>
+    </div>
+
+    <%= f.submit '預約', class: 'action-btn' %>
+  <% end %>
+</section>

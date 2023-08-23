@@ -6,9 +6,16 @@
             <%= f.label :date, '日期' %>
             <%= f.date_field :date %>
         </div>
-
     </div>
     
+    <div class="flex m-2">
+      <div>
+        <%= f.label :time, '時間' %>
+        <%= f.time_field :time %>
+      </div>
+    </div>
+
+
     <div class="flex m-2">
         <div>
             <%= f.label :name, '名字' %>
@@ -51,28 +58,6 @@
         <%= f.label :note, '備註' %>
         <%= f.text_area :note %>
     </div>
-
-
-  <div>            
-    <% time_range = RestaurantsHelper::TimeRange.new(@open_time, @restaurant.reserve_interval) %>
-    <h4 class='reservation-font'>用餐時間</h4>
-    <div class='grid grid-cols-5 gap-3 md:grid-cols-7'>
-      <% time_range.makelist.each do |time_point| %>
-         <label class="simulate-btn">
-          <%= f.radio_button :time, time_point %>
-          <%= label_tag "reservation_time_#{time_point}", time_point %>
-        </label>
-      <% end %>
-    </div>
-  </div>
-
-
-
-    <%= f.submit class: 'action-btn' %>
-</div>
-
-
-
-
+  <%= f.submit "預定" , class: 'action-btn'  %>
 
 <% end %>
