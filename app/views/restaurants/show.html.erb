@@ -4,17 +4,18 @@
 
 <%# 訂位時間 %>  
 
-<section class="max-w-screen-lg mx-auto my-14">
+<section class="max-w-screen-lg mx-auto my-14" data-controller="ordertime">
   <%= form_with(model: Reservation.new, url: restaurant_reservations_path(@restaurant), data:{ turbo: false }) do |f| %>
     <div>
       <% time_range = RestaurantsHelper::TimeRange.new(@open_time, @restaurant.reserve_interval) %>
       <h4 class='reservation-font'>用餐時間</h4>
       <div class='grid grid-cols-5 gap-3 md:grid-cols-7'>
         <% time_range.makelist.each do |time_point| %>
-        <button class="time-btn" data-controller="timebtn" data-action="click->timebtn#preventDefault"
-                data-value="<%= time_point %>">
+        <button class="time-btn" data-ordertime-target='timebtn' data-action="click->ordertime#clickTime"
+                value='<%= time_point %>' data-id='<%=@restaurant.id%>'>
+          <%= time_point %>
           <%#= f.radio_button :time, time_point %>
-          <%= label_tag "reservation_time_#{time_point}", time_point , class:"cursor-pointer"%>
+          <%#= label_tag "reservation_time_#{time_point}", time_point , class:"cursor-pointer"%>
         </button>
         <% end %>
       </div>
