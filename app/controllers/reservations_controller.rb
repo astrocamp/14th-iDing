@@ -24,8 +24,6 @@ class ReservationsController < ApplicationController
     end
   end
 
-  def edit; end
-
   def update
     if @reservation.update(reservation_params)
       redirect_to restaurant_reservations_path(@restaurant), notice: '訂位已更新'
