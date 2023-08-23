@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RestaurantsHelper
   class TimeRange
     def initialize(open_time, reserve_interval)
