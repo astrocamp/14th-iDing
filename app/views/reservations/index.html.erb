@@ -8,9 +8,17 @@
     <li>
       <div class="border-2 ">
         <div class="flex ">
+          <% end_time = r.time + @restaurant.mealtime.minute %>
           日期：<%= r.date %>
-          時間：<%= r.time.strftime('%R') %>
+          時間：<%= r.time.strftime('%R') %> - <%= end_time.strftime("%R") %>
         </div>
+        <div>
+          姓名：<%= r.name %>
+        </div>
+        <div>
+          email：<%= r.email %>
+        </div>
+
         <div class="flex">
           大人：<%= r.adult_num %>
           小孩：<%= r.kid_num %>
