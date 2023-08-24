@@ -11,8 +11,8 @@ module Admin
     end
 
     def create
-      start_time = Time.zone.parse(params[:open_time][:start_time])
-      end_time = Time.zone.parse(params[:open_time][:end_time])
+      Time.zone.parse(params[:open_time][:start_time])
+      Time.zone.parse(params[:open_time][:end_time])
       @open_time = @restaurant.open_times.new(opentime_params)
       @open_time.save
     end
@@ -23,6 +23,7 @@ module Admin
 
     def update
       return unless @open_time.update(opentime_params)
+
       redirect_to admin_restaurant_open_times_path(@open_time.restaurant), notice: '已更新時段'
     end
 
