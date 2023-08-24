@@ -18,7 +18,6 @@ Rails.application.routes.draw do
 
   resources :tables
 
-<<<<<<< HEAD
   resources :restaurants do
     resources :reservations
   end
@@ -29,12 +28,10 @@ Rails.application.routes.draw do
   
   resources :restaurants, only: [:show]
 
-=======
   namespace :customers do
     resources :build, only: [:show, :update]
   end
 
   get 'success_page/:customer_id', to: 'customers/build#success_page', as: :success_page
->>>>>>> 611fd58 (feat: wonderful success page)
 
 end
