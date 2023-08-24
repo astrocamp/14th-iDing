@@ -1,0 +1,18 @@
+<h1>全部餐廳</h1>
+<ul> 
+  <% @restaurants.each do |restaurant| %>
+    <%# if r.date.to_date == Date.today %>
+    <li>
+      <div class="border-2 ">
+        <div class="flex ">
+          
+          名稱：<%= restaurant.name %>
+        </div>
+        
+        <%= link_to '訂位', restaurant_build_path(restaurant, :date_time_person), class: 'action-btn' %>
+        
+      </div>  
+    </li>
+      <%# end %> 
+  <% end %> 
+</ul>

@@ -1,8 +1,8 @@
-<h1>第一步：選擇時間人數！</h1>
+<h1>第一步：請選擇時間人數！</h1>
 
 <%= form_with url: wizard_path, method: :patch, data: { turbo: false } do |f| %>
   <%= f.label :date, '日期' %>
-  <%= f.date_field :date, value: session.dig(:first_step_data, 'date') %>
+  <%= f.date_field :date, value: session.dig(:first_step_data, 'date'), min: Date.today.strftime('%Y-%m-%d') %>
 
   <%= f.label :time, '時間' %>
   <%= f.time_field :time, value: session.dig(:first_step_data, 'time') %>
