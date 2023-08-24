@@ -14,6 +14,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_083440) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "holidays", force: :cascade do |t|
+    t.date "dayoff"
+    t.bigint "restaurant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_holidays_on_restaurant_id"
+  end
+
   create_table "open_times", force: :cascade do |t|
     t.time "start_time"
     t.time "end_time"
@@ -84,6 +92,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_083440) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "holidays", "restaurants"
   add_foreign_key "open_times", "restaurants"
   add_foreign_key "reservations", "restaurants"
   add_foreign_key "tables", "restaurants"
