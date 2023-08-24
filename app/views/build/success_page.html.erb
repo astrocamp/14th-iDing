@@ -1,0 +1,15 @@
+<h1 class="text-2xl">訂位人大名：
+<%= @reservation.name %></h1>
+
+<div>
+  <p>聯絡電話：<%= @reservation.tel %></p>
+    <p>訂位編號：<%= @reservation.serial %></p>
+    <p>日期：<%= @reservation.date %></p>
+    <p>時間：<%= @reservation.time %></p>
+    <p>大人數：<%= @reservation.adult_num %></p>
+  <%= link_to '取消訂位', reservation_path(@reservation),
+                            data:{ turbo_method: 'delete',
+                                   turbo_confirm: '確認取消？'
+                            }%>
+
+</div>

@@ -1,4 +1,4 @@
-class Reservations::BuildController < ApplicationController
+class BuildController < ApplicationController
   include Wicked::Wizard
 
   steps :date_time_person, :customer_info
@@ -28,8 +28,9 @@ class Reservations::BuildController < ApplicationController
       redirect_to wizard_path(:customer_info)
 
     when :customer_info
+      
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @reservation = Reservation.create!(
+    @reservation = @restaurant.reservations.create!(
       name: params[:name],
       tel: params[:tel],
       email: params[:email],
@@ -41,22 +42,16 @@ class Reservations::BuildController < ApplicationController
       purpose: params['purpose'],
       note: params['note']
     )
-        
       if step == steps.last
       redirect_to success_page_path(reservation_id: @reservation.id)
       session.delete(:first_step_data)
       else
-      puts errorrrrrrr
       render_wizard
       end
     end
   end
 
-  def finish_wizard_path
-    success_page_url
-  end
-
   def success_page
-    @reservation = reservation.find(params[:reservation_id])
+    @reservation = Reservation.find(params[:reservation_id])
   end 
 end
