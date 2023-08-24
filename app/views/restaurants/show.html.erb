@@ -12,15 +12,13 @@
       <div class='grid grid-cols-5 gap-3 md:grid-cols-7'>
         <% time_range.makelist.each do |time_point| %>
         <button class="time-btn" data-ordertime-target='timebtn' data-action="click->ordertime#clickTime"
-                value='<%= time_point %>' data-id='<%=@restaurant.id%>'>
+                value='<%= time_point %>'>
           <%= time_point %>
-          <%#= f.radio_button :time, time_point %>
-          <%#= label_tag "reservation_time_#{time_point}", time_point , class:"cursor-pointer"%>
         </button>
         <% end %>
       </div>
     </div>
-
+    <%= f.hidden_field :time, data: {ordertime_target: "timeInput"}%>
     <%= f.submit '預約', class: 'action-btn' %>
   <% end %>
 </section>
