@@ -5,5 +5,5 @@ class Reservation < ApplicationRecord
   validates :date, presence: true
   validates :time, presence: true
   validates :adult_num, presence: true, numericality: { greater_than: 0 }
-  validates :kid_num, presence: true, numericality: { greater_than: 0 }
+  validates :kid_num, presence: true
 end
