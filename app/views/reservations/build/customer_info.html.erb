@@ -1,6 +1,12 @@
 <h1>第二步：確認訂位！</h1>
+    <h2>所選的日期、時間和人數：</h2>
+    
+    <p>日期： <%= session.dig(:first_step_data, 'date') %></p>
+    <p>時間： <%= session.dig(:first_step_data, 'time') %></p>
+    <p>大人數： <%= session.dig(:first_step_data, 'adult_num') %></p>
+    <p>小孩數： <%= session.dig(:first_step_data, 'kid_num') %></p>
 
-<%= f.form_for @reservation, url: wizard_path, method: :patch, data: { turbo: false } do |f| %>
+<%= form_with url: wizard_path, method: :patch, data: { turbo: false } do |f| %>
   <%= f.label :name, '大名' %>
   <%= f.text_field :name %>
   <%= f.label :tel, '手機' %>
@@ -13,22 +19,10 @@
   <%= f.label :gender, '小姐' %>
   <%= f.radio_button :gender, '3' %>
   <%= f.label :gender, '不透露' %>
-
-
-<!-- 顯示第一步的數據 -->
-    <h2>第一步所選的日期、時間和人數：</h2>
-    
-    <p>日期： <%= session.dig(:first_step_data, 'date') %></p>
-    <p>時間： <%= session.dig(:first_step_data, 'time') %></p>
-    <p>大人數： <%= session.dig(:first_step_data, 'adult_num') %></p>
-    <p>小孩數： <%= session.dig(:first_step_data, 'kid_num') %></p>
   <%= f.label :purpose, '用餐目的' %>
   <%= f.select :purpose, options_for_select(['慶生', '約會', '家庭用餐', '結婚紀念日', '朋友聚餐', '商務聚餐', '其他']) %>
-        </div>
-        <div class="mt-4">
-          <%= f.label :note, '備註' %>
-          <%= f.text_area :note  %>
-  <% end %>
+  <%= f.label :note, '備註' %>
+  <%= f.text_area :note  %>
   <%= link_to '返回修改', previous_wizard_path %>
   <%= f.submit "確認訂位" %>
 <% end %>

@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   resources :tables
 
   resources :restaurants do
-    resources :reservations
+    resources :reservations do
+    end
   end
 
 
@@ -28,10 +29,10 @@ Rails.application.routes.draw do
   
   resources :restaurants, only: [:show]
 
-  namespace :customers do
+  namespace :reservations do
     resources :build, only: [:show, :update]
   end
 
-  get 'success_page/:customer_id', to: 'customers/build#success_page', as: :success_page
+  get 'success_page/:reservation_id', to: 'reservations/build#success_page', as: :success_page
 
 end
