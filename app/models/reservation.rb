@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Reservation < ApplicationRecord
-  # belongs_to :customer
   belongs_to :restaurant
 
   # before_validation :generate_serial
