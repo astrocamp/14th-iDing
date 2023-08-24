@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   resources :tables
 
   resources :restaurants do
-    resources :customers
     resources :reservations
   end
 
