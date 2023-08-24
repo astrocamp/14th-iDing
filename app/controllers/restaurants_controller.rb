@@ -3,6 +3,10 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[show]
 
+  def index
+    @restaurants = Restaurant.all
+  end
+
   def show
     @open_time = @restaurant.open_times.order(start_time: :asc)
   end

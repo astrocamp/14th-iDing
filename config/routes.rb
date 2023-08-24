@@ -19,20 +19,13 @@ Rails.application.routes.draw do
   resources :tables
 
   resources :restaurants do
-    resources :reservations do
-    end
-  end
-
-
-  get "/testcss" ,to: 'home#show'
-  
-  
-  resources :restaurants, only: [:show]
-
-  namespace :reservations do
     resources :build, only: [:show, :update]
   end
 
-  get 'success_page/:reservation_id', to: 'reservations/build#success_page', as: :success_page
+  resources :reservations, only: :destroy
+
+  get "/testcss" ,to: 'home#show'
+  
+  get '/success_page/:reservation_id', to: 'build#success_page', as: :success_page
 
 end
