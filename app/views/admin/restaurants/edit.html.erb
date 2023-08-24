@@ -34,14 +34,14 @@
                   </summary>
 
                   <ul class="w-40 lg:p-2 lg:bg-gray-100">
-                    <li><%= link_to "登出", destroy_user_session_path, data: { turbo_method: "delete" }, class: "text-base font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-                    <li><%= link_to '更改密碼', edit_user_registration_path, class: "font-medium text-gray-700 text-base hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-                    <li><%= link_to '我的餐廳', admin_restaurants_path, class: "font-medium text-base text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+                    <li><%= link_to "登出", destroy_user_session_path, data: { turbo_method: "delete" }, class: "text-base font-medium text-gray-700 hover:text-gray-600 py-3" %></li>
+                    <li><%= link_to '更改密碼', edit_user_registration_path, class: "font-medium text-gray-700 text-base hover:text-gray-600 py-3 " %></li>
+                    <li><%= link_to '我的餐廳', admin_restaurants_path, class: "font-medium text-base text-gray-700 hover:text-gray-600 py-3 " %></li>
                   </ul>
                 </details>
               </li>
             <% else %>
-              <li><%= link_to "登入", new_user_session_path, class: "text-lg m-4 font-medium text-gray-700 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+              <li><%= link_to "登入", new_user_session_path, class: "text-lg m-4 font-medium text-gray-700 hover:text-gray-400 py-6" %></li>
             <% end %>
           </div>
         </ul>
@@ -49,24 +49,24 @@
 
       <div class="hidden lg:flex">
         <ul class="menu menu-horizontal">
-          <li><%= link_to '關於iDing', "#", class: "font-medium text-gray-800 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" %></li>
-          <li><%= link_to '立即註冊', new_user_registration_path, class: 'font-medium text-gray-800 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500' %></li>
+          <li><%= link_to '關於iDing', "#", class: "font-medium text-gray-800 hover:text-gray-600 py-6 " %></li>
+          <li><%= link_to '立即註冊', new_user_registration_path, class: 'font-medium text-gray-800 hover:text-gray-600 py-6' %></li>
           <% if user_signed_in? %>
             <li>
               <details>
-                <summary class="font-medium text-gray-800 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500">
+                <summary class="font-medium text-gray-800 hover:text-gray-600 py-6">
                   <%= image_tag "head-icon.svg", class: "w-6" %>
                   <%= user_name %>
                 </summary>
                 <ul class="w-40 p-2 bg-gray-100">
-                  <li><%= link_to "登出", destroy_user_session_path, data: { turbo_method: "delete" }, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-                  <li><%= link_to '更改密碼', edit_user_registration_path, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-                  <li><%= link_to '我的餐廳', admin_restaurants_path, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+                  <li><%= link_to "登出", destroy_user_session_path, data: { turbo_method: "delete" }, class: "font-medium text-gray-700 hover:text-gray-600 py-3" %></li>
+                  <li><%= link_to '更改密碼', edit_user_registration_path, class: "font-medium text-gray-700 hover:text-gray-600 py-3" %></li>
+                  <li><%= link_to '我的餐廳', admin_restaurants_path, class: "font-medium text-gray-700 hover:text-gray-600 py-3" %></li>
                 </ul>
               </details>
             </li>
           <% else %>
-            <li><%= link_to "登入", new_user_session_path, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+            <li><%= link_to "登入", new_user_session_path, class: "font-medium text-gray-700 hover:text-gray-600 py-6" %></li>
           <% end %>
         </ul>
       </div>

@@ -34,14 +34,14 @@
                   </summary>
 
                   <ul class="w-40 lg:p-2 lg:bg-gray-100">
-                    <li><%= link_to "登出", destroy_user_session_path, data: { turbo_method: "delete" }, class: "text-base font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-                    <li><%= link_to '更改密碼', edit_user_registration_path, class: "font-medium text-gray-700 text-base hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-                    <li><%= link_to '我的餐廳', admin_restaurants_path, class: "font-medium text-base text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+                    <li><%= link_to "登出", destroy_user_session_path, data: { turbo_method: "delete" }, class: "text-base font-medium text-gray-700 hover:text-gray-600 py-3" %></li>
+                    <li><%= link_to '更改密碼', edit_user_registration_path, class: "font-medium text-gray-700 text-base hover:text-gray-600 py-3 " %></li>
+                    <li><%= link_to '我的餐廳', admin_restaurants_path, class: "font-medium text-base text-gray-700 hover:text-gray-600 py-3 " %></li>
                   </ul>
                 </details>
               </li>
             <% else %>
-              <li><%= link_to "登入", new_user_session_path, class: "text-lg m-4 font-medium text-gray-700 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+              <li><%= link_to "登入", new_user_session_path, class: "text-lg m-4 font-medium text-gray-700 hover:text-gray-400 py-6" %></li>
             <% end %>
           </div>
         </ul>
@@ -49,24 +49,24 @@
 
       <div class="hidden lg:flex">
         <ul class="menu menu-horizontal">
-          <li><%= link_to '關於iDing', "#", class: "font-medium text-gray-800 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" %></li>
-          <li><%= link_to '立即註冊', new_user_registration_path, class: 'font-medium text-gray-800 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500' %></li>
+          <li><%= link_to '關於iDing', "#", class: "font-medium text-gray-800 hover:text-gray-600 py-6 " %></li>
+          <li><%= link_to '立即註冊', new_user_registration_path, class: 'font-medium text-gray-800 hover:text-gray-600 py-6' %></li>
           <% if user_signed_in? %>
             <li>
               <details>
-                <summary class="font-medium text-gray-800 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500">
+                <summary class="py-6 font-medium text-gray-800 hover:text-gray-600">
                   <%= image_tag "head-icon.svg", class: "w-6" %>
                   <%= user_name %>
                 </summary>
                 <ul class="w-40 p-2 bg-gray-100">
-                  <li><%= link_to "登出", destroy_user_session_path, data: { turbo_method: "delete" }, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-                  <li><%= link_to '更改密碼', edit_user_registration_path, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-                  <li><%= link_to '我的餐廳', admin_restaurants_path, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+                  <li><%= link_to "登出", destroy_user_session_path, data: { turbo_method: "delete" }, class: "font-medium text-gray-700 hover:text-gray-600 py-3" %></li>
+                  <li><%= link_to '更改密碼', edit_user_registration_path, class: "font-medium text-gray-700 hover:text-gray-600 py-3" %></li>
+                  <li><%= link_to '我的餐廳', admin_restaurants_path, class: "font-medium text-gray-700 hover:text-gray-600 py-3" %></li>
                 </ul>
               </details>
             </li>
           <% else %>
-            <li><%= link_to "登入", new_user_session_path, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-700" %></li>
+            <li><%= link_to "登入", new_user_session_path, class: "font-medium text-gray-700 hover:text-gray-600 py-6" %></li>
           <% end %>
         </ul>
       </div>
@@ -74,10 +74,7 @@
   </div>
 </header>
 
-
-<!-- Hero -->
 <div class="min-h-screen hero">
-
   <video width="640" height="360" autoplay muted loop class="object-cover w-full h-full">
     <source src="/cooking.mp4" type="video/mp4">
   </video>
@@ -101,7 +98,7 @@
     </h2>
   </div>
   
-  <div class="w-10/12 m-auto  lg:flex lg:w-10/12">
+  <div class="w-10/12 m-auto lg:flex lg:w-10/12">
     <div class="lg:flex lg:w-2/3">
         <%= image_tag "officalweb.jpg", class: "w-full rounded-xl" %>
     </div>
@@ -122,10 +119,10 @@
           <%= image_tag "rebot.svg", class: "w-6" %>
         </div>
         <div class="grow">
-          <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+          <h3 class="text-lg font-semibold text-gray-800">
             由餐廳從業人員開發
           </h3>
-          <p class="mt-1 text-gray-600 dark:text-gray-400">
+          <p class="mt-1 text-gray-600 ">
             100% 符合需求，化繁為簡，大大提升經營成效
           </p>
         </div>
@@ -135,10 +132,10 @@
           <%= image_tag "like.svg", class: "w-6" %>
         </div>
         <div class="grow">
-          <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+          <h3 class="text-lg font-semibold text-gray-800">
             完全免費
           </h3>
-          <p class="mt-1 text-gray-600 dark:text-gray-400">
+          <p class="mt-1 text-gray-600">
             一句話：你喜歡，再用！更多功能持續優化中
           </p>
         </div>
@@ -148,10 +145,10 @@
           <%= image_tag "paper.svg", class: "w-6" %>
         </div>
         <div class="grow">
-          <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+          <h3 class="text-lg font-semibold text-gray-800 ">
             簡單易懂的操作流程
           </h3>
-          <p class="pr-5 mt-1 text-gray-600 dark:text-gray-400">
+          <p class="pr-5 mt-1 text-gray-600">
             丟掉複雜的說明書！不再浪費學習成本，使用最直覺的人因設計
           </p>
         </div>
@@ -161,10 +158,10 @@
           <%= image_tag "balloon.svg", class: "w-6" %>
         </div>
         <div class="grow">
-          <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+          <h3 class="text-lg font-semibold text-gray-800">
             用過的都說讚
           </h3>
-          <p class="pr-5 mt-1 text-gray-600 dark:text-gray-400">
+          <p class="pr-5 mt-1 text-gray-600">
             甫上市即突破 1 萬用戶註冊，歡迎參考我們的合作夥伴怎麼說
           </p>
         </div>
@@ -177,6 +174,6 @@
 </section>
 
 <footer class="flex justify-center py-5">
-  <p class="text-xs text-gray-600 sm:text-sm dark:text-gray-500">© 2023 iDing. A product of <%= link_to "Hello 劍龍", root_path ,class:"text-slate-900 decoration-2 hover:underline font-semibold dark:text-gray-300" %></p>
+  <p class="text-xs text-gray-600 sm:text-sm">© 2023 iDing. A product of <%= link_to "Hello 劍龍", root_path ,class:"text-slate-900 decoration-2 hover:underline font-semibold " %></p>
 </footer>
 
