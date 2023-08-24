@@ -1,0 +1,8 @@
+<span data-date='<%= holiday.dayoff %>' 
+      data-off-day-target='offDay' class='flex items-center justify-between p-2 m-auto mb-2 border rounded'
+> 
+  <%= I18n.t :"off_days.#{holiday.dayoff}" %>
+  <%= link_to admin_off_day_path(dayoff), data: {method: 'delete', confirm: '確定刪除?'},class: 'bg-red-600 major-btn hover:bg-red-800' do%>
+    <i class="fa-solid fa-trash"></i>
+  <% end %>
+</span>

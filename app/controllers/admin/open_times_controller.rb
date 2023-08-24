@@ -8,6 +8,10 @@ module Admin
     def index
       @open_time = OpenTime.new
       @open_times = @restaurant.open_times.includes(:restaurant).order(start_time: :asc)
+
+      @holidays = @restaurant.holidays.includes(:restaurant)
+      @holiday = Holiday.new
+      @week = (Date.today.beginning_of_week..Date.today.end_of_week)
     end
 
     def create
