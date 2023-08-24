@@ -29,4 +29,5 @@ class Restaurant < ApplicationRecord
   has_many :reservations
   has_many :open_times
   has_many :tables, dependent: :destroy
+  has_many :holidays
 end

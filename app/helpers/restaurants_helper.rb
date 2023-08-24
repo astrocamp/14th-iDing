@@ -18,4 +18,17 @@ module RestaurantsHelper
       end
     end
   end
+
+  class DateRange
+    def initialize(holidays, bookday_advance)
+      @holidays = holidays
+      @end_day = Date.today + (bookday_advance.days - 1)
+    end
+
+    def reservation_range_date
+      (Date.today..@end_day).select { |date| @holidays.exclude?(date.strftime('%a')) }
+    end
+  end
+
+
 end
