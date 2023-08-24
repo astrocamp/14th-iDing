@@ -9,7 +9,9 @@ module Admin
     end
 
     def show
-      @reservations = @restaurant.reservations.where(deleted_at: nil).order(date: :desc)
+      current_time = Time.now.in_time_zone('Taipei')
+
+      @reservations = @restaurant.reservations.where("date > ? OR (date = ? AND time >= ?)", current_time.to_date, current_time.to_date, current_time.strftime("%H:%M:%S")).order(:date, :time)
       @reservation = @restaurant.reservations.new
     end
 
