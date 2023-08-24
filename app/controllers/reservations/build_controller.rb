@@ -6,7 +6,7 @@ class Reservations::BuildController < ApplicationController
   def show
     case step
     when :date_time_person
-
+    
     when :customer_info
     @first_step = session[:first_step_data]
     end
@@ -28,8 +28,8 @@ class Reservations::BuildController < ApplicationController
       redirect_to wizard_path(:customer_info)
 
     when :customer_info
-
-    @Reservations.create!(
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @reservation = Reservation.create!(
       name: params[:name],
       tel: params[:tel],
       email: params[:email],
@@ -46,6 +46,7 @@ class Reservations::BuildController < ApplicationController
       redirect_to success_page_path(reservation_id: @reservation.id)
       session.delete(:first_step_data)
       else
+      puts errorrrrrrr
       render_wizard
       end
     end
@@ -58,6 +59,4 @@ class Reservations::BuildController < ApplicationController
   def success_page
     @reservation = reservation.find(params[:reservation_id])
   end 
-end
-
 end
