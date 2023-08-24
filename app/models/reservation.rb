@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
 class Reservation < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :restaurant
+
+  # before_validation :generate_serial
+
   validates :date, presence: true
   validates :time, presence: true
   validates :name, presence: true

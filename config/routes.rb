@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :restaurants do
       resources :tables
       resources :open_times, shallow: true, only: [:index, :create, :edit, :update, :destroy]
+      resources :reservations, only: [:create, :destroy]
     end
   end
 
