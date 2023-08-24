@@ -20,7 +20,7 @@ class Restaurant < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validates :name, presence: true
-  validates :URL, presence: true
+  validates :URL, presence: true, uniqueness: true
   validates :tel, presence: true
   validates :address, presence: true
 

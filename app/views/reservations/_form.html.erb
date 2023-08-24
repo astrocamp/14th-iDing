@@ -18,23 +18,23 @@
     <div class="flex m-2">
       <div>
         <%= f.label :name, '名字' %>
-        <%= f.text_field :name  %>
+        <%= f.text_field :name %>
       </div>
 
       <div>
         <%= f.label :gender, '性別' %>
-        <%= f.text_field :gender  %>
+        <%= f.text_field :gender %>
       </div>
     </div>
 
     <div>
-      <%= f.label :phone, '電話' %>
-      <%= f.text_field :phone  %>
+      <%= f.label :tel, '電話' %>
+      <%= f.text_field :tel %>
     </div>
 
     <div>
       <%= f.label :email, 'Email' %>
-      <%= f.text_field :email  %>
+      <%= f.text_field :email %>
     </div>
 
     <div>
@@ -57,6 +57,6 @@
       <%= f.text_area :note %>
     </div>
     
-    <%= f.submit "預定" , class: 'action-btn'  %>
+    <%= f.submit "預定" , class: 'action-btn' %>
   </div>
 <% end %>
