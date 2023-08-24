@@ -8,7 +8,10 @@ module Admin
       @restaurants = current_user.restaurants.order(:id)
     end
 
-    def show; end
+    def show
+      @reservations = @restaurant.reservations.where(deleted_at: nil).order(date: :desc)
+      @reservation = @restaurant.reservations.new
+    end
 
     def new
       @restaurant = current_user.restaurants.new
@@ -36,7 +39,7 @@ module Admin
 
     def destroy
       @restaurant.destroy
-      redirect_to admin_restaurants_path, notice: '刪除成功'
+      redirect_to admin_restaurants_path, notice: '餐廳刪除成功'
     end
 
     private
