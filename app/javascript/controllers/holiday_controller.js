@@ -2,10 +2,10 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="holiday"
 export default class extends Controller {
-  static targets = ["input", "date", "offDay", "submit"];
+  static targets = ["input", "date", "dayOff", "submit"];
 
   connect() {
-    const offDay = this.offDayTargets.map((a) => a.dataset.date);
+    const offDay = this.dayOffTargets.map((a) => a.dataset.date);
     this.dateTargets.forEach((btn) => {
       if (offDay.includes(btn.dataset.date)) {
         btn.classList.add("hidden");

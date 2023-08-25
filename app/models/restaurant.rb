@@ -4,17 +4,20 @@
 #
 # Table name: restaurants
 #
-#  id          :bigint           not null, primary key
-#  name        :string           not null
-#  URL         :string           not null
-#  tel         :string           not null
-#  address     :string           not null
-#  description :text
-#  UBN         :string
-#  image       :string
-#  user_id     :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id               :bigint           not null, primary key
+#  name             :string           not null
+#  URL              :string           not null
+#  tel              :string           not null
+#  address          :string           not null
+#  description      :text
+#  UBN              :string
+#  image            :string
+#  user_id          :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  reserve_interval :integer          default(15)
+#  mealtime         :integer          default(60)
+#  bookday_advance  :integer          default(14)
 #
 class Restaurant < ApplicationRecord
   mount_uploader :image, ImageUploader

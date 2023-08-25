@@ -8,7 +8,7 @@
   <%= link_to edit_admin_open_time_path(open_time), class: 'mx-2 action-btn' do %>
     <i class="fa-solid fa-user-pen"></i>
   <% end %>
-    <%= link_to admin_open_time_path(open_time), data: {turbo_method: 'delete', confirm: '確定刪除?', remote: true}, class: 'action-btn' do %>
+    <%= link_to admin_open_time_path(open_time), data: {turbo_method: 'delete', turbo_confirm: '確認刪除？', remote: true}, class: 'action-btn' do %>
     <i class="fa-solid fa-xmark"></i>
   <% end %>
 </div>
