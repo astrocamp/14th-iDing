@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Admin
-  class OpenTimesController < ApplicationController
+  class OpenTimesController < Admin::BaseController
     before_action :set_restaurant, only: %i[create index]
     before_action :set_open_time, only: %i[edit update destroy]
 
