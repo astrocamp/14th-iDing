@@ -1,82 +1,6 @@
-<header class="fixed top-0 left-0 justify-start z-30 w-full bg-white border-b border-gray-200 text-sm py-0 lg:px-20">
-  <div class="navbar bg-base-100">
-    <div class="drawer bg-base-100 flex justify-between z-10">
-      <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-      <div>
-        <%= link_to root_path do%>
-          <%= image_tag "logo_column.png", class: "w-28 lg:w-36" %>
-        <% end %>
-      </div>
+<%= render "shared/navbar" %> 
 
-      <div class="drawer-content lg:hidden">
-        <label for="my-drawer" class="mx-12">
-          <%= image_tag "hamberger-icon.svg"%>
-        </label>
-      </div>
-
-      <div class="drawer-side">
-        <label for="my-drawer" class="drawer-overlay"></label>
-        <ul class="menu p-4 w-60 h-full bg-base-200 text-base-content">
-          <div>
-            <%= image_tag "logo_column.png", class: "w-40 m-auto py-2 lg:hidden" %>
-            <li><%= link_to '關於iDing', "#", class: "text-lg m-4 text-gray-800 py-6" %></li>
-            <li><%= link_to '立即註冊', new_user_registration_path, class: 'text-lg m-4 text-gray-800 py-6' %></li>
-            <% if user_signed_in? %>
-              <li>
-                <details>
-                  <summary class="font-medium m-4 lg:my-10 text-gray-800 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500">
-                    <div class="flex">
-                      <div>
-                        <%= image_tag "head-icon.svg", class: "w-6" %>
-                      </div>
-                      <div class="text-lg px-4">
-                        <%= user_name %>
-                      </div>
-                    </div>
-                  </summary>
-
-                  <ul class="w-40 lg:p-2 lg:bg-gray-100">
-                    <li><%= link_to "登出", destroy_user_session_path, data: { turbo_method: "delete" }, class: "text-base font-medium text-gray-700 hover:text-gray-600 py-3" %></li>
-                    <li><%= link_to '更改密碼', edit_user_registration_path, class: "font-medium text-gray-700 text-base hover:text-gray-600 py-3 " %></li>
-                    <li><%= link_to '我的餐廳', admin_restaurants_path, class: "font-medium text-base text-gray-700 hover:text-gray-600 py-3 " %></li>
-                  </ul>
-                </details>
-              </li>
-            <% else %>
-              <li><%= link_to "登入", new_user_session_path, class: "text-lg m-4 font-medium text-gray-700 hover:text-gray-400 py-6" %></li>
-            <% end %>
-          </div>
-        </ul>
-      </div>
-
-      <div class="hidden lg:flex">
-        <ul class="menu menu-horizontal">
-          <li><%= link_to '關於iDing', "#", class: "font-medium text-gray-800 hover:text-gray-600 py-6 " %></li>
-          <li><%= link_to '立即註冊', new_user_registration_path, class: 'font-medium text-gray-800 hover:text-gray-600 py-6' %></li>
-          <% if user_signed_in? %>
-            <li>
-              <details>
-                <summary class="font-medium text-gray-800 hover:text-gray-600 py-6">
-                  <%= image_tag "head-icon.svg", class: "w-6" %>
-                  <%= user_name %>
-                </summary>
-                <ul class="w-40 p-2 bg-gray-100">
-                  <li><%= link_to "登出", destroy_user_session_path, data: { turbo_method: "delete" }, class: "font-medium text-gray-700 hover:text-gray-600 py-3" %></li>
-                  <li><%= link_to '更改密碼', edit_user_registration_path, class: "font-medium text-gray-700 hover:text-gray-600 py-3" %></li>
-                  <li><%= link_to '我的餐廳', admin_restaurants_path, class: "font-medium text-gray-700 hover:text-gray-600 py-3" %></li>
-                </ul>
-              </details>
-            </li>
-          <% else %>
-            <li><%= link_to "登入", new_user_session_path, class: "font-medium text-gray-700 hover:text-gray-600 py-6" %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-</header>
-
-<section class="w-2/3 mx-auto py-32">
+<section class="w-2/3 py-32 mx-auto">
   <div>
     <h1 class="text-2xl">您的餐廳</h1>
 
@@ -101,21 +25,21 @@
             </div>
             <div class="lg:flex lg:gap-5">
             <%= link_to '#', class:"action-btn my-2 lg:my-5 flex" do %>
-              <i class="fa-solid fa-gear"><span class="hidden xl:inline font-normal ml-2">管理訂單</span><span class="inline xl:hidden font-normal ml-2">管理</span></i>
+              <i class="fa-solid fa-gear"><span class="hidden ml-2 font-normal xl:inline">管理訂單</span><span class="inline ml-2 font-normal xl:hidden">管理</span></i>
             <% end %>
             <%= link_to restaurant_path(restaurant), class:"action-btn mx-2 md:mx-0 my-2 lg:my-5 flex" do%>
-              <i class="fa-solid fa-arrow-right"><span class="hidden xl:inline font-normal ml-2">查看訂位網頁</span><span class="inline xl:hidden font-normal ml-2">查看</span></i>
+              <i class="fa-solid fa-arrow-right"><span class="hidden ml-2 font-normal xl:inline">查看訂位網頁</span><span class="inline ml-2 font-normal xl:hidden">查看</span></i>
             <% end %>
             </div>
-            <div class="flex my-2 gap-5">
+            <div class="flex gap-5 my-2">
               <%= link_to edit_admin_restaurant_path(restaurant), class:"action-btn" do %>
-                <i class="fa-solid fa-pen"><span class="hidden xl:inline font-normal ml-2">修改資訊</span></i>
+                <i class="fa-solid fa-pen"><span class="hidden ml-2 font-normal xl:inline">修改資訊</span></i>
               <% end %>
               <%= link_to admin_restaurant_path(restaurant), data:{ turbo_method: 'delete', turbo_confirm: '確認刪除？'}, class:"action-btn" do %>
-              <i class="fa-solid fa-trash"><span class="hidden xl:inline font-normal ml-2">刪除此餐廳</span></i>
+              <i class="fa-solid fa-trash"><span class="hidden ml-2 font-normal xl:inline">刪除此餐廳</span></i>
               <% end %>
              <%= link_to admin_restaurant_open_times_path(restaurant), class: 'action-btn' do %>
-             <i class="fa-solid fa-clock"><span class="hidden xl:inline font-normal ml-2">編輯營業時間</span></i>
+             <i class="fa-solid fa-clock"><span class="hidden ml-2 font-normal xl:inline">編輯營業時間</span></i>
              <% end %>
             </div>
           </div>
