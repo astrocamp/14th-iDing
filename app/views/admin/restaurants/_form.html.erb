@@ -40,10 +40,11 @@
     <%= f.number_field :reserve_interval, step: 5, class: 'iding-customer-input'  %>
   </div>
 
-   <div class="m-1">
-      <%= f.label :bookday_advance, '提前訂位日：', class: 'leading-loose text-base'  %>
-      <%= f.number_field :bookday_advance, min: 1, class: 'iding-customer-input'  %>
-  <div>
+  <div class="m-1">
+    <p><%= f.label :bookday_advance, '開放訂位的期間：',class:"leading-loose text-base" %>
+    <em class="text-sm">(設定顧客可以訂位的期間，從幾天後到幾天內。舉例： 設定 30 天就是可以訂明天到 30 天內的位子。)</em></p>
+    <%= f.number_field :bookday_advance, min: 1, class: 'iding-customer-input' %>
+  </div>
 
   <div class="m-1 my-2">
     <%= f.label :image, "餐廳形象照", class: 'leading-loose text-base' %>
