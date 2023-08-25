@@ -32,18 +32,7 @@ class BuildController < ApplicationController
     when :customer_info
 
       @restaurant = Restaurant.find(params[:restaurant_id])
-      @reservation = @restaurant.reservations.create!(
-        name: params[:name],
-        tel: params[:tel],
-        email: params[:email],
-        gender: params[:gender],
-        date: session[:first_step_data]['date'],
-        time: session[:first_step_data]['time'],
-        adult_num: session[:first_step_data]['adult_num'],
-        kid_num: session[:first_step_data]['kid_num'],
-        purpose: params['purpose'],
-        note: params['note']
-      )
+      @reservation = @restaurant.reservations.create!(reservation_params)
       if step == steps.last
         redirect_to success_page_path(reservation_id: @reservation.id)
         session.delete(:first_step_data)
@@ -55,5 +44,23 @@ class BuildController < ApplicationController
 
   def success_page
     @reservation = Reservation.find(params[:reservation_id])
+  end
+
+  private
+
+  def reservation_params
+    params.permit(
+      :name,
+      :tel,
+      :email,
+      :gender,
+      :purpose,
+      :note
+    ).merge(
+      date: session[:first_step_data]['date'],
+      time: session[:first_step_data]['time'],
+      adult_num: session[:first_step_data]['adult_num'],
+      kid_num: session[:first_step_data]['kid_num']
+    )
   end
 end
