@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 module Admin
   class HolidaysController < ApplicationController
@@ -18,7 +19,6 @@ module Admin
       redirect_to admin_restaurant_open_times_path(@holiday.restaurant_id), notice: '已刪除公休日'
     end
 
-
     private
 
     def holiday_params
@@ -32,8 +32,5 @@ module Admin
     def set_holiday
       @holiday = Holiday.find(params[:id])
     end
-
-
   end
-
 end
