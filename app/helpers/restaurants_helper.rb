@@ -29,6 +29,4 @@ module RestaurantsHelper
       (Date.today..@end_day).select { |date| @holidays.exclude?(date.strftime('%a')) }
     end
   end
-
-
 end
