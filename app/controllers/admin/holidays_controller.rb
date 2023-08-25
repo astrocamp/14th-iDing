@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Admin
-  class HolidaysController < ApplicationController
+  class HolidaysController < Admin::BaseController
     before_action :set_restaurant, only: %i[create]
     before_action :set_holiday, only: %i[destroy]
 
