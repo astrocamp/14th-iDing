@@ -14,16 +14,17 @@ export default class extends Controller {
   }
 
   getDate(e) {
-    this.dateTargets.forEach((btn) => btn.classList.add("gray-btn"));
+    this.dateTargets.forEach((btn) => btn.classList.add("unselect-btn"));
     this.dateTargets.forEach((btn) => btn.classList.remove("action-btn"));
-    e.target.classList.remove("gray-btn");
+    e.target.classList.remove("unselect-btn");
     e.target.classList.add("action-btn");
     this.setDate(e.target.dataset.date);
   }
+
   setDate(date) {
     this.inputTarget.value = date;
-    console.log(date);
     this.submitTarget.classList.remove("void-btn");
     this.submitTarget.classList.add("action-btn");
+    this.submitTarget.disabled = !this.inputTarget.value;
   }
 }
