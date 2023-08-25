@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .action-btn {
-  @apply inline-block px-4 py-1 text-white bg-teal-700 rounded select-none hover:bg-teal-900;
+  @apply inline-block px-4 py-1 text-white bg-teal-700 rounded cursor-pointer select-none hover:bg-teal-900;
 }
 
 .iding-input {
@@ -13,12 +13,12 @@
 .iding-textarea {
   @apply text-black h-32 placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500;
 }
-.major-btn {
+.icon-btn {
   @apply inline-block px-2 py-1 text-white bg-teal-700 rounded cursor-pointer select-none hover:bg-teal-900;
 }
 
 .void-btn {
-  @apply px-2 py-1 text-white bg-gray-200 border border-none rounded cursor-auto;
+  @apply px-4 py-1 text-white bg-gray-200 border border-none rounded cursor-auto;
 }
 
 .simulate-btn {
@@ -33,6 +33,6 @@
   @apply text-black w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500 focus:border-transparent;
 }
 
-.gray-btn {
+.unselect-btn {
   @apply px-2 py-1 text-gray-800 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200;
 }
