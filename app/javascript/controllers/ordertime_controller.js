@@ -7,13 +7,11 @@ export default class extends Controller {
 
   clickTime(e) {
     e.preventDefault();
-    const btnContent = e.target.value;
-    this.timeInputTarget.value = btnContent;
+    this.timeInputTarget.value = e.target.value;
   }
 
   clickDate(e) {
     e.preventDefault();
-    const btnContent = e.target.value;
-    this.dateInputTarget.value = btnContent;
+    this.dateInputTarget.value = e.target.value;
   }
 }
