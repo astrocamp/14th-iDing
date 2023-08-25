@@ -12,7 +12,6 @@ class RestaurantsController < ApplicationController
 
   def show
     @open_time = @restaurant.open_times.order(start_time: :asc)
-    #@chinese_weekdays = ["日", "一", "二", "三", "四", "五", "六"] 
   end
 
   private
@@ -20,13 +19,12 @@ class RestaurantsController < ApplicationController
   def set_restaurant
     @restaurant = Restaurant.find(params[:id])
   end
-  
+
   def set_holidays
     @holidays = @restaurant.holidays.map(&:dayoff)
   end
 
   def set_weekdays
-    @chinese_weekdays = ["日", "一", "二", "三", "四", "五", "六"] 
+    @chinese_weekdays = %w[日 一 二 三 四 五 六]
   end
-
 end
