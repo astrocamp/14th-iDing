@@ -5,9 +5,9 @@ export default class extends Controller {
   static targets = ["input", "date", "dayOff", "submit"];
 
   connect() {
-    const offDay = this.dayOffTargets.map((a) => a.dataset.date);
+    const dayOff = this.dayOffTargets.map((a) => a.dataset.date);
     this.dateTargets.forEach((btn) => {
-      if (offDay.includes(btn.dataset.date)) {
+      if (dayOff.includes(btn.dataset.date)) {
         btn.classList.add("hidden");
       }
     });
@@ -22,6 +22,7 @@ export default class extends Controller {
   }
   setDate(date) {
     this.inputTarget.value = date;
+    console.log(date);
     this.submitTarget.classList.remove("void-btn");
     this.submitTarget.classList.add("action-btn");
   }

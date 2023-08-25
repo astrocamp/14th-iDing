@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_083440) do
   enable_extension "plpgsql"
 
   create_table "holidays", force: :cascade do |t|
-    t.date "dayoff"
+    t.string "dayoff"
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
