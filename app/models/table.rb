@@ -4,13 +4,14 @@
 #
 # Table name: tables
 #
-#  id         :bigint           not null, primary key
-#  name       :string
-#  seat_num   :integer
-#  status     :string
-#  category   :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id            :bigint           not null, primary key
+#  name          :string
+#  seat_num      :integer
+#  status        :string
+#  category      :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  restaurant_id :bigint           not null
 #
 class Table < ApplicationRecord
   validates :name, presence: true, uniqueness: { scope: :restaurant_id }
