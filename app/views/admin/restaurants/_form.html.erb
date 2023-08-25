@@ -36,7 +36,7 @@
   </div>
 
   <div class="m-1">
-    <%= f.label :reserve_interval, "訂位間隔", class: 'leading-loose text-base'  %><span class = 'leading-loose text-base'>(分鐘)</span>
+    <%= f.label :reserve_interval, "訂位間隔", class: 'leading-loose text-base'  %><span class = 'text-base leading-loose'>(分鐘)</span>
     <%= f.number_field :reserve_interval, step: 5, class: 'iding-customer-input'  %>
   </div>
 
@@ -51,7 +51,7 @@
     <%= f.file_field :image, class: 'border w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none ring-gray-200 focus:ring-2 ring-offset-2 border-gray-500 focus:border-transparent' %>
   </div>
 
-  <div class="pt-4 flex items-center space-x-4">
+  <div class="flex items-center pt-4 space-x-4">
     <%= f.submit  class: "flex m-auto mt-8 px-5 py-2.5 font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 ease-in-out" %>
   </div>
 
