@@ -22,7 +22,7 @@ module RestaurantsHelper
   class DateRange
     def initialize(holidays, bookday_advance)
       @holidays = holidays
-      @end_day = Date.today + (bookday_advance.days - 1)
+      @end_day = Date.today + bookday_advance.days
     end
 
     def reservation_range_date
