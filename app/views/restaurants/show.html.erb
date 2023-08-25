@@ -5,14 +5,14 @@
 <%# 訂位時間 %>  
 
 
-<section >
+<section class="max-w-screen-lg mx-auto my-14">
   <div>
     <% date_range = RestaurantsHelper::DateRange.new(@holidays, @restaurant.bookday_advance) %>
 
     <h4 class='reservation-font'>用餐日期</h4>
     <div class='grid grid-cols-5 gap-3 md:grid-cols-7'>
       <% date_range.reservation_range_date.each do |date| %>
-        <button class='w-36 h-full py-1 gray-btn'
+        <button class='time-btn h-full py-1'
                 data-action='click->restaurant-reservation#getDate'
                 data-restaurant-reservation-target='date'
                 data-id='<%=@restaurant.id%>'
@@ -22,7 +22,7 @@
           <%= "(#{@chinese_weekdays[date.wday]})" %>
         </button>
       <% end  %>
-      <%= f.hidden_field :date, data: {ordertime_target: "dateInput"}%>
+      <%#= f.hidden_field :date, data: {ordertime_target: "dateInput"}%>
     </div>
   </div>
 
