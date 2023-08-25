@@ -12,11 +12,10 @@
             <%= f.label :start_time, '時段：'%>
             <div class='text-center'>
               <div>
-                <%= f.time_field :start_time, data: {opentime_target: 'startTime', action: 'change->opentime#compareTime'}%>
+                <span>開始時間 : </span><%= f.time_field :start_time, data: {opentime_target: 'startTime', action: 'change->opentime#compareTime'}%>
               </div>
-              <div>至</div>
               <div class='mb-4'>
-                <%= f.time_field :end_time, data: {opentime_target: 'endTime', action: 'change->opentime#compareTime'} %>
+                <span>結束時間 : </span><%= f.time_field :end_time, data: {opentime_target: 'endTime', action: 'change->opentime#compareTime'} %>
               </div>
               <%= f.submit '儲存', class: 'action-btn', data: {opentime_target: 'submit'}, disabled: true %>
             </div>
@@ -31,12 +30,12 @@
 
   <div class='w-6/12 mb-auto bg-white border rounded' data-controller='holiday'>
   <h2 class='py-2 text-2xl font-bold text-center border'>公休日</h2>
-  <div class='grid grid-cols-3 gap-2 p-6 text-left'>
-    <div class='col-span-2 text-center'>
+  <div class='grid grid-cols-6 gap-2 p-6 text-left'>
+    <div class='col-span-4 text-center'>
       <h3 class='mb-2 text-xl font-bold text-left'>新增公休日</h3>
-      <div class='grid grid-cols-3 gap-2' id='holiday-selector'>
+      <div class='grid grid-cols-4 gap-2' id='holiday-selector'>
         <% @week.each do |date| %>
-          <button class='action-btn w-32' 
+          <button class='action-btn w-24' 
                 data-date='<%= date.strftime('%a') %>'
                 data-holiday-target='date'
                 data-action='click->holiday#getDate'
@@ -47,13 +46,13 @@
       </div>
       
       <%= form_with(model: @holiday, 
-                    url: admin_restaurant_open_times_path(@restaurant)) do |f| %>
-        <%= f.text_field :dayoff, data: {holiday_target: 'input'}, value: '', class: 'hidden' %>
-        <%= f.submit '新增', class: 'disabled-btn mt-4', data: {holiday_target: 'submit'} %>
+                    url: admin_restaurant_holidays_path(@restaurant)) do |f| %>
+        <%= f.text_field :dayoff, data: {holiday_target: 'input'}, value: '' %>
+        <%= f.submit '新增', class: 'void-btn mt-4', data: {holiday_target: 'submit'} %>
       <% end %>
       
     </div>
-    <div class='off-day-list'>
+    <div>
       <%= render @holidays %>
     </div>
     

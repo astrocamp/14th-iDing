@@ -1,8 +1,8 @@
 
 module Admin
   class HolidaysController < ApplicationController
-    before_action :find_restaurant, only: %i[create]
-    before_action :find_holiday, only: %i[destroy]
+    before_action :set_restaurant, only: %i[create]
+    before_action :set_holiday, only: %i[destroy]
 
     def create
       @holiday = @restaurant.holidays.new(holiday_params)
@@ -25,11 +25,11 @@ module Admin
       params.required(:holiday).permit(:dayoff)
     end
 
-    def find_restaurant
+    def set_restaurant
       @restaurant = current_user.restaurants.find(params[:restaurant_id])
     end
 
-    def find_holiday
+    def set_holiday
       @holiday = Holiday.find(params[:id])
     end
 

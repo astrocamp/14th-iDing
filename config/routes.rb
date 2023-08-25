@@ -14,8 +14,7 @@ Rails.application.routes.draw do
       resources :tables
       resources :open_times, shallow: true, only: [:index, :create, :edit, :update, :destroy]
       resources :reservations, only: [:create, :destroy]
-      resources :off_days, shallow: true, only: [:create, :destroy]
-
+      resources :holidays, shallow: true, only: [:create, :destroy]
     end
   end
 

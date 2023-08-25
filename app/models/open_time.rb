@@ -6,7 +6,7 @@
 #
 #  id            :bigint           not null, primary key
 #  start_time    :time
-#  close_time    :time
+#  end_time      :time
 #  restaurant_id :bigint           not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
