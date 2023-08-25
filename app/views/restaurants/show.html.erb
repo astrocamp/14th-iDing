@@ -12,7 +12,7 @@
     <h4 class='reservation-font'>用餐日期</h4>
     <div class='grid grid-cols-5 gap-3 md:grid-cols-7'>
       <% date_range.reservation_range_date.each do |date| %>
-        <button class='time-btn h-full py-1'
+        <button class='h-full py-1 time-btn'
                 data-action='click->restaurant-reservation#getDate'
                 data-restaurant-reservation-target='date'
                 data-id='<%=@restaurant.id%>'
