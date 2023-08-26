@@ -8,7 +8,7 @@ class BuildController < ApplicationController
   def show
     case step
     when :date_time_person
-
+      @restaurant = Restaurant.find(params[:restaurant_id])
     when :customer_info
       @first_step = session[:first_step_data]
     end
