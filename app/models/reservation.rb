@@ -15,9 +15,9 @@ class Reservation < ApplicationRecord
   validates :kid_num, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :kid_num, presence: true, numericality: true
 
-  scope :in_future, ->(current_time) {
-    where("date > ? OR (date = ? AND time >= ?)",
-          current_time.to_date, current_time.to_date, current_time.strftime("%H:%M:%S"))
+  scope :in_future, lambda { |current_time|
+    where('date > ? OR (date = ? AND time >= ?)',
+          current_time.to_date, current_time.to_date, current_time.strftime('%H:%M:%S'))
       .order(:date, :time)
   }
 
