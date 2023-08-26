@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+.menu-horizontal > li:not(.menu-title) > details > ul {
+  border-radius: 0% 0% 10% 10%;
+  opacity: 80%;
+  width: 7rem;
+}
