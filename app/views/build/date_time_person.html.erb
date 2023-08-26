@@ -37,7 +37,7 @@
 </div>
 <!--餐廳資訊-->
 <div class="mx-12 my-8 lg:my-8 lg:mx-28">
-  <h1 class="m-4 text-3xl font-extrabold dark:text-white"><%= @restaurant.name %></h1>
+  <h1 class="m-6 text-2xl font-bold text-green"><%= @restaurant.name %></h1>
   <p class="m-6"><i class="fa-solid fa-thumbs-up"> 4.0 <a href="" class="underline hover:text-blue-400">58 則評論</a></i></p>
   <p class="m-6"><%= @restaurant.address %></p>
   <p class="m-6"><i class="fa-solid fa-phone"></i> <%= @restaurant.tel %></p>
@@ -48,20 +48,23 @@
 <!--可選日期時間-->
 
 <!--訂位-->
-<div id="booking" class="mx-12 my-8 lg:my-8 lg:mx-28" name="booking">
+<div id="booking" class="m-auto mx-12 my-8 lg:my-8 lg:mx-28" name="booking">
   <%= form_with url:wizard_path, method: :patch, data: { turbo: false } do |f| %>
     <div class="my-6">
       <div class="flex flex-col justify-between gap-4 sm:flex-row">
         <div class="w-full sm:w-1/4 sm:mb-0">
-          <%= f.label :adult_num, '大人數',class:"text-sm text-gray-600" %>
+          <%= f.label :adult_num, '大人數',class:"block mr-2 text-sm text-gray-00" %>
           <%= f.number_field :adult_num, value: session.dig(:first_step_data, 'adult_num'), class:"h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded", min: 1 %>
         </div>
         <div class="w-full sm:w-1/4 sm:mb-0">
-          <%= f.label :kid_num, '小孩數',class:"text-sm text-gray-600 mt-3 sm:mt-0" %>
-          <%= f.number_field :kid_num, value: session.dig(:first_step_data, 'kid_num'), class:"h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded", min: 0 %>
+          <%= f.label :kid_num, '小孩數',class:"block mr-2 text-sm text-gray-00" %>
+          <%= f.number_field :kid_num,
+                  value: session.dig(:first_step_data, 'kid_num').present? ? session.dig(:first_step_data, 'kid_num') : 0,
+                  class: "h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                  min: 0 %>
         </div>
         <div class="w-full sm:w-1/2 sm:mb-0">
-          <%= f.label :date, '用餐日期',class:"text-sm text-gray-600 mt-3 sm:mt-0" %>
+          <%= f.label :date, '用餐日期',class:"block mr-2 text-sm text-gray-00" %>
           <%= f.date_field :date, value: session.dig(:first_step_data, 'date'), min: Date.today.strftime('%Y-%m-%d'), class:"h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" %>
         </div>
       </div>
@@ -69,43 +72,19 @@
   <hr>
 </div>
 
-    <section class="max-w-screen-lg mx-auto my-14" data-controller="ordertime">
-        <div>
-          <% time_range = RestaurantsHelper::TimeRange.new(@open_time, @restaurant.reserve_interval) %>
-          <h4 class='reservation-font'>選擇用餐時間</h4>
-          <div class='grid grid-cols-5 gap-3 md:grid-cols-7'>
-            <% time_range.makelist.each do |time_point| %>
-            <button class="time-btn" data-ordertime-target='timebtn' data-action="click->ordertime#clickTime"
-                    value='<%= time_point %>'>
-              <%= time_point %>
-            </button>
-            <% end %>
-          </div>
-        </div>
-        <%= f.hidden_field :time, data: {ordertime_target: "timeInput"}%>
-        <%= f.submit '下一步', class: 'action-btn' %>
-    </section>
-  <% end %>
-
-
-<!--
- <%= form_with url: wizard_path, method: :patch, data: { turbo: false } do |f| %>
-    <div class="my-6">
-      <div class="flex flex-col justify-between gap-4 sm:flex-row">
-        <div class="w-full sm:w-1/4 sm:mb-0">
-            <%= f.label :date, '日期' %>
-            <%= f.date_field :date, value: session.dig(:first_step_data, 'date'), min: Date.today.strftime('%Y-%m-%d') %>
-        </div>
-        <div class="w-full sm:w-1/4 sm:mb-0">
-            <%= f.label :time, '時間' %>
-            <%= f.time_field :time, value: session.dig(:first_step_data, 'time') %>
-        </div>
-        
-            <%= f.label :adult_num, '大人數' %>
-            <%= f.number_field :adult_num, value: session.dig(:first_step_data, 'adult_num') %>
-
-            <%= f.label :kid_num, '小孩數' %>
-            <%= f.number_field :kid_num, value: session.dig(:first_step_data, 'kid_num') %>
-
-            <%= f.submit '下一步' %>
-  <% end %>
+<section data-controller="ordertime" class="mx-4 my-8 lg:my-8 lg:mx-28">
+  <div  class= "flex flex-wrap justify-center">
+    <% time_range = RestaurantsHelper::TimeRange.new(@open_time, @restaurant.reserve_interval) %>
+    <p class='w-full text-2xl font-bold text-center text-green'>選擇用餐時間</p>
+      <% time_range.makelist.each do |time_point| %>
+      <button type="button" class="m-8 focus:outline-none text-black bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xl w-32 px-5 py-2.5 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" data-ordertime-target='timebtn' data-action="click->ordertime#clickTime"
+              value='<%= time_point %>'>
+        <%= time_point %>
+      </button>
+      <% end %>
+    </div>
+  </div>
+  <%= f.hidden_field :time, data: {ordertime_target: "timeInput"}%>
+  <%= f.submit '下一步', class: 'w-full px-4 py-2 text-white text-lg font-bold tracking-wider bg-gray-500 rounded mt-10 hover:bg-green' %>
+</section>
+<% end %>
