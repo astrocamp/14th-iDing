@@ -7,7 +7,7 @@ class RestaurantsController < ApplicationController
 
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.order(:id)
   end
 
   def show
