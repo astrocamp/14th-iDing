@@ -9,8 +9,10 @@ class BuildController < ApplicationController
     case step
     when :date_time_person
       @restaurant = Restaurant.find(params[:restaurant_id])
+      @open_time = @restaurant.open_times
     when :customer_info
       @first_step = session[:first_step_data]
+      @restaurant = Restaurant.find(params[:restaurant_id])
     end
     render_wizard
   end
