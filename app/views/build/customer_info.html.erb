@@ -1,3 +1,93 @@
+<!-- 餐廳圖片和資訊 -->
+<div class="grid grid-cols-1 md:grid-cols-3 justify-items-center">
+  <div>
+    <div class="!z-5 relative flex flex-col rounded-[20px] max-w-[300px] bg-white bg-clip-border shadow-3xl shadow-shadow-500 flex flex-col w-full !p-4 3xl:p-![18px] bg-white undefined  rounded shadow-xl">
+      <div class="w-full h-full">
+        <div class="relative w-full">
+          <%= image_tag "cheers_dinning.jpeg", class:"mb-3 h-full w-full rounded-xl 3xl:h-full 3xl:w-full" %>
+          <%# 餐廳有資料的話應該改寫成 @restaurant.image %>
+        </div>
+        <div class="flex items-center justify-between px-1 mb-3 md:items-start">
+          <div class="mb-2">
+            <p class="text-lg font-bold text-navy-700">海底撈 京站店</p>
+          </div>
+        </div>
+        <hr class="w-full py-2">
+          <div class="flex mb-2">
+            <i class="fa-solid fa-user-group green"></i><p class="ml-5 text-sm font-bold text-brand-500 green">3大2小</p>
+          </div>
+          <div class="flex mb-2">
+            <i class="fa-solid fa-calendar-days green"></i><p class="ml-5 text-sm font-bold text-brand-500 green">0916</p>
+          </div>
+          <div class="flex mb-2">
+            <i class="fa-solid fa-clock green"></i><p class="ml-5 text-sm font-bold text-brand-500 green">19:00</p>
+          </div>
+        <button href="#" class="w-full px-2 py-1 font-bold tracking-wider text-white bg-gray-500 rounded hover:bg-green">回上一頁 重新編輯</button>
+      </div>
+    </div>
+  </div>
+<!--訂位資料欄-->  
+  <div class="w-full p-10 m-4 bg-white rounded-lg shadow-xl md:col-span-2">
+    <%= form_with(model: @customer, data: { turbo: false }) do |f| %>
+      <h1 class="mb-10 text-2xl font-bold text-center text-green">填寫訂位人聯絡資料</h1>
+      <div class="items-center w-auto mt-2 md:flex">
+        <%= f.label :name, '姓名', class:"block mr-2 text-sm text-gray-00" %>
+        <%= f.text_field :name, class:"h-9 w-full px-5 py-1 md:w-auto text-gray-700 bg-gray-200 rounded" %>
+        <div class="flex items-center justify-center w-auto mt-2 md:mt-0">
+          <%= f.radio_button :gender, '1', class: "ml-1 md:ml-3 accent-green" %>
+          <%= f.label :gender, '先生',class:"ml-2 block text-sm text-gray-00" %>
+          <%= f.radio_button :gender, '2', class:"ml-2 accent-green" %>
+          <%= f.label :gender, '小姐',class:"ml-2 block text-sm text-gray-00 " %>
+          <%= f.radio_button :gender, '3', class:"ml-2 accent-green" %>
+          <%= f.label :gender, '不透露',class:"ml-2 block text-sm text-gray-00" %>
+        </div>
+      </div>
+      <div class="mt-4">
+        <%= f.label :tel, '電話',class:"block text-sm text-gray-00 " %>
+        <%= f.text_field :tel, class:"h9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" %>
+      </div>
+      <div class="mt-4">
+        <%= f.label :email, 'email',class:"block text-sm text-gray-00" %>
+        <%= f.text_field :email, class:"h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" %>
+      </div>
+      <section>
+        <%= f.fields_for :reservations do |ff| %>
+        <div class="mt-4">
+          <div class="flex flex-col justify-between gap-4 sm:flex-row">
+            <div class="w-full sm:w-1/2 sm:mb-0">
+              <%= ff.label :adult_num, '大人數',class:"text-sm text-gray-600" %>
+              <%= ff.number_field :adult_num, class:"h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" %>
+            </div>
+            <div class="w-full sm:w-1/2">
+              <%= ff.label :kid_num, '小孩數',class:"text-sm text-gray-600 mt-3 sm:mt-0" %>
+              <%= ff.number_field :kid_num, class:"h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" %>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="flex flex-col justify-between gap-4 sm:flex-row">
+              <div class="w-full sm:w-1/2 sm:mb-0">
+                <%= ff.label :date, '日期',class:"block text-sm text-gray-00" %>
+                <%= ff.date_field :date, class:"h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" %>
+              </div>
+              <div class="w-full sm:w-1/2">
+                <%= ff.label :time, '時間',class:"block text-sm text-gray-00" %>
+                <%= ff.time_field :time, class:"h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" %>
+              </div>
+          </div>
+        <div class="mt-4">
+          <%= ff.label :purpose, '用餐目的',class:"block text-sm text-gray-00" %>
+          <%= ff.select :purpose, options_for_select(['慶生', '約會', '家庭用餐', '結婚紀念日', '朋友聚餐', '商務聚餐', '其他']), class:"h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" %>
+        </div>
+        <div class="mt-4">
+          <%= ff.label :note, '備註',class:"block text-sm text-gray-00" %>
+          <%= ff.text_area :note, class:"w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" %>
+        </div>
+        <% end %>
+      </section>
+        <%= f.submit "確認訂位", class: "w-full px-4 py-2 text-white text-lg font-bold tracking-wider bg-gray-500 rounded mt-10 hover:bg-green" %>
+    <% end %>  
+  </div>
+</div>
 <h1>第二步：確認訂位！</h1>
     <h2>所選的日期、時間和人數：</h2>
     
