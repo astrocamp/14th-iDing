@@ -1,15 +1,46 @@
-<h1 class="text-2xl">訂位人大名：
-<%= @reservation.name %></h1>
+<section class="h-screen bg-gray-100">
+  <div class="mx-auto text-center" style="width: 640px">
+    <div class="py-5 h-28">
+      <h2 class="pb-2 text-2xl font-bold"><%= @reservation.restaurant.name %></h2>
+      <p class="text-sm"><%= @reservation.restaurant.tel %></p>
+      <p class="text-sm"><%= @reservation.restaurant.address %></p>
+    </div>
 
-<div>
-  <p>聯絡電話：<%= @reservation.tel %></p>
-    <p>訂位編號：<%= @reservation.serial %></p>
-    <p>日期：<%= @reservation.date %></p>
-    <p>時間：<%= @reservation.time %></p>
-    <p>大人數：<%= @reservation.adult_num %></p>
-  <%= link_to '取消訂位', reservation_path(@reservation),
-                            data:{ turbo_method: 'delete',
-                                   turbo_confirm: '確認取消？'
-                            }%>
+    <div class="bg-white h-96" style="height: 580px">
+      <div class="py-5 text-2xl">
+        <p><%= @reservation.name %> 您好</p>
+        <p>以下是您的訂位資訊：</p>
+      </div>
+      <div class="mx-10 border rounded border-slate-300">
+        <div class="py-6">
+          <p class="text-2xl"><%= @reservation.date.strftime("%m月%d日") %></p>
+          <p class="text-5xl text-green-800"><%= @reservation.time.strftime("%H:%M") %></p>
+          <p class="text-xl"><%= @reservation.adult_num %> 位大人</p>
+          <p class="text-xl"><%= "#{@reservation.kid_num} 位小孩" unless @reservation.kid_num.zero? %></p>
+          <p class="text-xl"><%= "備註：#{@reservation.note}" unless @reservation.note.blank? %></p>
 
-</div>
+        </div>
+        <div class="pt-3 border-t">
+          <%= link_to '取消訂位', reservation_path(@reservation),
+                        data:{ turbo_method: 'delete',
+                                turbo_confirm: '確認取消？'
+                        }, class: "block py-2 mx-auto my-3 text-lg border rounded w-60 border-slate-300 hover:bg-green hover:text-white" %>
+          <p class="my-3 text-sm"></p>
+        </div>
+      </div>
+
+      <span class="block py-4 mx-auto text-sm text-center w-44"
+        >用餐時間為120分鐘，<br />
+        位子保留10分鐘<br /></span
+      >
+      <a
+        href="#"
+        class="block py-2 mx-auto text-lg text-white rounded w-60 bg-green"
+      >
+        <i class="mr-3 fa-solid fa-arrow-right"></i>
+        點我看菜單
+      </a>
+    </div>
+  </div>
+</section>
+
