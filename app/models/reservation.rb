@@ -13,4 +13,19 @@ class Reservation < ApplicationRecord
   validates :tel, presence: true
   validates :adult_num, presence: true, numericality: { greater_than: 0 }
   validates :kid_num, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :kid_num, presence: true, numericality: true
+
+  scope :in_future, ->(current_time) {
+    where("date > ? OR (date = ? AND time >= ?)",
+          current_time.to_date, current_time.to_date, current_time.strftime("%H:%M:%S"))
+      .order(:date, :time)
+  }
+
+  # def generate_serial
+  #   return unless date.present?
+
+  #   date_part = date.strftime('%Y%m%d')
+  #   random_part = rand(100..999)
+  #   self.serial = "#{date_part}-#{random_part}"
+  # end
 end
