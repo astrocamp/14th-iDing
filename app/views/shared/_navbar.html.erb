@@ -20,6 +20,7 @@
           <div>
             <%= image_tag "logo_column.png", class: "w-40 m-auto py-2 lg:hidden" %>
             <li><%= link_to '關於iDing', "#", class: "text-lg m-4 text-gray-800 py-6" %></li>
+            <li><%= link_to '合作夥伴', restaurants_path, class: "text-lg m-4 text-gray-800 py-6" %></li>
             <li><%= link_to '立即註冊', new_user_registration_path, class: 'text-lg m-4 text-gray-800 py-6' %></li>
             <% if user_signed_in? %>
               <li>
@@ -52,6 +53,7 @@
       <div class="hidden lg:flex">
         <ul class="menu menu-horizontal">
           <li><%= link_to '關於iDing', "#", class: "font-medium text-gray-800 hover:text-gray-600 py-6 " %></li>
+          <li><%= link_to '合作夥伴', restaurants_path, class: "font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
           <li><%= link_to '立即註冊', new_user_registration_path, class: 'font-medium text-gray-800 hover:text-gray-600 py-6' %></li>
           <% if user_signed_in? %>
             <li>
