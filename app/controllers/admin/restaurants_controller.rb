@@ -9,9 +9,9 @@ module Admin
     end
 
     def show
-      current_time = Time.now.in_time_zone('Taipei')
-
-      @reservations = @restaurant.reservations.where("date > ? OR (date = ? AND time >= ?)", current_time.to_date, current_time.to_date, current_time.strftime("%H:%M:%S")).order(:date, :time)
+      current_time = Time.now
+      @reservations = @restaurant.reservations.in_future(current_time)
+      
       @reservation = @restaurant.reservations.new
     end
 
