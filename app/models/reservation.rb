@@ -23,9 +23,9 @@ class Reservation < ApplicationRecord
   acts_as_paranoid
 
   belongs_to :restaurant
+  belongs_to :table, optional: true
 
-  # before_validation :generate_serial
-
+  
   validates :date, presence: true
   validates :time, presence: true
   validates :name, presence: true
