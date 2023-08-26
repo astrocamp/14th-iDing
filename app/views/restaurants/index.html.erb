@@ -1,17 +1,27 @@
-<h1>餐廳總覽</h1>
-<ul> 
-  <% @restaurants.each do |restaurant| %>
-    <li>
-      <div class="border-2 ">
-        <div class="flex ">
-          
-          名稱：<%= restaurant.name %>
+<section class="w-2/3 py-32 mx-auto">
+    <h1 class="text-xl md:text-2xl">正在使用iDing的合作夥伴！</h1>
+
+    <ul> 
+      <div class="grid gap-4 p-2 mx-auto max-w-12xl xs:grid-cols-2 xs:gap-2 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 md:gap-4 lg:grid-cols-4 lg:gap-4">
+        <% @restaurants.each do |restaurant| %> 
+        <%= link_to restaurant_path(restaurant)do %>
+        <div class="w-full  rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] md:flex-row my-5">
+          <div>
+            <%= image_tag "https://picsum.photos/300/300", class: "w-full rounded-lg h-auto md:!rounded-l-lg" %>
+            <%#= restaurant.image %>
+          </div>
+          <div class="flex justify-between mx-2 md:block">
+            <div class="flex flex-col justify-center my-5">
+              <li class="mx-2 text-xl"><%= restaurant.name %></li>
+            </div>
+            <div class="flex flex-col justify-center md:m-2 md:pb-5">
+              <i class="fa-solid fa-utensils"><span class="ml-2 font-normal">馬上訂位！</span></i>
+            </div>
+          </div>
         </div>
-        
-        <%= link_to '訂位', restaurant_build_path(restaurant, :date_time_person), class: 'action-btn' %>
-        
-      </div>  
-    </li>
-      <%# end %> 
-  <% end %> 
-</ul>
+            <% end %>
+        <% end %>
+      </div>
+    </ul>
+
+</section>
