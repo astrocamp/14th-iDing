@@ -11,7 +11,7 @@ module Admin
     def show
       current_time = Time.now
       @reservations = @restaurant.reservations.in_future(current_time)
-      
+
       @reservation = @restaurant.reservations.new
     end
 
