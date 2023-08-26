@@ -56,7 +56,8 @@ class BuildController < ApplicationController
       :email,
       :gender,
       :purpose,
-      :note
+      :note,
+      :table_id
     ).merge(
       date: session[:first_step_data]['date'],
       time: session[:first_step_data]['time'],

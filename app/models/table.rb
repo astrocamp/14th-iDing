@@ -18,6 +18,6 @@ class Table < ApplicationRecord
   validates :seat_num, presence: true, numericality: { greater_than: 0 }
 
   enum category: { '一般座位': 0, '包廂': 1 }
-
+  has_many :reservations
   belongs_to :restaurant
 end
