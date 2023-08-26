@@ -9,9 +9,15 @@
     <div class="max-w-md">
       <h1 class="mb-5 text-5xl font-bold">iDing</h1>
       <p class="mb-5 text-3xl">享受訂位系統的神奇方程式</p>
-      <%= link_to new_user_registration_path do %>
-        <button class="btn btn-gray">立即試用</button>
-      <% end %>
+        <% if user_signed_in? %>
+          <%= link_to admin_restaurants_path do %>
+            <button class="btn btn-gray">管理餐廳</button>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_registration_path do %>
+            <button class="btn btn-gray">立即註冊！</button>
+          <% end %>
+        <% end %>
     </div>
   </div>
 </div>
