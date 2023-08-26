@@ -15,14 +15,14 @@
 
       <ul tabindex="0" class="hidden menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 w-28 place-content-center absolute top-20 right-0" data-hamburger-target="nav">
         <li><a href="#" class="block p-4 py-3">餐廳介紹</a></li>
-        <li><a href="#booking" class="block p-4 py-3">立即訂位</a></li>#link_to
+        <li><a href="#booking" class="block p-4 py-3">立即訂位</a></li>
         <li><a href="#" class="block p-4 py-3">美食菜單</a></li>
       </ul>
     </div>
     <div class="hidden md:flex">
       <ul class="items-center hidden md:flex">
         <li><a href="#" class="block p-4 py-3">餐廳介紹</a></li>
-        <li><%= link_to '我要訂位', restaurant_build_path(@restaurant, :date_time_person), class: "block p-4 py-3" %></li>
+        <li><a href="#booking" class="block p-4 py-3">立即訂位</a></li>
         <li><a href="#" class="block p-4 py-3">美食菜單</a></li>
       </ul>
     </div>
@@ -34,20 +34,6 @@
     <%= image_tag (@restaurant.image_url) if @restaurant.image? %>
   </div>
 
-</div>
-
-<div class="mx-12 my-8 border-b border-gray-200 lg:my-8 lg:mx-28 dark:border-gray-700">
-  <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
-    <li class="mr-2">
-    <i class="fa-solid fa-calendar-days"></i><%= link_to '我要訂位', restaurant_build_path(@restaurant, :date_time_person), class: "inline-flex items-center justify-center p-4 text-lg border-b-2 border-transparent rounded-t-lg hover:text-blue-600 hover:border-blue-300 dark:hover:text-blue-300 group" %>
-      <%# <a href="#" name="booking" id="booking" class="inline-flex items-center justify-center p-4 text-lg border-b-2 border-transparent rounded-t-lg hover:text-blue-600 hover:border-blue-300 dark:hover:text-blue-300 group"><i class="fa-solid fa-calendar-days"> 我要訂位</i>#link_to %>
-      </a>
-    </li>
-     <%# <li class="mr-2">
-      <a href="#" class="inline-flex items-center justify-center p-4 text-lg border-b-2 border-transparent rounded-t-lg hover:text-blue-600 hover:border-blue-300 dark:hover:text-blue-300 group"><i class="fa-solid fa-motorcycle"> 我要訂餐</i>
-      </a>
-    </li> %>
-  </ul>
 </div>
 <!--餐廳資訊-->
 <div class="mx-12 my-8 lg:my-8 lg:mx-28">
@@ -62,8 +48,7 @@
 <!--可選日期時間-->
 
 <!--訂位-->
-<h1>第一步：請選擇時間人數！</h1>
-<div class="mx-12 my-8 lg:my-8 lg:mx-28" name="booking">
+<div id="booking" class="mx-12 my-8 lg:my-8 lg:mx-28" name="booking">
   <%= form_with url:wizard_path, method: :patch, data: { turbo: false } do |f| %>
     <div class="my-6">
       <div class="flex flex-col justify-between gap-4 sm:flex-row">
@@ -81,9 +66,27 @@
         </div>
       </div>
     </div>
-  <% end %>
   <hr>
 </div>
+
+    <section class="max-w-screen-lg mx-auto my-14" data-controller="ordertime">
+        <div>
+          <% time_range = RestaurantsHelper::TimeRange.new(@open_time, @restaurant.reserve_interval) %>
+          <h4 class='reservation-font'>選擇用餐時間</h4>
+          <div class='grid grid-cols-5 gap-3 md:grid-cols-7'>
+            <% time_range.makelist.each do |time_point| %>
+            <button class="time-btn" data-ordertime-target='timebtn' data-action="click->ordertime#clickTime"
+                    value='<%= time_point %>'>
+              <%= time_point %>
+            </button>
+            <% end %>
+          </div>
+        </div>
+        <%= f.hidden_field :time, data: {ordertime_target: "timeInput"}%>
+        <%= f.submit '下一步', class: 'action-btn' %>
+    </section>
+  <% end %>
+
 
 <!--
  <%= form_with url: wizard_path, method: :patch, data: { turbo: false } do |f| %>
