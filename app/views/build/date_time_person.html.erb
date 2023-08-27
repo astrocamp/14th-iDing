@@ -1,9 +1,9 @@
 <header class="fixed top-0 left-0 z-50 w-full px-3 py-2 bg-white drop-shadow md:flex md-items-center md:justify-between">
   <div class="flex items-center justify-between w-full px-4">
     <div class="w-40 md:w-1/4 lg:w-1/8 xl:w-1/12">
-      <a href="#" class="block">
+      <%= link_to root_path, class: "block" do %>
         <%= image_tag "logo_column.png", class: "w-full align-middle" %>
-      </a>
+      <% end %>
     </div>
 
     <div data-controller="hamburger" class="flex items-center md:hidden">
