@@ -25,7 +25,6 @@ class Reservation < ApplicationRecord
   belongs_to :restaurant
   belongs_to :table, optional: true
 
-  
   validates :date, presence: true
   validates :time, presence: true
   validates :name, presence: true

@@ -5,7 +5,6 @@ class RestaurantsController < ApplicationController
   before_action :set_holidays, only: %i[show]
   before_action :set_weekdays, only: %i[show]
 
-
   def index
     @restaurants = Restaurant.order(:id)
   end
