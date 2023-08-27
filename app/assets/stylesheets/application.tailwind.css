@@ -26,7 +26,7 @@
 }
 
 .time-btn {
-  @apply inline-block px-4 py-2 border rounded cursor-pointer focus:bg-teal-700 focus:text-white active:ring-1 active:ring-gray-400;
+  @apply inline-block px-4 py-2 border rounded cursor-pointer focus:bg-green focus:text-white active:ring-1 active:ring-gray-400;
 }
 
 .iding-customer-input {
@@ -35,4 +35,8 @@
 
 .unselect-btn {
   @apply px-2 py-1 text-gray-800 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200;
+}
+
+.action-btn {
+  @apply w-full px-4 py-2 mt-10 text-lg font-bold tracking-wider text-white bg-gray-500 rounded hover:bg-green;
 }
