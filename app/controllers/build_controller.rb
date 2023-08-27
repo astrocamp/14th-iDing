@@ -2,17 +2,17 @@
 
 class BuildController < ApplicationController
   include Wicked::Wizard
+  before_action :set_restaurant, only: %i[show update]
 
   steps :date_time_person, :customer_info
 
   def show
     case step
     when :date_time_person
-      @restaurant = Restaurant.find(params[:restaurant_id])
       @open_time = @restaurant.open_times
+
     when :customer_info
       @first_step = session[:first_step_data]
-      @restaurant = Restaurant.find(params[:restaurant_id])
     end
     render_wizard
   end
@@ -33,10 +33,9 @@ class BuildController < ApplicationController
 
     when :customer_info
 
-      @restaurant = Restaurant.find(params[:restaurant_id])
       @reservation = @restaurant.reservations.create!(reservation_params)
       if step == steps.last
-        redirect_to success_page_path(reservation_id: @reservation.id)
+        redirect_to success_page_path(reservation_id: @reservation.id), notice: '訂位成功！'
         session.delete(:first_step_data)
       else
         render_wizard
@@ -64,5 +63,9 @@ class BuildController < ApplicationController
       adult_num: session[:first_step_data]['adult_num'],
       kid_num: session[:first_step_data]['kid_num']
     )
+  end
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 end
