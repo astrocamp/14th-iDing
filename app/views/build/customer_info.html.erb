@@ -56,16 +56,16 @@
           <%= f.label :email, 'email',class:"block text-sm text-gray-00" %>
           <%= f.text_field :email, class:"h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" %>
         </div>
-          <div class="mt-4">
-            <%= f.label :purpose, '用餐目的',class:"block text-sm text-gray-00" %>
-            <%= f.select :purpose, options_for_select(['慶生', '約會', '家庭用餐', '結婚紀念日', '朋友聚餐', '商務聚餐', '其他']), class:"h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded select select-bordered" %>
-          </div>
-          <div class="mt-4">
-            <%= f.label :note, '備註',class:"block text-sm text-gray-00" %>
-            <%= f.text_area :note, class:"w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" %>
-          </div>
-          <%= f.submit "確認訂位", class: "w-full px-4 py-2 text-white text-lg font-bold tracking-wider bg-gray-500 rounded mt-10 hover:bg-green" %>
-        <% end %>  
+        <div class="mt-4">
+          <%= f.label :purpose, '用餐目的',class:"block text-sm text-gray-00" %>
+          <%= f.select :purpose, options_for_select(['慶生', '約會', '家庭用餐', '結婚紀念日', '朋友聚餐', '商務聚餐', '其他']), class:"h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded select select-bordered" %>
+        </div>
+        <div class="mt-4">
+          <%= f.label :note, '備註',class:"block text-sm text-gray-00" %>
+          <%= f.text_area :note, class:"w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" %>
+        </div>
+        <%= f.submit "確認訂位", class: "w-full px-4 py-2 text-white text-lg font-bold tracking-wider bg-gray-500 rounded mt-10 hover:bg-green" %>
+      <% end %>  
     </div>
   </div>
 </div>
