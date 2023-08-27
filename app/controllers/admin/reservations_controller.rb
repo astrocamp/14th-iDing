@@ -10,7 +10,7 @@ module Admin
         redirect_to admin_restaurant_path(@restaurant), notice: '訂位新增成功'
       else
         flash[:alert] = '訂位失敗'
-        render 'admin/restaurants/show'
+        redirect_to admin_restaurant_path(@restaurant)
       end
     end
 
@@ -24,7 +24,7 @@ module Admin
 
     def reservation_params
       params.require(:reservation)
-            .permit(:name, :tel, :email, :gender, :date, :time, :adult_num, :kid_num, :purpose, :note, :serial)
+            .permit(:name, :tel, :email, :gender, :date, :time, :adult_num, :kid_num, :purpose, :note, :serial, :table_id)
     end
 
     def set_restaurant

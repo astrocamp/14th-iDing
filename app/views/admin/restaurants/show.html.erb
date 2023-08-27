@@ -1,5 +1,5 @@
-<section class="lg:flex h-screen">
-  <div class="drawer bg-base-100 flex justify-between border-2 rounded-xl lg:drawer-open lg:border-0 z-10">
+<section class="h-screen lg:flex">
+  <div class="z-10 flex justify-between border-2 drawer bg-base-100 rounded-xl lg:drawer-open lg:border-0">
     <input id="my-drawer" type="checkbox" class="drawer-toggle" />
   
     <div class="lg:hidden">
@@ -14,17 +14,17 @@
       
     <div class="drawer-side">
       <label for="my-drawer" class="drawer-overlay"></label>
-      <ul class="menu p-4 w-60 lg:h-screen bg-base-200 text-base-content flex flex-col justify-between lg:w-40">
+      <ul class="flex flex-col justify-between h-screen p-4 menu w-60 bg-base-200 text-base-content lg:w-40">
         <div>
           <%= image_tag "iding_logo.png", class:"w-40 m-auto py-2" %> 
-          <li class="font-semibold text-slate-700 my-2 mt-6"><a class="m-auto">訂位列表</a></li>
-          <li class="font-semibold text-slate-700 my-2 m-auto"><a class="m-auto">歷史紀錄</a></li>
-          <li class="font-semibold text-slate-700 my-2 m-auto"><a class="m-auto">訂位搜尋</a></li>
-          <li class="font-semibold text-slate-700 my-2 m-auto"><a class="m-auto">餐廳設定</a></li>
+          <li class="my-2 mt-6 font-semibold text-slate-700"><a class="m-auto">訂位列表</a></li>
+          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">歷史紀錄</a></li>
+          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">訂位搜尋</a></li>
+          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">餐廳設定</a></li>
         </div>
         <div>
-          <li class="font-semibold text-slate-700 my-2 m-auto"><a class="m-auto">最新通知</a></li>
-          <li class="font-semibold text-slate-700 my-2 m-auto"><a class="m-auto">聯繫客服</a></li>
+          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">最新通知</a></li>
+          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">聯繫客服</a></li>
         </div>
       </ul>
     </div>
@@ -34,53 +34,56 @@
     <div class="m-2 lg:mx-4">
       <div class="flex navbar bg-base-100 my-3 border-2 rounded-xl lg:w-[86vw]">
         <div class="lg:mr-auto">
-          <a class="hidden btn btn-ghost normal-case lg:flex">返回</a>
+          <a class="hidden normal-case btn btn-ghost lg:flex">返回</a>
         </div>
 
         <div class="m-auto lg:ml-auto">
-          <a class="btn btn-ghost normal-case text-xl">行事曆</a>
+          <a class="text-xl normal-case btn btn-ghost">行事曆</a>
         </div>
 
         <div class="lg:ml-auto">
-          <a class="hidden btn btn-ghost normal-case lg:flex">時間軸</a>
-          <a class="hidden btn btn-ghost normal-case lg:flex">列表</a>
-          <a class="hidden btn btn-ghost normal-case lg:flex">桌位圖</a>
+          <a class="hidden normal-case btn btn-ghost lg:flex">時間軸</a>
+          <a class="hidden normal-case btn btn-ghost lg:flex">列表</a>
+          <a class="hidden normal-case btn btn-ghost lg:flex">桌位圖</a>
         </div>
       </div>
     </div>
 
     <div class="w-[90vw] mx-auto my-3 border-2 rounded-xl collapse bg-base-100 lg:hidden">
-      <input type="checkbox" class="collapse-toggle hidden" id="collapse-form-toggle">
-      <label for="collapse-form-toggle" class="cursor-pointer font-bold text-xl text-center">
+      <input type="checkbox" class="hidden collapse-toggle" id="collapse-form-toggle">
+      <label for="collapse-form-toggle" class="text-xl font-bold text-center cursor-pointer">
         <h1 class="text-xl font-semibold">
         <%= image_tag "logo.png", class:"inline w-14 md:w-30 xl:w-30 py-2" %>
         新增訂位
         </h1>
       </label>
-      <div class="collapse-content p-1">
+      <div class="p-1 collapse-content">
         <%= form_with(model: @reservation, url: admin_restaurant_reservations_path(restaurant_id: @restaurant.id), method: :post, data: { turbo: false }) do |f| %>
 
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
 
           <div class="px-1 pb-1 ">
-            <%= f.text_field :name, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "姓名" %>
+            <%= f.text_field :name, class:"iding-input", placeholder: "姓名" %>
 
-            <%= f.text_field :tel, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "電話", type: "tel" %>
+            <%= f.text_field :tel, class: "iding-input", placeholder: "電話", type: "tel" %>
 
             <div class="flex gap-2">
-              <%= f.date_field :date, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500" %>
+              <%= f.date_field :date, class:"iding-input" %>
 
-              <%= f.time_field :time, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500" %>
+              <%= f.time_field :time, class:"iding-input" %>
             </div>
 
             <div class="flex gap-2">
-              <%= f.number_field :adult_num, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "大人", min: 0 %>
+              <%= f.number_field :adult_num, class: "iding-input", placeholder: "大人", min: 0 %>
 
-              <%= f.number_field :kid_num, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "小孩", min: 0 %>
+              <%= f.number_field :kid_num, class: "iding-input", placeholder: "小孩", min: 0 %>
             </div>
 
-            <%= f.text_area :note, class:"textarea focus:textarea-border-transparent text-black h-32 placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "備註" %>
-
+            <%= f.text_area :note, class:"iding-textarea", placeholder: "備註" %>
+              
+            <div class="flex gap-2">
+              <%= f.select :table_id, Table.all.map{ |t| [t.name, t.id] },prompt: "桌號"%>
+            </div>
           </div>
 
           <div class="flex flex-row-reverse py-6">
@@ -93,36 +96,40 @@
     </div>
 
     <div class="lg:flex m-3 relative h-[calc(100%-96px)]">
-      <div class="hidden top-0 w-4/5 lg:block lg:w-1/3">
-        <div class="mt-5 mx-1 bg-white rounded-lg shadow border-b border-2">
+      <div class="top-0 hidden w-4/5 lg:block lg:w-1/3">
+        <div class="mx-1 mt-5 bg-white border-2 border-b rounded-lg shadow">
           <div class="flex justify-center">
             <div>
               <%= image_tag "logo.png", class:"w-14 md:w-30 xl:w-30 py-2" %>
             </div>
-            <h1 class="text-2xl font-semibold py-5">新增訂位</h1>
+            <h1 class="py-5 text-2xl font-semibold">新增訂位</h1>
           </div>
             <%= form_with(model: @reservation, url: admin_restaurant_reservations_path(restaurant_id: @restaurant.id), method: :post, data: { turbo: false }) do |f| %>
 
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
 
               <div class="px-5 pb-5">
-                <%= f.text_field :name, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "姓名" %>
+                <%= f.text_field :name, class:"iding-input", placeholder: "姓名" %>
 
-                <%= f.text_field :tel, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "電話", type: "tel" %>
+                <%= f.text_field :tel, class: "iding-input", placeholder: "電話", type: "tel" %>
 
                 <div class="flex gap-2">
-                  <%= f.date_field :date, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500" %>
+                  <%= f.date_field :date, class:"iding-input" %>
 
-                  <%= f.time_field :time, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500" %>
+                  <%= f.time_field :time, class:"iding-input" %>
                 </div>
 
                 <div class="flex gap-2">
-                  <%= f.number_field :adult_num, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2 focus:border-gray-500", placeholder: "大人", min: 0 %>
+                  <%= f.number_field :adult_num, class: "iding-input", placeholder: "大人", min: 0 %>
 
-                  <%= f.number_field :kid_num, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2 focus:border-gray-500", placeholder: "小孩", min: 0 %>
+                  <%= f.number_field :kid_num, class: "iding-input", placeholder: "小孩", min: 0 %>
                 </div>
 
-                <%= f.text_area :note, class:"textarea focus:textarea-border-transparent text-black h-32 placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "備註" %>
+                <%= f.text_area :note, class:"iding-textarea", placeholder: "備註" %>
+
+                <div class="flex gap-2">
+                  <%= f.select :table_id, Table.all.map{ |t| [t.name, t.id] }, prompt: "桌號"%>
+                </div>
               </div>
 
               <div class="flex flex-row-reverse py-6">
@@ -133,11 +140,11 @@
             <% end %>
         </div>
       </div>
-      <div class="w-full lg:w-3/4 h-auto h-[calc(100%-100px)]">
-        <div class="mt-5 mx-auto bg-white border-3 rounded-lg shadow lg:absolute top-0 lg:right-2 lg:w-4/6 overflow-y-auto lg:h-full w-11/12">
-          <% @reservations.each do |reservation| %>
-            <div class="border-2 rounded w-full mb-1">
-              <div class="flex justify-between border bg-gray-200 py-2 px-5 font-black lg:pl-12 items-center">
+      <div class="w-full lg:w-3/4 h-[calc(100%-100px)]">
+        <div class="top-0 w-11/12 mx-auto mt-5 overflow-y-auto bg-white rounded-lg shadow border-3 lg:absolute lg:right-2 lg:w-4/6 lg:h-full">
+          <% @reservations&.each do |reservation| %>
+            <div class="w-full mb-1 rounded">
+              <div class="flex items-center justify-between px-5 py-2 font-black bg-gray-200 border lg:pl-12">
                 <div>
                   <%= reservation.date%> 
                   <%= reservation.time.strftime('%R') %>
@@ -148,21 +155,21 @@
                 </div>
               </div>
               
-              <div class="flex justify-around lg:mx-5 sm:justify-between items-center">
+              <div class="flex items-center justify-around lg:mx-5 sm:justify-between">
                 <div class="flex">
                   <div class="my-auto">
                     <i class="fa-solid fa-pen-to-square"></i>
                   </div>
-                  <div class="lg:w-24 lg:h-24 mx-3">
+                  <div class="mx-3 lg:w-24 lg:h-24">
                     <div class="hidden lg:inline">
                       <%= image_tag "cat-default-avatar.png" %>
                     </div>
                   </div>
-                  <div class="mx-2 my-auto items-center">
-                    <div class="font-bold text-sm lg:text-lg">
+                  <div class="items-center mx-2 my-auto">
+                    <div class="text-sm font-bold lg:text-lg">
                       <%= reservation.name %>
                     </div>
-                    <div class="lg:inline lg:text-sm opacity-50">
+                    <div class="opacity-50 lg:inline lg:text-sm">
                       <%= reservation.tel %>
                     </div>
                   </div>
@@ -173,10 +180,10 @@
                     <%= reservation.kid_num %> 位小孩
                   </div>
                 </div>
-                <div class="border-2 p-2 rounded-lg">
-                  <p>座位</p>
+                <div class="px-4 py-3 text-lg font-medium border-2 rounded-lg">
+                  <%= reservation.table.name %> 
                 </div>
-                <div class="w-10 lg:w-24 text-center">
+                <div class="w-10 text-center lg:w-24">
                   <%= reservation.note %>
                 </div>
               </div>
