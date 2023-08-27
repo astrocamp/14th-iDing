@@ -2,7 +2,6 @@
 
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-    # protected
     def google_oauth2
       @user = User.create_from_provider_data(request.env['omniauth.auth'])
 
