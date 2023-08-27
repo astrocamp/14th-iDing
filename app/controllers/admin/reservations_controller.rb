@@ -10,7 +10,7 @@ module Admin
         redirect_to admin_restaurant_path(@restaurant), notice: '訂位新增成功'
       else
         flash[:alert] = '訂位失敗'
-        render 'admin/restaurants/show'
+        redirect_to admin_restaurant_path(@restaurant)
       end
     end
 
