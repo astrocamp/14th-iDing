@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   resources :reservations, only: :destroy
 
-  get "/testcss" ,to: 'home#show'
+
   
   get '/success_page/:reservation_id', to: 'build#success_page', as: :success_page
 
