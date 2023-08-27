@@ -19,3 +19,23 @@
   opacity: 80%;
   width: 7rem;
 }
+
+select {
+  background: rgb(229 231 235);
+  color: rgb(75 85 99);
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  border-color: rgb(229 231 235);
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  transform: none;
+}
+select:focus {
+  background-color: #fff;
+  outline: none;
+  border-color: #666;
+  box-shadow: 0 0 0 1px #ccc, 0 0 0 2px #666;
+}
