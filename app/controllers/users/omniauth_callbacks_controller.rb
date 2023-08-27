@@ -12,10 +12,6 @@ module Users
         session['devise.google_data'] = request.env['omniauth.auth']
         redirect_to new_user_registration_url
       end
-
-      def failure
-        redirect_to root_path
-      end
     end
   end
 end

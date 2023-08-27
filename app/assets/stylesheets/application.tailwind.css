@@ -36,3 +36,7 @@
 .unselect-btn {
   @apply px-2 py-1 text-gray-800 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200;
 }
+
+.next-btn {
+  @apply w-full px-4 py-2 mt-10 text-lg font-bold tracking-wider text-white bg-gray-500 rounded hover:bg-green;
+}
