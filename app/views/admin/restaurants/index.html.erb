@@ -27,7 +27,7 @@
             <%= link_to admin_restaurant_path(restaurant), class:"action-btn my-2 lg:my-5 flex" do %>
               <i class="fa-solid fa-gear"><span class="hidden ml-2 font-normal xl:inline">管理訂單</span><span class="inline ml-2 font-normal xl:hidden">管理</span></i>
             <% end %>
-            <%= link_to restaurant_path(restaurant), class:"action-btn mx-2 md:mx-0 my-2 lg:my-5 flex" do%>
+            <%= link_to restaurant_build_path(restaurant, :date_time_person), class:"action-btn mx-2 md:mx-0 my-2 lg:my-5 flex" do%>
               <i class="fa-solid fa-arrow-right"><span class="hidden ml-2 font-normal xl:inline">查看訂位網頁</span><span class="inline ml-2 font-normal xl:hidden">查看</span></i>
             <% end %>
             </div>
