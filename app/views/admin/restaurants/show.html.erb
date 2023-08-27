@@ -64,23 +64,23 @@
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
 
           <div class="px-1 pb-1 ">
-            <%= f.text_field :name, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "姓名" %>
+            <%= f.text_field :name, class:"iding-input", placeholder: "姓名" %>
 
-            <%= f.text_field :tel, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "電話", type: "tel" %>
+            <%= f.text_field :tel, class: "iding-input", placeholder: "電話", type: "tel" %>
 
             <div class="flex gap-2">
-              <%= f.date_field :date, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500" %>
+              <%= f.date_field :date, class:"iding-input" %>
 
-              <%= f.time_field :time, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500" %>
+              <%= f.time_field :time, class:"iding-input" %>
             </div>
 
             <div class="flex gap-2">
-              <%= f.number_field :adult_num, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "大人", min: 0 %>
+              <%= f.number_field :adult_num, class: "iding-input", placeholder: "大人", min: 0 %>
 
-              <%= f.number_field :kid_num, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "小孩", min: 0 %>
+              <%= f.number_field :kid_num, class: "iding-input", placeholder: "小孩", min: 0 %>
             </div>
 
-            <%= f.text_area :note, class:"textarea focus:textarea-border-transparent text-black h-32 placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "備註" %>
+            <%= f.text_area :note, class:"iding-textarea", placeholder: "備註" %>
 
           </div>
 
@@ -107,23 +107,23 @@
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
 
               <div class="px-5 pb-5">
-                <%= f.text_field :name, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "姓名" %>
+                <%= f.text_field :name, class:"iding-input", placeholder: "姓名" %>
 
-                <%= f.text_field :tel, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "電話", type: "tel" %>
+                <%= f.text_field :tel, class: "iding-input", placeholder: "電話", type: "tel" %>
 
                 <div class="flex gap-2">
-                  <%= f.date_field :date, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500" %>
+                  <%= f.date_field :date, class:"iding-input" %>
 
-                  <%= f.time_field :time, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500" %>
+                  <%= f.time_field :time, class:"iding-input" %>
                 </div>
 
                 <div class="flex gap-2">
-                  <%= f.number_field :adult_num, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2 focus:border-gray-500", placeholder: "大人", min: 0 %>
+                  <%= f.number_field :adult_num, class: "iding-input", placeholder: "大人", min: 0 %>
 
-                  <%= f.number_field :kid_num, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2 focus:border-gray-500", placeholder: "小孩", min: 0 %>
+                  <%= f.number_field :kid_num, class: "iding-input", placeholder: "小孩", min: 0 %>
                 </div>
 
-                <%= f.text_area :note, class:"textarea focus:textarea-border-transparent text-black h-32 placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "備註" %>
+                <%= f.text_area :note, class:"iding-textarea", placeholder: "備註" %>
               </div>
 
               <div class="flex flex-row-reverse py-6">
@@ -134,7 +134,7 @@
             <% end %>
         </div>
       </div>
-      <div class="w-full lg:w-3/4 h-auto h-[calc(100%-100px)]">
+      <div class="w-full lg:w-3/4 h-[calc(100%-100px)]">
         <div class="top-0 w-11/12 mx-auto mt-5 overflow-y-auto bg-white rounded-lg shadow border-3 lg:absolute lg:right-2 lg:w-4/6 lg:h-full">
           <% @reservations.each do |reservation| %>
             <div class="w-full mb-1 border-2 rounded">
