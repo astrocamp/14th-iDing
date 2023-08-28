@@ -29,10 +29,10 @@
 
 ## 使用技術
 
-- 前端：HTML5 / CSS3 / Tailwind CSS / JavaScript / Stimulus.js
+- 前端：Tailwind CSS / Stimulus.js
 - 後端：Ruby (版本：3.2.2) / Ruby on Rails (版本：7.0.7)
-- 數據庫：PostgreSQL
-- 版本控制：Git / GitHub
+- 資料庫：PostgreSQL
+- 版本控制：Git
 - 第三方登入：Google
 - 圖片上傳：AWS S3
 
