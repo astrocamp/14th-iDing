@@ -1,29 +1,9 @@
-<%# 餐廳資訊 %>
-
-
-
-<%# 訂位時間 %>  
-
-
-<section class="max-w-screen-lg mx-auto my-14">
- 
-
-</section>
-
-
-
-
-
-
-
 <section class="max-w-screen-lg mx-auto my-14" data-controller="ordertime">
   <%= form_with(model: Reservation.new, url: restaurant_build_path(@restaurant), data:{ turbo: false }) do |f| %>
     <div>
-      <% date_range = RestaurantsHelper::DateRange.new(@holidays, @restaurant.bookday_advance) %>
-
       <h4 class='reservation-font'>用餐日期</h4>
       <div class='grid grid-cols-5 gap-3 md:grid-cols-7'>
-        <% date_range.reservation_range_date.each do |date| %>
+        <% @daterange.each do |date| %>
           <button class='h-full py-1 unselect-btn'
                   data-ordertime-target='dateBtn'
                   data-action='click->ordertime#clickDate'
@@ -39,10 +19,9 @@
     </div>
     
     <div>
-      <% time_range = RestaurantsHelper::TimeRange.new(@open_time, @restaurant.reserve_interval) %>
       <h4 class='reservation-font'>用餐時間</h4>
       <div class='grid grid-cols-5 gap-3 md:grid-cols-7'>
-        <% time_range.makelist.each do |time_point| %>
+        <% @timerange.each do |time_point| %>
         <button class="unselect-btn" data-ordertime-target='timeBtn' data-action="click->ordertime#clickTime"
                 value='<%= time_point %>'>
           <%= time_point %>

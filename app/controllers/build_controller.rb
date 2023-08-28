@@ -3,6 +3,7 @@
 class BuildController < ApplicationController
   include Wicked::Wizard
   before_action :set_restaurant, only: %i[show update]
+  before_action :set_holidays, :set_timelist, :set_daylist, only: [:show]
 
   steps :date_time_person, :customer_info
 
@@ -68,5 +69,27 @@ class BuildController < ApplicationController
 
   def set_restaurant
     @restaurant = Restaurant.find(params[:restaurant_id])
+  end
+
+  # TimeRange
+  def time_slot
+    @time_period = @restaurant.open_times.reduce([]) { |arr, time| arr.push(time.start_time.to_i..time.end_time.to_i) }
+  end
+
+  def set_timelist
+    time_slot
+    @timerange = @time_period.each_with_object([]) do |time, arr|
+      time.step(@restaurant.reserve_interval.minutes) { |t| arr.push(Time.at(t).utc.strftime('%R')) }
+    end
+  end
+
+  # DateRange
+  def set_holidays
+    @holidays = @restaurant.holidays.where.not(dayoff: nil).pluck(:dayoff)
+  end
+
+  def set_daylist
+    @end_day = Date.today + @restaurant.bookday_advance.days
+    @daterange = (Date.today..@end_day).select { |date| @holidays.exclude?(date.strftime('%a')) }
   end
 end
