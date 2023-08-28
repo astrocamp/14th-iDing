@@ -1,0 +1,87 @@
+<%= turbo_frame_tag "reservation_edit_sm" do %>
+  <div class="w-[90vw] mx-auto my-3 border-2 rounded-xl collapse bg-base-100 lg:hidden">
+    <input type="checkbox" class="collapse-toggle hidden" id="collapse-form-toggle">
+    <label for="collapse-form-toggle" class="cursor-pointer font-bold text-xl text-center">
+      <h1 class="text-xl font-semibold">
+      <%= image_tag "logo.png", class:"inline w-14 md:w-30 xl:w-30 py-2" %>
+      編輯訂位
+      </h1>
+    </label>
+    <div class="collapse-content p-1">
+      <%= form_with(model: @reservation, url: admin_restaurant_reservation_path(restaurant_id: @restaurant.id), data: { turbo: false }) do |f| %>
+
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+
+        <div class="px-1 pb-1 ">
+          <%= f.text_field :name, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "姓名" %>
+
+          <%= f.text_field :tel, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "電話", type: "tel" %>
+
+          <div class="flex gap-2">
+            <%= f.date_field :date, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500" %>
+
+            <%= f.time_field :time, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500" %>
+          </div>
+
+          <div class="flex gap-2">
+            <%= f.number_field :adult_num, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "大人", min: 0 %>
+
+            <%= f.number_field :kid_num, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "小孩", min: 0 %>
+          </div>
+
+          <%= f.text_area :note, class:"textarea focus:textarea-border-transparent text-black h-32 placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "備註" %>
+
+        </div>
+
+        <div class="flex flex-row-reverse py-6">
+          <div class="flex-initial m-auto">
+            <%= f.submit "修改訂位", class: "flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize bg-black rounded-md hover:bg-gray-800 focus:outline-none focus:bg-gray-900 transition duration-300 transform active:scale-95 ease-in-out" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="hidden top-0 w-4/5 lg:block lg:w-1/3">
+  <%= turbo_frame_tag "reservation_edit_lg" do %>
+    <div class="mt-5 mx-1 bg-white rounded-lg shadow border-b border-4 border-red-800">
+      <div class="flex justify-center">
+        <div>
+          <%= image_tag "logo.png", class:"w-14 md:w-30 xl:w-30 py-2" %>
+        </div>
+        <h1 class="text-2xl font-semibold py-5">編輯訂位</h1>
+      </div>
+        <%= form_with(model: @reservation, url: admin_restaurant_reservation_path(restaurant_id: @restaurant.id), data: { turbo: false }) do |f| %>
+
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+
+          <div class="px-5 pb-5">
+            <%= f.text_field :name, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "姓名" %>
+
+            <%= f.text_field :tel, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "電話", type: "tel" %>
+
+            <div class="flex gap-2">
+              <%= f.date_field :date, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500" %>
+
+              <%= f.time_field :time, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500" %>
+            </div>
+
+            <div class="flex gap-2">
+              <%= f.number_field :adult_num, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2 focus:border-gray-500", placeholder: "大人", min: 0 %>
+
+              <%= f.number_field :kid_num, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2 focus:border-gray-500", placeholder: "小孩", min: 0 %>
+            </div>
+
+            <%= f.text_area :note, class:"textarea focus:textarea-border-transparent text-black h-32 placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", placeholder: "備註" %>
+          </div>
+
+          <div class="flex flex-row-reverse py-6">
+            <div class="flex-initial m-auto">
+              <%= f.submit "修改訂位", class: "flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize bg-black rounded-md hover:bg-gray-800 focus:outline-none focus:bg-gray-900 transition duration-300 transform active:scale-95 ease-in-out" %>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  <% end %>
+</div>
