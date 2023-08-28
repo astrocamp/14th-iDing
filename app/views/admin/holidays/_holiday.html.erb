@@ -2,7 +2,7 @@
       data-holiday-target='dayOff' class='flex items-center w-2/3 px-2 py-1 m-auto mt-2 border rounded md:w-full justify-evenly'
 > 
   <%= holiday.dayoff %>
-  <%= link_to admin_holiday_path(holiday), data: {turbo_method: 'delete', turbo_confirm: '確認刪除？'},class: 'icon-btn' do%>
+  <%= link_to admin_holiday_path(holiday), data: {turbo_method: 'delete', turbo_confirm: '確認刪除？'},class: 'icon-btn' do %>
     <i class="fa-solid fa-xmark"></i>
   <% end %>
 </span>
