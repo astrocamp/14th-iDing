@@ -3,7 +3,6 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[show]
   before_action :set_holidays, only: %i[show]
-  before_action :set_weekdays, only: %i[show]
 
   def index
     @restaurants = Restaurant.order(:id)
@@ -20,10 +19,6 @@ class RestaurantsController < ApplicationController
   end
 
   def set_holidays
-    @holidays = @restaurant.holidays.map(&:dayoff)
-  end
-
-  def set_weekdays
-    @chinese_weekdays = %w[日 一 二 三 四 五 六]
+    @holidays = @restaurant.holidays.where.not(dayoff: nil).pluck(:dayoff)
   end
 end

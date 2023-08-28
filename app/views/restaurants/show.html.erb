@@ -31,7 +31,7 @@
                   value='<%= date %>'
                   >
             <%= date.strftime('%m/%d') %>
-            <%= "(#{@chinese_weekdays[date.wday]})" %>
+            <%= "(#{chinese_weekday(date)})" %>
           </button>
         <% end  %>
         <%= f.hidden_field :date, data: {ordertime_target: "dateInput"}%>

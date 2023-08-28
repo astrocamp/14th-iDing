@@ -29,4 +29,8 @@ module RestaurantsHelper
       (Date.today..@end_day).select { |date| @holidays.exclude?(date.strftime('%a')) }
     end
   end
+
+  def chinese_weekday(date)
+    %w[日 一 二 三 四 五 六][date.wday]
+  end
 end
