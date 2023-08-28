@@ -24,6 +24,8 @@ class Reservation < ApplicationRecord
 
   belongs_to :restaurant
   belongs_to :table, optional: true
+  after_save :update_table_status
+  before_destroy :free_up_table
 
   validates :date, presence: true
   validates :time, presence: true
@@ -37,4 +39,14 @@ class Reservation < ApplicationRecord
           current_time.to_date, current_time.to_date, current_time.strftime('%H:%M:%S'))
       .order(:date, :time)
   }
+
+  private
+
+  def update_table_status
+    table.update(status: 'occupied') if table_id.present?
+  end
+
+  def free_up_table
+    table.update(status: 'vacant') if table.present?
+  end
 end
