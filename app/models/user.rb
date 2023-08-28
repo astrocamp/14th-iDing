@@ -15,8 +15,6 @@
 #  deleted_at             :datetime
 #
 class User < ApplicationRecord
-  acts_as_paranoid
-
   has_many :restaurants
 
   devise :database_authenticatable, :registerable,
