@@ -3,20 +3,30 @@
 module Admin
   class ReservationsController < ApplicationController
     before_action :set_restaurant
+    before_action :set_reservation, only: %i[edit update destroy]
 
     def create
       @reservation = @restaurant.reservations.new(reservation_params)
+
       if @reservation.save
         redirect_to admin_restaurant_path(@restaurant), notice: '訂位新增成功'
       else
-        flash[:alert] = '訂位失敗'
-        redirect_to admin_restaurant_path(@restaurant)
+        redirect_to admin_restaurant_path(@restaurant), alert: '訂位失敗'
+      end
+    end
+
+    def edit; end
+
+    def update
+      if @reservation.update(reservation_params)
+        redirect_to admin_restaurant_path(@restaurant), notice: '訂位資訊已更新'
+      else
+        render 'admin/restaurants/show', alert: '更新失敗'
       end
     end
 
     def destroy
-      reservation = @restaurant.reservations.find(params[:id])
-      reservation.destroy
+      @reservation.destroy
       redirect_to admin_restaurant_path(@restaurant), notice: '訂位刪除成功'
     end
 
@@ -29,6 +39,10 @@ module Admin
 
     def set_restaurant
       @restaurant = current_user.restaurants.find(params[:restaurant_id])
+    end
+
+    def set_reservation
+      @reservation = @restaurant.reservations.find(params[:id])
     end
   end
 end
