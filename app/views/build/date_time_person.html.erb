@@ -52,11 +52,11 @@
   <%= form_with url:wizard_path, method: :patch, data: { turbo: false } do |f| %>
     <div class="my-6">
       <div class="flex flex-col justify-between gap-4 sm:flex-row">
-        <div class="w-full sm:w-1/4 sm:mb-0">
+        <div class="w-full sm:w-1/2 sm:mb-0">
           <%= f.label :adult_num, '大人數',class:"block mr-2 text-sm text-gray-00" %>
           <%= f.number_field :adult_num, value: session.dig(:first_step_data, 'adult_num'), class:"h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded", min: 1 %>
         </div>
-        <div class="w-full sm:w-1/4 sm:mb-0">
+        <div class="w-full sm:w-1/2 sm:mb-0">
           <%= f.label :kid_num, '小孩數',class:"block mr-2 text-sm text-gray-00" %>
           <%= f.number_field :kid_num,
                   value: session.dig(:first_step_data, 'kid_num').present? ? session.dig(:first_step_data, 'kid_num') : 0,
