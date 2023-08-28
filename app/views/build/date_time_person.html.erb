@@ -63,26 +63,38 @@
                   class: "h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
                   min: 0 %>
         </div>
-        <div class="w-full sm:w-1/2 sm:mb-0">
-          <%= f.label :date, '用餐日期',class:"block mr-2 text-sm text-gray-00" %>
-          <%= f.date_field :date, value: session.dig(:first_step_data, 'date'), min: Date.today.strftime('%Y-%m-%d'), class:"h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" %>
-        </div>
       </div>
     </div>
   <hr>
 </div>
 
-<section data-controller="ordertime" class="mx-4 my-8 lg:my-8 lg:mx-28">
-  <div  class= "flex flex-wrap justify-center">
-    <% time_range = RestaurantsHelper::TimeRange.new(@open_time, @restaurant.reserve_interval) %>
-    <p class='w-full text-2xl font-bold text-center text-green'>選擇用餐時間</p>
-      <% time_range.makelist.each do |time_point| %>
-      <button type="button" class="unselect-btn m-8 focus:outline-none font-medium rounded-lg text-xl w-32 px-5 py-2.5 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" data-ordertime-target='timeBtn' data-action="click->ordertime#clickTime"
-              value='<%= time_point %>'>
-        <%= time_point %>
+<section data-controller="ordertime" class="mx-4 lg:mx-28">
+  <p class='w-full my-8 text-2xl font-bold text-center text-green'>選擇用餐日期</p>
+  <div class="grid grid-cols-6 gap-4 my-8">
+    <% @daterange.each do |date| %>
+      <button class='w-32 text-xl font-medium rounded-lg unselect-btn'
+              data-ordertime-target='dateBtn'
+              data-action='click->ordertime#clickDate'
+              data-id='<%=@restaurant.id%>'
+              value='<%= date %>'
+              >
+        <%= date.strftime('%m/%d') %>
+        <%= "(#{chinese_weekday(date)})" %>
       </button>
-      <% end %>
-    </div>
+    <% end  %>
+    <%= f.hidden_field :date, data: {ordertime_target: "dateInput"}%>
+  </div>
+  <hr>
+
+  <p class='w-full my-8 text-2xl font-bold text-center text-green'>選擇用餐時間</p>
+  <div class="grid grid-cols-6 gap-4 ">
+    <% @timerange.each do |time_point| %>
+    <button class="w-32 text-xl font-medium rounded-lg unselect-btn"
+            data-ordertime-target='timeBtn' data-action="click->ordertime#clickTime"
+            value='<%= time_point %>'>
+      <%= time_point %>
+    </button>
+    <% end %>
   </div>
   <%= f.hidden_field :time, data: {ordertime_target: "timeInput"}%>
   <%= f.submit '下一步', class: 'next-btn' %>
