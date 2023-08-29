@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     resources :restaurants do
       resources :tables
       resources :open_times, shallow: true, only: [:index, :create, :edit, :update, :destroy]
-      resources :reservations, only: [:create, :edit, :update, :destroy]
+      resources :reservations, only: [:create, :edit, :update, :destroy] do
+        collection do
+          get 'search', to: 'reservations#search'
+        end
+      end
       resources :holidays, shallow: true, only: [:create, :destroy]
     end
   end
