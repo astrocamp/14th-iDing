@@ -61,5 +61,42 @@ class Reservation < ApplicationRecord
     else
       errors.add(:base, '無法找到合適的空桌')
     end
+  def self.ransackable_attributes(auth_object = nil)
+      ["name", "tel", "date", "restaurant_id"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["restaurant"]
+  end
+
+  def self.search(params)
+    result = all
+    # if params[:date_start].present? && params[:date_end].present?
+    #   start_date = Date.parse(params[:date_start], "%Y-%m-%d")
+    #   end_date = Date.parse(params[:date_end], "%Y-%m-%d")
+    #   result = result.where(date: start_date..end_date)
+    # end
+    if params[:date_range_gteq].present?
+      date_range = params[:date_range_gteq].split(" - ")
+      start_date = Date.parse(date_range[0])
+      end_date = Date.parse(date_range[1])
+      result = result.where(date: start_date..end_date)
+    end
+    
+    if params[:name_or_tel_cont].present?
+      result = result.ransack("name_or_tel_cont" => params[:name_or_tel_cont]).result
+    end
+    result
+  end
+
+  ransacker :name_or_tel_cont do
+    Arel::Nodes::NamedFunction.new('CONCAT_WS', [Arel::Nodes.build_quoted(' '), arel_table[:name], arel_table[:tel]])
+  end
+  
+  ransacker :date_range, type: :date do
+    Arel.sql('date(date_start)')..Arel.sql('date(date_end)')
+  end
+  ransacker :created_on, formatter: proc { |value| Date.parse(value).strftime('%Y-%m-%d') } do
+    Arel.sql("DATE(#{table_name}.created_at)")
   end
 end
