@@ -8,7 +8,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @open_time = @restaurant.open_times.order(start_time: :asc)
+    @open_time = @restaurant.open_times.order(:start_time)
   end
 
   private

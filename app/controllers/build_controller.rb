@@ -10,7 +10,7 @@ class BuildController < ApplicationController
   def show
     case step
     when :date_time_person
-      @open_time = @restaurant.open_times
+      @open_time = @restaurant.open_times.order(:start_time)
 
     when :customer_info
       @first_step = session[:first_step_data]
@@ -81,7 +81,7 @@ class BuildController < ApplicationController
     time_slot
     @timerange = @time_period.each_with_object([]) do |time, arr|
       time.step(@restaurant.reserve_interval.minutes) { |t| arr.push(Time.at(t).utc.strftime('%R')) }
-    end
+    end.sort
   end
 
   # DateRange
