@@ -5,6 +5,11 @@ module Admin
     before_action :set_restaurant
     before_action :set_reservation, only: %i[edit update destroy]
 
+    def search
+      @search = Reservation.ransack(params[:q]) # 使用 :q 作為 Ransack 查詢參數
+      @reservations = @search.result
+    end
+
     def create
       @reservation = @restaurant.reservations.new(reservation_params)
 

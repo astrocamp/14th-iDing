@@ -22,7 +22,7 @@ gem 'omniauth-rails_csrf_protection'
 gem "paranoia", "~> 2.2"
 gem "wicked", "~> 2.0"
 gem "jbuilder"
-
+gem 'ransack'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
