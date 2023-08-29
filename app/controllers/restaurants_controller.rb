@@ -19,7 +19,8 @@ class RestaurantsController < ApplicationController
 
   # TimeRange
   def time_slot
-    @time_period = @restaurant.open_times.reduce([]) { |arr, time| arr.push(time.start_time.to_i..time.end_time.to_i) }
+    time_periods = @restaurant.open_times.pluck(:start_time, :end_time)
+    @time_period = time_periods.map { |start_time, end_time| start_time.to_i..end_time.to_i }
   end
 
   def set_timelist
@@ -35,7 +36,7 @@ class RestaurantsController < ApplicationController
   end
 
   def set_daylist
-    @end_day = Date.today + @restaurant.bookday_advance.days
+    @end_day = Date.today + @restaurant.bookday_advance
     @daterange = (Date.today..@end_day).select { |date| @holidays.exclude?(date.strftime('%a')) }
   end
 end
