@@ -28,9 +28,8 @@ class BuildController < ApplicationController
         'kid_num' => params[:kid_num]
       }
 
-      puts session[:first_step_data]
-
       redirect_to wizard_path(:customer_info)
+
 
     when :customer_info
 

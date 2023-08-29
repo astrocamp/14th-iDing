@@ -8,7 +8,8 @@ module Admin
     def create
       @reservation = @restaurant.reservations.new(reservation_params)
 
-      if @reservation.save
+      if total_guests_valid?
+        @reservation.save
         redirect_to admin_restaurant_path(@restaurant), notice: '訂位新增成功'
       else
         redirect_to admin_restaurant_path(@restaurant), alert: '訂位失敗'
@@ -21,7 +22,7 @@ module Admin
       if @reservation.update(reservation_params)
         redirect_to admin_restaurant_path(@restaurant), notice: '訂位資訊已更新'
       else
-        render 'admin/restaurants/show', alert: '更新失敗'
+        redirect_to admin_restaurant_path(@restaurant), alert: '訂位人數超過所選座位 / 目前已客滿'
       end
     end
 
@@ -43,6 +44,19 @@ module Admin
 
     def set_reservation
       @reservation = @restaurant.reservations.find(params[:id])
+    end
+  
+      
+    def total_guests_valid?
+      @total_guests = @reservation.adult_num + @reservation.kid_num
+      vacant_table = @restaurant.tables.where(status: 'vacant').where('seat_num >= ?', @total_guests).first
+
+      if vacant_table
+        @reservation.table_id = vacant_table.id
+        @reservation.save
+      else
+        false
+      end
     end
   end
 end
