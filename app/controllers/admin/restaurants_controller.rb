@@ -5,18 +5,16 @@ module Admin
     before_action :set_restaurant, only: %i[show edit update destroy]
 
     def index
-      @restaurants = current_user.restaurants.order(:id)
+      @restaurants = current_user.restaurants
     end
 
     def show
-      current_time = Time.now
-      @reservations = @restaurant.reservations.in_future(current_time)
-
-      @reservation = @restaurant.reservations.new
+      @reservations = @restaurant.reservations.in_future(Time.current)
+      @reservation = Reservation.new
     end
 
     def new
-      @restaurant = current_user.restaurants.new
+      @restaurant = Restaurant.new
     end
 
     def create
@@ -24,7 +22,7 @@ module Admin
       if @restaurant.save
         redirect_to admin_restaurants_path, notice: '餐廳新增成功'
       else
-        flash[:alert] = '姓名、統編、地址、電話 <br> 不得空白'
+        flash[:alert] = '必填欄位尚未填寫'
         render :new
       end
     end
@@ -48,7 +46,7 @@ module Admin
 
     def restaurant_params
       params.require(:restaurant)
-            .permit(:name, :URL, :tel, :address, :description, :UBN, :image, :bookday_advance, :mealtime, :reserve_interval)
+            .permit(:name, :url, :tel, :address, :description, :ubn, :image, :bookday_advance, :mealtime, :reserve_interval)
     end
 
     def set_restaurant

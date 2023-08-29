@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_26_044155) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_28_110237) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,8 +34,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_26_044155) do
   create_table "reservations", force: :cascade do |t|
     t.date "date", null: false
     t.time "time", null: false
-    t.integer "adult_num", null: false
-    t.integer "kid_num", null: false
+    t.integer "adults", null: false
+    t.integer "kids", null: false
     t.string "purpose"
     t.text "note"
     t.string "serial"
@@ -55,11 +55,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_26_044155) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
-    t.string "URL", null: false
+    t.string "url", null: false
     t.string "tel", null: false
     t.string "address", null: false
     t.text "description"
-    t.string "UBN"
+    t.string "ubn"
     t.string "image"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -88,8 +88,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_26_044155) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
