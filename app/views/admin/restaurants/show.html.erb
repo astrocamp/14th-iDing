@@ -59,24 +59,20 @@
             <div class="px-1 pb-1">
               <%= f.text_field :name, class: "iding-input", placeholder: "姓名" %>
               <%= f.text_field :tel, class: "iding-input", placeholder: "電話", type: "tel" %>
+
               <div class="flex gap-2">
                 <%= f.date_field :date, class: "iding-input" %>
                 <%= f.time_field :time, class: "iding-input" %>
-                <div class="flex gap-2">
-                  <%= f.select :table_id, prompt: "桌號" do %>
-                    <optgroup label="空缺">
-                      <% @restaurant.tables.where(status: "vacant").each do |table| %>
-                        <option value="<%= table.id %>"><%= "#{table.name} - #{table.category}" %></option>
-                      <% end %>
-                    </optgroup>
-                    <optgroup label="使用中">
-                      <% @restaurant.tables.where(status: "occupied").each do |table| %>
-                        <option value="<%= table.id %>" disabled="disabled"><%= "#{table.name} - #{table.category}" %></option>
-                      <% end %>
-                    </optgroup>
-                  <% end %>
-                </div>
               </div>
+
+              <div>
+                <%= f.text_area :note, class: "iding-textarea", placeholder: "備註" %>
+              </div>
+
+              <div class="flex gap-3">
+                <%= table_select_options(@restaurant) %>
+              </div>
+      
               <div class="flex flex-row-reverse py-6">
                 <div class="flex-initial m-auto">
                   <%= f.submit "建立訂位", class: "flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize bg-black rounded-md hover:bg-gray-800 focus:outline-none focus:bg-gray-900 transition duration-300 transform active:scale-95 ease-in-out" %>
@@ -112,18 +108,7 @@
                 </div>
                 <%= f.text_area :note, class: "iding-textarea", placeholder: "備註" %>
                 <div class="flex gap-2">
-                  <%= f.select :table_id, prompt: "桌號" do %>
-                    <optgroup label="空缺">
-                      <% @restaurant.tables.where(status: "vacant").each do |table| %>
-                        <option value="<%= table.id %>"><%= "#{table.name} - #{table.category}" %></option>
-                      <% end %>
-                    </optgroup>
-                    <optgroup label="使用中">
-                      <% @restaurant.tables.where(status: "occupied").each do |table| %>
-                        <option value="<%= table.id %>" disabled="disabled"><%= "#{table.name} - #{table.category}" %></option>
-                      <% end %>
-                    </optgroup>
-                  <% end %>
+                  <%= table_select_options(@restaurant) %>
                 </div>
               </div>
               <div class="flex flex-row-reverse py-6">
