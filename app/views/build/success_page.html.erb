@@ -16,8 +16,8 @@
           <div class="py-6 text-center">
             <p class="text-2xl"><%= @reservation.date.strftime("%m月%d日") %></p>
             <p class="text-5xl text-green-800"><%= @reservation.time.strftime("%H:%M") %></p>
-            <p class="text-xl"><%= @reservation.adult_num %> 位大人</p>
-            <p class="text-xl"><%= "#{@reservation.kid_num} 位小孩" unless @reservation.kid_num.zero? %></p>
+            <p class="text-xl"><%= @reservation.adults %> 位大人</p>
+            <p class="text-xl"><%= "#{@reservation.kids} 位小孩" unless @reservation.kids.zero? %></p>
             <p class="text-sm"><%= "備註：#{@reservation.note}" unless @reservation.note.blank? %></p>
           </div>
           <div class="pt-3">

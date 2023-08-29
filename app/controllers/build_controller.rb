@@ -24,8 +24,8 @@ class BuildController < ApplicationController
       session[:first_step_data] = {
         'date' => params[:date],
         'time' => params[:time],
-        'adult_num' => params[:adult_num],
-        'kid_num' => params[:kid_num]
+        'adults' => params[:adults],
+        'kids' => params[:kids]
       }
 
       redirect_to wizard_path(:customer_info)
@@ -60,8 +60,8 @@ class BuildController < ApplicationController
     ).merge(
       date: session[:first_step_data]['date'],
       time: session[:first_step_data]['time'],
-      adult_num: session[:first_step_data]['adult_num'],
-      kid_num: session[:first_step_data]['kid_num']
+      adults: session[:first_step_data]['adults'],
+      kids: session[:first_step_data]['kids']
     )
   end
 

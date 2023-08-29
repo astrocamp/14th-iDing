@@ -6,11 +6,11 @@
 #
 #  id               :bigint           not null, primary key
 #  name             :string           not null
-#  URL              :string           not null
+#  url              :string           not null
 #  tel              :string           not null
 #  address          :string           not null
 #  description      :text
-#  UBN              :string
+#  ubn              :string
 #  image            :string
 #  user_id          :integer
 #  created_at       :datetime         not null
@@ -23,7 +23,7 @@ class Restaurant < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validates :name, presence: true
-  validates :URL, presence: true, uniqueness: true
+  validates :url, presence: true, uniqueness: true
   validates :tel, presence: true
   validates :address, presence: true
 
