@@ -7,8 +7,8 @@
 #  id            :bigint           not null, primary key
 #  date          :date             not null
 #  time          :time             not null
-#  adult_num     :integer          not null
-#  kid_num       :integer          not null
+#  adults     :integer          not null
+#  kids       :integer          not null
 #  purpose       :string
 #  note          :text
 #  serial        :string
@@ -33,8 +33,8 @@ class Reservation < ApplicationRecord
   validates :time, presence: true
   validates :name, presence: true
   validates :tel, presence: true
-  validates :adult_num, presence: true, numericality: { greater_than: 0 }
-  validates :kid_num, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :adults, presence: true, numericality: { greater_than: 0 }
+  validates :kids, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
   scope :in_future, lambda { |current_time|
     where('date > ? OR (date = ? AND time >= ?)',

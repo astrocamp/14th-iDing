@@ -12,7 +12,6 @@
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  deleted_at             :datetime
 #
 class User < ApplicationRecord
   has_many :restaurants

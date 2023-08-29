@@ -31,7 +31,9 @@
     <div class="m-2 lg:mx-4">
       <div class="flex navbar bg-base-100 my-3 border-2 rounded-xl lg:w-[86vw]">
         <div class="lg:mr-auto">
-          <a class="hidden normal-case btn btn-ghost lg:flex">返回</a>
+          <%= link_to admin_restaurants_path do %>
+            <p class="hidden normal-case btn btn-ghost lg:flex">返回</p>
+          <% end %>
         </div>
         <div class="m-auto lg:ml-auto">
           <a class="text-xl normal-case btn btn-ghost">行事曆</a>
@@ -159,8 +161,8 @@
                 </div>
                 <div class="flex">
                   <div>
-                    <%= reservation.adult_num %> 位大人<br>
-                    <%= reservation.kid_num %> 位小孩
+                    <%= reservation.adults %> 位大人<br>
+                    <%= reservation.kids %> 位小孩
                   </div>
                 </div>
                 <div class="px-4 py-3 text-lg font-medium border-2 rounded-lg">
