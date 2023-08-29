@@ -16,7 +16,7 @@ module RestaurantsHelper
       "空缺" => vacant_options,
       "使用中" => occupied_options
     }
-    select_tag :table_id, grouped_options_for_select(grouped_options)
+    select_tag :table_id, grouped_options_for_select(grouped_options), prompt: "桌號"
   end
 
 end

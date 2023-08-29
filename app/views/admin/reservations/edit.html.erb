@@ -31,18 +31,7 @@
 
           <%= f.text_area :note, class:"iding-text-area", placeholder: "備註" %>
           <div class="flex gap-2">
-            <%= f.select :table_id, prompt: "桌號" do %>
-              <optgroup label="空缺">
-                <% @restaurant.tables.where(status: "vacant").each do |table| %>
-                  <option value="<%= table.id %>"><%= "#{table.name} - #{table.category}" %></option>
-                <% end %>
-              </optgroup>
-              <optgroup label="使用中">
-                <% @restaurant.tables.where(status: "occupied").each do |table| %>
-                  <option value="<%= table.id %>" disabled="disabled"><%= "#{table.name} - #{table.category}" %></option>
-                <% end %>
-              </optgroup>
-            <% end %>
+            <%= table_select_options(@restaurant) %>
           </div>
 
         </div>
@@ -92,17 +81,7 @@
 
             <div class="flex gap-2">
               <%= f.select :table_id, prompt: "桌號" do %>
-                <optgroup label="空缺">
-                  <% @restaurant.tables.where(status: "vacant").each do |table| %>
-                    <option value="<%= table.id %>"><%= "#{table.name} - #{table.category}" %></option>
-                  <% end %>
-                </optgroup>
-                <optgroup label="使用中">
-                  <% @restaurant.tables.where(status: "occupied").each do |table| %>
-                    <option value="<%= table.id %>" disabled="disabled"><%= "#{table.name} - #{table.category}" %></option>
-                  <% end %>
-                </optgroup>
-              <% end %>
+                <%= table_select_options(@restaurant) %>
             </div>
             </div>
 
