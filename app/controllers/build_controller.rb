@@ -30,7 +30,6 @@ class BuildController < ApplicationController
 
       redirect_to wizard_path(:customer_info)
 
-
     when :customer_info
 
       @reservation = @restaurant.reservations.create!(reservation_params)

@@ -27,7 +27,7 @@ class Reservation < ApplicationRecord
 
   after_save :update_table_status
   before_destroy :free_up_table
-  before_save :assign_table
+  before_save :valid_total_guests
 
   validates :date, presence: true
   validates :time, presence: true
@@ -45,29 +45,23 @@ class Reservation < ApplicationRecord
   private
 
   def update_table_status
-    if table_id.present?
-      table.update(status: "occupied")
-    end
+    return unless table_id.present?
+
+    table.update(status: 'occupied')
   end
 
   def free_up_table
-    table.update(status: "vacant") if table.present?
+    table.update(status: 'vacant') if table.present?
   end
 
-  def assign_table
-    if table_id.blank?
-      vacant_table = restaurant.tables.find_by(status: "vacant")
-      if vacant_table
-        total_guests = adult_num + kid_num
-        if total_guests <= vacant_table.seat_num
-          self.table_id = vacant_table.id
-        else
-          errors.add(:base, "訂位人數超過所選座位的容量")
-        end
-      else
-        errors.add(:base, "目前已客滿")
-      end
+  def valid_total_guests
+    total_guests = adult_num + kid_num
+    vacant_table = restaurant.tables.where(status: 'vacant').where('seat_num >= ?', total_guests).first
+
+    if vacant_table
+      self.table = vacant_table
+    else
+      errors.add(:base, '無法找到合適的空桌')
     end
   end
-
 end
