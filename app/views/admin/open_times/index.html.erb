@@ -11,10 +11,10 @@
           <div data-controller='opentime' class= "mt-3">
             <div class='text-center'>
               <div>
-                <span>開始時間 : </span><%= f.time_field :start_time, data: {opentime_target: 'startTime', action: 'change->opentime#compareTime'}%>
+                <span>開始時間 : </span><%= f.time_field :start_time, data: {opentime_target: 'startTime', action: 'change->opentime#compare'}%>
               </div>
               <div class='mt-3 mb-4'>
-                <span>結束時間 : </span><%= f.time_field :end_time, data: {opentime_target: 'endTime', action: 'change->opentime#compareTime'} %>
+                <span>結束時間 : </span><%= f.time_field :end_time, data: {opentime_target: 'endTime', action: 'change->opentime#compare'} %>
               </div>
               <%= f.submit '儲存', class: 'action-btn', data: {opentime_target: 'submit'}, disabled: true %>
             </div>
