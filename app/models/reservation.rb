@@ -45,9 +45,7 @@ class Reservation < ApplicationRecord
   private
 
   def update_table_status
-    return unless table_id.present?
-
-    table.update(status: 'occupied')
+    table.update(status: 'occupied') if table_id.present?
   end
 
   def free_up_table
