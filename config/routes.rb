@@ -19,7 +19,14 @@ Rails.application.routes.draw do
   end
 
   resources :restaurants do
-    resources :build, only: [:show, :update]
+    resources :build, only: [:show, :update] do
+      collection do
+        post :filter_timelist
+      end
+    end
+    member do
+      post :filter_timelist
+    end
   end
 
   resources :reservations, only: :destroy
