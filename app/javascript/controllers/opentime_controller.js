@@ -5,10 +5,10 @@ export default class extends Controller {
   static targets = ["startTime", "endTime", "submit"];
 
   connect() {
-    this.compareTime();
+    this.compare();
   }
 
-  compareTime() {
+  compare() {
     const TimeCorrect =
       this.startTimeTargets[0].value < this.endTimeTargets[0].value;
     this.submitTarget.classList.toggle("void-btn", !TimeCorrect);

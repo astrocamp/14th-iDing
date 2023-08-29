@@ -26,7 +26,7 @@
             <div class="flex mb-2">
               <i class="fa-solid fa-clock green"></i><p class="ml-5 text-sm font-bold text-brand-500 green"><%= Time.parse(session.dig(:first_step_data, 'time')).strftime("%H:%M") %></p>
             </div>
-          <button href="#" class="w-full px-2 py-1 font-bold tracking-wider text-white bg-gray-500 rounded hover:bg-green"><%= link_to '返回修改', previous_wizard_path %></button>
+          <%= link_to previous_wizard_path do %><button class="w-full px-2 py-1 font-bold tracking-wider text-white bg-gray-500 rounded hover:bg-green">返回修改</button><% end %>
         </div>
       </div>
     </div>
