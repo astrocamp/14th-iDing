@@ -1,18 +1,13 @@
 <p>訂單歷史搜尋</p>
 <%= search_form_for @search, url: search_admin_restaurant_reservations_path do |f| %>
-  <%= f.search_field :name_or_tel_cont, placeholder: "搜尋姓名或電話" %>
-  
-  <%= f.label :date_eq, "日期範圍：" %>
-  <%= f.date_field :date_eq %>
-  <%# <%= f.label :date_start_gteq %>
-  <%# <%= f.date_field :date_start_gteq %>
-<%# 
-  <%= f.label :date_end_lteq %>
-  <%# <%= f.date_field :date_end_lteq %> %> %> %> %>
-
+  <%= f.search_field :name_or_tel_cont, placeholder: "姓名或電話" %>
+  <div>
+    <%= f.label :date_eq, class: "hidden-label" %>
+    <%= f.text_field :date_eq, placeholder: "訂位日期", data: { controller: "flatpickr" }, class: "basic"%>
+  </div>
   <%= f.submit '搜尋' %>
 <% end %>
-<%= sort_link(@search, :date, '訂位日期', default_order: :desc) %>
+<%= sort_link(@search, :date, '訂位日期排序', default_order: :desc) %>
 <table>
   <thead>
     <tr>
