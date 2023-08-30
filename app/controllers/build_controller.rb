@@ -105,10 +105,10 @@ class BuildController < ApplicationController
         available_tables = @restaurant.tables.count - reservations_count
 
         if available_tables.positive?
-          timerange << Time.at(time).utc.strftime('%R')
+          @timerange << Time.at(time).utc.strftime('%R')
         end
       end
     end
-    render json: {timerange:}
+    render json: { timerange: @timerange }
   end
 end
