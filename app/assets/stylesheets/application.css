@@ -39,7 +39,3 @@ select:focus {
   border-color: #666;
   box-shadow: 0 0 0 1px #ccc, 0 0 0 2px #666;
 }
-
-.hidden-label {
-  display: none;
-}
