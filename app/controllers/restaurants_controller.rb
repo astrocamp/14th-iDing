@@ -11,6 +11,26 @@ class RestaurantsController < ApplicationController
     @open_time = @restaurant.open_times.order(:start_time)
   end
 
+  def filter_timelist
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    selected_date = params[:date].to_date
+    time_slot
+    @timerange = []
+
+    @time_period.each do |time_range|
+      time_range.step(@restaurant.reserve_interval.minutes) do |time|
+        end_time = time + @restaurant.mealtime.minutes
+        reservations_count = @restaurant.reservations.where(date: selected_date, time: time..end_time).count
+        available_tables = @restaurant.tables.count - reservations_count
+
+        if available_tables.positive?
+          @timerange << Time.at(time).utc.strftime('%R')
+        end
+      end
+    end
+    render json: { timerange: @timerange }
+  end
+
   private
 
   def set_restaurant
@@ -40,23 +60,5 @@ class RestaurantsController < ApplicationController
     @daterange = (Date.today..@end_day).select { |date| @holidays.exclude?(date.strftime('%a')) }
   end
 
-  def filter_timelist
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    selected_date = params[:date].to_date
-    time_slot
-    @timerange = []
-
-    @time_period.each do |time_range|
-      time_range.step(@restaurant.reserve_interval.minutes) do |time|
-        end_time = time + @restaurant.mealtime.minutes
-        reservations_count = @restaurant.reservations.where(date: selected_date, time: time..end_time).count
-        available_tables = @restaurant.tables.count - reservations_count
-
-        if available_tables.positive?
-          @timerange << Time.at(time).utc.strftime('%R')
-        end
-      end
-    end
-    render json: { timerange: @timerange }
-  end
+  
 end
