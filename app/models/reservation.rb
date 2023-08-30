@@ -77,7 +77,7 @@ class Reservation < ApplicationRecord
     event :cancel do
       transitions from: %i[reserved keeped], to: :cancelled
     end
-    
+
   end
 
   private
