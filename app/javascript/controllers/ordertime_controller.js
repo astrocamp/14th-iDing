@@ -2,7 +2,13 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="ordertime"
 export default class extends Controller {
-  static targets = ["timeBtn", "timeInput", "dateInput", "dateBtn"];
+  static targets = [
+    "timeBtn",
+    "timeInput",
+    "dateInput",
+    "dateBtn",
+    "timeContainer",
+  ];
 
   clickDate(e) {
     e.preventDefault();
@@ -19,8 +25,6 @@ export default class extends Controller {
       .getAttribute("content");
     const ID = e.currentTarget.dataset.id;
     const selectedDate = e.target.value;
-    console.log(ID);
-    console.log(selectedDate);
 
     fetch(`/restaurants/${ID}/filter_timelist`, {
       method: "POST", // 或'GET'，根據您的需求
@@ -35,7 +39,19 @@ export default class extends Controller {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        const timelist = data.timerange;
+        const timeContainer = this.timeContainerTarget;
+
+        timeContainer.innerHTML = "";
+        timelist.forEach((timePoint) => {
+          const button = document.createElement("button");
+          button.className = "w-32 text-xl font-medium rounded-lg unselect-btn";
+          button.setAttribute("data-ordertime-target", "timeBtn");
+          button.setAttribute("data-action", "click->ordertime#clickTime");
+          button.value = timePoint;
+          button.textContent = timePoint;
+          timeContainer.appendChild(button);
+        });
       })
       .catch((error) => {
         console.error("Error:", error);

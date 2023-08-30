@@ -26,11 +26,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :restaurants do
-
-  end
-
-
   resources :reservations, only: :destroy
 
   get '/success_page/:reservation_id', to: 'build#success_page', as: :success_page
