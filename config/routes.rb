@@ -22,8 +22,7 @@ Rails.application.routes.draw do
     member do
       post :filter_timelist
     end
-    resources :build, only: [:show, :update] do
-    end
+    resources :build, only: [:show, :update]
   end
 
   resources :reservations, only: :destroy
