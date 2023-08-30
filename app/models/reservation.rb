@@ -21,12 +21,11 @@
 #
 class Reservation < ApplicationRecord
   acts_as_paranoid
+  include AASM
 
   belongs_to :restaurant
   belongs_to :table, optional: true
 
-  after_save :update_table_status
-  before_destroy :free_up_table
   before_save :valid_total_guests
 
   validates :date, presence: true
@@ -42,15 +41,28 @@ class Reservation < ApplicationRecord
       .order(:date, :time)
   }
 
+  aasm column: :state do
+    state :reserved, initial: true
+    state :keeped, :used, :completed, :cancelled
+
+    event :keep do
+      transitions from: :reserved, to: :keep
+    end
+
+    event :use do
+      transitions from: %i[reserved keeped], to: :used
+    end
+
+    event :complete do
+      transitions from: :used, to: :completed
+    end
+
+    event :cancel do
+      transitions from: %i[reserved keeped], to: :cancelled
+    end
+  end
+
   private
-
-  def update_table_status
-    table.update(status: 'occupied') if table_id.present?
-  end
-
-  def free_up_table
-    table.update(status: 'vacant') if table.present?
-  end
 
   def valid_total_guests
     total_guests = adult_num + kid_num
@@ -62,7 +74,7 @@ class Reservation < ApplicationRecord
       errors.add(:base, '無法找到合適的空桌')
     end
   end
-  
+
   def self.ransackable_attributes(_auth_object = nil)
     %w[name tel date restaurant_id]
   end
