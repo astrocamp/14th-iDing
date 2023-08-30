@@ -14,17 +14,25 @@
 #  restaurant_id :bigint           not null
 #
 class Table < ApplicationRecord
+  include AASM
+
   validates :name, presence: true, uniqueness: { scope: :restaurant_id }
   validates :seat_num, presence: true, numericality: { greater_than: 0 }
-  before_create :set_default_status
 
   enum category: { '一般座位': 0, '包廂': 1 }
   has_many :reservations, dependent: :destroy
   belongs_to :restaurant
 
-  private
+  aasm column: 'status', no_direct_assignment: true do
+    state :vacant, initial: true
+    state :occupied
 
-  def set_default_status
-    self.status = 'vacant'
+    event :vacant do
+      transitions from: :occupied, to: :vacant
+    end
+
+    event :occupied do
+      transitions from: :vacant, to: :occupied
+    end
   end
 end
