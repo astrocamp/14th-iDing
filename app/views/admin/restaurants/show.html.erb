@@ -62,7 +62,8 @@
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
               <div class="px-5 pb-5">
                 <%= f.text_field :name, class: "iding-input", placeholder: "姓名" %>
-                <%= f.text_field :tel, class: "iding-input", placeholder: "電話", type: "tel" %>
+                <%= f.text_field :tel, class:
+                 "iding-input", placeholder: "電話", type: "tel" %>
                 <div class="flex gap-2">
                   <%= f.date_field :date, class: "iding-input" %>
                   <%= f.time_field :time, class: "iding-input" %>
@@ -94,14 +95,33 @@
                 <div>
                   <%= reservation.date %>
                   <%= reservation.time.strftime('%R') %>
+                  <div class="inline" id="reservation-state-<%= reservation.id %>">
+                    <%= reservation.state %>
+                  </div>
                 </div>
-                <div>
-                  <%= link_to admin_restaurant_reservation_path(restaurant_id: @restaurant.id, id: reservation.id), data: { turbo_method: 'delete', turbo_confirm: '確定刪除訂位?' } do %>
-                    <i class="fa-regular fa-trash-can"></i>
-                    <span>刪除</span>
-                  <% end %>
-                </div>
+                
+                <div class="flex">
+                  <div data-controller="check" data-id="<%= reservation.id %>">
+                    <button data-action="click->check#checkIn" class="mx-5">
+                      <i class="fa-regular fa-square-check"></i>入座
+                    </button>
+                  </div>
+
+                  <div data-controller="leave" data-id="<%= reservation.id %>">
+                    <button data-action="click->leave#guestLeave" class="mx-5">
+                      <i class="fa-solid fa-arrow-right-from-bracket"></i>離席
+                    </button>
+                  </div>
+
+                  <div class="mx-5">
+                    <%= link_to admin_restaurant_reservation_path(restaurant_id: @restaurant.id, id: reservation.id), data: { turbo_method: 'delete', turbo_confirm: '確定刪除訂位?' } do %>
+                      <i class="fa-regular fa-trash-can"></i>
+                      <span>刪除</span>
+                    <% end %>
+                  </div>    
+                </div>  
               </div>
+
               <div class="flex items-center justify-around lg:mx-5 sm:justify-between">
                 <div class="flex">
                   <div class="my-auto">
@@ -144,6 +164,7 @@
           <% end %>
         </div>
       </div>
+
     </div>
   </div>
 </section>
