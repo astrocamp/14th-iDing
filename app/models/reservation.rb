@@ -50,11 +50,11 @@ class Reservation < ApplicationRecord
     end
 
     event :use do
-      transitions from: %i[reserved keeped], to: :used
+      transitions from: %i[reserved keeped], to: :used, after: :update_table_status_to_occupied
     end
 
     event :complete do
-      transitions from: :used, to: :completed
+      transitions from: :used, to: :completed, after: :update_table_status_to_vacant
     end
 
     event :cancel do
@@ -63,6 +63,16 @@ class Reservation < ApplicationRecord
   end
 
   private
+
+  def update_table_status_to_occupied
+    table = self.table
+    table.occupied! if table.present?
+  end
+
+  def update_table_status_to_vacant
+    table = self.table
+    table.vacant! if table.present?
+  end
 
   def valid_total_guests
     total_guests = adult_num + kid_num
