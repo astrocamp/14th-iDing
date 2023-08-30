@@ -20,7 +20,12 @@
             <p class="text-xl"><%= "#{@reservation.kids} 位小孩" unless @reservation.kids.zero? %></p>
             <p class="text-sm"><%= "備註：#{@reservation.note}" unless @reservation.note.blank? %></p>
           </div>
+
           <div class="pt-3">
+            <button class= "block py-2 mx-auto text-center border rounded w-60 border-slate-300 hover:bg-green hover:text-white" >保留訂位</button>
+          </div>
+
+          <div>
             <%= link_to '取消訂位', reservation_path(@reservation),
                           data:{ turbo_method: 'delete',
                                   turbo_confirm: '確認取消？'
