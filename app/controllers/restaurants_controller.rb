@@ -11,16 +11,23 @@ class RestaurantsController < ApplicationController
     @open_time = @restaurant.open_times.order(:start_time)
   end
 
+  def time_slot
+    time_periods = @restaurant.open_times.pluck(:start_time, :end_time)
+    @time_period = time_periods.map { |start_time, end_time| start_time.to_i..end_time.to_i }
+  end
+
   def filter_timelist
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    selected_date = params[:date].to_date
+    selected_date = params[:date]
+    set_restaurant
     time_slot
+
     @timerange = []
 
     @time_period.each do |time_range|
       time_range.step(@restaurant.reserve_interval.minutes) do |time|
-        end_time = time + @restaurant.mealtime.minutes
-        reservations_count = @restaurant.reservations.where(date: selected_date, time: time..end_time).count
+        begin_time = Time.at(time - (@restaurant.mealtime.minutes - 1)).utc.strftime('%H:%M:%S')
+        end_time = Time.at(time).utc.strftime('%H:%M:%S')
+        reservations_count = @restaurant.reservations.where(date: selected_date, time: begin_time..end_time).count
         available_tables = @restaurant.tables.count - reservations_count
 
         if available_tables.positive?
@@ -38,10 +45,6 @@ class RestaurantsController < ApplicationController
   end
 
   # TimeRange
-  def time_slot
-    time_periods = @restaurant.open_times.pluck(:start_time, :end_time)
-    @time_period = time_periods.map { |start_time, end_time| start_time.to_i..end_time.to_i }
-  end
 
   def set_timelist
     time_slot
@@ -59,6 +62,4 @@ class RestaurantsController < ApplicationController
     @end_day = Date.today + @restaurant.bookday_advance
     @daterange = (Date.today..@end_day).select { |date| @holidays.exclude?(date.strftime('%a')) }
   end
-
-  
 end
