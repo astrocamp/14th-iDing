@@ -27,10 +27,10 @@ export default class extends Controller {
     const selectedDate = e.target.value;
 
     fetch(`/restaurants/${ID}/filter_timelist`, {
-      method: "POST", // 或'GET'，根據您的需求
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-CSRF-Token": token, // 如果您的後端使用Rails，需要傳遞CSRF令牌
+        "X-CSRF-Token": token,
       },
       body: JSON.stringify({
         restaurant_id: ID,
