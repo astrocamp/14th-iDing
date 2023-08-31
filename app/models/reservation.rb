@@ -53,7 +53,7 @@ class Reservation < ApplicationRecord
   end
 
   def valid_total_guests
-    total_guests = adult_num + kid_num
+    total_guests = adults + kids
     vacant_table = restaurant.tables.where(status: 'vacant').where('seat_num >= ?', total_guests).first
 
     if vacant_table
