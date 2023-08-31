@@ -40,7 +40,7 @@ module Admin
 
     def reservation_params
       params.require(:reservation)
-            .permit(:name, :tel, :email, :gender, :date, :time, :adult_num, :kid_num, :purpose, :note, :serial, :table_id, :state)
+            .permit(:name, :tel, :email, :gender, :date, :time, :adults, :kids, :purpose, :note, :serial, :table_id, :state)
     end
 
     def set_restaurant
