@@ -1,6 +1,6 @@
-<header class="fixed top-0 left-0 justify-start z-30 w-full bg-white border-b border-gray-200 text-sm py-0 lg:px-20">
+<header class="fixed top-0 left-0 z-30 justify-start w-full py-0 text-sm bg-white border-b border-gray-200 lg:px-20">
   <div class="navbar bg-base-100">
-    <div class="drawer bg-base-100 flex justify-between z-10">
+    <div class="z-10 flex justify-between drawer bg-base-100">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div>
         <%= image_tag "logo_column.png", class: "w-28 lg:w-36" %>
@@ -14,7 +14,7 @@
 
       <div class="drawer-side">
         <label for="my-drawer" class="drawer-overlay"></label>
-        <ul class="menu p-4 w-60 h-full bg-base-200 text-base-content">
+        <ul class="h-full p-4 menu w-60 bg-base-200 text-base-content">
           <div>
             <%= image_tag "logo_column.png", class: "w-40 m-auto py-2 lg:hidden" %>
             <li><%= link_to '關於iDing', "#", class: "text-lg m-4 text-gray-800 py-6" %></li>
@@ -22,12 +22,12 @@
             <% if user_signed_in? %>
               <li>
                 <details>
-                  <summary class="font-medium m-4 lg:my-10 text-gray-800 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500">
+                  <summary class="m-4 font-medium text-gray-800 lg:my-10 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500">
                     <div class="flex">
                       <div>
                         <%= image_tag "head-icon.svg", class: "w-6" %>
                       </div>
-                      <div class="text-lg px-4">
+                      <div class="px-4 text-lg">
                         <%= user_name %>
                       </div>
                     </div>
@@ -74,21 +74,21 @@
   </div>
 </header>
 
-<div class="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
+<div class="flex flex-col justify-center min-h-screen bg-gray-100 sm:py-12">
   <div class="relative py-28 sm:max-w-xl sm:mx-auto">
-    <div class="relative px-10 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl ">
+    <div class="relative px-10 py-10 mx-8 bg-white shadow md:mx-0 rounded-3xl ">
       <div class="mx-auto ">
         <div class="flex items-center space-x-5 ">
-          <div class="block pl-2 font-semibold text-xl self-start text-gray-700 ">
-            <h2 class="leading-relaxed text-2xl">修改密碼</h2>
+          <div class="self-start block pl-2 text-xl font-semibold text-gray-700 ">
+            <h2 class="text-2xl leading-relaxed">修改密碼</h2>
           </div>
         </div>
         <div class="divide-y divide-gray-200">
-          <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+          <div class="py-8 space-y-4 text-base leading-6 text-gray-700 sm:text-lg sm:leading-7">
             <div class="flex flex-col">
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-            <%= render "users/shared/error_messages", resource: resource %>
+            <%= render "devise/shared/error_messages", resource: resource %>
 
               <div class="field">
                 <%= f.label :email, "Email", class: 'leading-loose text-base'%><br />
