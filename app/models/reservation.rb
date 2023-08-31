@@ -62,7 +62,7 @@ class Reservation < ApplicationRecord
       errors.add(:base, '無法找到合適的空桌')
     end
   end
-  
+
   def self.ransackable_attributes(_auth_object = nil)
     %w[name tel date restaurant_id]
   end
