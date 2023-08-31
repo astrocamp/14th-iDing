@@ -28,6 +28,7 @@ Rails.application.routes.draw do
         member do 
           patch :check_in
           patch :leave
+          patch :hold_seat
         end
       end
     end

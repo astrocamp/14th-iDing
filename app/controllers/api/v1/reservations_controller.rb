@@ -14,6 +14,12 @@ module Api
         @reservation.complete! if @reservation.may_complete?
         render json: { newStatus: @reservation.state }
       end
+
+      def hold_seat
+        @reservation = Reservation.find(params[:id])
+        @reservation.keep! if @reservation.may_keep?
+        render json: { newStatus: @reservation.state }
+      end
     end
   end
 end
