@@ -21,11 +21,10 @@ export default class extends Controller {
         console.log(resp);
       })
       .then((data) => {
-        const newStateText = "已保留";
+        const newStateText = "已保留訂位";
         const stateElement = document.querySelector(
           `#reservation-state-${this.id}`
         );
-
         if (stateElement) {
           stateElement.textContent = newStateText;
         }

@@ -27,10 +27,11 @@
             <button data-action="click->holdseat#holdSeat"
                     id="reservation-state-<%= @reservation.id %>"
                     class= "block py-2 mx-auto text-center border rounded w-60 border-slate-300 hover:bg-green hover:text-white" >
+
                     <% if @reservation.state == "reserved" %>
                       保留訂位
                     <% else @reservation.state == "keeped" %>
-                      已保留
+                      已保留訂位
                     <% end %>
                   
             </button>
