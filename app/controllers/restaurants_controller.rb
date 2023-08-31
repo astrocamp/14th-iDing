@@ -2,6 +2,7 @@
 
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, :set_holidays, :set_timelist, :set_daylist, only: [:show]
+  before_action :set_restaurant, :time_slot, only: [:filter_timelist]
 
   def index
     @restaurants = Restaurant.order(:id)
@@ -11,16 +12,8 @@ class RestaurantsController < ApplicationController
     @open_time = @restaurant.open_times.order(:start_time)
   end
 
-  def time_slot
-    time_periods = @restaurant.open_times.pluck(:start_time, :end_time)
-    @time_period = time_periods.map { |start_time, end_time| start_time.to_i..end_time.to_i }
-  end
-
   def filter_timelist
     selected_date = params[:date]
-    set_restaurant
-    time_slot
-
     @timerange = []
 
     @time_period.each do |time_range|
@@ -45,6 +38,11 @@ class RestaurantsController < ApplicationController
   end
 
   # TimeRange
+
+  def time_slot
+    time_periods = @restaurant.open_times.pluck(:start_time, :end_time)
+    @time_period = time_periods.map { |start_time, end_time| start_time.to_i..end_time.to_i }
+  end
 
   def set_timelist
     time_slot

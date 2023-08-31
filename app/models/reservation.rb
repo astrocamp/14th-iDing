@@ -53,7 +53,7 @@ class Reservation < ApplicationRecord
   end
 
   def valid_total_guests
-    total_guests = adult_num + kid_num
+    total_guests = adults + kids
     vacant_table = restaurant.tables.where(status: 'vacant').where('seat_num >= ?', total_guests).first
 
     if vacant_table
@@ -62,7 +62,7 @@ class Reservation < ApplicationRecord
       errors.add(:base, '無法找到合適的空桌')
     end
   end
-  
+
   def self.ransackable_attributes(_auth_object = nil)
     %w[name tel date restaurant_id]
   end
