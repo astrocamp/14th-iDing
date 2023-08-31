@@ -25,8 +25,8 @@ class RestaurantsController < ApplicationController
 
     @time_period.each do |time_range|
       time_range.step(@restaurant.reserve_interval.minutes) do |time|
-        begin_time = Time.at(time - (@restaurant.mealtime.minutes - 1)).utc.strftime('%H:%M:%S')
-        end_time = Time.at(time).utc.strftime('%H:%M:%S')
+        begin_time = Time.at(time - @restaurant.mealtime.minutes + 1).utc.strftime('%H:%M:%S')
+        end_time = Time.at(time + @restaurant.mealtime.minutes - 1).utc.strftime('%H:%M:%S')
         reservations_count = @restaurant.reservations.where(date: selected_date, time: begin_time..end_time).count
         available_tables = @restaurant.tables.count - reservations_count
 
