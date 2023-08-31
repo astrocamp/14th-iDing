@@ -2,7 +2,6 @@ class CreateReservations < ActiveRecord::Migration[7.0]
   def change
     create_table :reservations do |t|
       t.string :restaurant_id
-      t.string :customer_id
       t.date :date, null: false
       t.time :time, null: false
       t.integer :adults, null: false
