@@ -26,7 +26,7 @@ class Reservation < ApplicationRecord
   belongs_to :restaurant
   belongs_to :table, optional: true
 
-  before_save :valid_total_guests
+  # before_save :valid_total_guests
 
   validates :date, presence: true
   validates :time, presence: true
@@ -46,7 +46,7 @@ class Reservation < ApplicationRecord
     state :keeped, :used, :completed, :cancelled
 
     event :keep do
-      transitions from: :reserved, to: :keep
+      transitions from: :reserved, to: :keeped
     end
 
     event :use do
@@ -59,29 +59,6 @@ class Reservation < ApplicationRecord
 
     event :cancel do
       transitions from: %i[reserved keeped], to: :cancelled
-    end
-  end
-
-  private
-
-  def update_table_status_to_occupied
-    table = self.table
-    table.occupied! if table.present?
-  end
-
-  def update_table_status_to_vacant
-    table = self.table
-    table.vacant! if table.present?
-  end
-
-  def valid_total_guests
-    total_guests = adult_num + kid_num
-    vacant_table = restaurant.tables.where(status: 'vacant').where('seat_num >= ?', total_guests).first
-
-    if vacant_table
-      self.table = vacant_table
-    else
-      errors.add(:base, '無法找到合適的空桌')
     end
   end
 
@@ -105,4 +82,27 @@ class Reservation < ApplicationRecord
   ransacker :name_or_tel_cont do
     Arel::Nodes::NamedFunction.new('CONCAT_WS', [Arel::Nodes.build_quoted(' '), arel_table[:name], arel_table[:tel]])
   end
+
+  private
+
+  def update_table_status_to_occupied
+    table = self.table
+    table.occupied! if table.present?
+  end
+
+  def update_table_status_to_vacant
+    table = self.table
+    table.vacant! if table.present?
+  end
+
+  # def valid_total_guests
+  #   total_guests = adults + kids
+  #   vacant_table = restaurant.tables.where(status: 'vacant').where('seat_num >= ?', total_guests).first
+
+  #   if vacant_table
+  #     self.table = vacant_table
+  #   else
+  #     errors.add(:base, '無法找到合適的空桌')
+  #   end
+  # end
 end

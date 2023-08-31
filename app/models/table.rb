@@ -23,7 +23,7 @@ class Table < ApplicationRecord
   has_many :reservations, dependent: :destroy
   belongs_to :restaurant
 
-  aasm column: :status, no_direct_assignment: true do
+  aasm column: :status do
     state :vacant, initial: true
     state :occupied
 
