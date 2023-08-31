@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module RestaurantsHelper
-  def table_select_options(restaurant)
+  def table_select_options(restaurant, form)
     vacant_options = restaurant.tables.where(status: 'vacant').order(:name).map do |table|
       ["#{table.name} - #{table.category}", table.id]
     end
@@ -15,6 +15,6 @@ module RestaurantsHelper
       '使用中' => occupied_options
     }
 
-    select_tag :table_id, grouped_options_for_select(grouped_options), prompt: '桌號'
+    form.select :table_id, grouped_options, { prompt: '桌號' }
   end
 end
