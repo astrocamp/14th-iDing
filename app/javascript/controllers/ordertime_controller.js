@@ -52,9 +52,6 @@ export default class extends Controller {
           button.textContent = timePoint;
           timeContainer.appendChild(button);
         });
-      })
-      .catch((error) => {
-        console.error("Error:", error);
       });
   }
 
