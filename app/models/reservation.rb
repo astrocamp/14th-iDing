@@ -42,6 +42,23 @@ class Reservation < ApplicationRecord
       .order(:date, :time)
   }
 
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[name tel date restaurant_id]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    ['restaurant']
+  end
+
+  def self.search(params)
+    result = all
+
+    result = result.where(date: params[:date_eq]) if params[:date_eq].present?
+
+    result = result.ransack('name_or_tel_cont' => params[:name_or_tel_cont]).result if params[:name_or_tel_cont].present?
+    result
+  end
+
   private
 
   def update_table_status
@@ -61,23 +78,6 @@ class Reservation < ApplicationRecord
     else
       errors.add(:base, '無法找到合適的空桌')
     end
-  end
-  
-  def self.ransackable_attributes(_auth_object = nil)
-    %w[name tel date restaurant_id]
-  end
-
-  def self.ransackable_associations(_auth_object = nil)
-    ['restaurant']
-  end
-
-  def self.search(params)
-    result = all
-
-    result = result.where(date: params[:date_eq]) if params[:date_eq].present?
-
-    result = result.ransack('name_or_tel_cont' => params[:name_or_tel_cont]).result if params[:name_or_tel_cont].present?
-    result
   end
 
   ransacker :name_or_tel_cont do
