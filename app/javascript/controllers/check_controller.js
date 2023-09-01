@@ -15,22 +15,13 @@ export default class extends Controller {
       headers: {
         "X-CSRF-Token": token,
       },
-    })
-      .then((resp) => {
-        console.log(resp);
-      })
-      .then((data) => {
-        const newStateText = "used";
+    }).then((resp) => {
+      if (resp.ok) {
         const stateElement = document.querySelector(
           `#reservation-state-${this.id}`
         );
-
-        if (stateElement) {
-          stateElement.textContent = newStateText;
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+        stateElement.textContent = "used";
+      }
+    });
   }
 }
