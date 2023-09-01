@@ -4,6 +4,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^7.3.0",
+    "daisyui": "^3.6.4",
     "esbuild": "0.14.11",
     "flatpickr": "^4.6.13",
     "stimulus-textarea-autogrow": "^4.1.0",
