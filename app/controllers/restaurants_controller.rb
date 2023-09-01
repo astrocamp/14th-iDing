@@ -23,9 +23,7 @@ class RestaurantsController < ApplicationController
         reservations_count = @restaurant.reservations.where(date: selected_date, time: begin_time..end_time).count
         available_tables = @restaurant.tables.count - reservations_count
 
-        if available_tables.positive?
-          @timerange << Time.at(time).utc.strftime('%R')
-        end
+        @timerange << Time.at(time).utc.strftime('%R') if available_tables.positive?
       end
     end
     render json: { timerange: @timerange }

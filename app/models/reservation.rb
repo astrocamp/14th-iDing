@@ -79,7 +79,7 @@ class Reservation < ApplicationRecord
       errors.add(:base, '無法找到合適的空桌')
     end
   end
-  
+
   ransacker :name_or_tel_cont do
     Arel::Nodes::NamedFunction.new('CONCAT_WS', [Arel::Nodes.build_quoted(' '), arel_table[:name], arel_table[:tel]])
   end
