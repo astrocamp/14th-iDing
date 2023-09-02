@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :reservations, only: [:create, :edit, :update, :destroy] do
         collection do
           get 'search', to: 'reservations#search'
+          get 'calendar', to: 'reservations#calendar'
         end
       end
       resources :holidays, shallow: true, only: [:create, :destroy]
@@ -21,6 +22,16 @@ Rails.application.routes.draw do
       post :filter_timelist
     end
     resources :build, only: [:show, :update]
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resources :restaurants, only: [] do
+        member do
+          get :reservations
+        end
+      end
+    end
   end
 
   resources :reservations, only: :destroy
