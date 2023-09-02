@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # name+count+time
 
 json.array! @reservations do |reservation|
