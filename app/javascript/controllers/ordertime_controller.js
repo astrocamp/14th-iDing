@@ -45,7 +45,8 @@ export default class extends Controller {
         timeContainer.innerHTML = "";
         timelist.forEach((timePoint) => {
           const button = document.createElement("button");
-          button.className = "w-32 text-xl font-medium rounded-lg unselect-btn";
+          button.className =
+            "max-w-sm mx-2 my-2 text-lg font-medium rounded-lg lg:mx-auto lg:my-2 lg:text-lg lg:w-32 unselect-btn";
           button.setAttribute("data-ordertime-target", "timeBtn");
           button.setAttribute("data-action", "click->ordertime#clickTime");
           button.value = timePoint;
