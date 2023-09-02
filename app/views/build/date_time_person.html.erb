@@ -1,98 +1,112 @@
-<header class="fixed top-0 left-0 z-50 w-full px-3 py-2 bg-white drop-shadow md:flex md-items-center md:justify-between">
-  <div class="flex items-center justify-between w-full px-4">
-    <div class="w-40 md:w-1/4 lg:w-1/8 xl:w-1/12">
-      <%= link_to root_path, class: "block" do %>
-        <%= image_tag "logo_column.png", class: "w-full align-middle" %>
-      <% end %>
-    </div>
+<header class="fixed top-0 left-0 z-30 justify-start w-full py-0 text-sm bg-white border-b border-gray-200 lg:px-20">
+  <div class="navbar bg-base-100">
+    <div class="z-10 flex justify-between drawer bg-base-100">
+      <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+      <div>
+        <%= link_to root_path do%>
+          <%= image_tag "logo_column.png", class: "w-28 lg:w-36" %>
+        <% end %>
+      </div>
 
-    <div data-controller="hamburger" class="flex items-center md:hidden">
-      <label class="flex px-4 py-4" data-action="click->hamburger#switch">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="items-center inline-block w-8 h-8 border stroke-current">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </label>
+      <div class="drawer-content lg:hidden">
+        <label for="my-drawer" class="mx-12">
+          <%= image_tag "hamberger-icon.svg"%>
+        </label>
+      </div>
 
-      <ul tabindex="0" class="hidden menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 w-28 place-content-center absolute top-20 right-0" data-hamburger-target="nav">
-        <li><a href="#" class="block p-4 py-3">餐廳介紹</a></li>
-        <li><a href="#booking" class="block p-4 py-3">立即訂位</a></li>
-        <li><a href="#" class="block p-4 py-3">美食菜單</a></li>
-      </ul>
-    </div>
-    <div class="hidden md:flex">
-      <ul class="items-center hidden md:flex">
-        <li><a href="#" class="block p-4 py-3">餐廳介紹</a></li>
-        <li><a href="#booking" class="block p-4 py-3">立即訂位</a></li>
-        <li><a href="#" class="block p-4 py-3">美食菜單</a></li>
-      </ul>
+      <div class="drawer-side">
+        <label for="my-drawer" class="drawer-overlay"></label>
+        <ul class="h-full p-4 menu w-60 bg-base-200 text-base-content">
+          <div>
+            <%= image_tag "logo_column.png", class: "w-40 m-auto py-2 lg:hidden" %>
+            <li><%= link_to '餐廳介紹', '#infomation', class: "text-lg m-4 text-gray-800 py-6" %></li>
+            <li><%= link_to '立即訂位', '#booking', class: "text-lg m-4 text-gray-800 py-6" %></li>
+            <li><%= link_to '美食菜單', '#menu', class: "text-lg m-4 text-gray-800 py-6" %></li>
+            <li><%= link_to '熱門餐廳', restaurants_path, class: "text-lg m-4 text-gray-800 py-6" %></li>
+          </div>
+        </ul>
+      </div>
+
+      <div class="hidden lg:flex">
+        <ul class="menu menu-horizontal">
+          <li><%= link_to '餐廳介紹', '#infomation', class: "font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
+          <li><%= link_to '立即訂位', '#booking', class: "font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
+          <li><%= link_to '美食菜單', '#menu', class: "font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
+          <li><%= link_to '熱門餐廳', restaurants_path, class: "font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
+        </ul>
+      </div>
     </div>
   </div>
 </header>
+
 <!--main-->
-<div class="max-w-[85rem] px-4 py-4 md:px-6 xl:px-8 mt-1 mx-auto">
-  <div class="flex aspect-w-16 aspect-h-7">
+<section class="w-full mx-auto lg:w-5/6 ">
+
+  <div class="w-full mx-auto mt-20 lg:mt-28 lg:px-8 ">
     <%= image_tag (@restaurant.image_url) if @restaurant.image? %>
+    <%= image_tag "https://picsum.photos/768/300", class: "w-full lg:rounded-lg h-auto" %>
   </div>
 
-</div>
 <!--餐廳資訊-->
-<div class="mx-12 my-8 lg:my-8 lg:mx-28">
-  <h1 class="m-6 text-2xl font-bold text-green"><%= @restaurant.name %></h1>
-  <p class="m-6"><i class="fa-solid fa-thumbs-up"> 4.0 <a href="" class="underline hover:text-blue-400">58 則評論</a></i></p>
-  <p class="m-6"><%= @restaurant.address %></p>
-  <p class="m-6"><i class="fa-solid fa-phone"></i> <%= @restaurant.tel %></p>
-  <hr>
-  <p class="m-6 text-lg text-gray-900 dark:text-white"><%= @restaurant.description %></p>
-  <hr>
-</div>
+  <div id="infomation" class="my-8 lg:my-8 lg:mx-4">
+    <h1 class="mx-5 my-2 text-3xl font-bold text-green"><%= @restaurant.name %></h1>
+    <%# <p class="block mx-5 my-2"><i class="fa-solid fa-thumbs-up"> 4.0 <a href="" class="underline hover:text-blue-400">58 則評論</a></i></p> %>
+    <p class="block mx-5 my-2 "><%= @restaurant.address %></p>
+    <p class="block mx-5 my-2"><i class="fa-solid fa-phone"></i> <%= @restaurant.tel %></p>
+    <hr>
+    <p class="block mx-5 my-2 text-lg text-gray-900 dark:text-white"><%= @restaurant.description %></p>
+    <hr>
+  </div>
 <!--可選日期時間-->
 
 <!--訂位-->
-<div id="booking" class="m-auto mx-12 my-8 lg:my-8 lg:mx-28" name="booking">
-  <%= form_with url:wizard_path, method: :patch, data: { turbo: false } do |f| %>
-    <div class="my-6">
-      <div class="flex flex-col justify-between gap-4 sm:flex-row">
-        <div class="w-full sm:w-1/2 sm:mb-0">
-          <%= f.label :adults, '大人數',class:"block mr-2 text-sm text-gray-00" %>
-          <%= f.number_field :adults, value: session.dig(:first_step_data, 'adults'), class:"h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded", min: 1 %>
-        </div>
-        <div class="w-full sm:w-1/2 sm:mb-0">
-          <%= f.label :kids, '小孩數',class:"block mr-2 text-sm text-gray-00" %>
-          <%= f.number_field :kids,
-                  value: session.dig(:first_step_data, 'kids').present? ? session.dig(:first_step_data, 'kids') : 0,
-                  class: "h-9 w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
-                  min: 0 %>
+  <div id="booking" class="m-auto mx-4 my-8 lg:my-8 ">
+    <%= form_with url:wizard_path, method: :patch, data: { turbo: false } do |f| %>
+      <div class="my-6 lg:mx-5">
+        <p class="mb-1 text-sm">用餐人數</p>
+        <div class="flex gap-2">
+          <div class="w-full sm:mb-0">
+            <%= f.label :adults, '大人數',class:"block mr-2 text-sm" %>
+            <%= f.number_field :adults, value: session.dig(:first_step_data, 'adults').present? ? session.dig(:first_step_data, 'adults') : 1, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", min: 1 %>
+          </div>
+          <div class="w-full sm:mb-0">
+            <%= f.label :kids, '小孩數',class:"block mr-2 text-sm " %>
+            <%= f.number_field :kids,
+                    value: session.dig(:first_step_data, 'kids').present? ? session.dig(:first_step_data, 'kids') : 0,
+                    class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500",
+                    min: 0 %>
+          </div>
         </div>
       </div>
-    </div>
-  <hr>
-</div>
-
-<section data-controller="ordertime" class="mx-4 lg:mx-28">
-  <p class='w-full my-8 text-2xl font-bold text-center text-green'>選擇用餐日期</p>
-  <div class="grid grid-cols-6 gap-4 my-8">
-    <% @daterange.each do |date| %>
-      <button class='w-32 text-xl font-medium rounded-lg unselect-btn'
-              data-ordertime-target='dateBtn'
-              data-action='click->ordertime#clickDate'
-              data-id='<%=@restaurant.id%>'
-              value='<%= date %>'
-              >
-        <%= date.strftime('%m/%d') %>
-        <%= "(#{chinese_weekday(date)})" %>
-      </button>
-    <% end  %>
-    <%= f.hidden_field :date, data: {ordertime_target: "dateInput"}%>
+    <hr>
   </div>
-  <hr>
 
-  <p class='w-full my-8 text-2xl font-bold text-center text-green'>選擇用餐時間</p>
-  <div class="grid grid-cols-6 gap-4 " data-ordertime-target='timeContainer'>
-    <div class="flex flex-col justify-center h-32 col-span-6 m-auto my-auto text-xl font-bold">
-      請先選擇訂位日期
+  <section data-controller="ordertime" class="mx-2 lg:mx-auto">
+    <p class='w-full my-8 text-2xl font-bold text-center text-green'>選擇用餐日期</p>
+    <div class="grid grid-cols-3 mx-auto md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 ">
+      <% @daterange.each do |date| %>
+        <button class="max-w-sm mx-2 my-2 text-lg font-medium rounded-lg lg:mx-auto lg:my-2 lg:text-lg lg:w-32 unselect-btn"
+                data-ordertime-target='dateBtn'
+                data-action='click->ordertime#clickDate'
+                data-id='<%=@restaurant.id%>'
+                value='<%= date %>'
+                >
+          <%= date.strftime('%m/%d') %>
+          <%= "(#{chinese_weekday(date)})" %>
+        </button>
+      <% end %>
+      <%= f.hidden_field :date, data: {ordertime_target: "dateInput"}%>
     </div>
-  </div>
-  <%= f.hidden_field :time, data: {ordertime_target: "timeInput"}%>
-  <%= f.submit '下一步', class: 'next-btn' %>
+    <hr>
+
+    <p class='w-full my-8 text-2xl font-bold text-center text-green'>選擇用餐時間</p>
+   
+    <div class="grid grid-cols-3 mx-auto md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 " data-ordertime-target='timeContainer'>
+      <span class="col-span-3 col-start-1 text-xl font-bold text-center lg:col-span-7 xl:col-span-8 md:col-span-5">請先選擇訂位日期</span>
+    </div>
+    <%= f.hidden_field :time, data: {ordertime_target: "timeInput"}%>
+    <%= f.submit '下一步', class: 'next-btn' %>
+  </section>
+  <% end %>
+
 </section>
-<% end %>
