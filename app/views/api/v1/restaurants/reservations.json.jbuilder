@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# name+count+time
-
 json.array! @reservations do |reservation|
   title = "[#{reservation.tel.last(3)}] #{reservation.name} (#{reservation.adults}+#{reservation.kids})"
   json.title title
