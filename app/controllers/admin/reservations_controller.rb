@@ -10,6 +10,9 @@ module Admin
       @reservations = @search.result
     end
 
+    def calendar
+    end
+
     def create
       @reservation = @restaurant.reservations.new(reservation_params)
 
