@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .action-btn {
-  @apply inline-block px-4 py-1 text-white bg-teal-700 rounded cursor-pointer select-none hover:bg-teal-900;
+  @apply inline-block py-1 text-white bg-teal-700 rounded cursor-pointer select-none lg:px-4 hover:bg-teal-800;
 }
 
 .iding-input {
@@ -38,5 +38,5 @@
 }
 
 .next-btn {
-  @apply w-full px-4 py-2 mt-10 text-lg font-bold tracking-wider text-white bg-gray-500 rounded hover:bg-green;
+  @apply w-full px-4 py-2 mx-auto mt-10 text-lg font-bold tracking-wider text-white bg-gray-500 rounded hover:bg-green;
 }
