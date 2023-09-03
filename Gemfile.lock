@@ -224,6 +224,8 @@ GEM
     public_suffix (5.0.3)
     puma (5.6.7)
       nio4r (~> 2.0)
+    pundit (2.3.1)
+      activesupport (>= 3.0.0)
     racc (1.7.1)
     rack (2.2.8)
     rack-protection (3.1.0)
@@ -369,6 +371,7 @@ DEPENDENCIES
   paranoia (~> 2.2)
   pg (~> 1.1)
   puma (~> 5.0)
+  pundit
   rails (~> 7.0.6)
   ransack
   rubocop (~> 1.56)

@@ -2,7 +2,8 @@
 
 class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
-
+  include pundit
+  
   private
 
   def not_found
