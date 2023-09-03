@@ -77,7 +77,6 @@ class Reservation < ApplicationRecord
     event :cancel do
       transitions from: %i[reserved keeped], to: :cancelled
     end
-
   end
 
   private
@@ -96,8 +95,6 @@ class Reservation < ApplicationRecord
   ransacker :name_or_tel_cont do
     Arel::Nodes::NamedFunction.new('CONCAT_WS', [Arel::Nodes.build_quoted(' '), arel_table[:name], arel_table[:tel]])
   end
-
-  private
 
   def update_table_status_to_occupied
     table = self.table
