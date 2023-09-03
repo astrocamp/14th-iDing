@@ -21,10 +21,21 @@
             <p class="text-sm"><%= "備註：#{@reservation.note}" unless @reservation.note.blank? %></p>
           </div>
 
-          <div class="pt-3">
-            <button class= "block py-2 mx-auto text-center border rounded w-60 border-slate-300 hover:bg-green hover:text-white" >保留訂位</button>
+          <div data-controller="holdseat" 
+               data-id="<%= @reservation.id %>" 
+               class="pt-3">
+            <button data-action="click->holdseat#holdSeat"
+                    id="reservation-state-<%= @reservation.id %>"
+                    class= "block py-2 mx-auto text-center border rounded w-60 border-slate-300 hover:bg-green hover:text-white" >
+                    <% if @reservation.state == "reserved" %>
+                      保留訂位
+                    <% else @reservation.state == "keeped" %>
+                      已保留訂位
+                    <% end %>
+                  
+            </button>
           </div>
-
+          
           <div>
             <%= link_to '取消訂位', reservation_path(@reservation),
                           data:{ turbo_method: 'delete',
