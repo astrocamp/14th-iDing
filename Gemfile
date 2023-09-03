@@ -26,6 +26,7 @@ gem "jsbundling-rails"
 gem "aasm", "~> 5.5"
 gem 'twsms2', '~> 1.3'
 
+gem "pundit"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
