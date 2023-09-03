@@ -36,6 +36,7 @@ class BuildController < ApplicationController
       if step == steps.last
         redirect_to success_page_path(reservation_id: @reservation.id), notice: '訂位成功！'
         session.delete(:first_step_data)
+        SendSmsJob.perform_later(@reservation)
       else
         render_wizard
       end
