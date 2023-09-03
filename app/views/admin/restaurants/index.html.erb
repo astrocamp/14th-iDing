@@ -20,7 +20,9 @@
               <li class="my-2">名稱：<%= link_to restaurant.name, admin_restaurant_path(restaurant) %></li>
               <li class="my-2">電話：<%= restaurant.tel %></li>
               <li class="my-2">地址：<%= restaurant.address %></li>
-              <li class="my-2 lg:w-96">描述：<%= restaurant.description %></li>
+              <% if restaurant.description.present? %>
+              <li class="my-2 lg:w-96 textarea-wrap-physical">描述：<%= restaurant.description.truncate(100) %></li>
+              <% end %>
               <li class="my-2">統編：<%= restaurant.ubn %></li>
             </div>
             <div class="lg:flex lg:gap-5">

@@ -57,3 +57,9 @@ select:focus {
 #draggable-container .empty {
   background-color: rgb(207, 203, 203);
 }
+
+.textarea-wrap-physical {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
