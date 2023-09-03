@@ -2,22 +2,25 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
+import { application } from "./application";
 
-import FlatpickrController from "./flatpickr_controller"
-application.register("flatpickr", FlatpickrController)
+import CalendarController from "./calendar_controller";
+application.register("calendar", CalendarController);
 
-import HamburgerController from "./hamburger_controller"
-application.register("hamburger", HamburgerController)
+import FlatpickrController from "./flatpickr_controller";
+application.register("flatpickr", FlatpickrController);
 
-import HolidayController from "./holiday_controller"
-application.register("holiday", HolidayController)
+import HamburgerController from "./hamburger_controller";
+application.register("hamburger", HamburgerController);
 
-import NotificationController from "./notification_controller"
-application.register("notification", NotificationController)
+import HolidayController from "./holiday_controller";
+application.register("holiday", HolidayController);
 
-import OpentimeController from "./opentime_controller"
-application.register("opentime", OpentimeController)
+import NotificationController from "./notification_controller";
+application.register("notification", NotificationController);
 
-import OrdertimeController from "./ordertime_controller"
-application.register("ordertime", OrdertimeController)
+import OpentimeController from "./opentime_controller";
+application.register("opentime", OpentimeController);
+
+import OrdertimeController from "./ordertime_controller";
+application.register("ordertime", OrdertimeController);
