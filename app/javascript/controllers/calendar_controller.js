@@ -1,11 +1,11 @@
 import { Controller } from "@hotwired/stimulus";
-import { Calendar } from "@fullcalendar/core/index.js";
-import interactionPlugin__default from "@fullcalendar/interaction/index.js";
-import dayGridPlugin from "@fullcalendar/daygrid/index.js";
-import timeGridPlugin from "@fullcalendar/timegrid/index.js";
-import listPlugin from "@fullcalendar/list/index.js";
-import multiMonthPlugin from "@fullcalendar/multimonth/index.js";
-import zhLocale from "@fullcalendar/core/locales/zh-tw.js";
+import { Calendar } from "@fullcalendar/core";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import listPlugin from "@fullcalendar/list";
+import interactionPlugin__default from "@fullcalendar/interaction";
+import multiMonthPlugin from "@fullcalendar/multimonth";
+import zhLocale from "@fullcalendar/core/locales/zh-tw";
 
 export default class extends Controller {
   static values = { restaurantId: Number };
