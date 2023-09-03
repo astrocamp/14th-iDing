@@ -1,7 +1,7 @@
 class HolidayPolicy < ApplicationPolicy
 
   def create?
-    user && ower?
+    user && owner?
   end
 
   def destroy?

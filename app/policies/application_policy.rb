@@ -36,7 +36,7 @@ class ApplicationPolicy
     false
   end
 
-  def ower?
+  def owner?
     record.user == user
     end
 
