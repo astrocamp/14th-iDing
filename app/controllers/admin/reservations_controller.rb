@@ -15,11 +15,14 @@ module Admin
     def create
       @reservation = @restaurant.reservations.new(reservation_params)
 
-      if @reservation.save
-        redirect_to admin_restaurant_path(@restaurant), notice: '訂位新增成功'
-        SendSmsJob.perform_later(@reservation)
+      if @reservation.valid_total_guests
+        if @reservation.save
+          redirect_to admin_restaurant_path(@restaurant), notice: '訂位新增成功'
+        else
+          redirect_to admin_restaurant_path(@restaurant), alert: '訂位失敗'
+        end
       else
-        redirect_to admin_restaurant_path(@restaurant), alert: '訂位失敗'
+        redirect_to admin_restaurant_path(@restaurant), alert: '此時段已無空桌'
       end
     end
 
