@@ -5,24 +5,27 @@ module Admin
     before_action :set_restaurant, only: %i[show edit update destroy]
 
     def index
+      authorize(restaurant)
       @restaurants = current_user.restaurants
     end
 
     def show
+      authorize(restaurant)
       @reservations = if params[:date].present?
                         @restaurant.reservations.where(date: params[:date])
                       else
                         @restaurant.reservations.in_future(Time.current)
                       end
-
       @reservation = Reservation.new
     end
 
     def new
+      authorize(restaurant)
       @restaurant = Restaurant.new
     end
 
     def create
+      authorize(restaurant)
       @restaurant = current_user.restaurants.new(restaurant_params)
       if @restaurant.save
         redirect_to admin_restaurants_path, notice: '餐廳新增成功'
@@ -32,9 +35,12 @@ module Admin
       end
     end
 
-    def edit; end
+    def edit
+      authorize(restaurant)
+    end
 
     def update
+      authorize(restaurant)
       if @restaurant.update(restaurant_params)
         redirect_to admin_restaurants_path, notice: '餐廳資訊已更新'
       else
@@ -43,6 +49,7 @@ module Admin
     end
 
     def destroy
+      authorize(restaurant)
       @restaurant.destroy
       redirect_to admin_restaurants_path, notice: '餐廳刪除成功'
     end

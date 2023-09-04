@@ -23,10 +23,10 @@ class RestaurantPolicy < ApplicationPolicy
     index?
   end
 
-  def destroy?
-    index?
+  def destory?
+    super_admin?
   end
-
+  
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
