@@ -15,7 +15,7 @@
         <div>
           <%= image_tag "iding_logo.png", class: "w-40 m-auto py-2" %>
           <li class="m-auto my-2 mt-6 font-semibold text-slate-700"><%= link_to '訂位列表', admin_restaurant_path(@restaurant), class: "m-auto" %></li>
-          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">歷史紀錄</a></li>
+         <li class="my-2 font-semibold text-slate-700"><%= link_to '歷史訂位', search_admin_restaurant_reservations_path(@restaurant), class: "m-auto" %></li>
           <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">訂位搜尋</a></li>
           <li class="m-auto my-2 font-semibold text-slate-700"><%= link_to '桌號設定', admin_restaurant_tables_path(@restaurant), class: "m-auto" %></li>
           <li class="m-auto my-2 font-semibold text-slate-700"><%= link_to '營業時間', admin_restaurant_open_times_path(@restaurant), class: "m-auto" %></li>
@@ -74,36 +74,34 @@
   </section>
 
   <section class='w-6/12 mx-auto mt-3 mb-auto bg-white border rounded' data-controller='holiday'>
-  <h2 class='py-2 text-2xl font-bold text-center border'>公休日</h2>
-  <div class='gap-2 p-6 text-left lg:grid lg:grid-cols-6'>
-    <div class='text-center lg:col-span-3 xl:col-span-4'>
-      <h3 class='mb-2 text-lg font-bold text-center lg:text-left'>新增公休日：</h3>
-      <div class='grid grid-cols-2 gap-2 lg:grid-cols-3 xl:grid-cols-4 ' id='holiday-selector'>
-        <% @week.each do |date| %>
-          <button class='inline-block w-full unselect-btn' 
-                data-date='<%= date.strftime('%a') %>'
-                data-holiday-target='date'
-                data-action='click->holiday#getDate'
-          >
-            <%= date.strftime('%a') %>
-          </button>
+    <h2 class='py-2 text-2xl font-bold text-center border'>公休日</h2>
+    <div class='gap-2 p-6 text-left lg:grid lg:grid-cols-6'>
+      <div class='text-center lg:col-span-3 xl:col-span-4'>
+        <h3 class='mb-2 text-lg font-bold text-center lg:text-left'>新增公休日：</h3>
+        <div class='grid grid-cols-2 gap-2 lg:grid-cols-3 xl:grid-cols-4 ' id='holiday-selector'>
+          <% @week.each do |date| %>
+            <button class='inline-block w-full unselect-btn' 
+                  data-date='<%= date.strftime('%a') %>'
+                  data-holiday-target='date'
+                  data-action='click->holiday#getDate'
+            >
+              <%= date.strftime('%a') %>
+            </button>
+          <% end %>
+        </div>
+        
+        <%= form_with(model: @holiday, 
+                      url: admin_restaurant_holidays_path(@restaurant)) do |f| %>
+          <%= f.hidden_field :dayoff, data: {holiday_target: 'input'}, value: '' %>
+          <%= f.submit '新增', class: 'void-btn mt-4 inline-block', data: {holiday_target: 'submit'}, disabled: true %>
         <% end %>
       </div>
       
-      <%= form_with(model: @holiday, 
-                    url: admin_restaurant_holidays_path(@restaurant)) do |f| %>
-        <%= f.hidden_field :dayoff, data: {holiday_target: 'input'}, value: '' %>
-        <%= f.submit '新增', class: 'void-btn mt-4 inline-block', data: {holiday_target: 'submit'}, disabled: true %>
-      <% end %>
-      
+      <div class="grid grid-cols-1 grid-rows-3 gap-2 mt-auto lg:col-span-3 md:grid-cols-3 xl:col-span-2 xl:grid-cols-2">
+        <%= render @holidays %>
+      </div>
     </div>
-    <div class="grid grid-cols-1 grid-rows-3 gap-2 mt-auto lg:col-span-3 md:grid-cols-3 xl:col-span-2 xl:grid-cols-2">
-      <%= render @holidays %>
-    </div>
-    
   </section>
-
-  </div>
 </section>
 
 
