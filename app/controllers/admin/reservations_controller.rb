@@ -6,7 +6,6 @@ module Admin
     before_action :set_reservation, only: %i[edit update destroy]
 
     def search
-      authorize(reservation)
       @search = Reservation.ransack(params[:q])
       @reservations = @search.result
     end
@@ -14,7 +13,7 @@ module Admin
     def calendar; end
 
     def create
-      authorize(reservation)
+      authorize :reservation
       @reservation = @restaurant.reservations.new(reservation_params)
 
       if @reservation.save
@@ -26,11 +25,11 @@ module Admin
     end
 
     def edit
-      authorize(reservation)
+      authorize :reservation
     end
 
     def update
-      authorize(reservation)
+      authorize :reservation
       if @reservation.update(reservation_params)
         redirect_to admin_restaurant_path(@restaurant), notice: '訂位資訊已更新'
       else
@@ -40,7 +39,7 @@ module Admin
 
     def destroy
       @reservation.cancel! if @reservation.may_cancel?
-      authorize(reservation)
+      authorize :reservation
       @reservation.destroy
       redirect_to admin_restaurant_path(@restaurant), notice: '訂位刪除成功'
     end

@@ -1,6 +1,6 @@
 class TablePolicy < ApplicationPolicy
   def index?
-    owner?
+    @user.restaurants.present?
   end
 
   def show?
@@ -26,6 +26,8 @@ class TablePolicy < ApplicationPolicy
   def destroy?
     index?
   end
+
+
 
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
