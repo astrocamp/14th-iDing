@@ -14,8 +14,8 @@
       <ul class="flex flex-col justify-between h-screen p-4 menu w-60 bg-base-200 text-base-content lg:w-40">
         <div>
           <%= image_tag "iding_logo.png", class: "w-40 m-auto py-2" %>
-          <li class="my-2 mt-6 font-semibold text-slate-700"><a class="m-auto">訂位列表</a></li>
-          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">歷史紀錄</a></li>
+          <li class="m-auto my-2 mt-6 font-semibold text-slate-700"><%= link_to '訂位列表', admin_restaurant_path(@restaurant), class: "m-auto" %></li>
+         <li class="my-2 font-semibold text-slate-700"><%= link_to '歷史訂位', search_admin_restaurant_reservations_path(@restaurant), class: "m-auto" %></li>
           <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">訂位搜尋</a></li>
           <li class="m-auto my-2 font-semibold text-slate-700"><%= link_to '桌號設定', admin_restaurant_tables_path(@restaurant), class: "m-auto" %></li>
           <li class="m-auto my-2 font-semibold text-slate-700"><%= link_to '營業時間', admin_restaurant_open_times_path(@restaurant), class: "m-auto" %></li>
@@ -47,7 +47,7 @@
     <div data-controller='tablemap'>
       <div class="flex justify-between w-11/12 py-1 mx-auto">
         <div class="px-1">
-          <button class="action-btn">顯示訂位</button>
+          <button class="px-4 action-btn">顯示訂位</button>
         </div>
         <div class="px-1 w-fit">
           <button class="px-4 action-btn" 
@@ -58,7 +58,6 @@
                   data-tablemap-target='finishBtn'
                   disabled>結束編輯</button>
         </div>
-
       </div>
 
       <div id="draggable-container" class="Tablemap_Grid">
@@ -85,7 +84,8 @@
             </div>
           <% end %>
         <% end %>
-
       </div>
     </div>
+  </div>
+</section>
     
