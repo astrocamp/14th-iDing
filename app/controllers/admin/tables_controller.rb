@@ -3,7 +3,7 @@
 module Admin
   class TablesController < Admin::BaseController
     before_action :set_table, only: %i[edit update destroy]
-    before_action :set_restaurant, only: %i[index new create]
+    before_action :set_restaurant, only: %i[index new create tablemap]
 
     def index
       @tables = @restaurant.tables.order(:id)
@@ -39,6 +39,10 @@ module Admin
     def destroy
       @table.destroy
       redirect_to admin_restaurant_tables_path, notice: '桌子刪除成功'
+    end
+
+    def tablemap
+      @tables = @restaurant.tables.all
     end
 
     private
