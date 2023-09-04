@@ -1,0 +1,91 @@
+<section class="h-screen lg:flex">
+  <div class="z-10 flex justify-between border-2 drawer bg-base-100 rounded-xl lg:drawer-open lg:border-0">
+    <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+    <div class="lg:hidden">
+      <%= image_tag "iding_logo.png", class: "w-36 m-auto py-2" %>
+    </div>
+    <div class="drawer-content lg:hidden lg:h-screen">
+      <label for="my-drawer" class="btn btn-square btn-ghost">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </label>
+    </div>
+    <div class="drawer-side">
+      <label for="my-drawer" class="drawer-overlay"></label>
+      <ul class="flex flex-col justify-between h-screen p-4 menu w-60 bg-base-200 text-base-content lg:w-40">
+        <div>
+          <%= image_tag "iding_logo.png", class: "w-40 m-auto py-2" %>
+          <li class="m-auto my-2 mt-6 font-semibold text-slate-700"><%= link_to '訂位列表', admin_restaurant_path(@restaurant), class: "m-auto" %></li>
+          <li class="my-2 font-semibold text-slate-700"><%= link_to '歷史訂位', search_admin_restaurant_reservations_path(@restaurant), class: "m-auto" %></li>
+          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">訂位搜尋</a></li>
+          <li class="m-auto my-2 font-semibold text-slate-700"><%= link_to '桌號設定', admin_restaurant_tables_path(@restaurant), class: "m-auto" %></li>
+          <li class="m-auto my-2 font-semibold text-slate-700"><%= link_to '營業時間', admin_restaurant_open_times_path(@restaurant), class: "m-auto" %></li>
+        </div>
+        <div>
+          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">最新通知</a></li>
+          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">聯繫客服</a></li>
+        </div>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <div class="m-2 lg:mx-4">
+      <div class="flex navbar bg-base-100 my-3 border-2 rounded-xl lg:w-[86vw]">
+        <div class="lg:mr-auto">
+          <a class="hidden normal-case btn btn-ghost lg:flex">返回</a>
+        </div>
+        <div class="m-auto lg:ml-auto">
+          <a class="text-xl normal-case btn btn-ghost">行事曆</a>
+        </div>
+        <div class="lg:ml-auto">
+          <a class="hidden normal-case btn btn-ghost lg:flex">時間軸</a>
+          <a class="hidden normal-case btn btn-ghost lg:flex">列表</a>
+          <%= link_to '桌位圖', tablemap_admin_restaurant_tables_path(@restaurant), class:"hidden normal-case btn btn-ghost lg:flex"%>
+        </div>
+      </div>
+    </div>
+
+    <div data-controller='tablemap'>
+      <div class="flex justify-between w-11/12 py-1 mx-auto">
+        <div class="px-1">
+          <button class="action-btn">顯示訂位</button>
+        </div>
+        <div class="px-1 w-fit">
+          <button class="action-btn" 
+                  data-action='click->tablemap#editMode'
+                  data-tablemap-target='editBtn'>編輯座位</button>
+          <button class="void-btn" 
+                  data-action='click->tablemap#finishEdit'
+                  data-tablemap-target='finishBtn'
+                  disabled>結束編輯</button>
+        </div>
+
+      </div>
+
+      <div id="draggable-container" class="Tablemap_Grid">
+        <% (1056 - @tables.length * 8).times do |index| %>
+          <% if @tables.any? && index < @tables.length %>
+            <% table = @tables[index] %>
+            <button class="relative bg-gray-300 focus:bg-emerald-300 draggable-source" 
+                style="grid-area: <%= table.site_y %> / <%= table.site_x %> / <%= table.site_y + 3 %> / <%= table.site_x + 3 %>;"
+                data-tablemap-target='table'
+                valuex = <%= table.site_x %>
+                valuey = <%= table.site_y %> 
+                data-id='<%= table.id %>'>   
+              <%= image_tag "table2.png", class: "w-16 mx-auto" %>
+              <div class="absolute w-full text-center translate-x-4" style="transform: translateY(-200%);">
+                <%= table.name %>
+              </div>
+            </button>
+             
+          <% else %>
+            <div class="bg-gray-300 draggable-source" data-tablemap-target='empty'>
+              <div class="empty">
+                <!-- 空白元素 -->
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+    
