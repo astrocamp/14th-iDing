@@ -44,6 +44,11 @@ Rails.application.routes.draw do
           patch :leave
         end
       end
+      resources :tables, only: [] do
+        member do
+          patch :update_position
+        end
+      end
     end
   end
 
