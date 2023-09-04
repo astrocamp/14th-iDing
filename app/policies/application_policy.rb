@@ -57,7 +57,4 @@ class ApplicationPolicy
 
   private
 
-  def super_admin?
-    user.role == 'super_admin'
-  end
 end
