@@ -1,36 +1,85 @@
-<p>訂單歷史搜尋</p>
-<%= search_form_for @search, url: search_admin_restaurant_reservations_path do |f| %>
-  <%= f.search_field :name_or_tel_cont, placeholder: "姓名或電話" %>
-  <div>
-    <%= f.label :date_eq, class: "hidden" %>
-    <%= f.text_field :date_eq, placeholder: "訂位日期", data: { controller: "flatpickr" }, class: "basic"%>
+<section class="h-screen lg:flex">
+  <div class="z-10 flex justify-between border-2 drawer bg-base-100 rounded-xl lg:drawer-open lg:border-0">
+    <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+    <div class="lg:hidden">
+      <%= image_tag "iding_logo.png", class: "w-36 m-auto py-2" %>
+    </div>
+    <div class="drawer-content lg:hidden lg:h-screen">
+      <label for="my-drawer" class="btn btn-square btn-ghost">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </label>
+    </div>
+    <div class="drawer-side">
+      <label for="my-drawer" class="drawer-overlay"></label>
+      <ul class="flex flex-col justify-between h-screen p-4 menu w-60 bg-base-200 text-base-content lg:w-40">
+        <div>
+          <%= image_tag "iding_logo.png", class: "w-40 m-auto py-2" %>
+          <li class="m-auto my-2 mt-6 font-semibold text-slate-700"><%= link_to '訂位列表', admin_restaurant_path(@restaurant), class: "m-auto" %></li>
+          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">歷史紀錄</a></li>
+          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">訂位搜尋</a></li>
+          <li class="m-auto my-2 font-semibold text-slate-700"><%= link_to '桌號設定', admin_restaurant_tables_path(@restaurant), class: "m-auto" %></li>
+          <li class="m-auto my-2 font-semibold text-slate-700"><%= link_to '營業時間', admin_restaurant_open_times_path(@restaurant), class: "m-auto" %></li>
+        </div>
+        <div>
+          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">最新通知</a></li>
+          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">聯繫客服</a></li>
+        </div>
+      </ul>
+    </div>
   </div>
-  <%= f.submit '搜尋' %>
-<% end %>
-<%= sort_link(@search, :date, '訂位日期排序', default_order: :desc) %>
-<table>
-  <thead>
-    <tr>
-      <th>大名</th>
-      <th>電話</th>
-      <th>日期</th>
-      <th>時間</th>
-      <th>大人數</th>
-      <th>小孩數</th>
-      <th>備註</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @reservations.each do |ff| %>
-      <tr>
-        <td><%= ff.name %></td>
-        <td><%= ff.tel %></td>
-        <td><%= ff.date.strftime("%m月%d日") %></td>
-        <td><%= ff.time.strftime("%H:%M") %></td>
-        <td><%= ff.adults %></td>
-        <td><%= ff.kids %></td>
-        <td><%= ff.note %></td>
-      </tr>
-    <% end %>  
-  </tbody>
-</table>
+  <div>
+    <div class="m-2 lg:mx-4">
+      <div class="flex navbar bg-base-100 my-3 border-2 rounded-xl lg:w-[86vw]">
+        <div class="lg:mr-auto">
+          <%= link_to admin_restaurants_path do %>
+            <p class="hidden normal-case btn btn-ghost lg:flex">返回</p>
+          <% end %>
+        </div>
+        <div class="m-auto lg:ml-auto">
+          <a class="text-xl normal-case btn btn-ghost">行事曆</a>
+        </div>
+        <div class="lg:ml-auto">
+          <a class="hidden normal-case btn btn-ghost lg:flex">時間軸</a>
+          <a class="hidden normal-case btn btn-ghost lg:flex">列表</a>
+          <a class="hidden normal-case btn btn-ghost lg:flex">桌位圖</a>
+        </div>
+      </div>
+    </div>
+    <p>訂單歷史搜尋</p>
+    <%= search_form_for @search, url: search_admin_restaurant_reservations_path do |f| %>
+      <%= f.search_field :name_or_tel_cont, placeholder: "姓名或電話" %>
+      <div>
+        <%= f.label :date_eq, class: "hidden" %>
+        <%= f.date_field :date_eq, placeholder: "訂位日期", data: { controller: "flatpickr" }, class: "basic"%>
+      </div>
+      <%= f.submit '搜尋', class:"action-btn" %>
+    <% end %>
+    <%= sort_link(@search, :date, '訂位日期排序', default_order: :desc) %>
+    <table>
+      <thead>
+        <tr>
+          <th>大名</th>
+          <th>電話</th>
+          <th>日期</th>
+          <th>時間</th>
+          <th>大人數</th>
+          <th>小孩數</th>
+          <th>備註</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reservations.each do |ff| %>
+          <tr>
+            <td><%= ff.name %></td>
+            <td><%= ff.tel %></td>
+            <td><%= ff.date.strftime("%m月%d日") %></td>
+            <td><%= ff.time.strftime("%H:%M") %></td>
+            <td><%= ff.adults %></td>
+            <td><%= ff.kids %></td>
+            <td><%= ff.note %></td>
+          </tr>
+        <% end %>  
+      </tbody>
+    </table>
+  </div>
+</section>
