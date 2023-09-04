@@ -4,17 +4,17 @@
   <div>
     <h1 class="text-2xl">您的餐廳</h1>
 
-    <%= link_to '返回首頁', root_path, class: "action-btn" %>
-    <%= link_to '新增餐廳', new_admin_restaurant_path, class: "action-btn" %>
+    <%= link_to '返回首頁', root_path, class: "action-btn px-2" %>
+    <%= link_to '新增餐廳', new_admin_restaurant_path, class: "action-btn px-2" %>
 
     <ul> 
       <div>
         <% @restaurants.each do |restaurant| %> 
         <div class="flex flex-col w-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] lg:flex-row my-5">
-          <div>
-            <%= image_tag "https://picsum.photos/300/300", class: "w-full rounded-t-lg object-cover h-full md:!rounded-none md:!rounded-l-lg" %>
-            <%#= restaurant.image %>
-          </div>
+          <div class="md:w-1/2 md:max-w-md md:mx-auto lg:mx-0 lg:w-1/4 lg:my-auto">
+            <%#= image_tag "restaurant.jpg", class: "w-full lg:w-80 rounded-t-lg object-cover h-full md:!rounded-none md:!rounded-l-lg" %>
+            <%= image_tag (restaurant.image_url), class: "w-full lg:rounded-lg h-32"%>
+          </div>  
           <div class="flex flex-col justify-between m-5">
             <div>
               <li class="my-2">名稱：<%= link_to restaurant.name, admin_restaurant_path(restaurant) %></li>
@@ -24,18 +24,18 @@
               <li class="my-2">統編：<%= restaurant.ubn %></li>
             </div>
             <div class="lg:flex lg:gap-5">
-            <%= link_to admin_restaurant_path(restaurant), class:"action-btn my-2 lg:my-5 flex" do %>
+            <%= link_to admin_restaurant_path(restaurant), class:"action-btn my-2 px-2 lg:my-5 flex" do %>
               <i class="fa-solid fa-gear"><span class="hidden ml-2 font-normal xl:inline">管理訂單</span><span class="inline ml-2 font-normal xl:hidden">管理</span></i>
             <% end %>
-            <%= link_to restaurant_build_path(restaurant, :date_time_person), class:"action-btn mx-2 md:mx-0 my-2 lg:my-5 flex" do%>
+            <%= link_to restaurant_build_path(restaurant, :date_time_person), class:"action-btn mx-2 px-2 md:mx-0 my-2 lg:my-5 flex" do%>
               <i class="fa-solid fa-arrow-right"><span class="hidden ml-2 font-normal xl:inline">查看訂位網頁</span><span class="inline ml-2 font-normal xl:hidden">查看</span></i>
             <% end %>
             </div>
             <div class="flex gap-5 my-2">
-              <%= link_to edit_admin_restaurant_path(restaurant), class:"action-btn" do %>
+              <%= link_to edit_admin_restaurant_path(restaurant), class:"action-btn px-4" do %>
                 <i class="fa-solid fa-pen"><span class="hidden ml-2 font-normal xl:inline">修改資訊</span></i>
               <% end %>
-              <%= link_to admin_restaurant_path(restaurant), data:{ turbo_method: 'delete', turbo_confirm: '確認刪除？'}, class:"action-btn" do %>
+              <%= link_to admin_restaurant_path(restaurant), data:{ turbo_method: 'delete', turbo_confirm: '確認刪除？'}, class:"action-btn px-4" do %>
               <i class="fa-solid fa-trash"><span class="hidden ml-2 font-normal xl:inline">刪除這間餐廳</span></i>
               <% end %>
             </div>
