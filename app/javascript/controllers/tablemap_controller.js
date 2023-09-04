@@ -2,11 +2,14 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="tablemap"
 export default class extends Controller {
-  static targets = ["table", "editBtn", "finishBtn", "empty"];
+  static targets = ["table", "editBtn", "finishBtn", "empty", "hint"];
 
   editMode() {
     const tables = this.tableTargets;
     const emptyDivs = this.emptyTargets;
+    const hint = this.hintTarget;
+    //show hint
+    hint.classList.remove("hidden");
     //change editBtn
     this.editBtnTarget.disabled = true;
     this.editBtnTarget.classList.remove("action-btn");
@@ -29,6 +32,9 @@ export default class extends Controller {
   finishEdit() {
     const tables = this.tableTargets;
     const emptyDivs = this.emptyTargets;
+    const hint = this.hintTarget;
+    //remove hint
+    hint.classList.add("hidden");
     //change finishBtn
     this.finishBtnTarget.disabled = true;
     this.finishBtnTarget.classList.remove("action-btn");
