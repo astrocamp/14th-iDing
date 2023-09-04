@@ -40,9 +40,12 @@
               <%= link_to edit_admin_restaurant_path(restaurant), class:"action-btn px-4" do %>
                 <i class="fa-solid fa-pen"><span class="hidden ml-2 font-normal xl:inline">修改資訊</span></i>
               <% end %>
-              <%= link_to admin_restaurant_path(restaurant), data:{ turbo_method: 'delete', turbo_confirm: '確認刪除？'}, class:"action-btn px-4" do %>
-              <i class="fa-solid fa-trash"><span class="hidden ml-2 font-normal xl:inline">刪除這間餐廳</span></i>
-              <% end %>
+              <span class="link-container">
+                <%= link_to '刪除這間餐廳', admin_restaurant_path(restaurant), if: policy(restaurant).destroy?, data: { turbo_method: 'delete', turbo_confirm: '確認刪除？' }, class: "action-btn" do %>
+                  <i class="fa-solid fa-trash"><span class="hidden ml-2 font-normal xl:inline"></span></i>
+                <% end %>
+              </span>
+
             </div>
           </div>
         </div>
