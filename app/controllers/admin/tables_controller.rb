@@ -6,21 +6,21 @@ module Admin
     before_action :set_restaurant, only: %i[index new create tablemap]
 
     def index
-      authorize(table)
+      authorize :table
       @tables = @restaurant.tables.order(:id)
     end
 
     def show
-      authorize(table)
+      authorize :table
     end
 
     def new
-      authorize(table)
+      authorize :table
       @table = @restaurant.tables.new
     end
 
     def create
-      authorize(table)
+      authorize :table
       @table = @restaurant.tables.new(table_params)
 
       if @table.save
@@ -32,11 +32,11 @@ module Admin
     end
 
     def edit
-      authorize(table)
+      authorize :table
     end
 
     def update
-      authorize(table)
+      authorize :table
       if @table.update(table_params)
         redirect_to admin_restaurant_tables_path(@restaurant), notice: '桌子已更新'
       else
@@ -45,7 +45,7 @@ module Admin
     end
 
     def destroy
-      authorize(table)
+      authorize :table
       @table.destroy
       redirect_to admin_restaurant_tables_path, notice: '桌子刪除成功'
     end

@@ -2,10 +2,10 @@
 
 module Admin
   class RestaurantsController < Admin::BaseController
+    include Pundit
     before_action :set_restaurant, only: %i[show edit update destroy]
-
+    
     def index
-      authorize(restaurant)
       @restaurants = current_user.restaurants
     end
 
@@ -20,12 +20,11 @@ module Admin
     end
 
     def new
-      authorize(restaurant)
+      authorize :restaurant
       @restaurant = Restaurant.new
     end
 
     def create
-      authorize(restaurant)
       @restaurant = current_user.restaurants.new(restaurant_params)
       if @restaurant.save
         redirect_to admin_restaurants_path, notice: '餐廳新增成功'
@@ -36,11 +35,11 @@ module Admin
     end
 
     def edit
-      authorize(restaurant)
+      authorize :restaurant
     end
 
     def update
-      authorize(restaurant)
+      authorize :restaurant
       if @restaurant.update(restaurant_params)
         redirect_to admin_restaurants_path, notice: '餐廳資訊已更新'
       else
@@ -49,7 +48,7 @@ module Admin
     end
 
     def destroy
-      authorize(restaurant)
+      authorize :restaurant
       @restaurant.destroy
       redirect_to admin_restaurants_path, notice: '餐廳刪除成功'
     end
