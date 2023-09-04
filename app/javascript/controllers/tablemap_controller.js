@@ -70,7 +70,7 @@ export default class extends Controller {
 
       case "ArrowDown":
         event.preventDefault();
-        if (startY < 21) {
+        if (startY < 20) {
           this.moveDown(tableTarget);
           this.updatePosition(startX, startY + 1, tableId);
         }
@@ -86,7 +86,7 @@ export default class extends Controller {
         break;
       case "ArrowRight":
         event.preventDefault();
-        if (startX < 47) {
+        if (startX < 46) {
           this.moveRight(tableTarget);
           this.updatePosition(startX + 1, startY, tableId);
         }
