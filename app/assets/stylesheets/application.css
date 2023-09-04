@@ -39,3 +39,21 @@ select:focus {
   border-color: #666;
   box-shadow: 0 0 0 1px #ccc, 0 0 0 2px #666;
 }
+
+.Tablemap_Grid {
+  width: fit-content;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(48, 25px);
+  grid-template-rows: repeat(22, 25px);
+  border: 1px solid gray;
+}
+
+#draggable-container .draggable-source {
+  list-style: none;
+  display: block;
+}
+
+#draggable-container .empty {
+  background-color: rgb(207, 203, 203);
+}
