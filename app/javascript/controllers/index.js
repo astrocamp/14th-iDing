@@ -2,25 +2,34 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application";
+import { application } from "./application"
 
-import CalendarController from "./calendar_controller";
-application.register("calendar", CalendarController);
+import CalendarController from "./calendar_controller"
+application.register("calendar", CalendarController)
 
-import FlatpickrController from "./flatpickr_controller";
-application.register("flatpickr", FlatpickrController);
+import CheckController from "./check_controller"
+application.register("check", CheckController)
 
-import HamburgerController from "./hamburger_controller";
-application.register("hamburger", HamburgerController);
+import FlatpickrController from "./flatpickr_controller"
+application.register("flatpickr", FlatpickrController)
 
-import HolidayController from "./holiday_controller";
-application.register("holiday", HolidayController);
+import HamburgerController from "./hamburger_controller"
+application.register("hamburger", HamburgerController)
 
-import NotificationController from "./notification_controller";
-application.register("notification", NotificationController);
+import HolidayController from "./holiday_controller"
+application.register("holiday", HolidayController)
 
-import OpentimeController from "./opentime_controller";
-application.register("opentime", OpentimeController);
+import LeaveController from "./leave_controller"
+application.register("leave", LeaveController)
 
-import OrdertimeController from "./ordertime_controller";
-application.register("ordertime", OrdertimeController);
+import NotificationController from "./notification_controller"
+application.register("notification", NotificationController)
+
+import OpentimeController from "./opentime_controller"
+application.register("opentime", OpentimeController)
+
+import OrdertimeController from "./ordertime_controller"
+application.register("ordertime", OrdertimeController)
+
+import TablemapController from "./tablemap_controller"
+application.register("tablemap", TablemapController)
