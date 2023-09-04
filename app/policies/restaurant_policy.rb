@@ -1,32 +1,32 @@
 class RestaurantPolicy < ApplicationPolicy
-  def index?
-    user && owner?
-  end
-
-  def show?
-    index?
-  end
-
+  
   def new?
-    index?
+    user_has_restaurant?
   end
 
   def create?
-    index?
+    new?
   end
 
   def edit?
-    index?
+    new? 
   end
 
   def update?
-    index?
+    new?
   end
 
-  def destory?
-    super_admin?
+  def destroy?
+    @user.role == 'super_admin'
   end
   
+  private
+
+
+  def user_has_restaurant?
+    @user.restaurants.present?
+  end
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve

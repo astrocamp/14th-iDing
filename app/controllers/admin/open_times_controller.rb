@@ -6,7 +6,7 @@ module Admin
     before_action :set_open_time, only: %i[edit update destroy]
 
     def index
-      authorize(OpenTime)
+      authorize :OpenTime
       @open_time = OpenTime.new
       @open_times = @restaurant.open_times.includes(:restaurant).order(:start_time)
 
@@ -16,25 +16,25 @@ module Admin
     end
 
     def create
-      authorize(OpenTime)
+      authorize :OpenTime
       @open_time = @restaurant.open_times.new(opentime_params)
       @open_time.save
     end
 
     def edit
-      authorize(OpenTime)
+      authorize :OpenTime
       render layout: 'application'
     end
 
     def update
-      authorize(OpenTime)
+      authorize :OpenTime
       return unless @open_time.update(opentime_params)
 
       redirect_to admin_restaurant_open_times_path(@open_time.restaurant), notice: '已更新時段'
     end
 
     def destroy
-      authorize(OpenTime)
+      authorize :OpenTime
       @open_time.destroy
     end
 

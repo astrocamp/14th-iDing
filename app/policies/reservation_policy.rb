@@ -1,10 +1,10 @@
 class ReservationPolicy < ApplicationPolicy
   def search?
-    owner? || super_admin?
+    @user.restaurants.present? || super_admin?
   end
 
   def create?
-    owner?
+    @user.restaurants.present?
   end
 
   def edit?
@@ -16,7 +16,7 @@ class ReservationPolicy < ApplicationPolicy
   end
 
   def destroy?
-    owner? || super_admin?
+    create? || super_admin?
   end
 
   class Scope < Scope

@@ -2,3 +2,11 @@
 //= link_directory ../stylesheets .css
 //= link_tree ../../../vendor/javascript .js
 //= link_tree ../builds
+//= link controllers/application.js
+//= link controllers/flatpickr_controller.js
+//= link controllers/hamburger_controller.js
+//= link controllers/holiday_controller.js
+//= link controllers/notification_controller.js
+//= link controllers/opentime_controller.js
+//= link controllers/ordertime_controller.js
+//= link controllers/index.js
