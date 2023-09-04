@@ -40,6 +40,10 @@ class ApplicationPolicy
     record.user == user
     end
 
+  def super_admin?
+    user.role == super_admin
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user
