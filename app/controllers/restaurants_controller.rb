@@ -40,6 +40,7 @@ class RestaurantsController < ApplicationController
   def time_slot
     time_periods = @restaurant.open_times.pluck(:start_time, :end_time)
     @time_period = time_periods.map { |start_time, end_time| start_time.to_i..end_time.to_i }
+    @time_period = @time_period.sort_by { |range| range&.begin }
   end
 
   def set_timelist
