@@ -1,7 +1,7 @@
 class HolidayPolicy < ApplicationPolicy
 
   def create?
-    user && owner?
+    @user.restaurants.present?
   end
 
   def destroy?
