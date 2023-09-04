@@ -5,7 +5,7 @@ class OpenTimePolicy < ApplicationPolicy
   end
 
   def create?
-    user && ower?
+    @user.restaurants.present?
   end
 
   def edit?
