@@ -101,12 +101,11 @@ export default class extends Controller {
   }
 
   updatePosition(newX, newY, tableId) {
-    const table_id = tableId;
     const requestBody = {
       site_x: newX,
       site_y: newY,
     };
-    fetch(`/api/v1/tables/${table_id}/update_position`, {
+    fetch(`/api/v1/tables/${tableId}/update_position`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -120,37 +119,32 @@ export default class extends Controller {
         }
         return response.json();
       })
-      .catch((error) => {
-        console.error("更新失败", error);
-      });
+      .catch((error) => {});
   }
 
   moveRight(element) {
-    const gridArea = element.style.gridArea;
-    const [startY, startX, endY, endX] = gridArea.split("/").map(Number);
-    const newX = startX + 1;
-    const newEndX = endX + 1;
-    element.style.gridArea = `${startY} / ${newX} / ${endY} / ${newEndX}`;
+    moveElement(element, 1, 0);
   }
+
   moveLeft(element) {
-    const gridArea = element.style.gridArea;
-    const [startY, startX, endY, endX] = gridArea.split("/").map(Number);
-    const newX = startX - 1;
-    const newEndX = endX - 1;
-    element.style.gridArea = `${startY} / ${newX} / ${endY} / ${newEndX}`;
+    moveElement(element, -1, 0);
   }
+
   moveUp(element) {
-    const gridArea = element.style.gridArea;
-    const [startY, startX, endY, endX] = gridArea.split("/").map(Number);
-    const newY = startY - 1;
-    const newEndY = endY - 1;
-    element.style.gridArea = `${newY} / ${startX} / ${newEndY} / ${endX}`;
+    moveElement(element, 0, -1);
   }
+
   moveDown(element) {
-    const gridArea = element.style.gridArea;
-    const [startY, startX, endY, endX] = gridArea.split("/").map(Number);
-    const newY = startY + 1;
-    const newEndY = endY + 1;
-    element.style.gridArea = `${newY} / ${startX} / ${newEndY} / ${endX}`;
+    moveElement(element, 0, 1);
   }
+}
+
+function moveElement(element, xChange, yChange) {
+  const gridArea = element.style.gridArea;
+  const [startY, startX, endY, endX] = gridArea.split("/").map(Number);
+  const newStartX = startX + xChange;
+  const newEndX = endX + xChange;
+  const newStartY = startY + yChange;
+  const newEndY = endY + yChange;
+  element.style.gridArea = `${newStartY} / ${newStartX} / ${newEndY} / ${newEndX}`;
 }
