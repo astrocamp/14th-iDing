@@ -10,7 +10,7 @@ module Api
         new_site_y = params[:site_y]
 
         if @table.update(site_x: new_site_x, site_y: new_site_y)
-          render json: { message: '位置以更新' }, status: :ok
+          render json: { message: '位置已更新' }, status: :ok
         else
           render json: { error: '無法更新位置' }, status: :unprocessable_entity
         end
