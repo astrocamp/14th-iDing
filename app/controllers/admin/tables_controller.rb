@@ -42,7 +42,7 @@ module Admin
     end
 
     def tablemap
-      @tables = @restaurant.tables.all
+      @tables = @restaurant.tables
     end
 
     private
