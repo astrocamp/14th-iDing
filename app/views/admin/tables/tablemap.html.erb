@@ -77,13 +77,15 @@
               <div class="absolute w-full text-center translate-x-4" style="transform: translateY(-200%);">
                 <%= table.name %>
               </div>
-              <div class="absolute bg-white rounded cursor-auto " style="transform: translate(100%, -200%);">
+              <div class="absolute bg-white rounded cursor-auto" style="transform: translate(75px, -150px);">
                 <% table.reservations.where(date: Date.today).each do |reservation| %>
-                  <%= reservation.date.strftime("%m/%d") %>
-                  <%= reservation.time.strftime("%R") %>
-                  <%= reservation.name %>
-                  <%= reservation.adults %>大
-                  <%= reservation.kids %>小
+                  <div class="flex p-2 w-36">
+                    <span><%#= reservation.date.strftime("%m/%d") %></span>
+                    <span><%= reservation.time.strftime("%R") %></span>
+                    <span><%= reservation.name %></span>
+                    <span><%= reservation.adults %>大</span>
+                    <span><%= reservation.kids %>小</span>
+                  </div>
                 <% end %>
               </div>
             </button>
