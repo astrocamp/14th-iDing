@@ -66,11 +66,11 @@
         <div class="flex gap-2">
           <div class="w-full sm:mb-0">
             <%= f.label :adults, '大人數',class:"block mr-2 text-sm" %>
-            <%= f.number_field :adults, value: session.dig(:first_step_data, 'adults').present? ? session.dig(:first_step_data, 'adults') : 1, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", min: 1 %>
+            <%= f.select :adults, (1..8).to_a, value: session.dig(:first_step_data, 'adults').present? ? session.dig(:first_step_data, 'adults') : 1, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", min: 1 %>
           </div>
           <div class="w-full sm:mb-0">
             <%= f.label :kids, '小孩數',class:"block mr-2 text-sm " %>
-            <%= f.number_field :kids,
+            <%= f.select :kids, (0..4).to_a,
                     value: session.dig(:first_step_data, 'kids').present? ? session.dig(:first_step_data, 'kids') : 0,
                     class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500",
                     min: 0 %>
