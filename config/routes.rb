@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resources :restaurants do
-      resources :tables
+      resources :tables do
+        get 'tablemap', on: :collection
+      end
       resources :open_times, shallow: true, only: [:index, :create, :edit, :update, :destroy]
       resources :reservations, only: [:create, :edit, :update, :destroy] do
         collection do
