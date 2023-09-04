@@ -21,6 +21,7 @@
 #
 class Restaurant < ApplicationRecord
   mount_uploader :image, ImageUploader
+  acts_as_paranoid
 
   validates :name, presence: true
   validates :url, presence: true, uniqueness: true
@@ -29,8 +30,8 @@ class Restaurant < ApplicationRecord
 
   belongs_to :user
 
-  has_many :reservations
-  has_many :open_times
+  has_many :reservations, dependent: :destroy
+  has_many :open_times, dependent: :destroy
   has_many :tables, dependent: :destroy
-  has_many :holidays
+  has_many :holidays, dependent: :destroy
 end
