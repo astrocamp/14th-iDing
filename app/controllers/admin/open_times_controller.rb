@@ -6,7 +6,6 @@ module Admin
     before_action :set_open_time, only: %i[edit update destroy]
 
     def index
-      authorize :OpenTime
       @open_time = OpenTime.new
       @open_times = @restaurant.open_times.includes(:restaurant).order(:start_time)
 
@@ -16,7 +15,6 @@ module Admin
     end
 
     def create
-      authorize :OpenTime
       @open_time = @restaurant.open_times.new(opentime_params)
       @open_time.save
     end
@@ -34,7 +32,6 @@ module Admin
     end
 
     def destroy
-      authorize :OpenTime
       @open_time.destroy
     end
 
