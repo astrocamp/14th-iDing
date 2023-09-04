@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_04_083258) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_04_155637) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,6 +68,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_083258) do
     t.integer "reserve_interval", default: 15
     t.integer "mealtime", default: 60
     t.integer "bookday_advance", default: 14
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_restaurants_on_deleted_at"
   end
 
   create_table "tables", force: :cascade do |t|
