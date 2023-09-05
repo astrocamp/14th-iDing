@@ -67,7 +67,7 @@
         <% (1056 - @tables.length * 8).times do |index| %>
           <% if @tables.any? && index < @tables.length %>
             <% table = @tables[index] %>
-            <% image_name, reservation_name = table_image_and_name(table) %>
+            <% image_name, reservation_name = table_image_and_name(table, @restaurant) %>
             <button class="relative bg-gray-300 focus:bg-emerald-300 draggable-source" 
                 style="grid-area: <%= table.site_y %> / <%= table.site_x %> / <%= table.site_y + 3 %> / <%= table.site_x + 3 %>;"
                 data-tablemap-target='table'
