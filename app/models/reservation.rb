@@ -26,7 +26,7 @@ class Reservation < ApplicationRecord
   belongs_to :restaurant
   belongs_to :table, optional: true
 
-  before_save :valid_total_guests
+  # before_save :valid_total_guests
 
   validates :date, presence: true
   validates :time, presence: true
