@@ -11,6 +11,7 @@ export default class extends Controller {
   static values = { restaurantId: Number };
   connect() {
     const calendarEl = document.getElementById("calendar");
+    let redirectToUrl = `/admin/restaurants/${this.restaurantIdValue}`;
     const calendar = new Calendar(calendarEl, {
       locale: zhLocale,
       navLinks: true,
@@ -33,6 +34,14 @@ export default class extends Controller {
         minute: "2-digit",
         meridiem: false,
         hour12: false,
+      },
+      navLinks: true,
+      navLinkDayClick: function (date, event) {
+        event.preventDefault();
+        let year = date.getFullYear();
+        let month = (date.getMonth() + 1).toString().padStart(2, "0");
+        let day = date.getDate().toString().padStart(2, "0");
+        window.location.href = redirectToUrl + `?date=${year}-${month}-${day}`;
       },
     });
     calendar.render();
