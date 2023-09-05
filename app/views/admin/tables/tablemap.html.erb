@@ -67,6 +67,7 @@
         <% (1056 - @tables.length * 8).times do |index| %>
           <% if @tables.any? && index < @tables.length %>
             <% table = @tables[index] %>
+            <% image_name, reservation_name = table_image_and_name(table) %>
             <button class="relative bg-gray-300 focus:bg-emerald-300 draggable-source" 
                 style="grid-area: <%= table.site_y %> / <%= table.site_x %> / <%= table.site_y + 3 %> / <%= table.site_x + 3 %>;"
                 data-tablemap-target='table'
@@ -74,9 +75,12 @@
                 valuey = <%= table.site_y %>
                 data-action='click->tablemap#showOrder'
                 data-id='<%= table.id %>'> 
-              <%= image_tag "twinseat.png", class: "w-16 mx-auto" %>
+              <%= image_tag image_name, class: "w-16 mx-auto" %>
               <div class="absolute w-full text-center translate-x-4" style="transform: translateY(-260%);">
-                <%= table.name %>
+                <div><%= table.name %></div>
+              </div>
+              <div class="absolute w-full text-center translate-x-4" style="transform: translateY(-150%);">
+                <div><%= reservation_name %></div>
               </div>
               <div class="fixed z-10 hidden bg-white border rounded cursor-auto border-slate-800 w-44" 
                   data-tablemap-target='order'
