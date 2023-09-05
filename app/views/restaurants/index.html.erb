@@ -8,8 +8,11 @@
         <%= link_to restaurant_build_path(restaurant, :date_time_person) do %>
         <div class="w-full h-64 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] md:flex-row my-5">
           <div>
-            <%#= image_tag "https://picsum.photos/300/300", class: "w-full rounded-lg h-auto md:!rounded-l-lg" %>
+          
+          <% if restaurant.image_url.present? %>
             <%= image_tag (restaurant.image_url), class: "w-full lg:rounded-lg h-32"%>
+          <% end %>
+          
           </div>
           <div class="flex justify-between mx-2 md:block">
             <div class="flex flex-col justify-center my-5">
