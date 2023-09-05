@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TablePolicy < ApplicationPolicy
   def index?
     @user.restaurants.present?
@@ -26,8 +28,6 @@ class TablePolicy < ApplicationPolicy
   def destroy?
     index?
   end
-
-
 
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
