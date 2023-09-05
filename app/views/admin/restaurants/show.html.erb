@@ -102,13 +102,13 @@
                 </div>
                 
                 <div class="flex">
-                  <div data-controller="check" data-id="<%= reservation.id %>">
+                  <div data-controller="check" data-check-url-value="<%= reservation.id %>">
                     <button data-action="click->check#checkIn" class="mx-5">
                       <i class="fa-regular fa-square-check"></i>入座
                     </button>
                   </div>
 
-                  <div data-controller="leave" data-id="<%= reservation.id %>">
+                  <div data-controller="leave" data-leave-url-value="<%= reservation.id %>">
                     <button data-action="click->leave#guestLeave" class="mx-5">
                       <i class="fa-solid fa-arrow-right-from-bracket"></i>離席
                     </button>
