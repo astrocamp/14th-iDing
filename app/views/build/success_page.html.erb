@@ -22,7 +22,7 @@
           </div>
 
           <div data-controller="holdseat" 
-               data-id="<%= @reservation.id %>" 
+               data-holdseat-url-value="<%= @reservation.id %>"
                class="pt-3">
             <button data-action="click->holdseat#holdSeat"
                     id="reservation-state-<%= @reservation.id %>"
