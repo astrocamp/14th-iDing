@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="tablemap"
 export default class extends Controller {
-  static targets = ["table", "editBtn", "finishBtn", "empty", "hint"];
+  static targets = ["table", "editBtn", "finishBtn", "empty", "hint", "order"];
 
   editMode() {
     const tables = this.tableTargets;
@@ -136,6 +136,29 @@ export default class extends Controller {
 
   moveDown(element) {
     moveElement(element, 0, 1);
+  }
+
+  showOrder(event) {
+    // 找桌子id
+    const tableId = event.currentTarget.dataset.id;
+    // 找到與該桌子相關的訂單元素
+    const orderTarget = this.orderTargets.find(
+      (target) => target.dataset.id === tableId
+    );
+    // 點擊同一個桌子，就隱藏訂單
+    if (tableId === this.clickedTableId) {
+      orderTarget.classList.add("hidden");
+      this.clickedTableId = null; // 重置點擊的桌子
+    } else {
+      // 否則，隱藏所有訂單元素，並顯示相關的訂單
+      this.orderTargets.forEach((target) => {
+        target.classList.add("hidden");
+      });
+      if (orderTarget) {
+        orderTarget.classList.remove("hidden");
+      }
+      this.clickedTableId = tableId; // 設置當前點擊的桌子
+    }
   }
 }
 

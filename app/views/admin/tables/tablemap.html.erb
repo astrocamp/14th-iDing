@@ -71,21 +71,25 @@
                 style="grid-area: <%= table.site_y %> / <%= table.site_x %> / <%= table.site_y + 3 %> / <%= table.site_x + 3 %>;"
                 data-tablemap-target='table'
                 valuex = <%= table.site_x %>
-                valuey = <%= table.site_y %> 
-                data-id='<%= table.id %>'>   
+                valuey = <%= table.site_y %>
+                data-action='click->tablemap#showOrder'
+                data-id='<%= table.id %>'> 
               <%= image_tag "twinseat.png", class: "w-16 mx-auto" %>
               <div class="absolute w-full text-center translate-x-4" style="transform: translateY(-260%);">
                 <%= table.name %>
               </div>
-              <div class="fixed bg-white rounded cursor-auto w-44" style="transform: translate(75px, -150px);">
+              <div class="fixed hidden py-2 bg-white rounded cursor-auto w-44" 
+                  style="transform: translate(75px, -150px);"
+                  data-tablemap-target='order'
+                  data-id='<%= table.id %>'>
                 <% table.reservations.where(date: Date.today).each do |reservation| %>
-                  <div class="w-full px-2 font-bold text-left"><%= reservation.time.strftime("%R") %></div>
-                  <div class="flex px-2 w-44">
-                    <span><%= reservation.name %></span>
-                    <span class="flex items-end pr-2 text-sm"><%= gender_title(reservation.gender) %></span>
-                    <%= reservation.adults %><span class="flex items-end text-sm">大</span>
-                    <span><%= reservation.kids %>小</span>
-                  </div>
+                    <div class="w-full px-2 font-bold text-left"><%= reservation.time.strftime("%R") %></div>
+                    <div class="flex px-2 border-b w-44">
+                      <span><%= reservation.name %></span>
+                      <span class="flex items-end pr-2 text-sm"><%= gender_title(reservation.gender) %></span>
+                      <%= reservation.adults %><span class="flex items-end text-sm">大</span>
+                      <%= reservation.kids %><span class="flex items-end text-sm">小</span>
+                    </div>
                 <% end %>
               </div>
             </button>
