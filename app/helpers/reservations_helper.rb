@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 module ReservationsHelper
-  def formatted_date(date)
-    date.strftime("%m-%d")
-  end
-
-  def formatted_time(time)
-    time.strftime('%R')
+  def gender_title(gender)
+    case gender
+    when 1
+      "先生"
+    when 2
+      "小姐"
+    end
   end
 end
