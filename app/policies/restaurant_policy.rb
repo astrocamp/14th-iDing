@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 class RestaurantPolicy < ApplicationPolicy
-  
   def new?
     user_has_restaurant?
   end
@@ -9,7 +10,7 @@ class RestaurantPolicy < ApplicationPolicy
   end
 
   def edit?
-    new? 
+    new?
   end
 
   def update?
@@ -19,9 +20,8 @@ class RestaurantPolicy < ApplicationPolicy
   def destroy?
     @user.role == 'super_admin'
   end
-  
-  private
 
+  private
 
   def user_has_restaurant?
     @user.restaurants.present?

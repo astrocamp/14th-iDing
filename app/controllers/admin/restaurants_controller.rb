@@ -4,7 +4,7 @@ module Admin
   class RestaurantsController < Admin::BaseController
     include Pundit
     before_action :set_restaurant, only: %i[show edit update destroy]
-    
+
     def index
       @restaurants = current_user.restaurants
     end

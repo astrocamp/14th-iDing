@@ -1,5 +1,6 @@
-class HolidayPolicy < ApplicationPolicy
+# frozen_string_literal: true
 
+class HolidayPolicy < ApplicationPolicy
   def create?
     @user.restaurants.present?
   end
