@@ -26,7 +26,7 @@ class Reservation < ApplicationRecord
   belongs_to :restaurant
   belongs_to :table, optional: true
 
-  # before_save :valid_total_guests
+  before_create :valid_total_guests
 
   validates :date, presence: true
   validates :time, presence: true
@@ -116,12 +116,10 @@ class Reservation < ApplicationRecord
   end
 
   def update_table_status_to_occupied
-    table = self.table
-    table.occupied! if table.present?
+    table.occupied! if table.present? && table.may_occupied?
   end
 
   def update_table_status_to_vacant
-    table = self.table
-    table.vacant! if table.present?
+    table.vacant! if table.present? && table.may_vacant?
   end
 end
