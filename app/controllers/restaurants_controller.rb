@@ -4,7 +4,6 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, :set_holidays, :set_timelist, :set_daylist, only: [:show]
   before_action :set_restaurant, :time_slot, only: [:filter_timelist]
 
-
   def index
     @restaurants = Restaurant.order(:id)
   end

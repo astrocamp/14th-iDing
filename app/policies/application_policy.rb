@@ -36,13 +36,11 @@ class ApplicationPolicy
     false
   end
 
-
   def super_admin?
     user.role == 'super_admin'
   end
 
   class Scope
-    
     def initialize(user, scope)
       @user = user
       @scope = scope
@@ -54,7 +52,4 @@ class ApplicationPolicy
 
     attr_reader :user, :scope
   end
-
-  private
-
 end
