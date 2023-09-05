@@ -20,7 +20,11 @@ export default class extends Controller {
     this.finishBtnTarget.classList.add("action-btn");
     //setBorder
     emptyDivs.forEach((div) => {
-      div.style.border = "0.5px solid gray"; // 添加 border 樣式
+      div.style.border = "0.5px solid gray";
+    });
+    // hidden reservation
+    this.orderTargets.forEach((target) => {
+      target.classList.add("hidden");
     });
     //editMode
     tables.forEach((button) => {
@@ -141,11 +145,11 @@ export default class extends Controller {
   showOrder(event) {
     // 找桌子id
     const tableId = event.currentTarget.dataset.id;
-    // 找到與該桌子相關的訂單元素
+    // 找到與該桌子的訂單target
     const orderTarget = this.orderTargets.find(
       (target) => target.dataset.id === tableId
     );
-    // 點擊同一個桌子，就隱藏訂單
+    // 如果點擊同一個桌子，就隱藏訂單
     if (tableId === this.clickedTableId) {
       orderTarget.classList.add("hidden");
       this.clickedTableId = null; // 重置點擊的桌子
@@ -156,6 +160,12 @@ export default class extends Controller {
       });
       if (orderTarget) {
         orderTarget.classList.remove("hidden");
+        const valuex = event.currentTarget.getAttribute("valuex");
+        if (parseInt(valuex) < 24) {
+          orderTarget.style.transform = "translate(80px, -150px)";
+        } else {
+          orderTarget.style.transform = "translate(-180px, -150px)";
+        }
       }
       this.clickedTableId = tableId; // 設置當前點擊的桌子
     }

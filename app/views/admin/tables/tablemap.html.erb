@@ -47,7 +47,6 @@
     <div data-controller='tablemap'>
       <div class="flex items-center justify-between w-11/12 py-1 mx-auto">
         <div class="px-1">
-          <%# <button class="px-4 action-btn">顯示訂位</button> %>
           <span class="text-lg font-bold">今日訂位</span>
         </div>
         <div class="hidden inline-block text-gray-500 align-baseline" data-tablemap-target='hint'>
@@ -79,8 +78,7 @@
               <div class="absolute w-full text-center translate-x-4" style="transform: translateY(-260%);">
                 <%= table.name %>
               </div>
-              <div class="fixed hidden bg-white rounded cursor-auto w-44" 
-                  style="transform: translate(80px, -150px);"
+              <div class="fixed z-10 hidden bg-white border rounded cursor-auto border-slate-800 w-44" 
                   data-tablemap-target='order'
                   data-id='<%= table.id %>'>
                 <% if table.reservations.where(date: Date.today).empty? %>
