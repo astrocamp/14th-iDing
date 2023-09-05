@@ -49,7 +49,7 @@ export default class extends Controller {
     });
     //finishEdit
     tables.forEach((button) => {
-      button.removeAttribute("data-action");
+      button.setAttribute("data-action", "click->tablemap#showOrder");
       button.style.removeProperty("border");
     });
   }
