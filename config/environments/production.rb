@@ -92,4 +92,11 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.hosts << "iding.cc"
+
+  config.action_mailer.default_url_options = { host: 'iding.cc' }
+
+  SMTP hostname: <%= ENV["SMTP_HOSTNAME"] %>
+  Port: <%= ENV["SMTP_PORT"] %>
+  Username: <%= ENV["SMTP_USERNAME"] %>
+  Default password: <%= ENV["SMTP_PASSWORD"] %>
 end
