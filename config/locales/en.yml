@@ -31,3 +31,32 @@
 
 en:
   hello: "Hello world"
+
+  reservationPage:
+    Next: "Next"
+
+  customerInfo:
+    Mr_: "Mr."
+    Ms_: "Ms."
+
+  reservations:
+    Confirm Reservation: Confirm Reservation
+    purposes:
+      birthday: "Birthday"
+      date: "Date"
+      family: "Family Dining"
+      anniversary: "Anniversary"
+      friends: "Friends Gathering"
+      business: "Business Meeting"
+      other: "Other"
+
+  date:
+    formats:
+      short: "%b %d, %Y"
+
+  success:
+    Cancel: "Cancel"
+    minutes: "minutes"
+
+  confirmations:
+    confirm_cancel: "Confirm cancellation?"
