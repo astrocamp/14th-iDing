@@ -93,6 +93,7 @@ tw:
 
   confirmations:
     confirm_cancel: "確認取消？"
+<<<<<<< HEAD
 
   devise:
     Sign Up: 註冊
@@ -130,3 +131,5 @@ tw:
     View reservation page: 查看訂位頁面
     Reservation Page: 查看
     Delete Restaurant: 刪除這間餐廳
+=======
+>>>>>>> bb8ed4b (fix success page RWD add customer's page i18n)
