@@ -43,7 +43,11 @@
 <section class="w-full mx-auto lg:w-5/6 ">
 
   <div class="w-full mx-auto mt-20 lg:mt-28 lg:px-8 ">
-    <%= image_tag (@restaurant.image_url), class: "w-full lg:rounded-lg h-auto" if @restaurant.image? %>
+    <% if @restaurant.image_url.present? %>
+      <%= image_tag (restaurant.image_url), class: "w-full lg:rounded-lg "%>
+    <% else %>
+      <%= image_tag "restaurantCoverPhoto.jpg", class: "w-full lg:rounded-lg " %>
+    <% end %>
   </div>
 
 <!--餐廳資訊-->
