@@ -10,9 +10,9 @@
           <div>
           
           <% if restaurant.image_url.present? %>
-            <%= image_tag (restaurant.image_url), class: "w-full lg:rounded-lg"%>
+            <%= image_tag (restaurant.image_url), class: "w-full lg:rounded-lg h-32"%>
           <% else %>
-            <%= image_tag "restaurantCoverPhoto.jpg", class: "w-full lg:rounded-lg"%> 
+            <%= image_tag "restaurantCoverPhoto.jpg", class: "w-full lg:rounded-lg h-32"%> 
           <% end %>
           
           </div>
