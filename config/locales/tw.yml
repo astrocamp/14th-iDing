@@ -10,6 +10,7 @@ tw:
 
   helper:
     submit:
+      Next: "下一步"
       restaurant:
         create: "建立餐廳"
         update: "更新餐廳資訊"
@@ -37,3 +38,56 @@ tw:
   partner:
     Partnered with iDing, now available for reservations!: 正在使用iDing的合作夥伴！
     Book now!: 馬上訂位！
+
+  reservationPage:
+    About: 餐廳簡介
+    Book Now!: 立即訂位
+    Menu: 美味菜單
+    Popular Restaurants: 熱門餐廳
+    Number of Guests: 用餐人數
+    adults: 大人數
+    kids: 小孩數
+    Select Dining Date: 選擇用餐日期
+    Please Choose a Reservation Date: 請先選擇訂位日期
+    Next: "下一步"
+
+  customerInfo:
+    Reservation Information: 訂位資訊
+    Return to Edit: 返回修改
+    Reservation Details: 填寫訂位人資料
+    Confirm Reservation: 確認訂位
+    adults: 大
+    kids: 小
+    Name *: 名字 *
+    Mr.: 先生
+    Ms.: 小姐
+    N/A: 不透露
+    Phone *: 電話 *
+    Purpose: 用餐目的
+    Note: 備註
+
+  reservations:
+    Confirm Reservation: 確認訂位
+    purposes:
+      birthday: "慶生"
+      date: "約會"
+      family: "家庭用餐"
+      anniversary: "結婚紀念日"
+      friends: "朋友聚餐"
+      business: "商務聚餐"
+      other: "其他"
+
+  success:
+    Here are your booking details: 以下是您的訂位資訊
+    Adult(s): 位大人
+    Kid(s): 位小孩
+    Note: 備註
+    Hold reservation: 保留訂位
+    Reservation confirmed: 已保留訂位
+    Cancel: 取消訂位
+    The dining time is limited to: 用餐時間為
+    minutes: 分鐘
+    menu: 點我看菜單
+
+  confirmations:
+    confirm_cancel: "確認取消？"
