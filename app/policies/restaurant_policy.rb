@@ -26,11 +26,4 @@ class RestaurantPolicy < ApplicationPolicy
   def user_has_restaurant?
     @user.restaurants.present?
   end
-
-  class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
-  end
 end
