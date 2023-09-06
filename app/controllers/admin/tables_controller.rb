@@ -24,10 +24,10 @@ module Admin
       @table = @restaurant.tables.new(table_params)
 
       if @table.save
-        redirect_to admin_restaurant_tables_path, notice: '桌子建立成功'
+        redirect_to admin_restaurant_tables_path, notice: '座位建立成功'
       else
         flash[:alert] = '桌號不得重複或空白'
-        render :new
+        render :new 
       end
     end
 
@@ -38,7 +38,7 @@ module Admin
     def update
       authorize :table
       if @table.update(table_params)
-        redirect_to admin_restaurant_tables_path(@restaurant), notice: '桌子已更新'
+        redirect_to admin_restaurant_tables_path(@restaurant), notice: '座位已更新'
       else
         render :edit
       end
@@ -47,7 +47,7 @@ module Admin
     def destroy
       authorize :table
       @table.destroy
-      redirect_to admin_restaurant_tables_path, notice: '桌子刪除成功'
+      redirect_to admin_restaurant_tables_path, notice: '座位已刪除'
     end
 
     def tablemap

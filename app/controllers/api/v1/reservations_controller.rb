@@ -3,22 +3,28 @@
 module Api
   module V1
     class ReservationsController < ApplicationController
+
+      before_action :set_reservation, only: [:check_in, :leave, :hold_seat]
+
       def check_in
-        @reservation = Reservation.find(params[:id])
         @reservation.use! if @reservation.may_use?
         render json: { newStatus: @reservation.state }
       end
 
       def leave
-        @reservation = Reservation.find(params[:id])
         @reservation.complete! if @reservation.may_complete?
         render json: { newStatus: @reservation.state }
       end
 
       def hold_seat
-        @reservation = Reservation.find(params[:id])
         @reservation.keep! if @reservation.may_keep?
         render json: { newStatus: @reservation.state }
+      end
+
+      private
+
+      def set_reservation
+        @reservation = Reservation.find(params[:id])
       end
     end
   end
