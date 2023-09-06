@@ -47,6 +47,7 @@ group :development do
   gem "web-console"
   gem "annotate", "~> 3.2"
   gem "rubocop", "~> 1.56"
+  gem 'dotenv-rails'
 end
 
 group :test do
