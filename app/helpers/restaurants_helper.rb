@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module RestaurantsHelper
+  
   def table_select_options(restaurant, form)
     vacant_options = restaurant.tables.where(status: 'vacant').order(:name).map do |table|
       ["#{table.name} - #{table.category}", table.id]
