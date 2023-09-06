@@ -26,16 +26,6 @@ Rails.application.routes.draw do
     resources :build, only: [:show, :update]
   end
 
-  namespace :api do
-    namespace :v1 do
-      resources :restaurants, only: [] do
-        member do
-          get :reservations
-        end
-      end
-    end
-  end
-
   resources :reservations, only: :destroy
 
   namespace :api do
@@ -50,6 +40,11 @@ Rails.application.routes.draw do
       resources :tables, only: [] do
         member do
           patch :update_position
+        end
+      end
+      resources :restaurants, only: [] do
+        member do
+          get :reservations
         end
       end
     end

@@ -4,40 +4,39 @@
     <div class="flex-shrink-0 w-full max-w-sm shadow-2xl card bg-base-100">
       <div class="card-body">
         <div class="form-control">
-            <div class="flex m-auto">
-            <h1 class="text-2xl font-bold text-right text-gray-600 md:text-3xl dark:text-gray-200">登入</h1>
+            <div class="flex px-10 py-2 mb-2">
+            <h1 class="text-3xl font-bold text-right text-gray-600 "><%= t('devise.Log In')%></h1>
             <%= image_tag "iding_logo.png", class:" inline w-36 m-auto md:w-30 xl:w-30" %>
           </div>
           <div class="field">
-            <%= f.label :email,'電子信箱', class: "label" %>
+            <%= f.label :email,t('devise.Email'), class: "label" %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "Email",class: "input input-bordered  text-black w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500 focus:border-transparent " %>
           </div>
         </div>
 
         <div class="form-control">
           <div class="field">
-            <%= f.label :password, '密碼', class: "label" %> 
+            <%= f.label :password, t('devise.Password'), class: "label" %> 
             <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "input input-bordered  text-black w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500 focus:border-transparent" %>
           </div>
         </div>
 
         <div class="flex justify-between">
-          <div class="pt-5 mx-2 field">
+          <div class="items-end pt-5 mx-2 text-sm field">
             <% if devise_mapping.rememberable? %>
                 <%= f.check_box :remember_me, class:"rounded" %>
-                <%= f.label :remember_me, '記住我' %>
+                <%= f.label :remember_me, t('devise.Remeber me') %>
             <% end %>
           </div>
 
           <div class="pt-5">
-            <%= link_to "忘記密碼？", new_password_path(resource_name), class:"text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700" %>
+            <%= link_to t('devise.Forgot password?'), new_password_path(resource_name), class:"block mb-1 text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700" %>
           </div>
         </div>
-       
 
         <div class="mt-6">
           <div class="field">
-            <%= f.submit "登入", class: "w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300" %>
+            <%= f.submit t('devise.Log In'), class: "w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300" %>
           </div>
         </div>
     <% end %>
@@ -49,7 +48,7 @@
 
         <%= render "devise/shared/links" %>
           
-        <p class="mx-2 mt-8 text-sm">還沒建立你的帳號嗎？<%= link_to "點我建立帳號", new_registration_path(resource_name), class:"text-blue-500 hover:text-blue-700 font-semibold mx-2" %> 
+        <p class="mx-2 mt-8 text-sm text-center"><%= t('devise.Not a member?')%><%= link_to t('devise.Sign up here'), new_registration_path(resource_name), class:"text-blue-500 hover:text-blue-700 font-semibold mx-2" %> 
         </p>
     </div>
   </div>

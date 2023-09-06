@@ -60,3 +60,14 @@ en:
 
   confirmations:
     confirm_cancel: "Confirm cancellation?"
+
+  devise:
+    words: words
+    Password length limit minimum: Password length limit minimum
+    Sign Up: Sign Up
+    Login here: Login here
+    Remeber me: Remeber me
+    Forgot password?: Forgot password?
+    Log In: Log In
+    Not a member?: Not a member?
+    Sign up here: Sign up here
