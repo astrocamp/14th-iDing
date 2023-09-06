@@ -31,7 +31,9 @@
     <div class="m-2 lg:mx-4">
       <div class="flex navbar bg-base-100 my-3 border-2 rounded-xl lg:w-[86vw]">
         <div class="lg:mr-auto">
-          <a class="hidden normal-case btn btn-ghost lg:flex">返回</a>
+          <%= link_to admin_restaurants_path do %>
+            <p class="hidden normal-case btn btn-ghost lg:flex">返回</p>
+          <% end %>
         </div>
         <div class="m-auto lg:ml-auto">
           <a class="text-xl normal-case btn btn-ghost">行事曆</a>
@@ -85,16 +87,17 @@
               <div class="absolute w-full text-center translate-x-4" style="transform: translateY(-200%);">
                 <%= reservation_name %>
               </div>
-              <div class="fixed z-10 hidden bg-white border rounded cursor-auto border-slate-800 w-44" 
+              <div class="fixed z-10 hidden overflow-y-auto bg-white border rounded cursor-auto border-slate-800 w-44" 
                   data-tablemap-target='order'
-                  data-id='<%= table.id %>'>
+                  data-id='<%= table.id %>'
+                  style="max-height: 200px">
                 <% if table.reservations.where(date: Date.today).empty? %>
-                  <div class="py-2"><%= table.name %>今日尚無訂位</div>
+                  <div class="py-3"><%= table.name %>今日尚無訂位</div>
                 <% else %>                  
                   <% table.reservations.where(date: Date.today).each do |reservation| %>
                     <div>
                       <div class="w-full px-2 font-bold text-left"><%= reservation.time.strftime("%R") %></div>
-                      <div class="flex px-2 border-b w-44">
+                      <div class="flex px-2 border-b">
                         <span><%= reservation.name %></span>
                         <span class="flex items-end pr-2 text-sm"><%= gender_title(reservation.gender) %></span>
                         <%= reservation.adults %><span class="flex items-end text-sm">大</span>
