@@ -49,6 +49,7 @@ group :development do
   gem "annotate", "~> 3.2"
   gem "rubocop", "~> 1.56"
   gem 'dotenv-rails'
+  gem "letter_opener"
 end
 
 group :test do
