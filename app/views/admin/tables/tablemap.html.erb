@@ -94,7 +94,7 @@
                 <% if table.reservations.where(date: Date.today).empty? %>
                   <div class="py-3"><%= table.name %>今日尚無訂位</div>
                 <% else %>                  
-                  <% table.reservations.where(date: Date.today).each do |reservation| %>
+                  <% table.reservations.where(date: Date.today).order(:time).each do |reservation| %>
                     <div>
                       <div class="w-full px-2 font-bold text-left"><%= reservation.time.strftime("%R") %></div>
                       <div class="flex px-2 border-b">
