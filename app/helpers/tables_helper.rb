@@ -9,11 +9,13 @@ module TablesHelper
     if reservations.present?
       image_name = "table_occupy.png"
       reservation_name = reservations.name
+      reservation_time = reservations.time.strftime("%R")
     else
       image_name = "twinseat.png"
       reservation_name = ""
+      reservation_time = ""
     end
 
-    [image_name, reservation_name]
+    [image_name, reservation_name, reservation_time]
   end
 end
