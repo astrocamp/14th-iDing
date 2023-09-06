@@ -8,35 +8,38 @@
   <div class="text-center hero-content text-neutral-content">
     <div class="max-w-md">
       <h1 class="mb-5 text-5xl font-bold">iDing</h1>
-      <p class="mb-5 text-3xl">享受訂位系統的神奇方程式</p>
+      <p class="mb-5 text-3xl"><%= t('index.Experience the Magical Formula of our Reservation System')%></p>
         <% if user_signed_in? %>
           <%= link_to admin_restaurants_path do %>
-            <button class="btn btn-gray">管理餐廳</button>
+            <button class="btn btn-gray"><%= t('index.Restaurant Management')%></button>
           <% end %>
         <% else %>
           <%= link_to new_user_registration_path do %>
-            <button class="btn btn-gray">立即註冊！</button>
+            <button class="btn btn-gray"><%= t('index.Sign Up')%></button>
           <% end %>
         <% end %>
     </div>
   </div>
 </div>
 
-<section class="py-4 lg:py-20">
+<section id="about" class="py-4 lg:py-20">
   <div class="my-12 lg:mb-24">
     <h2 class="text-3xl font-bold text-center text-gray-700 md:text-4xl lg:text-4xl">
-      訂位系統的神奇方程式
+      <%= t('index.Experience the Magical Formula of our Reservation System')%>
     </h2>
   </div>
   
-  <div class="w-10/12 m-auto lg:flex lg:w-10/12">
+  <div  class="w-10/12 m-auto lg:flex lg:w-10/12">
     <div class="lg:flex lg:w-2/3">
         <%= image_tag "officalweb.jpg", class: "w-full rounded-xl" %>
     </div>
     <div class="flex flex-col justify-center mx-2 lg:mx-12 lg:w-2/3">
       <p class="my-12 font-semibold text-gray-600 lg:text-lg lg:leading-10 ">
-        擺脫厚重的傳統紙本登記，你只需要一台電腦！<br>就可以輕鬆管理餐廳的訂位，大幅提⾼控位能⼒。
-        除了系統的顧客資訊外，更可以隨時掌握客人動態。<br>來看看 iDing 訂位系統是如何做到讓客人源源不絕吧！
+      <% if locale == :en %>
+        Say goodbye to cumbersome traditional paper reservations all you need is a computer! With it, you can effortlessly manage restaurant reservations, significantly enhancing your seating control. In addition to storing customer information within the system, you can also stay up-to-date with customer dynamics. Discover how iDing Reservation System keeps the flow of guests uninterrupted!
+      <% else %>
+        擺脫厚重的傳統紙本登記，你只需要一台電腦！<br>就可以輕鬆管理餐廳的訂位，大幅提⾼控位能⼒。 除了系統的顧客資訊外，更可以隨時掌握客人動態。<br>來看看 iDing 訂位系統是如何做到讓客人源源不絕吧！
+      <% end %>
       </p>
     </div>
   </div>
@@ -51,10 +54,10 @@
         </div>
         <div class="grow">
           <h3 class="text-lg font-semibold text-gray-800">
-            由餐廳從業人員開發
+          <%= t('index.Developed by restaurant professionals')%>
           </h3>
           <p class="mt-1 text-gray-600 ">
-            100% 符合需求，化繁為簡，大大提升經營成效
+          <%= t('index.100% tailored to your needs, simplifying operations and boosting efficiency')%>
           </p>
         </div>
       </div>
@@ -64,10 +67,10 @@
         </div>
         <div class="grow">
           <h3 class="text-lg font-semibold text-gray-800">
-            完全免費
+          <%= t('index.Completely free of charge')%>
           </h3>
           <p class="mt-1 text-gray-600">
-            一句話：你喜歡，再用！更多功能持續優化中
+          <%= t('index.If you like it, keep using it! More features continuously optimized.')%>
           </p>
         </div>
       </div>
@@ -77,10 +80,14 @@
         </div>
         <div class="grow">
           <h3 class="text-lg font-semibold text-gray-800 ">
-            簡單易懂的操作流程
+            <%= t('index.User-friendly and straightforward operating procedures')%>
           </h3>
           <p class="pr-5 mt-1 text-gray-600">
-            丟掉複雜的說明書！不再浪費學習成本，使用最直覺的人因設計
+            <% if locale == :en %>
+              Say goodbye to complex user manuals! No more learning curve, just intuitive human-centered design.
+            <% else %>
+              丟掉複雜的說明書！不再浪費學習成本，使用最直覺的人因設計。
+            <% end %>
           </p>
         </div>
       </div>
@@ -90,10 +97,14 @@
         </div>
         <div class="grow">
           <h3 class="text-lg font-semibold text-gray-800">
-            用過的都說讚
+          <%= t('index.Rave reviews from satisfied users')%>
           </h3>
           <p class="pr-5 mt-1 text-gray-600">
-            甫上市即突破 1 萬用戶註冊，歡迎參考我們的合作夥伴怎麼說
+            <% if locale == :en %>
+              Surpassed 10,000 user registrations shortly after launch. See what our partners have to say!
+            <% else %>
+              甫上市即突破 1 萬用戶註冊，歡迎參考我們的合作夥伴怎麼說。
+            <% end %>
           </p>
         </div>
       </div>
