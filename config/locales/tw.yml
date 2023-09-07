@@ -106,3 +106,25 @@ tw:
     Forgot password?: 忘記密碼？
     Not a member?: 還沒建立你的帳號嗎？
     Sign up here: 點我建立帳號
+    Change Password: 修改密碼
+    Old Password: 舊密碼
+    Need your current password to confirm your changes: 我們需要您的原本密碼來確認您的更改
+    New Password: 新密碼
+    Confirm New Password: 確認新密碼
+    Update Password: 更新密碼
+
+  restaurant:
+    Your Restaurants: 您的餐廳
+    Homepage: 返回首頁
+    Operate a restaurant: 建立餐廳
+    Name: 名稱
+    Phone: 電話
+    Address: 地址
+    Description: 餐廳簡介
+    UBN: 統編
+    Manage orders: 管理訂單
+    Manage: 管理
+    Edit information: 修改資訊
+    View reservation page: 查看訂位頁面
+    Reservation Page: 查看
+    Delete Restaurant: 刪除這間餐廳

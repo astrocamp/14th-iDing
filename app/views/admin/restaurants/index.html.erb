@@ -2,16 +2,16 @@
 
 <section class="w-2/3 py-32 mx-auto">
   <div>
-    <h1 class="text-2xl">您的餐廳</h1>
+    <h1 class="text-2xl"><%= t('restaurant.Your Restaurants')%></h1>
 
-    <%= link_to '返回首頁', root_path, class: "action-btn px-2" %>
-    <%= link_to '新增餐廳', new_admin_restaurant_path, class: "action-btn px-2" %>
+    <%= link_to t('restaurant.Homepage'), root_path, class: "action-btn px-2" %>
+    <%= link_to t('restaurant.Operate a restaurant'), new_admin_restaurant_path, class: "action-btn px-2" %>
 
     <ul> 
       <div>
         <% @restaurants.each do |restaurant| %> 
         <div class="flex flex-col w-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] lg:flex-row my-5">
-          <div class="md:w-1/2 md:max-w-md md:mx-auto lg:mx-0 lg:w-1/4 lg:my-auto">
+          <div class="md:w-full md:mx-auto lg:mx-2 lg:w-1/4 lg:my-auto ">
           <% if restaurant.image_url.present? %>
             <%= image_tag (restaurant.image_url), class: "w-full lg:rounded-lg"%>
           <% else %>
@@ -20,30 +20,29 @@
           </div>  
           <div class="flex flex-col justify-between m-5">
             <div>
-              <li class="my-2">名稱：<%= link_to restaurant.name, admin_restaurant_path(restaurant) %></li>
-              <li class="my-2">電話：<%= restaurant.tel %></li>
-              <li class="my-2">地址：<%= restaurant.address %></li>
+              <li class="my-2"><%= t('restaurant.Name')%>：<%= link_to restaurant.name, admin_restaurant_path(restaurant) %></li>
+              <li class="my-2"><%= t('restaurant.Phone')%>：<%= restaurant.tel %></li>
+              <li class="my-2"><%= t('restaurant.Address')%>：<%= restaurant.address %></li>
               <% if restaurant.description.present? %>
-              <li class="my-2 lg:w-96 textarea-wrap-physical">描述：<%= restaurant.description.truncate(100) %></li>
+              <li class="my-2 lg:w-96 textarea-wrap-physical"><%= t('restaurant.Description')%>：<%= restaurant.description.truncate(100) %></li>
               <% end %>
-              <li class="my-2">統編：<%= restaurant.ubn %></li>
+              <li class="my-2"><%= t('restaurant.UBN')%>：<%= restaurant.ubn %></li>
             </div>
             <div class="lg:flex lg:gap-5">
             <%= link_to admin_restaurant_path(restaurant), class:"action-btn my-2 px-2 lg:my-5 flex" do %>
-              <i class="fa-solid fa-gear"><span class="hidden ml-2 font-normal xl:inline">管理訂單</span><span class="inline ml-2 font-normal xl:hidden">管理</span></i>
+              <i class="fa-solid fa-gear"></i><span class="hidden ml-2 font-normal xl:inline"><%= t('restaurant.Manage orders')%></span><span class="inline ml-2 font-normal xl:hidden"><%= t('restaurant.Manage')%></span>
             <% end %>
             <%= link_to restaurant_build_path(restaurant, :date_time_person), class:"action-btn mx-2 px-2 md:mx-0 my-2 lg:my-5 flex" do%>
-              <i class="fa-solid fa-arrow-right"><span class="hidden ml-2 font-normal xl:inline">查看訂位網頁</span><span class="inline ml-2 font-normal xl:hidden">查看</span></i>
+              <i class="fa-solid fa-arrow-right"></i><span class="hidden ml-2 font-normal xl:inline"><%= t('restaurant.View reservation page')%></span><span class="inline ml-2 font-normal xl:hidden"><%= t('restaurant.Reservation Page')%></span>
             <% end %>
             </div>
             <div class="flex gap-5 my-2">
               <%= link_to edit_admin_restaurant_path(restaurant), class:"action-btn px-4" do %>
-                <i class="fa-solid fa-pen"><span class="hidden ml-2 font-normal xl:inline">修改資訊</span></i>
+                <i class="fa-solid fa-pen"></i><span class="hidden ml-2 font-normal xl:inline"><%= t('restaurant.Edit information')%></span>
               <% end %>
-                <%= link_to admin_restaurant_path(restaurant), data: { turbo_method: 'delete', turbo_confirm: '確認刪除？' }, class: "action-btn" do %>
-  <i class="fa-solid fa-trash"><span class="hidden ml-2 font-normal xl:inline"></span></i>
-<% end if policy(restaurant).destroy? %>
-
+                <%= link_to admin_restaurant_path(restaurant), data: { turbo_method: 'delete', turbo_confirm: t('confirmations.confirm_cancel') }, class: "action-btn px-4" do %>
+                  <i class="fa-solid fa-trash"><span class="hidden ml-2 font-normal xl:inline"><%= t('restaurant.Delete Restaurant')%></span></i>
+                <% end if policy(restaurant).destroy? %>
 
             </div>
           </div>
