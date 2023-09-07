@@ -21,9 +21,10 @@
 #
 class Restaurant < ApplicationRecord
   acts_as_paranoid
-
   mount_uploader :image, ImageUploader
   mount_uploaders :menus, MenuUploader
+  extend FriendlyId
+  friendly_id :url, use: :slugged
 
   validates :name, presence: true
   validates :url, presence: true, uniqueness: true
@@ -36,4 +37,8 @@ class Restaurant < ApplicationRecord
   has_many :open_times, dependent: :destroy
   has_many :tables, dependent: :destroy
   has_many :holidays, dependent: :destroy
+
+  def should_generate_new_friendly_id?
+    url_changed? || super
+  end
 end

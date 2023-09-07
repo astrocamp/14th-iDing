@@ -66,7 +66,7 @@ module Admin
     end
 
     def set_restaurant
-      @restaurant = current_user.restaurants.find(params[:restaurant_id])
+      @restaurant = current_user.restaurants.friendly.find(params[:restaurant_id])
     end
   end
 end
