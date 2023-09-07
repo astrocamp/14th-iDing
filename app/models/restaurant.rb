@@ -20,8 +20,10 @@
 #  bookday_advance  :integer          default(14)
 #
 class Restaurant < ApplicationRecord
-  mount_uploader :image, ImageUploader
   acts_as_paranoid
+  
+  mount_uploader :image, ImageUploader
+  mount_uploaders :menus, MenuUploader
 
   validates :name, presence: true
   validates :url, presence: true, uniqueness: true
