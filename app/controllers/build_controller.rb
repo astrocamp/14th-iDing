@@ -45,7 +45,7 @@ class BuildController < ApplicationController
   end
 
   def success_page
-    @reservation = Reservation.find(params[:reservation_id])
+    @reservation = Reservation.friendly.find(params[:reservation_id])
   end
 
   private
