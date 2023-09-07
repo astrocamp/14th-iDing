@@ -1,0 +1,13 @@
+    <p>親愛的用戶，<%= @email %></p>
+
+    <p>您好，我們是 iDing 團隊！</p>
+
+    <p>請點擊下方按鈕確認您的註冊：</p>
+
+    <p><%= link_to '確認註冊', confirmation_url(@resource, confirmation_token: @token), style:"color: white; text-align: center; text-decoration: none; display: inline-block; padding: 10px 20px; background-color: #003942; border-radius: 5px;", target: "_blank" %></p>
+
+    <p>一旦您確認註冊，將能立即享受我們的服務，包括創建自己的第一間餐廳及管理訂位系統。</p>
+
+    <p style="font-weight: bold;">再次歡迎您加入 iDing ，訂位系統的神奇方程式！</p>
+
+
