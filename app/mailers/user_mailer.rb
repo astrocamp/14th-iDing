@@ -1,4 +1,4 @@
-class UserMailer < ApplicationMailer
+class UserMailer < Devise::Mailer
   default template_path: 'users/mailer'
 
   def confirmation_instructions(record, token, opt = {})
