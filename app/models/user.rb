@@ -17,8 +17,8 @@ class User < ApplicationRecord
   has_many :restaurants
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: [:google_oauth2],:confirmable
+         :recoverable, :rememberable, :validatable, :confirmable,
+         :omniauthable, omniauth_providers: [:google_oauth2]
 
   def self.create_from_provider_data(provider_data)
     where(email: provider_data.info.email).first_or_create do |user|
