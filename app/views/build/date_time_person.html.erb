@@ -111,5 +111,12 @@
     <%= f.submit '下一步', class: 'next-btn' %>
   </section>
   <% end %>
-
+  
+  <div class="w-full mx-auto mt-20 lg:mt-28 lg:px-8 ">
+    <% @restaurant.menus.each do |image| %>
+      <div class="mx-auto w-400 lg:rounded-lg h-auto">
+        <%= image_tag(image.url) %>
+      </div>
+    <% end %>
+  </div>
 </section>
