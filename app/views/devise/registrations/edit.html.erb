@@ -1,78 +1,4 @@
-<header class="fixed top-0 left-0 z-30 justify-start w-full py-0 text-sm bg-white border-b border-gray-200 lg:px-20">
-  <div class="navbar bg-base-100">
-    <div class="z-10 flex justify-between drawer bg-base-100">
-      <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-      <div>
-        <%= image_tag "logo_column.png", class: "w-28 lg:w-36" %>
-      </div>
-
-      <div class="drawer-content lg:hidden">
-        <label for="my-drawer" class="mx-12">
-          <%= image_tag "hamberger-icon.svg"%>
-        </label>
-      </div>
-
-      <div class="drawer-side">
-        <label for="my-drawer" class="drawer-overlay"></label>
-        <ul class="h-full p-4 menu w-60 bg-base-200 text-base-content">
-          <div>
-            <%= image_tag "logo_column.png", class: "w-40 m-auto py-2 lg:hidden" %>
-            <li><%= link_to '關於iDing', "#", class: "text-lg m-4 text-gray-800 py-6" %></li>
-            <li><%= link_to '立即註冊', new_user_registration_path, class: 'text-lg m-4 text-gray-800 py-6' %></li>
-            <% if user_signed_in? %>
-              <li>
-                <details>
-                  <summary class="m-4 font-medium text-gray-800 lg:my-10 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500">
-                    <div class="flex">
-                      <div>
-                        <%= image_tag "head-icon.svg", class: "w-6" %>
-                      </div>
-                      <div class="px-4 text-lg">
-                        <%= user_name %>
-                      </div>
-                    </div>
-                  </summary>
-
-                  <ul class="w-40 lg:p-2 lg:bg-gray-100">
-                    <li><%= link_to "登出", destroy_user_session_path, data: { turbo_method: "delete" }, class: "text-base font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-                    <li><%= link_to '更改密碼', edit_user_registration_path, class: "font-medium text-gray-700 text-base hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-                    <li><%= link_to '我的餐廳', admin_restaurants_path, class: "font-medium text-base text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-                  </ul>
-                </details>
-              </li>
-            <% else %>
-              <li><%= link_to "登入", new_user_session_path, class: "text-lg m-4 font-medium text-gray-700 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-            <% end %>
-          </div>
-        </ul>
-      </div>
-
-      <div class="hidden lg:flex">
-        <ul class="menu menu-horizontal">
-          <li><%= link_to '關於iDing', "#", class: "font-medium text-gray-800 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" %></li>
-          <li><%= link_to '立即註冊', new_user_registration_path, class: 'font-medium text-gray-800 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500' %></li>
-          <% if user_signed_in? %>
-            <li>
-              <details>
-                <summary class="font-medium text-gray-800 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500">
-                  <%= image_tag "head-icon.svg", class: "w-6" %>
-                  <%= user_name %>
-                </summary>
-                <ul class="w-40 p-2 bg-gray-100">
-                  <li><%= link_to "登出", destroy_user_session_path, data: { turbo_method: "delete" }, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-                  <li><%= link_to '更改密碼', edit_user_registration_path, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-                  <li><%= link_to '我的餐廳', admin_restaurants_path, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-3 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-                </ul>
-              </details>
-            </li>
-          <% else %>
-            <li><%= link_to "登入", new_user_session_path, class: "font-medium text-gray-700 hover:text-gray-600 sm:py-6 dark:text-gray-400 dark:hover:text-gray-700" %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-</header>
+<%= render "shared/navbar" %> 
 
 <div class="flex flex-col justify-center min-h-screen bg-gray-100 sm:py-12">
   <div class="relative py-28 sm:max-w-xl sm:mx-auto">
@@ -80,7 +6,7 @@
       <div class="mx-auto ">
         <div class="flex items-center space-x-5 ">
           <div class="self-start block pl-2 text-xl font-semibold text-gray-700 ">
-            <h2 class="text-2xl leading-relaxed">修改密碼</h2>
+            <h2 class="text-2xl leading-relaxed"><%= t('devise.Change Password')%></h2>
           </div>
         </div>
         <div class="divide-y divide-gray-200">
@@ -100,28 +26,29 @@
               <% end %>
 
               <div class="field">
-                <%= f.label :current_password,"舊密碼", class: 'leading-loose text-base' %><span class="text-sm"><em>(我們需要您的原本密碼來確認您的更改)</em></span><br />
+                <%= f.label :current_password, t('devise.Old Password'), class: 'leading-loose text-base' %><span class="text-sm">
+                <em>(<%= t('devise.Need your current password to confirm your changes')%>)</em></span><br />
                 <%= f.password_field :current_password, autocomplete: "current-password", class: 'iding-customer-input'  %>
               </div>
 
               <div class="field">
-                <%= f.label :password, "新密碼" , class: 'leading-loose text-base'%>
+                <%= f.label :password, t('devise.New Password') , class: 'leading-loose text-base'%>
                 <% if @minimum_password_length %>
-                  <span class="text-sm"><em>(密碼最少 <%= @minimum_password_length %> 個字元)</em></span>
+                  <span class="text-sm"><em>( <%= t('devise.Password length limit minimum')%> <%= @minimum_password_length %> <%= t('devise.words')%> )</em></span>
                 <% end %><br />
                 <%= f.password_field :password, autocomplete: "new-password", class: 'iding-customer-input'  %>
 
               </div>
 
               <div class="field">
-                <%= f.label :password_confirmation, "確認新密碼", class: 'leading-loose text-base' %><br />
+                <%= f.label :password_confirmation, t('devise.Confirm New Password'), class: 'leading-loose text-base' %><br />
                 <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'iding-customer-input'  %>
               </div>
 
 
 
               <div class="actions">
-                <%= f.submit "更新密碼", class: "flex m-auto mt-8 px-5 py-2.5 font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 ease-in-out" %>
+                <%= f.submit t('devise.Update Password'), class: "flex m-auto mt-8 px-5 py-2.5 font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 ease-in-out" %>
               </div>
             <% end %>
 
