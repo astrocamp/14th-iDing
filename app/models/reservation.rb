@@ -22,6 +22,8 @@
 class Reservation < ApplicationRecord
   acts_as_paranoid
   include AASM
+  # extend FriendlyId
+  # friendly_id :id, use: :slugged
 
   belongs_to :restaurant
   belongs_to :table, optional: true
