@@ -5,10 +5,10 @@ default: &default
 
 development:
   <<: *default
-  port: <%= ENV["POSTGRES_PORT"] %>
-  host: <%= ENV["POSTGRES_HOST"] %>
-  username: <%= ENV["POSTGRES_USER"] %>
-  password: <%= ENV["POSTGRES_PASSWORD"] %>
+  # port: <%= ENV["POSTGRES_PORT"] %>
+  # host: <%= ENV["POSTGRES_HOST"] %>
+  # username: <%= ENV["POSTGRES_USER"] %>
+  # password: <%= ENV["POSTGRES_PASSWORD"] %>
   database: iding_development
 
 test:
