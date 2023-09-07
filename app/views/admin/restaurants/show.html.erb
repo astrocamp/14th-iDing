@@ -1,25 +1,8 @@
 <section data-controller="hamburger" class="h-screen lg:flex">
-  <%= render "shared/backhouseNavbar" %> 
+  <%= render "shared/backhouseSidebar" %> 
 
   <div>
-    <div class="m-2 lg:mx-4">
-      <div class="flex navbar bg-base-100 my-3 border-2 rounded-xl lg:w-[86vw]">
-        <div class="lg:mr-auto">
-          <%= link_to admin_restaurants_path do %>
-            <p class="hidden normal-case btn btn-ghost lg:flex">返回</p>
-          <% end %>
-        </div>
-        <div class="m-auto lg:ml-auto">
-          <%= link_to '行事曆', calendar_admin_restaurant_reservations_path(@restaurant), data: { turbo_frame: "calendar" }, class: "text-xl normal-case btn btn-ghost" %>
-        </div>
-        <div class="lg:ml-auto">
-          <a class="hidden normal-case btn btn-ghost lg:flex">時間軸</a>
-          <a class="hidden normal-case btn btn-ghost lg:flex">列表</a>
-          <%= link_to '桌位圖', tablemap_admin_restaurant_tables_path(@restaurant), class:"hidden normal-case btn btn-ghost lg:flex"%>
-          <button data-action="click->hamburger#switch" class="mx-2 lg:hidden"><i class="fa-solid fa-user-plus"></i></button>
-        </div>
-      </div>
-    </div>
+    <%= render "/shared/backhouseNavbar"%>
     
     <%= turbo_frame_tag "calendar", class: 'lg:flex m-3 relative h-[calc(100%-96px)]' do %>
       <div data-hamburger-target="nav" class="top-0 hidden w-4/5 mx-auto lg:block lg:w-1/3">
@@ -61,10 +44,10 @@
           <% end %>
       </div>
     
-      <div class="w-full lg:w-3/4 h-[calc(100%-100px)]">
-        <div class="top-0 w-11/12 mx-auto mt-5 overflow-y-auto bg-white rounded-lg shadow border-3 lg:absolute lg:right-2 lg:w-4/6 lg:h-full">
+      <div class="w-full lg:w-3/4 h-[calc(100%-90px)]">
+        <div class="top-0 w-11/12 mx-auto mt-5 overflow-y-auto bg-white rounded-lg shadow border lg:absolute lg:right-2 lg:w-4/6 lg:h-[calc(95%)]">
           <% @reservations&.each do |reservation| %>
-            <div class="w-full mb-1 border-2 rounded">
+            <div class="w-full mb-1 rounded">
               <div class="flex items-center justify-between px-5 py-2 font-black bg-gray-200 border lg:pl-12">
                 <div>
                   <%= reservation.date %>
