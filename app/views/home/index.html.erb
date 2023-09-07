@@ -8,7 +8,7 @@
   <div class="text-center hero-content text-neutral-content">
     <div class="max-w-md">
       <h1 class="mb-5 text-5xl font-bold">iDing</h1>
-      <p class="mb-5 text-3xl"><%= t('index.Experience the Magical Formula of our Reservation System')%></p>
+      <p class="mb-5 text-3xl"><%= t('index.Experience')%></p>
         <% if user_signed_in? %>
           <%= link_to admin_restaurants_path do %>
             <button class="btn btn-gray"><%= t('index.Restaurant Management')%></button>
@@ -25,7 +25,7 @@
 <section id="about" class="py-4 lg:py-20">
   <div class="my-12 lg:mb-24">
     <h2 class="text-3xl font-bold text-center text-gray-700 md:text-4xl lg:text-4xl">
-      <%= t('index.Experience the Magical Formula of our Reservation System')%>
+      <%= t('index.Experience')%>
     </h2>
   </div>
   
@@ -35,11 +35,7 @@
     </div>
     <div class="flex flex-col justify-center mx-2 lg:mx-12 lg:w-2/3">
       <p class="my-12 font-semibold text-gray-600 lg:text-lg lg:leading-10 ">
-      <% if locale == :en %>
-        Say goodbye to cumbersome traditional paper reservations all you need is a computer! With it, you can effortlessly manage restaurant reservations, significantly enhancing your seating control. In addition to storing customer information within the system, you can also stay up-to-date with customer dynamics. Discover how iDing Reservation System keeps the flow of guests uninterrupted!
-      <% else %>
-        擺脫厚重的傳統紙本登記，你只需要一台電腦！<br>就可以輕鬆管理餐廳的訂位，大幅提⾼控位能⼒。 除了系統的顧客資訊外，更可以隨時掌握客人動態。<br>來看看 iDing 訂位系統是如何做到讓客人源源不絕吧！
-      <% end %>
+        <%= raw t('index.SayGoodbye') %>
       </p>
     </div>
   </div>
@@ -83,11 +79,7 @@
             <%= t('index.User-friendly and straightforward operating procedures')%>
           </h3>
           <p class="pr-5 mt-1 text-gray-600">
-            <% if locale == :en %>
-              Say goodbye to complex user manuals! No more learning curve, just intuitive human-centered design.
-            <% else %>
-              丟掉複雜的說明書！不再浪費學習成本，使用最直覺的人因設計。
-            <% end %>
+            <%= t('index.complex user manuals')%>
           </p>
         </div>
       </div>
@@ -100,11 +92,7 @@
           <%= t('index.Rave reviews from satisfied users')%>
           </h3>
           <p class="pr-5 mt-1 text-gray-600">
-            <% if locale == :en %>
-              Surpassed 10,000 user registrations shortly after launch. See what our partners have to say!
-            <% else %>
-              甫上市即突破 1 萬用戶註冊，歡迎參考我們的合作夥伴怎麼說。
-            <% end %>
+            <%= t('index.Surpassed')%>
           </p>
         </div>
       </div>

@@ -16,11 +16,13 @@ tw:
         update: "更新餐廳資訊"
 
   index:
-    Experience the Magical Formula of our Reservation System: "享受訂位系統的神奇方程式"
+    Experience: "享受訂位系統的神奇方程式"
     Sign Up: "立即註冊！"
     Restaurant Management: "管理餐廳"
+    Surpassed: 甫上市即突破 1 萬用戶註冊，歡迎參考我們的合作夥伴怎麼說。
+    complex user manuals: 丟掉複雜的說明書！不再浪費學習成本，使用最直覺的人因設計。
 
-    Say goodbye to cumbersome traditional paper reservations all you need is a computer! With it, you can effortlessly manage restaurant reservations, significantly enhancing your seating control. In addition to storing customer information within the system, you can also stay up-to-date with customer dynamics. Discover how iDing Reservation System keeps the flow of guests uninterrupted!: "擺脫厚重的傳統紙本登記，你只需要一台電腦！<br>就可以輕鬆管理餐廳的訂位，大幅提⾼控位能⼒。 除了系統的顧客資訊外，更可以隨時掌握客人動態。<br>來看看 iDing 訂位系統是如何做到讓客人源源不絕吧！"
+    SayGoodbye: "擺脫厚重的傳統紙本登記，你只需要一台電腦！<br>就可以輕鬆管理餐廳的訂位，大幅提⾼控位能⼒。 除了系統的顧客資訊外，更可以隨時掌握客人動態。<br>來看看 iDing 訂位系統是如何做到讓客人源源不絕吧！"
 
     Developed by restaurant professionals: "由餐廳從業人員開發"
     Completely free of charge: "完全免費"
@@ -37,7 +39,7 @@ tw:
 
   partner:
     Partnered with iDing, now available for reservations!: 正在使用iDing的合作夥伴！
-    Book now!: 馬上訂位！
+    Book now: 馬上訂位
 
   reservationPage:
     About: 餐廳簡介
