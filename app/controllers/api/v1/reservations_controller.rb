@@ -3,8 +3,7 @@
 module Api
   module V1
     class ReservationsController < ApplicationController
-
-      before_action :set_reservation, only: [:check_in, :leave, :hold_seat]
+      before_action :set_reservation, only: %i[check_in leave hold_seat]
 
       def check_in
         @reservation.use! if @reservation.may_use?
