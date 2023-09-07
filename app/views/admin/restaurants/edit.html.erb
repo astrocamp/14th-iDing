@@ -1,20 +1,58 @@
-<%= render "shared/navbar" %> 
-<div class="flex flex-col justify-center min-h-screen bg-gray-100 sm:py-12">
-  <div class="relative py-32 sm:max-w-xl sm:mx-auto">
-    <div class="relative px-4 py-10 mx-8 bg-white shadow md:mx-0 rounded-3xl sm:p-10">
-      <div class="max-w-md mx-auto ">
-        <div class="flex items-center space-x-5 ">
-          <div class="flex self-start m-auto text-xl font-semibold text-gray-700 ">
-          <%= image_tag "logo.png", class:" w-10 m-auto" %>
-            <h2 class="text-2xl leading-relaxed">修改餐廳資訊</h2>
-          </div>
+<section data-controller="hamburger" class="h-screen lg:flex">
+
+  <%= render "shared/backhouseNavbar" %> 
+
+  <div>
+    <div class="m-2 lg:mx-4">
+      <div class="flex navbar bg-base-100 my-3 border-2 rounded-xl lg:w-[86vw]">
+        <div class="lg:mr-auto">
+          <%= link_to admin_restaurants_path do %>
+            <p class="hidden normal-case btn btn-ghost lg:flex">返回</p>
+          <% end %>
         </div>
-        <div class="divide-y divide-gray-200">
-          <div class="py-8 space-y-4 text-base leading-6 text-gray-700 sm:text-lg sm:leading-7">
-            <div class="flex flex-col">
-          <%= render 'form', model: @restaurant %>
+        <div class="m-auto lg:ml-auto">
+          <%= link_to '行事曆', calendar_admin_restaurant_reservations_path(@restaurant), data: { turbo_frame: "calendar" }, class: "text-xl normal-case btn btn-ghost" %>
+        </div>
+        <div class="lg:ml-auto">
+          <a class="hidden normal-case btn btn-ghost lg:flex">時間軸</a>
+          <a class="hidden normal-case btn btn-ghost lg:flex">列表</a>
+          <%= link_to '桌位圖', tablemap_admin_restaurant_tables_path(@restaurant), class:"hidden normal-case btn btn-ghost lg:flex"%>
+          <button data-action="click->hamburger#switch" class="mx-2 lg:hidden"><i class="fa-solid fa-user-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="">
+      <div class=" sm:mx-auto">
+        <div class="px-4 mx-8 bg-white border-2 border-b rounded-lg shadow">
+          <div class="max-w-md mx-auto ">
+            <div class="flex items-center space-x-5 ">
+              <div class="flex py-4 m-auto text-xl font-semibold text-gray-700 ">
+              <%= image_tag "logo.png", class:" w-10 m-auto" %>
+                <h2 class="text-2xl leading-relaxed">修改餐廳資訊</h2>
+              </div>
+            </div>
+            <div class="divide-y divide-gray-200">
+              <div class="py-8 space-y-4 text-base leading-6 text-gray-700 sm:text-lg sm:leading-7">
+                <div class="flex flex-col">
+              <%= render 'form', model: @restaurant %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+

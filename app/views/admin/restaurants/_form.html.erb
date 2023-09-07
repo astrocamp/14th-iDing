@@ -1,72 +1,44 @@
 <%= form_with(model: [:admin, @restaurant], data: { turbo: false }) do |f| %>
+<div class="block lg:flex">
+  <div class="w-full lg:w-1/3">
+    <div class="m-1">
+      <%= f.label :name, "餐廳名稱", class:"leading-loose text-base"%>
+      <%= f.text_field :name, class: 'iding-customer-input' %>
+    </div>
 
-  <div class="m-1">
-    <%= f.label :name, "餐廳名稱*", class:"leading-loose text-base"%>
-    <%= f.text_field :name, class: 'iding-customer-input' %>
+    <div class="m-1">
+      <%= f.label :url, "網址名稱", class:"leading-loose text-base"  %>
+      <%= f.text_field :url, class: 'iding-customer-input' %>
+    </div>
+
+    <div class="m-1 my-3">
+      <%= f.label :tel, "餐廳電話", class: 'leading-loose text-base' %>
+      <%= f.text_field :tel, class: 'iding-customer-input' %>
+    </div>
   </div>
 
-  <div class="m-1">
-    <%= f.label :url, "網址名稱*", class:"leading-loose text-base"  %>
-    <%= f.text_field :url, class: 'iding-customer-input' %>
-  </div>
-
-  <div class="m-1">
-    <%= f.label :tel, "餐廳電話*", class: 'leading-loose text-base' %>
-    <%= f.text_field :tel, class: 'iding-customer-input' %>
-  </div>
-
-  <div class="m-1">
-    <%= f.label :address, "餐廳地址*", class: 'leading-loose text-base' %>
-    <%= f.text_field :address, size: 50, class: 'iding-customer-input' %>
-  </div>
-
-  <div class="m-1">
-    <%= f.label :description, "餐廳介紹", class: 'leading-loose text-base' %>
-    <%= f.text_area :description, class: 'iding-customer-input' %>
-  </div>
-
-  <div class="m-1">
-    <%= f.label :ubn, "統編", class: 'leading-loose text-base' %>
-    <%= f.text_field :ubn, class: 'iding-customer-input' %>
-  </div>
-
-  <div class="m-1">
-    <%= f.label :mealtime, "用餐時間*", class: 'leading-loose text-base'  %><span class = 'text-base leading-loose'><em class="text-sm">(分鐘)</em></span>
-    <%= f.number_field :mealtime, step: 5, class: 'iding-customer-input' %>
-  </div>
-
-  <div class="m-1">
-    <%= f.label :reserve_interval, "訂位間隔*", class: 'leading-loose text-base'  %><span class = 'text-base leading-loose'><em class="text-sm">(分鐘)</em></span>
-    <%= f.number_field :reserve_interval, step: 5, class: 'iding-customer-input'  %>
-  </div>
-
-  <div class="m-1">
-    <p><%= f.label :bookday_advance, '開放訂位的期間*',class:"leading-loose text-base" %><span class = 'text-base leading-loose'><em class="text-sm">(天)</em></span><br>
-    <em class="text-sm">(設定顧客可以訂位的期間，從幾天後到幾天內。舉例： 設定 30 天就是可以訂明天到 30 天內的位子。)</em></p>
-    <%= f.number_field :bookday_advance, min: 1, class: 'iding-customer-input' %>
-  </div>
-
-  <div class="m-1 my-2">
-    <%= f.label :image, "餐廳形象照*", class: 'leading-loose text-base' %>
-    <span class="text-sm"><em>(檔案類型：jpg / jpeg / gif / png)</em><br /></span>
-    <%= f.file_field :image, class: 'border w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none ring-gray-200 focus:ring-2 ring-offset-2 border-gray-500 focus:border-transparent' %>
-  </div>
-
-  <div class="m-1 my-2">
-    <%= f.label :menus, "餐廳菜單*", class: 'leading-loose text-base' %>
-    <span class="text-sm"><em>(檔案類型：jpg / jpeg / gif / png / avif) 每次上傳紀錄會覆蓋</em><br /></span>
-    <%= f.file_field :menus, multiple: true, class: 'border w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none ring-gray-200 focus:ring-2 ring-offset-2 border-gray-500 focus:border-transparent' %>
-
-    <% if f.object.menus? %>
-      <div class="flex flex-wrap justify-center lg:justify-between border-2 mt-1">
-        <% f.object.menus.each do |img| %>
-          <div class="m-1">
-            <%= link_to image_tag(img.url(:thumb)), img.url %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+  <div class="w-full lg:w-1/3">
+    <div class="m-1">
+      <%= f.label :address, "餐廳地址", class: 'leading-loose text-base' %>
+      <%= f.text_field :address, size: 50, class: 'iding-customer-input' %>
+    </div>
+    <div class="m-1">
+      <%= f.label :ubn, "統編", class: 'leading-loose text-base' %>
+      <%= f.text_field :ubn, class: 'iding-customer-input' %>
+    </div>
+    <div class="m-1 my-2">
+      <%= f.label :image, "餐廳形象照", class: 'leading-loose text-base' %>
+      <span class="inline text-xs md:block xl:inline"><em>(檔案類型：jpg / jpeg / gif / png)</em></span>
+      <%= f.file_field :image, class: 'border w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none ring-gray-200 focus:ring-2 ring-offset-2 border-gray-500 focus:border-transparent' %>
+    </div>
+  </div>  
+  <div>
+    <div class="m-1 ">
+      <%= f.label :description, "餐廳介紹", class: 'leading-loose text-base' %>
+      <%= f.text_area :description, class: 'h-56 text-black w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500 focus:border-transparent' %>
+    </div>
+  </div> 
+</div>
 
   <div class="flex items-center pt-4 space-x-4">
     <%= f.submit  class: "flex m-auto mt-8 px-5 py-2.5 font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 ease-in-out" %>
