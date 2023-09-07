@@ -20,10 +20,10 @@
 #  gender        :integer
 #
 class Reservation < ApplicationRecord
+  extend FriendlyId
+  friendly_id :generate_random, use: :slugged
   acts_as_paranoid
   include AASM
-  # extend FriendlyId
-  # friendly_id :id, use: :slugged
 
   belongs_to :restaurant
   belongs_to :table, optional: true
@@ -123,5 +123,11 @@ class Reservation < ApplicationRecord
 
   def update_table_status_to_vacant
     table.vacant! if table.present? && table.may_vacant?
+  end
+
+  private
+
+  def generate_random
+    SecureRandom.hex(4)
   end
 end
