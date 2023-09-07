@@ -2,34 +2,37 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application";
+import { application } from "./application"
 
-import CalendarController from "./calendar_controller";
-application.register("calendar", CalendarController);
+import CalendarController from "./calendar_controller"
+application.register("calendar", CalendarController)
 
-import CheckController from "./check_controller";
-application.register("check", CheckController);
+import CheckController from "./check_controller"
+application.register("check", CheckController)
 
-import FlatpickrController from "./flatpickr_controller";
-application.register("flatpickr", FlatpickrController);
+import FlatpickrController from "./flatpickr_controller"
+application.register("flatpickr", FlatpickrController)
 
-import HamburgerController from "./hamburger_controller";
-application.register("hamburger", HamburgerController);
+import HamburgerController from "./hamburger_controller"
+application.register("hamburger", HamburgerController)
 
-import HoldseatController from "./holdseat_controller";
-application.register("holdseat", HoldseatController);
+import HoldseatController from "./holdseat_controller"
+application.register("holdseat", HoldseatController)
 
-import LeaveController from "./leave_controller";
-application.register("leave", LeaveController);
+import HolidayController from "./holiday_controller"
+application.register("holiday", HolidayController)
 
-import NotificationController from "./notification_controller";
-application.register("notification", NotificationController);
+import LeaveController from "./leave_controller"
+application.register("leave", LeaveController)
 
-import OpentimeController from "./opentime_controller";
-application.register("opentime", OpentimeController);
+import NotificationController from "./notification_controller"
+application.register("notification", NotificationController)
 
-import OrdertimeController from "./ordertime_controller";
-application.register("ordertime", OrdertimeController);
+import OpentimeController from "./opentime_controller"
+application.register("opentime", OpentimeController)
 
-import TablemapController from "./tablemap_controller";
-application.register("tablemap", TablemapController);
+import OrdertimeController from "./ordertime_controller"
+application.register("ordertime", OrdertimeController)
+
+import TablemapController from "./tablemap_controller"
+application.register("tablemap", TablemapController)
