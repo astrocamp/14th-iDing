@@ -46,8 +46,8 @@ tw:
       updated: "已成功更新密碼"
       updated_but_not_signed_in: "您的帳戶已成功更新，但由於您的密碼已更改，您需要重新登錄。"
     sessions:
-      signed_in: "成功登錄。"
-      signed_out: "已將您的Google帳號登出"
+      signed_in: "歡迎回來！您已成功登入iDing"
+      signed_out: "已成功登出您的帳號"
       already_signed_out: "已將您的Google帳號登出"
     unlocks:
       send_instructions: "您將在幾分鐘內收到一封包含解鎖帳戶說明的電子郵件。"
