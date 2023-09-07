@@ -14,7 +14,6 @@ export default class extends Controller {
     let redirectToUrl = `/admin/restaurants/${this.restaurantIdValue}`;
     const calendar = new Calendar(calendarEl, {
       locale: zhLocale,
-      navLinks: true,
       plugins: [
         interactionPlugin__default,
         dayGridPlugin,
@@ -23,9 +22,9 @@ export default class extends Controller {
         multiMonthPlugin,
       ],
       headerToolbar: {
-        left: "prev,next today",
+        left: "prev,next",
         center: "title",
-        right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek",
+        right: "today",
       },
       timeZone: "UTC",
       events: `/api/v1/restaurants/${this.restaurantIdValue}/reservations`,
