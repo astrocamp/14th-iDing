@@ -162,9 +162,9 @@ export default class extends Controller {
         orderTarget.classList.remove("hidden");
         const valuex = event.currentTarget.getAttribute("valuex");
         if (parseInt(valuex) < 24) {
-          orderTarget.style.transform = "translate(80px, -150px)";
+          orderTarget.style.transform = "translate(80px, -120px)";
         } else {
-          orderTarget.style.transform = "translate(-180px, -150px)";
+          orderTarget.style.transform = "translate(-180px, -120px)";
         }
       }
       this.clickedTableId = tableId; // 設置當前點擊的桌子
