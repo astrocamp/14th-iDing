@@ -1,32 +1,5 @@
 <section data-controller="hamburger" class="h-screen lg:flex">
-  <div class="z-10 flex justify-between border-2 drawer bg-base-100 rounded-xl lg:drawer-open lg:border-0 ">
-    <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-    <div class="lg:hidden">
-      <%= image_tag "iding_logo.png", class: "w-36 m-auto py-2" %>
-    </div>
-    <div class="drawer-content lg:hidden lg:h-screen">
-      <label for="my-drawer" class="btn btn-square btn-ghost">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-      </label>
-    </div>
-    <div class="drawer-side">
-      <label for="my-drawer" class="drawer-overlay"></label>
-      <ul class="flex flex-col justify-between h-screen p-4 menu w-60 bg-base-200 text-base-content lg:w-40">
-        <div>
-          <%= image_tag "iding_logo.png", class: "w-40 m-auto py-2" %>
-          <li class="m-auto my-2 mt-6 font-semibold text-slate-700"><%= link_to '訂位列表', admin_restaurant_path(@restaurant), class: "m-auto" %></li>
-          <li class="my-2 font-semibold text-slate-700"><%= link_to '歷史訂位', search_admin_restaurant_reservations_path(@restaurant), class: "m-auto" %></li>
-          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">訂位搜尋</a></li>
-          <li class="m-auto my-2 font-semibold text-slate-700"><%= link_to '桌號設定', admin_restaurant_tables_path(@restaurant), class: "m-auto" %></li>
-          <li class="m-auto my-2 font-semibold text-slate-700"><%= link_to '營業時間', admin_restaurant_open_times_path(@restaurant), class: "m-auto" %></li>
-        </div>
-        <div>
-          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">最新通知</a></li>
-          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">聯繫客服</a></li>
-        </div>
-      </ul>
-    </div>
-  </div>
+  <%= render "shared/backhouseNavbar" %> 
 
   <div>
     <div class="m-2 lg:mx-4">

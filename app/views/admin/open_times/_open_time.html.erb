@@ -1,15 +1,14 @@
-<div class='items-center w-full p-2 px-2 m-auto mt-2 text-sm border rounded lg:flex lg:w-60' id='<%= dom_id(open_time)%>'>
-  <div class="w-full text-base text-center lg:w-1/2">
+<div class='flex items-center w-full p-2 px-2 m-auto mt-2 text-sm border rounded' id='<%= dom_id(open_time)%>'>
+  <div class="w-full text-base text-center">
     <%= open_time.start_time.strftime('%R') %> -
     <%= open_time.end_time.strftime('%R') %>
   </div>
   <div class="flex justify-center ">
-    <%= link_to edit_admin_open_time_path(open_time), class: 'mx-2 action-btn' do %>
+    <%= link_to edit_admin_open_time_path(open_time), class: 'mx-2 px-4 action-btn' do %>
       <i class="fa-solid fa-user-pen"></i>
     <% end %>
     <%= link_to admin_open_time_path(open_time), data: {turbo_method: 'delete', turbo_confirm: '確認刪除？', remote: true}, class: 'icon-btn' do %>
       <i class="fa-solid fa-xmark"></i>
     <% end %>
   </div>
-
 </div>

@@ -1,32 +1,6 @@
-<section class="h-screen lg:flex">
-  <div class="z-10 flex justify-between border-2 drawer bg-base-100 rounded-xl lg:drawer-open lg:border-0">
-    <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-    <div class="lg:hidden">
-      <%= image_tag "iding_logo.png", class: "w-36 m-auto py-2" %>
-    </div>
-    <div class="drawer-content lg:hidden lg:h-screen">
-      <label for="my-drawer" class="btn btn-square btn-ghost">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-      </label>
-    </div>
-    <div class="drawer-side">
-      <label for="my-drawer" class="drawer-overlay"></label>
-      <ul class="flex flex-col justify-between h-screen p-4 menu w-60 bg-base-200 text-base-content lg:w-40">
-        <div>
-          <%= image_tag "iding_logo.png", class: "w-40 m-auto py-2" %>
-          <li class="m-auto my-2 mt-6 font-semibold text-slate-700"><%= link_to '訂位列表', admin_restaurant_path(@restaurant), class: "m-auto" %></li>
-         <li class="my-2 font-semibold text-slate-700"><%= link_to '歷史訂位', search_admin_restaurant_reservations_path(@restaurant), class: "m-auto" %></li>
-          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">訂位搜尋</a></li>
-          <li class="m-auto my-2 font-semibold text-slate-700"><%= link_to '桌號設定', admin_restaurant_tables_path(@restaurant), class: "m-auto" %></li>
-          <li class="m-auto my-2 font-semibold text-slate-700"><%= link_to '營業時間', admin_restaurant_open_times_path(@restaurant), class: "m-auto" %></li>
-        </div>
-        <div>
-          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">最新通知</a></li>
-          <li class="m-auto my-2 font-semibold text-slate-700"><a class="m-auto">聯繫客服</a></li>
-        </div>
-      </ul>
-    </div>
-  </div>
+<section data-controller="hamburger" class="h-screen lg:flex">
+  <%= render "shared/backhouseNavbar" %> 
+
   <div>
     <div class="m-2 lg:mx-4">
       <div class="flex navbar bg-base-100 my-3 border-2 rounded-xl lg:w-[86vw]">
@@ -46,64 +20,92 @@
       </div>
     </div>
 
-    <div class="m-3 h-[calc(100%-96px)]">
-        <section class='w-1/2 mx-auto mt-3 mb-auto bg-white border rounded'>
-    <h2 class='py-2 text-2xl font-bold text-center border'>營業時段</h2>
-    <div class='p-6 text-left lg:grid-cols-2 lg:grid '>
-      <div class="">
-        <h3 class='py-2 text-lg font-bold text-center lg:text-left'>新增營業時段：</h3>
-        
-        <%= form_with(model: @open_time, 
-                      url: admin_restaurant_open_times_path(@restaurant),
-                      local: false) do |f| %>
-          <div data-controller='opentime' class= "mt-3">
-            <div class='text-center'>
-              <div>
-                <span>開始時間 : </span><%= f.time_field :start_time, data: {opentime_target: 'startTime', action: 'change->opentime#compare'}%>
-              </div>
-              <div class='mt-3 mb-4'>
-                <span>結束時間 : </span><%= f.time_field :end_time, data: {opentime_target: 'endTime', action: 'change->opentime#compare'} %>
-              </div>
-              <%= f.submit '儲存', class: 'action-btn', data: {opentime_target: 'submit'}, disabled: true %>
+  <div class="md:mx-4 md:flex">
+    <section class='max-w-xs mx-auto mt-3 bg-white border rounded-lg md:mx-0 md:max-w-md md:w-1/2 lg:w-1/4 '>
+      <h2 class='py-2 text-2xl font-bold text-center border-b'>用餐時段調整</h2>
+      <div class='p-6 text-left'>
+        <div>
+          <%= form_with(model: [:admin, @restaurant], data: { turbo: false }) do |f| %>
+            <div class="w-2/3 mx-auto my-2">
+              <%= f.label :mealtime, "用餐時間", class: 'text-base'  %>
+              <%= f.number_field :mealtime, step: 5, class: 'iding-customer-input' %>
             </div>
-          </div>
-        <% end %>
-      </div>
-      <div class='max-w-xs grid-cols-1 gap-2 mx-auto gird md:grid md:grid-cols-2 lg:block'>
-        <%= render @open_times %>
-      </div>
-    </div>
-  </section>
 
-  <section class='w-6/12 mx-auto mt-3 mb-auto bg-white border rounded' data-controller='holiday'>
-    <h2 class='py-2 text-2xl font-bold text-center border'>公休日</h2>
-    <div class='gap-2 p-6 text-left lg:grid lg:grid-cols-6'>
-      <div class='text-center lg:col-span-3 xl:col-span-4'>
-        <h3 class='mb-2 text-lg font-bold text-center lg:text-left'>新增公休日：</h3>
-        <div class='grid grid-cols-2 gap-2 lg:grid-cols-3 xl:grid-cols-4 ' id='holiday-selector'>
-          <% @week.each do |date| %>
-            <button class='inline-block w-full unselect-btn' 
-                  data-date='<%= date.strftime('%a') %>'
-                  data-holiday-target='date'
-                  data-action='click->holiday#getDate'
-            >
-              <%= date.strftime('%a') %>
-            </button>
+            <div class="w-2/3 mx-auto my-2">
+              <%= f.label :reserve_interval, "訂位間隔", class: ' text-base'%><span class = 'text-base'>(分鐘)</span>
+              <%= f.number_field :reserve_interval, step: 5, class: 'iding-customer-input'%>
+            </div>
+
+            <div class="w-2/3 mx-auto my-2">
+            <%= f.label :bookday_advance, '開放訂位的期間：',class:" text-base" %>
+              <%= f.number_field :bookday_advance, min: 1, class: 'iding-customer-input' %>
+            </div>
+              <p><em class="text-xs">(設定顧客可以訂位的期間，從幾天後到幾天內。舉例： 設定 30 天就是可以訂明天到 30 天內的位子。)</em></p>
+            <div class="flex items-center pt-4 space-x-4">
+              <%= f.submit  class: "flex m-auto mt-8 px-5 py-2.5 font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 ease-in-out" %>
+            </div>
           <% end %>
         </div>
-        
-        <%= form_with(model: @holiday, 
-                      url: admin_restaurant_holidays_path(@restaurant)) do |f| %>
-          <%= f.hidden_field :dayoff, data: {holiday_target: 'input'}, value: '' %>
-          <%= f.submit '新增', class: 'void-btn mt-4 inline-block', data: {holiday_target: 'submit'}, disabled: true %>
-        <% end %>
-      </div>
-      
-      <div class="grid grid-cols-1 grid-rows-3 gap-2 mt-auto lg:col-span-3 md:grid-cols-3 xl:col-span-2 xl:grid-cols-2">
-        <%= render @holidays %>
-      </div>
+    </section>
+
+      <section class='max-w-xs mx-auto mt-3 bg-white border rounded-lg lg:mx-5 md:mx-0 md:max-w-md md:w-1/2 lg:w-1/4'>
+        <h2 class='py-2 text-2xl font-bold text-center border-b'>營業時段</h2>
+        <div class='px-6 py-3 '>
+          <div class="">
+            <h3 class='py-2 text-lg font-bold '>新增營業時段：</h3>
+            <%= form_with(model: @open_time, 
+                          url: admin_restaurant_open_times_path(@restaurant),
+                          local: false) do |f| %>
+              <div data-controller='opentime' class= "mt-3">
+                <div>
+                  <div class="flex">
+                    <span class="flex flex-col justify-center w-full">開始時間</span> <%= f.time_field :start_time, data: {opentime_target: 'startTime', action: 'change->opentime#compare'}, class: "iding-customer-input" %>
+                  </div>
+                  <div class='flex'>
+                    <span class="flex flex-col justify-center w-full">結束時間</span><%= f.time_field :end_time, data: {opentime_target: 'endTime', action: 'change->opentime#compare'}, class: "iding-customer-input" %>
+                  </div>
+                  <div class="my-4 text-center">
+                    <%= f.submit '儲存', class: 'action-btn', data: {opentime_target: 'submit'}, disabled: true %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="mx-6">
+            <%= render @open_times %>
+          </div>
+        </div>
+      </section>
+
+      <section class='max-w-xs mx-auto lg:mx-0 md:max-w-xl mt-3 bg-white border rounded-lg  min-w-[30%]' data-controller='holiday'>
+        <h2 class='py-2 text-2xl font-bold text-center border-b'>公休日</h2>
+        <div class='gap-2 p-6 text-left'>
+          <div class='text-center'>
+            <h3 class='mb-2 text-lg font-bold text-center lg:text-left'>新增公休日：</h3>
+            <div class='flex flex-wrap gap-2' id='holiday-selector'>
+              <% @week.each do |date| %>
+                <button class='w-12 mx-1 md:w-auto unselect-btn' 
+                      data-date='<%= date.strftime('%a') %>'
+                      data-holiday-target='date'
+                      data-action='click->holiday#getDate'>
+                  <%= date.strftime('%a')%>
+                </button>
+              <% end %>
+            </div>
+            
+            <%= form_with(model: @holiday, 
+                          url: admin_restaurant_holidays_path(@restaurant)) do |f| %>
+              <%= f.hidden_field :dayoff, data: {holiday_target: 'input'}, value: '' %>
+              <%= f.submit '新增', class: 'w-16 void-btn mt-4 inline-block', data: {holiday_target: 'submit'}, disabled: true %>
+            <% end %>
+          </div>
+          
+          <div class="grid grid-cols-1 grid-rows-3 gap-2 mt-auto lg:col-span-3 md:grid-cols-3 xl:col-span-2 xl:grid-cols-2">
+            <%= render @holidays %>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
 </section>
 
 
