@@ -135,6 +135,8 @@ GEM
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (1.1.0)
+    friendly_id (5.4.2)
+      activerecord (>= 4.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashie (5.0.0)
@@ -366,6 +368,7 @@ DEPENDENCIES
   devise (~> 4.9)
   dotenv-rails
   fog-aws (~> 3.19)
+  friendly_id (~> 5.4.0)
   jbuilder
   jsbundling-rails
   letter_opener
