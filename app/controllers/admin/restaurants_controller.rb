@@ -56,7 +56,7 @@ module Admin
 
     def restaurant_params
       params.require(:restaurant)
-            .permit(:name, :url, :tel, :address, :description, :ubn, :image, :bookday_advance, :mealtime, :reserve_interval)
+            .permit(:name, :url, :tel, :address, :description, :ubn, :image, :bookday_advance, :mealtime, :reserve_interval, menus: [])
     end
 
     def set_restaurant
