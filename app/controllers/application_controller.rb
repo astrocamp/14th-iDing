@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   include Pundit::Authorization
 
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized # 還要切個畫面
-  around_action :switch_locale
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   private
 
@@ -16,8 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    flash[:alert] = '您無權訪問此頁面。'
-    redirect_to(request.referrer || root_path)
+    redirect_to(request.referrer || root_path), alert: '您無權訪問此頁面。'
   end
 
   def switch_locale(&action)
