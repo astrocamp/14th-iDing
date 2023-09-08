@@ -61,8 +61,8 @@ tw:
     adults: 大
     kids: 小
     Name *: 名字 *
-    Mr.: 先生
-    Ms.: 小姐
+    Mr_: 先生
+    Ms_: 小姐
     N/A: 不透露
     Phone *: 電話 *
     Purpose: 用餐目的
