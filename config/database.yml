@@ -9,7 +9,7 @@ development:
   # host: <%= ENV["POSTGRES_HOST"] %>
   # username: <%= ENV["POSTGRES_USER"] %>
   # password: <%= ENV["POSTGRES_PASSWORD"] %>
-  database: iDing_development
+  database: iding_development
 
 test:
   <<: *default
