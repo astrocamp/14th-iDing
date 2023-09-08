@@ -6,7 +6,7 @@ module Admin
     before_action :set_reservation, only: %i[edit update destroy]
 
     def search
-      @search = Reservation.ransack(params[:q])
+      @search = @restaurant.reservations.ransack(params[:q])
       @reservations = @search.result
     end
 
