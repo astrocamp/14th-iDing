@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    redirect_to(request.referrer || root_path), alert: '您無權訪問此頁面。'
+    redirect_to(request.referrer || root_path, alert: '您無權訪問此頁面。')
   end
 
   def switch_locale(&action)
