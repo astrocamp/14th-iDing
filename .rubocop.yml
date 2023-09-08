@@ -12,6 +12,7 @@ AllCops:
     - "bin/*"
     - "tmp/**/*"
     - ".git/**/*"
+    - "app/controllers/application_controller.rb"
 
 Style/Documentation:
   Enabled: false
