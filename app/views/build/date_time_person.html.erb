@@ -99,7 +99,7 @@
             <% end %>
             <%= f.hidden_field :date, data: {ordertime_target: "dateInput"}%>
           </div>
-          <hr>
+          <hr class="my-5">
 
           <p class='w-full my-8 text-2xl font-bold text-center text-green'><%= t('reservationPage.Select Dining Date')%></p>
         
@@ -107,21 +107,76 @@
             <span class="col-span-3 col-start-1 text-xl font-bold text-center lg:col-span-7 xl:col-span-8 md:col-span-5"><%= t('reservationPage.Please Choose a Reservation Date')%></span>
           </div>
           <%= f.hidden_field :time, data: {ordertime_target: "timeInput"}%>
-          <%= f.submit t('reservationPage.Next'), class: 'next-btn' %>  
         </section>
-        <% end %>
-  <h1 class='w-full text-2xl font-bold text-center mt-28 text-green'>美食菜單</h1>
-  <div id="menu" class="w-full mx-auto mt-8 lg:carousel rounded-box lg:mt-8 lg:px-8">
-    <% @restaurant.menus.each do |image| %>
-      <div class="flex justify-center h-auto m-2 border-4 rounded-lg lg:carousel-item">
-        <%= image_tag(image.url) %>
-      </div>
-    <% end %>
-  </div>
+        
+        <hr class="mt-10">
+
+         <section class="w-4/5 mx-auto">
+          <h1 class='w-full mb-10 text-2xl font-bold text-center mt-28 text-green'>餐廳資訊</h1>
+          <div class='grid-cols-2 pb-6 mx-2 mb-6 md:grid lg:mx-0 md:gap-4'>
+            <div class='mb-6'>
+              <iframe
+              class='w-full border-none g h-80'
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_MAP_KEY']%>
+                &q=<%= @restaurant.address%>">
+              </iframe>
+            </div>
+            <div class='flex flex-col justify-center px-4'>
+              <div class='pb-2 mb-2 border-b-2'>
+              
+                <p class='mb-2'><i class="mx-2 fa-solid fa-map-pin"></i>位置</p>
+                <p class='mx-4 text-gray-600'>
+                  <%= @restaurant.address%>
+                </p>
+              </div>
+              <div class='pb-2 mb-2 border-b-2'>
+                <p class='mb-2'><i class="mx-2 fa-solid fa-phone"></i>電話</p>
+                <p class='mx-4 text-gray-600'>
+                  <%= @restaurant.tel%>
+                  </p>
+              </div>
+              <div class='pb-2 mb-2 border-b-2'>
+                <p class='mb-2'><i class="mx-2 fa-solid fa-clock"></i>營業時間</p>
+                  <% @restaurant.open_times.each do |open_time|%>
+                    <p class='mx-4 text-gray-600'>
+                      <%= open_time.start_time.strftime('%R') %> - 
+                      <%= open_time.end_time.strftime('%R') %>
+                    </p>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr>
+
+          <section>
+          <h1 class='w-full text-2xl font-bold text-center mt-28 text-green'>美食菜單</h1>
+          <div id="menu" class="w-full mx-auto mt-8 lg:carousel rounded-box lg:mt-8 lg:px-8">
+            <% @restaurant.menus.each do |image| %>
+              <div class="flex justify-center h-auto m-2 border-4 rounded-lg lg:carousel-item">
+                <%= image_tag(image.url) %>
+              </div>
+            <% end %>
+          </div>
+        </section>
+
+
+
+
 </section>
 
 <footer class="flex justify-center py-5 mt-8">
   <p class="text-xs text-gray-600 sm:text-sm">© 2023 iDing. A product of <%= link_to "Hello 劍龍", root_path ,class:"text-slate-900 decoration-2 hover:underline font-semibold " %></p>
 </footer>
+  <div class="fixed bottom-0 left-0 right-0 w-full bg-white shadow-inner">
+    <div class="">
+      <%= f.submit t('reservationPage.Next'), class: ' mx-10 w-4/5 md:mx-24 lg:mx-36 my-2 px-4 py-2 left-0 right-0 mt-5 text-lg font-bold tracking-wider text-white bg-gray-500 rounded hover:bg-green  ' %>  
+    </div>
+  </div>
+<% end %>
 
 
