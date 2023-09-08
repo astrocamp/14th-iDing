@@ -7,6 +7,8 @@ module ReservationsHelper
       '先生'
     when 2
       '小姐'
+    else
+      ''
     end
   end
 end
