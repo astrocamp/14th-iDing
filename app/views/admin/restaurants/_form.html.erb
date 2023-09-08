@@ -1,47 +1,47 @@
 <%= form_with(model: [:admin, @restaurant], data: { turbo: false }) do |f| %>
-<div class="block lg:flex">
-  <div class="w-full lg:w-1/3">
-    <div class="m-1">
-      <%= f.label :name, "餐廳名稱", class:"leading-loose text-base"%>
-      <%= f.text_field :name, class: 'iding-customer-input' %>
+  <div class="block lg:flex">
+    <div class="w-full lg:w-1/3">
+      <div class="m-1">
+        <%= f.label :name, "餐廳名稱", class:"leading-loose text-base"%>
+        <%= f.text_field :name, class: 'iding-customer-input' %>
+      </div>
+
+      <div class="m-1">
+        <%= f.label :url, "網址名稱", class:"leading-loose text-base"  %>
+        <%= f.text_field :url, class: 'iding-customer-input' %>
+      </div>
+
+      <div class="m-1 my-3">
+        <%= f.label :tel, "餐廳電話", class: 'leading-loose text-base' %>
+        <%= f.text_field :tel, class: 'iding-customer-input' %>
+      </div>
     </div>
 
-    <div class="m-1">
-      <%= f.label :url, "網址名稱", class:"leading-loose text-base"  %>
-      <%= f.text_field :url, class: 'iding-customer-input' %>
-    </div>
-
-    <div class="m-1 my-3">
-      <%= f.label :tel, "餐廳電話", class: 'leading-loose text-base' %>
-      <%= f.text_field :tel, class: 'iding-customer-input' %>
-    </div>
+    <div class="w-full lg:w-1/3">
+      <div class="m-1">
+        <%= f.label :address, "餐廳地址", class: 'leading-loose text-base' %>
+        <%= f.text_field :address, size: 50, class: 'iding-customer-input' %>
+      </div>
+      <div class="m-1">
+        <%= f.label :ubn, "統編", class: 'leading-loose text-base' %>
+        <%= f.text_field :ubn, class: 'iding-customer-input' %>
+      </div>
+      <div class="m-1 my-2">
+        <%= f.label :image, "餐廳形象照", class: 'leading-loose text-base' %>
+        <span class="inline text-xs md:block xl:inline"><em>(檔案類型：jpg / jpeg / gif / png)</em></span>
+        <%= f.file_field :image, class: 'border w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none ring-gray-200 focus:ring-2 ring-offset-2 border-gray-500 focus:border-transparent' %>
+      </div>
+    </div>  
+    <div>
+      <div class="m-1 ">
+        <%= f.label :description, "餐廳介紹", class: 'leading-loose text-base' %>
+        <%= f.text_area :description, class: 'h-56 text-black w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500 focus:border-transparent' %>
+      </div>
+    </div> 
   </div>
 
-  <div class="w-full lg:w-1/3">
-    <div class="m-1">
-      <%= f.label :address, "餐廳地址", class: 'leading-loose text-base' %>
-      <%= f.text_field :address, size: 50, class: 'iding-customer-input' %>
+    <div class="flex items-center pt-4 space-x-4">
+      <%= f.submit  class: "flex m-auto mt-8 px-5 py-2.5 font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 ease-in-out" %>
     </div>
-    <div class="m-1">
-      <%= f.label :ubn, "統編", class: 'leading-loose text-base' %>
-      <%= f.text_field :ubn, class: 'iding-customer-input' %>
-    </div>
-    <div class="m-1 my-2">
-      <%= f.label :image, "餐廳形象照", class: 'leading-loose text-base' %>
-      <span class="inline text-xs md:block xl:inline"><em>(檔案類型：jpg / jpeg / gif / png)</em></span>
-      <%= f.file_field :image, class: 'border w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none ring-gray-200 focus:ring-2 ring-offset-2 border-gray-500 focus:border-transparent' %>
-    </div>
-  </div>  
-  <div>
-    <div class="m-1 ">
-      <%= f.label :description, "餐廳介紹", class: 'leading-loose text-base' %>
-      <%= f.text_area :description, class: 'h-56 text-black w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500 focus:border-transparent' %>
-    </div>
-  </div> 
-</div>
-
-  <div class="flex items-center pt-4 space-x-4">
-    <%= f.submit  class: "flex m-auto mt-8 px-5 py-2.5 font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 ease-in-out" %>
-  </div>
 
 <% end %>
