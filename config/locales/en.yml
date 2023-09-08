@@ -31,6 +31,10 @@
 
 en:
   hello: "Hello world"
+  location: Location
+  phone: Phone number
+  hours: Hours
+  menu: Menu
 
   reservationPage:
     Next: "Next"
@@ -49,6 +53,7 @@ en:
       friends: "Friends Gathering"
       business: "Business Meeting"
       other: "Other"
+    Restaurant information: Restaurant information
 
   date:
     formats:
