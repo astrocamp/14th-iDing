@@ -22,7 +22,7 @@
         </div>
 
         <div class="flex justify-between">
-          <div class="items-end pt-5 mx-2 text-sm field">
+          <div class="items-end pt-8 mx-2 text-sm field">
             <% if devise_mapping.rememberable? %>
                 <%= f.check_box :remember_me, class:"rounded" %>
                 <%= f.label :remember_me, t('devise.Remeber me') %>
@@ -31,10 +31,16 @@
 
           <div class="pt-5">
             <%= link_to t('devise.Forgot password?'), new_password_path(resource_name), class:"block mb-1 text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700" %>
+
+            <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+              <%= link_to "沒有收到驗證信？", new_user_confirmation_path(resource_name), class:"block mb-1 text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700"  %>
+            <% end %>
           </div>
+
+
         </div>
 
-        <div class="mt-6">
+        <div class="mt-2">
           <div class="field">
             <%= f.submit t('devise.Log In'), class: "w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300" %>
           </div>
@@ -46,7 +52,16 @@
           <p class="mx-4 mb-0 font-semibold text-center dark:text-neutral-200">OR</p>
         </div>
 
-        <%= render "devise/shared/links" %>
+        <%- if devise_mapping.omniauthable? %>
+          <%- resource_class.omniauth_providers.each do |provider| %>
+          <div class="flex m-auto">
+            <%= button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: "w-full bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4  border border-gray-300 " do %>
+            <%= image_tag "google-icon.svg", class:"w-7 inline m-2" %> 
+            <%= "Google" %>
+            <% end %>
+          </div>
+          <% end %>
+        <% end %> 
           
         <p class="mx-2 mt-8 text-sm text-center"><%= t('devise.Not a member?')%><%= link_to t('devise.Sign up here'), new_registration_path(resource_name), class:"text-blue-500 hover:text-blue-700 font-semibold mx-2" %> 
         </p>
