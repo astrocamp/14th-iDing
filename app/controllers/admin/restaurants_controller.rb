@@ -9,7 +9,6 @@ module Admin
     end
 
     def show
-      authorize :restaurant
       @reservations = if params[:date].present?
                         @restaurant.reservations.where(date: params[:date])
                       else
