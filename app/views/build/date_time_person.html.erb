@@ -112,7 +112,7 @@
         <hr class="mt-10">
 
          <section class="w-4/5 mx-auto">
-          <h1 class='w-full mb-10 text-2xl font-bold text-center mt-28 text-green'>餐廳資訊</h1>
+          <h1 class='w-full mb-10 text-2xl font-bold text-center mt-28 text-green'><%=t('reservationPage.Restaurant information')%></h1>
           <div class='grid-cols-2 pb-6 mx-2 mb-6 md:grid lg:mx-0 md:gap-4'>
             <div class='mb-6'>
               <iframe
@@ -126,19 +126,19 @@
             <div class='flex flex-col justify-center px-4'>
               <div class='pb-2 mb-2 border-b-2'>
               
-                <p class='mb-2'><i class="mx-2 fa-solid fa-map-pin"></i>位置</p>
+                <p class='mb-2'><i class="mx-2 fa-solid fa-map-pin"></i><%=t('location')%></p>
                 <p class='mx-4 text-gray-600'>
                   <%= @restaurant.address%>
                 </p>
               </div>
               <div class='pb-2 mb-2 border-b-2'>
-                <p class='mb-2'><i class="mx-2 fa-solid fa-phone"></i>電話</p>
+                <p class='mb-2'><i class="mx-2 fa-solid fa-phone"></i><%=t('phone')%></p>
                 <p class='mx-4 text-gray-600'>
                   <%= @restaurant.tel%>
                   </p>
               </div>
               <div class='pb-2 mb-2 border-b-2'>
-                <p class='mb-2'><i class="mx-2 fa-solid fa-clock"></i>營業時間</p>
+                <p class='mb-2'><i class="mx-2 fa-solid fa-clock"></i><%=t('hours')%></p>
                   <% @restaurant.open_times.each do |open_time|%>
                     <p class='mx-4 text-gray-600'>
                       <%= open_time.start_time.strftime('%R') %> - 
@@ -154,7 +154,7 @@
         <hr>
 
           <section>
-          <h1 class='w-full text-2xl font-bold text-center mt-28 text-green'>美食菜單</h1>
+          <h1 class='w-full text-2xl font-bold text-center mt-28 text-green'><%=t('menu')%></h1>
           <div id="menu" class="w-full mx-auto mt-8 lg:carousel rounded-box lg:mt-8 lg:px-8">
             <% @restaurant.menus.each do |image| %>
               <div class="flex justify-center h-auto m-2 border-4 rounded-lg lg:carousel-item">

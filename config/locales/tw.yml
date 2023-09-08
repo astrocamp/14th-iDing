@@ -8,6 +8,11 @@ tw:
     Change Password: "更改密碼"
     My Restaurant: "我的餐廳"
 
+  location: 位置
+  phone: 電話
+  hours: 營業時間
+  menu: 菜單
+
   helper:
     submit:
       Next: "下一步"
@@ -52,6 +57,7 @@ tw:
     Select Dining Date: 選擇用餐日期
     Please Choose a Reservation Date: 請先選擇訂位日期
     Next: "下一步"
+    Restaurant information: 餐廳資訊
 
   customerInfo:
     Reservation Information: 訂位資訊
