@@ -20,9 +20,9 @@ class ApplicationController < ActionController::Base
     redirect_to(request.referrer || root_path)
   end
 
-  def switch_locale(&)
+  def switch_locale(&action)
     locale = params[:locale] || I18n.default_locale
-    I18n.with_locale(locale, &)
+    I18n.with_locale(locale, &action)
   end
 
   def default_url_options
