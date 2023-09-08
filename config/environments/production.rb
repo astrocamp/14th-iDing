@@ -93,10 +93,11 @@ Rails.application.configure do
 
   config.hosts << "iding.cc"
 
-  config.action_mailer.default_url_options = { host: 'iding.cc' }
-
-  SMTP hostname: <%= ENV["SMTP_HOSTNAME"] %>
-  Port: <%= ENV["SMTP_PORT"] %>
-  Username: <%= ENV["SMTP_USERNAME"] %>
-  Default password: <%= ENV["SMTP_PASSWORD"] %>
+  config.action_mailer.smtp_settings = {
+    address: ENV["SMTP_HOSTNAME"],
+    port: ENV["SMTP_PORT"],
+    user_name: ENV["SMTP_USERNAME"],
+    password: ENV["SMTP_PASSWORD"],
+    domain: 'iding.cc'
+  }
 end
