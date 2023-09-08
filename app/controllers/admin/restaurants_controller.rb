@@ -20,7 +20,6 @@ module Admin
     end
 
     def new
-      authorize :restaurant
       @restaurant = Restaurant.new
     end
 

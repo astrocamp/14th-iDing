@@ -1,16 +1,8 @@
 # frozen_string_literal: true
 
 class RestaurantPolicy < ApplicationPolicy
-  def new?
-    user_has_restaurant?
-  end
-
-  def create?
-    new?
-  end
-
   def edit?
-    new?
+    user_has_restaurant?
   end
 
   def update?
