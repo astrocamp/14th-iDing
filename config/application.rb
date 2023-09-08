@@ -18,5 +18,6 @@ module IDing
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.hosts << '96bc-61-220-182-115.ngrok-free.app'
   end
 end
