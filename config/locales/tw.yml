@@ -121,6 +121,7 @@ tw:
     tryAgain: 可能是由於操作過於頻繁。請稍後再嘗試。
     Please enter your email: 請輸入您的Email
     Resend: 重寄認證信
+    NotGettingEmail: 沒有收到驗證信？
 
   restaurant:
     Your Restaurants: 您的餐廳
