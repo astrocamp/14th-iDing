@@ -72,6 +72,14 @@ en:
     Not a member?: Not a member?
     Sign up here: Sign up here
     Update Password: Update Password
+    Please enter your email: Please enter your email
+    Resend Verification Email: Resend Verification Email
+    Confirm that your email address is correct: Confirm that your email address is correct.
+    If you haven't received the verification email: If you haven't received the verification email
+    Check your email's spam or junk folder: Check your email's spam or junk folder.
+    tryAgain: It's possible that there was too frequent activity. <br>Please try again later.
+    Please enter your email: Please enter your email
+    Resend: Resend
 
   restaurant:
     UBN: UBN
