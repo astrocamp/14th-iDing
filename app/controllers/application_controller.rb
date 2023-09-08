@@ -16,13 +16,13 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    flash[:alert] = "您無權訪問此頁面。"
+    flash[:alert] = '您無權訪問此頁面。'
     redirect_to(request.referrer || root_path)
   end
-  
-  def switch_locale(&action)
+
+  def switch_locale(&)
     locale = params[:locale] || I18n.default_locale
-    I18n.with_locale(locale, &action)
+    I18n.with_locale(locale, &)
   end
 
   def default_url_options
