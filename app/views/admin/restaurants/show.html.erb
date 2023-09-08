@@ -1,8 +1,8 @@
 <section data-controller="hamburger" class="h-screen lg:flex">
-  <%= render "shared/backhouseSidebar" %> 
+  <%= render "shared/adminSidebar" %> 
 
   <div>
-    <%= render "/shared/backhouseNavbar"%>
+    <%= render "/shared/adminNavbar"%>
     
     <%= turbo_frame_tag "calendar", class: 'lg:flex m-3 relative h-[calc(100%-96px)]' do %>
       <div data-hamburger-target="nav" class="top-0 hidden w-4/5 mx-auto lg:block lg:w-1/3">
