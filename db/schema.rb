@@ -81,11 +81,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_101550) do
     t.integer "reserve_interval", default: 15
     t.integer "mealtime", default: 60
     t.integer "bookday_advance", default: 14
-    t.string "slug"
     t.datetime "deleted_at"
     t.json "menus"
-    t.index ["deleted_at"], name: "index_restaurants_on_deleted_at"
     t.string "slug"
+    t.index ["deleted_at"], name: "index_restaurants_on_deleted_at"
     t.index ["slug"], name: "index_restaurants_on_slug", unique: true
   end
 
