@@ -21,7 +21,7 @@
 #
 class Restaurant < ApplicationRecord
   acts_as_paranoid
-  
+
   mount_uploader :image, ImageUploader
   mount_uploaders :menus, MenuUploader
 
