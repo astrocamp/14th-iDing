@@ -20,12 +20,12 @@ module Admin
     end
 
     def edit
-      authorize :opentime
+      authorize :OpenTime
       render layout: 'application'
     end
 
     def update
-      authorize :opentime
+      authorize :OpenTime
       return unless @open_time.update(opentime_params)
 
       redirect_to admin_restaurant_open_times_path(@open_time.restaurant), notice: '已更新時段'
