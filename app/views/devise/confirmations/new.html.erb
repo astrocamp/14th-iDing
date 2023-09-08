@@ -8,27 +8,27 @@
           <div class="form-control">
             <%= image_tag "iding_logo.png", class:"block w-36 m-auto md:w-30 xl:w-30" %>
             <div class="px-12 m-auto ">
-              <h1 class="my-4 text-2xl font-bold text-right text-gray-600 ">重新發送驗證信件</h1>
+              <h1 class="my-4 text-2xl font-bold text-right text-gray-600 "><%= t('devise.Resend Verification Email')%></h1>
             </div>
           </div>  
 
           <div class="field">
             <%= f.label :email, class: "label" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "iding-customer-input", placeholder: "請輸入您的Email" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "iding-customer-input", placeholder: t('devise.Please enter your email') %>
           </div>
 
           <div class="my-5 actions">
-            <%= f.submit "重寄認證信", class: "w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300" %>
+            <%= f.submit t('devise.Resend'), class: "w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300" %>
           </div>
         <% end %>
         <hr>
         
         <div>
-          <p class="font-bold text-gray-700 ">如果您沒有收到驗證信</p>
+          <p class="font-bold text-gray-700 "><%= t("devise.If you haven't received the verification email")%></p>
           <ul>
-            <li class="mt-2 text-sm">1. 確認您檢查的電子郵件帳號正確無誤。</li>
-            <li class="my-2 text-sm ">2. 請檢查信箱的垃圾郵件和垃圾信件匣。</li>
-            <li class="text-sm">3. 短時間內嘗試太頻繁。請稍後再嘗試。</li>
+            <li class="mt-2 text-sm">1. <%= t('devise.Confirm that your email address is correct')%></li>
+            <li class="my-2 text-sm ">2. <%= t("devise.Check your email's spam or junk folder")%></li>
+            <li class="text-sm">3. <%= raw t("devise.tryAgain")%> </li>
           </ul>
         </div>
       </div>

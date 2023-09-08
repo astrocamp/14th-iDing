@@ -114,6 +114,13 @@ tw:
     New Password: 新密碼
     Confirm New Password: 確認新密碼
     Update Password: 更新密碼
+    Resend Verification Email: 重新發送驗證信件
+    Confirm that your email address is correct: 確認您的電子郵件信箱正確無誤。
+    If you haven't received the verification email: 如果您沒有收到驗證信
+    Check your email's spam or junk folder: 請檢查信箱的垃圾郵件和垃圾信件匣。
+    tryAgain: 可能是由於操作過於頻繁。請稍後再嘗試。
+    Please enter your email: 請輸入您的Email
+    Resend: 重寄認證信
 
   restaurant:
     Your Restaurants: 您的餐廳
