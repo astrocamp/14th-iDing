@@ -2,7 +2,6 @@
 
 module Admin
   class RestaurantsController < Admin::BaseController
-    include Pundit
     before_action :set_restaurant, only: %i[show edit update destroy]
 
     def index
@@ -10,7 +9,7 @@ module Admin
     end
 
     def show
-      authorize(restaurant)
+      authorize :restaurant
       @reservations = if params[:date].present?
                         @restaurant.reservations.where(date: params[:date])
                       else
