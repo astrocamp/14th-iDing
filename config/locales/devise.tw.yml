@@ -3,18 +3,18 @@
 tw:
   devise:
     confirmations:
-      confirmed: "您的電子郵件地址已成功確認。"
-      send_instructions: "您將在幾分鐘內收到一封包含確認電子郵件地址說明的電子郵件。"
+      confirmed: "您的電子郵件已成功確認。"
+      send_instructions: "您將在幾分鐘內收到一封包含確認您的電子郵件地址的指示的電子郵件。"
       send_paranoid_instructions: "如果您的電子郵件地址存在於我們的資料庫中，您將在幾分鐘內收到一封包含確認電子郵件地址說明的電子郵件。"
     failure:
-      already_authenticated: "您已經登錄。"
-      inactive: "您的帳戶尚未啟用。"
+      already_authenticated: "您已經登入。"
+      inactive: "您的帳號尚未啟用。"
       invalid: "無效的%{authentication_keys}或密碼。"
-      locked: "您的帳戶已被鎖定。"
-      last_attempt: "在您的帳戶被鎖定之前，您還有一次嘗試的機會。"
+      locked: "您的帳號已被鎖定。"
+      last_attempt: "在您的帳號被鎖定之前，您還有一次嘗試的機會。"
       not_found_in_database: "無效的%{authentication_keys}或密碼。"
-      timeout: "您的會話已過期。請重新登錄以繼續。"
-      unauthenticated: "您需要在繼續之前登錄或註冊。"
+      timeout: "您的登入已過期。請重新登錄以繼續。"
+      unauthenticated: "您需要在繼續之前先登入或註冊。"
       unconfirmed: "在繼續之前，您需要確認您的電子郵件地址。"
     mailer:
       confirmation_instructions:
@@ -39,23 +39,23 @@ tw:
     registrations:
       destroyed: "再見！您的帳戶已成功取消。我們希望很快再見到您。"
       signed_up: "歡迎！您已成功註冊。"
-      signed_up_but_inactive: "您已成功註冊。然而，我們無法登錄您，因為您的帳戶尚未啟用。"
-      signed_up_but_locked: "您已成功註冊。然而，我們無法登錄您，因為您的帳戶已被鎖定。"
-      signed_up_but_unconfirmed: "一封包含確認鏈接的消息已發送到您的電子郵件地址。請點擊鏈接以啟用您的帳戶。"
-      update_needs_confirmation: "您成功更新了您的帳戶，但我們需要驗證您的新電子郵件地址。請檢查您的電子郵件並點擊確認鏈接以確認您的新電子郵件地址。"
+      signed_up_but_inactive: "您已成功註冊。然而，我們無法登入，因為您的帳戶尚未啟用。"
+      signed_up_but_locked: "您已成功註冊。然而，我們無法登入，因為您的帳戶已被鎖定。"
+      signed_up_but_unconfirmed: "一封包含確認連結的消息已發送到您的電子郵件地址。請點擊連結以啟用您的帳號。"
+      update_needs_confirmation: "您已成功更新帳戶，但我們需要驗證您的新電子郵件地址。請檢查您的電子郵件並點擊確認連結以確認您的新電子郵件地址。"
       updated: "已成功更新密碼"
-      updated_but_not_signed_in: "您的帳戶已成功更新，但由於您的密碼已更改，您需要重新登錄。"
+      updated_but_not_signed_in: "您的帳戶已成功更新，但由於您的密碼已更改，您需要重新登入。"
     sessions:
       signed_in: "歡迎回來！您已成功登入iDing"
       signed_out: "已成功登出您的帳號"
       already_signed_out: "已將您的Google帳號登出"
     unlocks:
-      send_instructions: "您將在幾分鐘內收到一封包含解鎖帳戶說明的電子郵件。"
-      send_paranoid_instructions: "如果您的帳戶存在，您將在幾分鐘內收到一封包含解鎖帳戶說明的電子郵件。"
-      unlocked: "您的帳戶已成功解鎖。請登錄以繼續。"
+      send_instructions: "您將在幾分鐘內收到一封包含解鎖帳號說明的電子郵件。"
+      send_paranoid_instructions: "如果您的帳號存在，您將在幾分鐘內收到一封包含解鎖帳號說明的電子郵件。"
+      unlocked: "您的帳號已成功解鎖。請登入以繼續。"
   errors:
     messages:
-      already_confirmed: "已經確認，請嘗試登錄"
+      already_confirmed: "已經確認，請嘗試登入"
       confirmation_period_expired: "需要在%{period}內確認，請請求新的確認信"
       expired: "已過期，請請求新的確認信"
       not_found: "未找到"
