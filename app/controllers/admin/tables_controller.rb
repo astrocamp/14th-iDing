@@ -7,7 +7,7 @@ module Admin
 
     def index
       authorize :table
-      @tables = @restaurant.tables.order(:id)
+      @tables = @restaurant.tables
     end
 
     def show
