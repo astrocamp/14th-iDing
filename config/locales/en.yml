@@ -80,6 +80,7 @@ en:
     tryAgain: It's possible that there was too frequent activity. <br>Please try again later.
     Please enter your email: Please enter your email
     Resend: Resend
+    NotGettingEmail: Not getting the verification email?
 
   restaurant:
     UBN: UBN

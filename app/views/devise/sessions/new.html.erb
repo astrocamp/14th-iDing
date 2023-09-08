@@ -22,7 +22,7 @@
         </div>
 
         <div class="flex justify-between">
-          <div class="items-end pt-8 mx-2 text-sm field">
+          <div class="items-end pt-5 mx-2 text-sm field">
             <% if devise_mapping.rememberable? %>
                 <%= f.check_box :remember_me, class:"rounded" %>
                 <%= f.label :remember_me, t('devise.Remeber me') %>
@@ -31,10 +31,6 @@
 
           <div class="pt-5">
             <%= link_to t('devise.Forgot password?'), new_password_path(resource_name), class:"block mb-1 text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700" %>
-
-            <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-              <%= link_to "沒有收到驗證信？", new_user_confirmation_path(resource_name), class:"block mb-1 text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700"  %>
-            <% end %>
           </div>
 
 
@@ -65,6 +61,11 @@
           
         <p class="mx-2 mt-8 text-sm text-center"><%= t('devise.Not a member?')%><%= link_to t('devise.Sign up here'), new_registration_path(resource_name), class:"text-blue-500 hover:text-blue-700 font-semibold mx-2" %> 
         </p>
+        <div class="m-auto">
+          <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+            <%= link_to t('devise.NotGettingEmail'), new_user_confirmation_path(resource_name), class:"text-blue-500 text-sm hover:text-blue-700 font-semibold mx-2" %>
+          <% end %>
+        </div>
     </div>
   </div>
 

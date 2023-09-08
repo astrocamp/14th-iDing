@@ -62,7 +62,7 @@
 
         <div class="w-full text-center">
           <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-            <%= link_to "沒有收到驗證信？", new_user_confirmation_path(resource_name), class:"text-sm text-blue-500 hover:text-blue-700 font-semibold mx-2"  %>
+            <%= link_to t('devise.NotGettingEmail'), new_user_confirmation_path(resource_name), class:"text-sm text-blue-500 hover:text-blue-700 font-semibold mx-2"  %>
           <% end %>
         </div>
     </div>
