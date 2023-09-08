@@ -13,4 +13,9 @@ class ApplicationController < ActionController::Base
            status: 404,
            layout: false
   end
+
+  def user_not_authorized
+    flash[:alert] = "您無權訪問此頁面。"
+    redirect_to(request.referrer || root_path)
+  end
 end
