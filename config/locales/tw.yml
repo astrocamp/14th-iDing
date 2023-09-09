@@ -13,9 +13,8 @@ tw:
   hours: 營業時間
   menu: 菜單
 
-  helper:
+  helpers:
     submit:
-      Next: "下一步"
       restaurant:
         create: "建立餐廳"
         update: "更新餐廳資訊"
@@ -86,6 +85,13 @@ tw:
       business: "商務聚餐"
       other: "其他"
 
+    state:
+      reserved: 已預訂
+      keeped: 已保留
+      used: 入座中
+      completed: 已離席
+      cancelled: 取消
+
   success:
     Here are your booking details: 以下是您的訂位資訊
     Adult(s): 位大人
@@ -145,6 +151,11 @@ tw:
     View reservation page: 查看訂位頁面
     Reservation Page: 查看
     Delete Restaurant: 刪除這間餐廳
+
+  table:
+    status:
+      vacant: 空桌
+      occupied: 使用中
 
   activerecord:
     errors:
