@@ -74,6 +74,14 @@ export default class extends Controller {
   }
 
   checkData() {
-    console.log("checkdata");
+    const dateValue = this.dateInputTarget.value;
+    console.log(dateValue);
+    const timeValue = this.timeInputTarget.value;
+    console.log(timeValue);
+    const Enable = dateValue && timeValue;
+    // this.submitBtnTarget.toggleAttribute("disabled", !shouldEnable);
+    this.submitBtnTarget.classList.toggle("next-btn", Enable);
+    this.submitBtnTarget.classList.toggle("next-btn-void", !Enable);
+    this.submitBtnTarget.disabled = !Enable;
   }
 }
