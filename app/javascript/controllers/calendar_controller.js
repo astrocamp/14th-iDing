@@ -26,14 +26,9 @@ export default class extends Controller {
         center: "title",
         right: "today",
       },
+      displayEventTime: false,
       timeZone: "UTC",
       events: `/api/v1/restaurants/${this.restaurantIdValue}/reservations`,
-      eventTimeFormat: {
-        hour: "2-digit",
-        minute: "2-digit",
-        meridiem: false,
-        hour12: false,
-      },
       navLinks: true,
       navLinkDayClick: function (date, event) {
         event.preventDefault();
