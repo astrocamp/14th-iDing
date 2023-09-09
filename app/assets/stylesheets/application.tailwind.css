@@ -7,7 +7,7 @@
 }
 
 .unselect-btn {
-  @apply inline-block py-1 text-gray-800 bg-gray-100 border-gray-300 rounded cursor-pointer select-none lg:px-4 hover:bg-gray-200;
+  @apply py-1 text-gray-800 bg-gray-100 border-gray-300 rounded cursor-pointer select-none lg:px-4 hover:bg-gray-200;
 }
 
 .iding-input {
