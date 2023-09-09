@@ -167,13 +167,17 @@
 
       <div class="fixed bottom-0 left-0 right-0 w-full bg-white shadow-inner">
         <div>
-          <%= f.submit t('reservationPage.Next'), class: ' mx-10 w-4/5 md:mx-24 lg:mx-36 my-2 px-4 py-2 left-0 right-0 mt-5 text-lg font-bold tracking-wider text-white bg-gray-500 rounded hover:bg-green  ' %>  
+          <%= f.submit t('reservationPage.Next'), class: 'mx-12 sm:mx-16 w-4/5 md:mx-24 lg:mx-40 my-2 px-4 py-2 left-0 right-0 mt-5 text-lg font-bold tracking-wider text-white bg-gray-500 rounded hover:bg-green  ' %>  
         </div>
       </div>
     <% end %>
   </div>
 </section>
 
+
+<footer class="flex justify-center w-full py-5 mb-16">
+  <p class="text-xs text-gray-600 sm:text-sm">© 2023 iDing. A product of <%= link_to "Hello 劍龍", root_path ,class:"text-slate-900 decoration-2 hover:underline font-semibold" %></p>
+</footer>
 
 
 
