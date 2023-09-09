@@ -6,7 +6,6 @@ module Admin
     before_action :set_holiday, only: %i[destroy]
 
     def create
-      authorize :holiday
       @holiday = @restaurant.holidays.new(holiday_params)
       if @holiday.save
         redirect_to admin_restaurant_open_times_path(@holiday.restaurant), notice: '已新增公休日'
