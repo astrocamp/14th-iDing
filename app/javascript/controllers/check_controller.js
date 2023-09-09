@@ -17,7 +17,7 @@ export default class extends Controller {
       const stateElement = document.querySelector(
         `#reservation-state-${this.urlValue}`
       );
-      return (stateElement.textContent = "used");
+      return (stateElement.textContent = "已入座");
     });
   }
 }

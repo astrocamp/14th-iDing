@@ -1,5 +1,5 @@
 <section class="h-screen lg:flex">
-  <%= render "/shared/adminSidebar"%>  
+  <%= render "/shared/adminSidebar" %>  
   <div>
     <div class="m-2 lg:mx-4">
       <div class="flex navbar bg-base-100 my-3 border-2 rounded-xl lg:w-[86vw]">
@@ -18,15 +18,37 @@
         </div>
       </div>
     </div>
-
-    <div class="m-3 h-[calc(100%-96px)]">
-      <h1 class="text-2xl">編輯桌子們</h1>
-      <div>
-        <%= link_to '新增桌子', new_admin_restaurant_table_path, class: "action-btn" %>
+    <%= turbo_frame_tag "table_edit" do %>
+      <div class="mx-1 mt-5 bg-white border-4 border-red-800 rounded-lg">
+        <div class="flex justify-center">
+          <div>
+            <%= image_tag "logo.png", class: "w-14 md:w-30 xl:w-30 py-2" %>
+          </div>
+          <h1 class="py-5 text-2xl font-semibold">編輯座位</h1>
+        </div>
+        <%= form_with(model: @table, url: admin_restaurant_table_path(restaurant_id: @restaurant.id), data: { turbo: false }) do |form| %>
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+          <div class="px-5 pb-5">
+            <div>
+              <%= form.label :name, '桌號*' %>
+              <%= form.text_field :name, class:"iding-customer-input" %>
+            </div>
+            <div>
+              <%= form.label :seat_num, '座位數*' %>
+              <%= form.number_field :seat_num, class:"iding-customer-input" %>
+            </div>
+            <div>
+              <%= form.label :category, '桌型' %>
+              <%= form.select :category, Table.categories.map { |k, _| [k.to_s, k.to_s] } %>
+            </div>
+          </div>
+          <div class="flex flex-row-reverse py-6">
+            <div class="flex-initial m-auto">
+              <%= form.submit "修改座位", class: "flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize bg-teal-700 rounded-md hover:bg-teal-800 focus:outline-none focus:bg-teal-900 transition duration-300 transform active:scale-95 ease-in-out" %>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <div>
-        <%= render 'form', restaurant: @restaurant, table: @table %>
-      </div>
-    </div>
+    <% end %>  
   </div>
 </section>

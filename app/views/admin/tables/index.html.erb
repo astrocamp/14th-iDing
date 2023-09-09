@@ -1,47 +1,98 @@
-<section class="h-screen lg:flex">
-  <%= render "/shared/adminSidebar"%>  
-  <div>
-    <div class="m-2 lg:mx-4">
-      <div class="flex navbar bg-base-100 my-3 border-2 rounded-xl lg:w-[86vw]">
-        <div class="lg:mr-auto">
-          <%= link_to admin_restaurants_path do %>
-            <p class="hidden normal-case btn btn-ghost lg:flex">返回</p>
-          <% end %>
-        </div>
-        <div class="m-auto lg:ml-auto">
-          <a class="text-xl normal-case btn btn-ghost">行事曆</a>
-        </div>
-        <div class="lg:ml-auto">
-          <a class="hidden normal-case btn btn-ghost lg:flex">時間軸</a>
-          <a class="hidden normal-case btn btn-ghost lg:flex">列表</a>
-          <%= link_to '桌位圖', tablemap_admin_restaurant_tables_path(@restaurant), class:"hidden normal-case btn btn-ghost lg:flex"%>
-        </div>
-      </div>
-    </div>
+<section data-controller="hamburger" class="h-screen lg:flex">
+  <%= render "shared/adminSidebar" %> 
 
-    <div class="m-3 h-[calc(100%-96px)]">
-      <h1 class="text-2xl">桌子們</h1>
-      <div>
-        <%= link_to '新增桌子', new_admin_restaurant_table_path, class: "action-btn" %>
+  <div>
+    <%= render "/shared/adminNavbar"%>
+    
+    <%= turbo_frame_tag "calendar", class: 'lg:flex m-3 relative h-[calc(100%-96px)]' do %>
+      <div data-hamburger-target="nav" class="top-0 hidden w-4/5 mx-auto lg:block lg:w-1/3">
+        <%= turbo_frame_tag "table_edit" do %>
+          <div class="mx-1 mt-5 bg-white border-2 border-b rounded-lg shadow">
+            <div class="flex justify-center">
+              <div>
+                <%= image_tag "logo.png", class: "w-14 md:w-30 xl:w-30 py-2" %>
+              </div>
+              <h1 class="py-5 text-2xl font-semibold">新增座位</h1>
+            </div>
+            
+            <%= form_with(model: @table, url: admin_restaurant_tables_path(@restaurant), method: :post, data: { turbo: false }) do |form| %>
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+              <div class="px-5 pb-5">
+                <div>
+                  <%= form.label :name, '桌號*' %>
+                  <%= form.text_field :name , class:"iding-customer-input" %>
+                </div>
+                <div>
+                  <%= form.label :seat_num, '座位數*' %>
+                  <%= form.number_field :seat_num, class:"iding-customer-input"  %>
+                </div>
+                <div>
+                  <%= form.label :category, '桌型' %>
+                  <%= form.select :category, Table.categories.map { |k, _| [k.to_s, k.to_s] } %>
+                </div>
+              </div>
+
+              <div class="flex flex-row-reverse py-6">
+                <div class="flex-initial m-auto">
+                  <%= form.submit "建立座位", class: "flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize bg-teal-700 rounded-md hover:bg-teal-800 focus:outline-none focus:bg-teal-900 transition duration-300 transform active:scale-95 ease-in-out" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <% end %>
       </div>
-      <div>
-        <ul> 
-          <% @tables.each do |table| %>
-          <li>
-            桌號：<%= table.name %>
-            最大人數：<%= table.seat_num %>
-            桌型：<%= table.category %> 
-            <%= link_to '更新', edit_admin_restaurant_table_path(table.restaurant, table), class: "action-btn" %>
-            <%= link_to '刪除', admin_restaurant_table_path(table.restaurant, table),
-                                data:{ 
-                                  turbo_method: 'delete',
-                                  turbo_confirm: '確認刪除？'
-                                }, 
-                                class: "action-btn" %>
-          </li>
-          <% end %> 
-        </ul>
+    
+      <div class="w-full lg:w-3/4 h-[calc(100%-90px)]">
+        <div class="top-0 w-11/12 mx-auto mt-5 overflow-y-auto bg-white rounded-lg shadow border lg:absolute lg:right-2 lg:w-4/6 lg:h-[calc(95%)]">
+          
+          <div class="overflow-x-auto">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th class="text-base text-center">桌號</th>
+                  <th class="text-base text-center">使用狀態</th>
+                  <th class="text-base text-center">桌型</th>
+                  <th class="text-base text-center">上限人數</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @tables.each do |table|%>
+                  <tr>
+                    <th>
+                    <% if table.status == "occupied" %>
+                      <i class="fa-solid fa-circle" style="color: #ea5353;"></i>
+                    <% else %>
+                      <i class="fa-solid fa-circle" style="color: #a1f499;"></i>
+                    <% end %>
+                    </th>
+                    <td class="text-lg text-center"><%= table.name %></td>
+                    <td class="text-center text-md"><%= t("table.status.#{table.status}") %></td>
+                    <td class="text-center"><%= table.category %></td>
+                    <td class="text-lg text-center" ><%= table.seat_num %></td>
+                    
+                    <td class="flex justify-end">
+                      <div class="inline-block mr-10">
+                        <%= link_to edit_admin_restaurant_table_path(restaurant_id: @restaurant.id, id: table.id), data: { turbo_frame: "table_edit" } do %>
+                          <i class=" fa-solid fa-pen-to-square"></i>
+                          <span>編輯</span>
+                        <% end %>
+                      </div>
+                      <div class="inline-block">
+                        <%= link_to admin_restaurant_table_path(restaurant_id: @restaurant.id, id: table.id), data: { turbo_method: 'delete', turbo_confirm: '確定刪除訂位?' } do %>
+                          <i class=" fa-regular fa-trash-can"></i>
+                          <span>刪除</span>
+                        <% end %>
+                      </div>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </section>
+
