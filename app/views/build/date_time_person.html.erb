@@ -97,7 +97,7 @@
                 <%= "(#{chinese_weekday(date)})" %>
               </button>
             <% end %>
-            <%= f.hidden_field :date, data: {ordertime_target: "dateInput"}%>
+            <%= f.hidden_field :date, data: {ordertime_target: "dateInput", action: 'change->ordertime#checkData'}%>
           </div>
           <hr class="my-5">
 
@@ -110,7 +110,7 @@
           data-ordertime-target='fullyBooked'>
             <span class="col-span-3 col-start-1 text-xl font-bold text-center lg:col-span-7 xl:col-span-8 md:col-span-5"><%= t('reservationPage.this date is fully booked')%></span>
           </div>
-          <%= f.hidden_field :time, data: {ordertime_target: "timeInput"}%>
+          <%= f.hidden_field :time, data: {ordertime_target: "timeInput", action: 'change->ordertime#checkData'}%>
         </section>
         
         <hr class="mt-10">
@@ -171,7 +171,7 @@
 
       <div class="fixed bottom-0 left-0 right-0 w-full bg-white shadow-inner">
         <div>
-          <%= f.submit t('reservationPage.Next'), class: 'next-btn-void', disabled: true %>  
+          <%= f.submit t('reservationPage.Next'), data: {ordertime_target: "submitBtn"}, class: 'next-btn-void', disabled: true %>  
         </div>
       </div>
     <% end %>
