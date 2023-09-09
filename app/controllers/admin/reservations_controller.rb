@@ -35,7 +35,6 @@ module Admin
 
     def destroy
       @reservation.cancel! if @reservation.may_cancel?
-      authorize :reservation
       @reservation.destroy
       redirect_to admin_restaurant_path(@restaurant), notice: '訂位刪除成功'
     end
