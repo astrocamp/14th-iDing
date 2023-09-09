@@ -38,6 +38,7 @@ en:
 
   reservationPage:
     Next: "Next"
+    this date is fully booked: This date is fully booked
 
   customerInfo:
     Mr_: "Mr."
@@ -99,5 +100,3 @@ en:
 
     complex user manuals: Say goodbye to complex user manuals! No more learning curve, just intuitive human-centered design.
 
-  reservationPage:
-    this date is fully booked: This date is fully booked
