@@ -7,7 +7,7 @@ module Admin
 
     def search
       @search = @restaurant.reservations.ransack(params[:q])
-      @reservations = @search.result
+      @reservations = @search.result.order(:date)
     end
 
     def calendar; end
