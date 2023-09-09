@@ -114,6 +114,8 @@ GEM
       railties (>= 3.2)
     erubi (1.12.0)
     excon (0.102.0)
+    faker (3.2.1)
+      i18n (>= 1.8.11, < 2)
     faraday (2.7.10)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
@@ -367,6 +369,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   dotenv-rails
+  faker
   fog-aws (~> 3.19)
   friendly_id (~> 5.4.0)
   jbuilder
