@@ -4,7 +4,7 @@
       <h4 class='reservation-font'>用餐日期</h4>
       <div class='grid grid-cols-5 gap-3 md:grid-cols-7'>
         <% @daterange.each do |date| %>
-          <button class='h-full py-1 unselect-btn'
+          <button class='inline-block h-full py-1 unselect-btn'
                   data-ordertime-target='dateBtn'
                   data-action='click->ordertime#clickDate'
                   data-id='<%=@restaurant.id%>'
@@ -22,7 +22,7 @@
       <h4 class='reservation-font'>用餐時間</h4>
       <div class='grid grid-cols-5 gap-3 md:grid-cols-7'>
         <% @timerange.each do |time_point| %>
-        <button class="unselect-btn" data-ordertime-target='timeBtn' data-action="click->ordertime#clickTime"
+        <button class="inline-block unselect-btn" data-ordertime-target='timeBtn' data-action="click->ordertime#clickTime"
                 value='<%= time_point %>'>
           <%= time_point %>
         </button>
