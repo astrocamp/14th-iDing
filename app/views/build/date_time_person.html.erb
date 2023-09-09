@@ -44,7 +44,7 @@
   </div>
 </header>
 
-<section class="w-full mx-auto lg:w-5/6">
+<section class="w-full mx-auto lg:w-3/4">
 
   <div class="w-full mx-auto mt-20 bg-base-100 lg:mt-32 lg:px-8">
   <figure>
@@ -64,16 +64,16 @@
     </div>
   </div>
 
-  <div id="booking" class="m-auto mt-28">
+  <div id="booking" class="m-auto mt-12 lg:mt-28">
     <%= form_with url:wizard_path, method: :patch, data: { turbo: false } do |f| %>
       <div class="my-6 lg:mx-5">
-        <p class="mb-1 text-sm"><%= t('reservationPage.Number of Guests')%></p>
-        <div class="flex gap-2">
-          <div class="w-full sm:mb-0">
+        <p class="w-full my-8 text-2xl font-bold text-center text-green"><%= t('reservationPage.Number of Guests')%></p>
+        <div class="flex justify-around gap-2 mx-2">
+          <div class="w-80">
             <%= f.label :adults,t('reservationPage.adults'), class:"block mr-2 text-sm" %>
             <%= f.select :adults, (1..8).to_a, value: session.dig(:first_step_data, 'adults').present? ? session.dig(:first_step_data, 'adults') : 1, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", min: 1 %>
           </div>
-          <div class="w-full sm:mb-0">
+          <div class="w-80">
             <%= f.label :kids, t('reservationPage.kids'),class:"block mr-2 text-sm " %>
             <%= f.select :kids, (0..4).to_a,
                     value: session.dig(:first_step_data, 'kids').present? ? session.dig(:first_step_data, 'kids') : 0,
@@ -112,7 +112,7 @@
         <hr class="mt-10">
 
          <section class="w-4/5 mx-auto">
-          <h1 class='w-full mb-10 text-2xl font-bold text-center mt-28 text-green'><%=t('reservationPage.Restaurant information')%></h1>
+          <h1 class='w-full mt-12 mb-10 text-2xl font-bold text-center text-green'><%=t('reservationPage.Restaurant information')%></h1>
           <div class='grid-cols-2 pb-6 mx-2 mb-6 md:grid lg:mx-0 md:gap-4'>
             <div class='mb-6'>
               <iframe
@@ -153,8 +153,8 @@
 
         <hr>
 
-        <section>
-          <h1 class='w-full text-2xl font-bold text-center mt-28 text-green'><%=t('menu')%></h1>
+        <section class="w-4/5 mx-auto">
+          <h1 class='w-full mt-12 mb-10 text-2xl font-bold text-center text-green'><%=t('menu')%></h1>
           <div id="menu" class="w-full mx-auto mt-8 lg:carousel rounded-box lg:mt-8 lg:px-8">
             <% @restaurant.menus.each do |image| %>
               <div class="flex justify-center h-auto m-2 border-4 rounded-lg lg:carousel-item">
@@ -164,8 +164,9 @@
           </div>
         </section>
 
+
       <div class="fixed bottom-0 left-0 right-0 w-full bg-white shadow-inner">
-        <div class="">
+        <div>
           <%= f.submit t('reservationPage.Next'), class: ' mx-10 w-4/5 md:mx-24 lg:mx-36 my-2 px-4 py-2 left-0 right-0 mt-5 text-lg font-bold tracking-wider text-white bg-gray-500 rounded hover:bg-green  ' %>  
         </div>
       </div>
