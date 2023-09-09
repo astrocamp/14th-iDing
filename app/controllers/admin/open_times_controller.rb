@@ -21,7 +21,6 @@ module Admin
 
     def edit
       authorize :OpenTime
-      render layout: 'application'
     end
 
     def update
