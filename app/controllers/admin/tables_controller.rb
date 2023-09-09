@@ -44,7 +44,7 @@ module Admin
     end
 
     def tablemap
-      @tables = @restaurant.tables
+      @tables = @restaurant.tables.includes(:reservations)
     end
 
     private
