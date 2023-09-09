@@ -9,6 +9,7 @@ export default class extends Controller {
     "dateBtn",
     "timeContainer",
     "fullyBooked",
+    "submitBtn",
   ];
 
   clickDate(e) {
@@ -70,5 +71,9 @@ export default class extends Controller {
     e.target.classList.remove("unselect-btn");
     e.target.classList.add("action-btn");
     this.timeInputTarget.value = e.target.value;
+  }
+
+  checkData() {
+    console.log("checkdata");
   }
 }
