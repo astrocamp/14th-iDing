@@ -1,24 +1,7 @@
 <section data-controller="hamburger" class="h-screen lg:flex">
   <%= render "/shared/adminSidebar" %>
   <div>
-    <div class="m-2 lg:mx-4">
-      <div class="flex navbar bg-base-100 my-3 border-2 rounded-xl lg:w-[86vw]">
-        <div class="lg:mr-auto">
-          <%= link_to admin_restaurants_path do %>
-            <p class="hidden normal-case btn btn-ghost lg:flex">返回</p>
-          <% end %>
-        </div>
-        <div class="m-auto lg:ml-auto">
-          <%= link_to '行事曆', calendar_admin_restaurant_reservations_path(@restaurant), data: { turbo_frame: "calendar" }, class: "text-xl normal-case btn btn-ghost" %>
-        </div>
-        <div class="lg:ml-auto">
-          <a class="hidden normal-case btn btn-ghost lg:flex">時間軸</a>
-          <a class="hidden normal-case btn btn-ghost lg:flex">列表</a>
-          <%= link_to '桌位圖', tablemap_admin_restaurant_tables_path(@restaurant), class:"hidden normal-case btn btn-ghost lg:flex"%>
-          <button data-action="click->hamburger#switch" class="mx-2 lg:hidden"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
-      </div>
-    </div>
+    <%= render "/shared/adminNavbar" %>
 
     <%= turbo_frame_tag "calendar", class: 'lg:flex m-3 relative h-[calc(100%-96px)]' do %>
       <div data-hamburger-target="nav" class="top-0 hidden w-5/6 mx-auto lg:block lg:w-1/3">
