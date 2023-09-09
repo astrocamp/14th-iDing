@@ -74,4 +74,30 @@ demo_opentime = demo_restaurant.opentimes.create(
   end_time: Time.parse("08:00 PM")
 )
 
+demo_reservation = demo_restaurant.reservations.create(
+  date: Date.parse("2023-10-10"),
+  time: Time.parse("06:00 PM"),
+  adults: 2,
+  kids: 2,
+  purpose: "商業聚餐",
+  note: '蛋奶素',
+  restaurant_id: demo_restaurant,
+  name: '解師傅',
+  gender: 1,
+  tel: '0999999999'
+)
+
+demo_reservation_2 = demo_restaurant.reservations.create(
+  date: Date.parse("2023-10-10"),
+  time: Time.parse("12:00 PM"),
+  adults: 2,
+  kids: 0,
+  purpose: "慶生",
+  note: '當天有壽星',
+  restaurant_id: demo_restaurant,
+  name: '嘟嘟',
+  gender: 2,
+  tel: '0988888888'
+)
+
 puts "已建立使用者小當家"
