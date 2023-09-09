@@ -58,6 +58,7 @@ tw:
     Please Choose a Reservation Date: 請先選擇訂位日期
     Next: "下一步"
     Restaurant information: 餐廳資訊
+    this date is fully booked: 該日期已客滿
 
   customerInfo:
     Reservation Information: 訂位資訊
