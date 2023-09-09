@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = ["table", "editBtn", "finishBtn", "empty", "hint", "order"];
 
-  editMode() {
+  startEdit() {
     const tables = this.tableTargets;
     const emptyDivs = this.emptyTargets;
     const hint = this.hintTarget;
@@ -69,9 +69,9 @@ export default class extends Controller {
 
     let gridArea = tableTarget.style.gridArea;
     const [startY, startX, endY, endX] = gridArea.split("/").map(Number);
+    event.preventDefault();
     switch (event.key) {
       case "ArrowUp":
-        event.preventDefault();
         if (startY > 1) {
           this.moveUp(tableTarget);
           this.updatePosition(startX, startY - 1, tableId);
@@ -79,7 +79,6 @@ export default class extends Controller {
         break;
 
       case "ArrowDown":
-        event.preventDefault();
         if (startY < 20) {
           this.moveDown(tableTarget);
           this.updatePosition(startX, startY + 1, tableId);
@@ -87,15 +86,13 @@ export default class extends Controller {
         break;
 
       case "ArrowLeft":
-        event.preventDefault();
         if (startX > 1) {
           this.moveLeft(tableTarget);
           this.updatePosition(startX - 1, startY, tableId);
         }
-
         break;
+
       case "ArrowRight":
-        event.preventDefault();
         if (startX < 46) {
           this.moveRight(tableTarget);
           this.updatePosition(startX + 1, startY, tableId);
