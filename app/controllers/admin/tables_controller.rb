@@ -28,8 +28,7 @@ module Admin
       end
     end
 
-    def edit
-    end
+    def edit; end
 
     def update
       if @table.update(table_params)
