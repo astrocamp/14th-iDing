@@ -31,7 +31,12 @@
 
             <p class="text-xl"><%= @reservation.adults %> <%= t('success.Adult(s)')%></p>
 
-            <p class="my-3 text-xl"><%= @reservation.kids unless @reservation.kids.zero? %> <%= t('success.Kid(s)')%></p>
+            <p class="my-3 text-xl">
+            <% if @reservation.kids.zero? %>
+              <%= '0' %> <%= t('success.Kid(s)')%>
+            <% else %>
+              <%= @reservation.kids %> <%= t('success.Kid(s)')%></p>
+            <% end %>
 
             <p class="text-sm"><%= t('success.Note')%>：<%= @reservation.note unless @reservation.note.blank? %></p>
           </div>
