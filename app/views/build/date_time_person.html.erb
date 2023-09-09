@@ -64,7 +64,7 @@
     </div>
   </div>
 
-  <div id="booking" class="m-auto mt-12 lg:mt-28">
+  <div id="booking" class="m-auto mt-12 lg:mt-28" data-controller="ordertime">
     <%= form_with url:wizard_path, method: :patch, data: { turbo: false } do |f| %>
       <div class="my-6 lg:mx-5">
         <p class="w-full my-8 text-2xl font-bold text-center text-green"><%= t('reservationPage.Number of Guests')%></p>
@@ -83,7 +83,7 @@
         </div>
       </div>
       <hr>
-        <section data-controller="ordertime" class="mx-2 lg:mx-auto">
+        <section class="mx-2 lg:mx-auto">
           <p class='w-full my-8 text-2xl font-bold text-center text-green'><%= t('reservationPage.Select Dining Date')%></p>
           <div class="grid grid-cols-3 mx-auto md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 ">
             <% @daterange.each do |date| %>
@@ -171,7 +171,7 @@
 
       <div class="fixed bottom-0 left-0 right-0 w-full bg-white shadow-inner">
         <div>
-          <%= f.submit t('reservationPage.Next'), class: 'mx-12 sm:mx-16 w-4/5 md:mx-24 lg:mx-40 my-2 px-4 py-2 left-0 right-0 mt-5 text-lg font-bold tracking-wider text-white bg-gray-500 rounded hover:bg-green  ' %>  
+          <%= f.submit t('reservationPage.Next'), class: 'next-btn' %>  
         </div>
       </div>
     <% end %>
