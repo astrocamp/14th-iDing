@@ -31,7 +31,6 @@ module Admin
     end
 
     def set_holiday
-      # 路徑已使用shallow, 不能用@holiday = @restaurant.holidays.find(params[:id]) => 等安裝frendily_id
       @holiday = Holiday.find(params[:id])
     end
   end
