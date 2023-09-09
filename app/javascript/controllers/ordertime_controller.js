@@ -21,6 +21,8 @@ export default class extends Controller {
     e.target.classList.remove("unselect-btn");
     e.target.classList.add("action-btn");
     this.dateInputTarget.value = e.target.value;
+    this.timeInputTarget.value = null;
+    this.checkData();
 
     const token = document
       .querySelector("meta[name=csrf-token]")
@@ -71,15 +73,13 @@ export default class extends Controller {
     e.target.classList.remove("unselect-btn");
     e.target.classList.add("action-btn");
     this.timeInputTarget.value = e.target.value;
+    this.checkData();
   }
 
   checkData() {
     const dateValue = this.dateInputTarget.value;
-    console.log(dateValue);
     const timeValue = this.timeInputTarget.value;
-    console.log(timeValue);
     const Enable = dateValue && timeValue;
-    // this.submitBtnTarget.toggleAttribute("disabled", !shouldEnable);
     this.submitBtnTarget.classList.toggle("next-btn", Enable);
     this.submitBtnTarget.classList.toggle("next-btn-void", !Enable);
     this.submitBtnTarget.disabled = !Enable;
