@@ -36,7 +36,7 @@
               </div>
               <div class="flex flex-row-reverse py-6">
                 <div class="flex-initial m-auto">
-                  <%= form.submit "建立訂位", class: "flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize bg-black rounded-md hover:bg-gray-800 focus:outline-none focus:bg-gray-900 transition duration-300 transform active:scale-95 ease-in-out" %>
+                  <%= form.submit "建立訂位", class: "flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize bg-black rounded-md bg-teal-700 hover:bg-teal-800 focus:outline-none focus:bg-teal-900 transition duration-300 transform active:scale-95 ease-in-out" %>
                 </div>
               </div>
             <% end %>
@@ -45,7 +45,7 @@
       </div>
     
       <div class="w-full lg:w-3/4 h-[calc(100%-90px)]">
-        <div class="top-0 w-11/12 mx-auto mt-5 overflow-y-auto bg-white rounded-lg shadow border lg:absolute lg:right-2 lg:w-4/6 lg:h-[calc(95%)]">
+        <div class="top-0 w-11/12 mx-auto mt-5 overflow-y-auto bg-white rounded-lg shadow  lg:absolute lg:right-2 lg:w-4/6 lg:h-[calc(95%)]">
           <% @reservations&.each do |reservation| %>
             <div class="w-full mb-1 rounded">
               <div class="flex items-center justify-between px-5 py-2 font-black bg-gray-200 border lg:pl-12">
