@@ -61,14 +61,14 @@
         </div>
       </section>
 
-      <section class='max-w-xs mx-auto lg:mx-0 md:max-w-xl mt-5 bg-white border-2 shadow rounded-lg  min-w-[30%]' data-controller='holiday'>
+      <section class='max-w-xs mx-auto lg:mx-0 md:max-w-xl mt-5 bg-white border-2 shadow rounded-lg  min-w-[40%]' data-controller='holiday'>
         <h2 class='py-2 text-2xl font-bold text-center border-b'>公休日</h2>
         <div class='gap-2 p-6 text-left'>
           <div class='text-center'>
             <h3 class='mb-2 text-lg font-bold text-center lg:text-left'>新增公休日：</h3>
-            <div class='flex flex-wrap gap-2' id='holiday-selector'>
+            <div class='flex flex-wrap gap-1' id='holiday-selector'>
               <% @week.each do |date| %>
-                <button class='w-12 mx-1 md:w-auto unselect-btn' 
+                <button class='inline-block w-12 mx-1 md:w-auto unselect-btn' 
                       data-date='<%= date.strftime('%a') %>'
                       data-holiday-target='date'
                       data-action='click->holiday#getDate'>

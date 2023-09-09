@@ -87,7 +87,7 @@
           <p class='w-full my-8 text-2xl font-bold text-center text-green'><%= t('reservationPage.Select Dining Date')%></p>
           <div class="grid grid-cols-3 mx-auto md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 ">
             <% @daterange.each do |date| %>
-              <button class="max-w-sm mx-2 my-2 text-lg font-medium rounded-lg lg:mx-auto lg:my-2 lg:text-lg lg:w-32 unselect-btn"
+              <button class="inline-block max-w-sm mx-2 my-2 text-lg font-medium rounded-lg lg:mx-auto lg:my-2 lg:text-lg lg:w-32 unselect-btn"
                       data-ordertime-target='dateBtn'
                       data-action='click->ordertime#clickDate'
                       data-id='<%=@restaurant.id%>'
