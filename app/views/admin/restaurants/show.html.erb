@@ -20,8 +20,8 @@
                 <%= form.text_field :name, class: "iding-input", placeholder: "姓名" %>
                 <%= form.text_field :tel, class:"iding-input", placeholder: "電話", type: "tel" %>
                 <div class="flex gap-2">
-                  <%= form.date_field :date, class: "iding-input" %>
-                  <%= form.time_field :time, class: "iding-input" %>
+                  <%= form.date_field :date, class: "iding-input cursor-text" %>
+                  <%= form.time_field :time, class: "iding-input cursor-text" %>
                 </div>
                 <div class="flex gap-2">
                   <%= form.number_field :adults, class: "iding-input", placeholder: "大人", min: 0, value: 1  %>
@@ -36,7 +36,7 @@
               </div>
               <div class="flex flex-row-reverse py-6">
                 <div class="flex-initial m-auto">
-                  <%= form.submit "建立訂位", class: "flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize bg-black rounded-md bg-teal-700 hover:bg-teal-800 focus:outline-none focus:bg-teal-900 transition duration-300 transform active:scale-95 ease-in-out" %>
+                  <%= form.submit "建立訂位", class: "flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize bg-black rounded-md bg-teal-700 hover:bg-teal-800 focus:outline-none focus:bg-teal-900 transition transform active:scale-95 ease-in-out cursor-pointer" %>
                 </div>
               </div>
             <% end %>
