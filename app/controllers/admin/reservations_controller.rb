@@ -19,7 +19,7 @@ module Admin
         redirect_to admin_restaurant_path(@restaurant), notice: '訂位新增成功'
         SendSmsJob.perform_later(@reservation)
       else
-        redirect_to admin_restaurant_path(@restaurant), alert: '訂位失敗'
+        redirect_to admin_restaurant_path(@restaurant), alert: '訂位失敗！請填寫必要欄位'
       end
     end
 

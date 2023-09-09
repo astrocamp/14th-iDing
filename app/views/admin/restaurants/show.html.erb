@@ -36,7 +36,7 @@
               </div>
               <div class="flex flex-row-reverse py-6">
                 <div class="flex-initial m-auto">
-                  <%= form.submit "建立訂位", class: "flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize bg-black rounded-md bg-teal-700 hover:bg-teal-800 focus:outline-none focus:bg-teal-900 transition transform active:scale-95 ease-in-out cursor-pointer" %>
+                  <%= form.submit "建立訂位", class: "flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize bg-teal-700 rounded-md hover:bg-teal-800 focus:outline-none focus:bg-teal-900 transition duration-300 transform active:scale-95 ease-in-out" %>
                 </div>
               </div>
             <% end %>
@@ -50,10 +50,11 @@
             <div class="w-full mb-1 rounded">
               <div class="flex items-center justify-between px-5 py-2 font-black bg-gray-200 border lg:pl-12">
                 <div>
-                  <%= reservation.date %>
-                  <%= reservation.time.strftime('%R') %>
-                  <div class="inline" id="reservation-state-<%= reservation.id %>">
-                    <%= reservation.state %>
+                  <%= reservation.date%>
+                  <span class="mx-2"><%= reservation.time.strftime('%R') %></span>
+                  <span class="text-sm">訂位狀態：</span>
+                  <div class="inline " id="reservation-state-<%= reservation.id %>">
+                    <%= t("reservations.state.#{reservation.state}") %>
                   </div>
                 </div>
                 
@@ -80,7 +81,7 @@
               </div>
 
               <div class="flex items-center justify-around lg:mx-5 sm:justify-between">
-                <div class="flex">
+                <div class="flex ">
                   <div class="my-auto">
                     <%= link_to edit_admin_restaurant_reservation_path(restaurant_id: @restaurant.id, id: reservation.id), data: { turbo_frame: "reservation_edit" } do %>
                       <i class="fa-solid fa-pen-to-square"></i>

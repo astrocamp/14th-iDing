@@ -7,6 +7,7 @@ module Admin
 
     def index
       @tables = @restaurant.tables
+      @table = Table.new
     end
 
     def show
@@ -23,8 +24,7 @@ module Admin
       if @table.save
         redirect_to admin_restaurant_tables_path, notice: '座位建立成功'
       else
-        flash[:alert] = '桌號不得重複或空白'
-        render :new
+        redirect_to admin_restaurant_tables_path(@restaurant), alert: '桌號不得重複或空白'
       end
     end
 

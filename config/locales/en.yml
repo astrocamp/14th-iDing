@@ -46,6 +46,14 @@ en:
 
   reservations:
     Confirm Reservation: Confirm Reservation
+
+    state:
+      reserved: reserved
+      keeped: keeped
+      used:  used
+      completed: completed
+      cancelled: cancelled
+
     purposes:
       birthday: "Birthday"
       date: "Date"
@@ -100,3 +108,8 @@ en:
 
     complex user manuals: Say goodbye to complex user manuals! No more learning curve, just intuitive human-centered design.
 
+
+  table:
+    status:
+      vacant: vacant
+      occupied: occupied
