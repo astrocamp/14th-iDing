@@ -43,16 +43,24 @@ export default class extends Controller {
         const timeContainer = this.timeContainerTarget;
 
         timeContainer.innerHTML = "";
-        timelist.forEach((timePoint) => {
-          const button = document.createElement("button");
-          button.className =
-            "max-w-sm mx-2 my-2 text-lg font-medium rounded-lg lg:mx-auto lg:my-2 lg:text-lg lg:w-32 unselect-btn";
-          button.setAttribute("data-ordertime-target", "timeBtn");
-          button.setAttribute("data-action", "click->ordertime#clickTime");
-          button.value = timePoint;
-          button.textContent = timePoint;
-          timeContainer.appendChild(button);
-        });
+        if (timelist.length == 0) {
+          const div = document.createElement("div");
+          div.className =
+            "col-span-3 col-start-1 text-xl font-bold text-center lg:col-span-7 xl:col-span-8 md:col-span-5";
+          div.textContent = "t('reservationPage.this date is fully booked')";
+          timeContainer.appendChild(div);
+        } else {
+          timelist.forEach((timePoint) => {
+            const button = document.createElement("button");
+            button.className =
+              "max-w-sm mx-2 my-2 text-lg font-medium rounded-lg lg:mx-auto lg:my-2 lg:text-lg lg:w-32 unselect-btn";
+            button.setAttribute("data-ordertime-target", "timeBtn");
+            button.setAttribute("data-action", "click->ordertime#clickTime");
+            button.value = timePoint;
+            button.textContent = timePoint;
+            timeContainer.appendChild(button);
+          });
+        }
       });
   }
 
