@@ -153,7 +153,7 @@
 
         <hr>
 
-          <section>
+        <section>
           <h1 class='w-full text-2xl font-bold text-center mt-28 text-green'><%=t('menu')%></h1>
           <div id="menu" class="w-full mx-auto mt-8 lg:carousel rounded-box lg:mt-8 lg:px-8">
             <% @restaurant.menus.each do |image| %>
@@ -164,19 +164,15 @@
           </div>
         </section>
 
-
-
-
+      <div class="fixed bottom-0 left-0 right-0 w-full bg-white shadow-inner">
+        <div class="">
+          <%= f.submit t('reservationPage.Next'), class: ' mx-10 w-4/5 md:mx-24 lg:mx-36 my-2 px-4 py-2 left-0 right-0 mt-5 text-lg font-bold tracking-wider text-white bg-gray-500 rounded hover:bg-green  ' %>  
+        </div>
+      </div>
+    <% end %>
+  </div>
 </section>
 
-<footer class="flex justify-center py-5 mt-8">
-  <p class="text-xs text-gray-600 sm:text-sm">© 2023 iDing. A product of <%= link_to "Hello 劍龍", root_path ,class:"text-slate-900 decoration-2 hover:underline font-semibold " %></p>
-</footer>
-  <div class="fixed bottom-0 left-0 right-0 w-full bg-white shadow-inner">
-    <div class="">
-      <%= f.submit t('reservationPage.Next'), class: ' mx-10 w-4/5 md:mx-24 lg:mx-36 my-2 px-4 py-2 left-0 right-0 mt-5 text-lg font-bold tracking-wider text-white bg-gray-500 rounded hover:bg-green  ' %>  
-    </div>
-  </div>
-<% end %>
+
 
 
