@@ -91,13 +91,16 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.hosts << "iding.cc"
+  config.hosts << ENV["DOMAIN"]
 
   config.action_mailer.smtp_settings = {
     address: ENV["SMTP_HOSTNAME"],
     port: ENV["SMTP_PORT"],
     user_name: ENV["SMTP_USERNAME"],
     password: ENV["SMTP_PASSWORD"],
-    domain: 'iding.cc'
+    domain: ENV["DOMAIN"]
+  }
+  config.action_mailer.default_url_options = {
+    host: ENV["DOMAIN"]
   }
 end
