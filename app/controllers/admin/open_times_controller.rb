@@ -16,7 +16,9 @@ module Admin
 
     def create
       @open_time = @restaurant.open_times.new(opentime_params)
-      @open_time.save
+      if @open_time.save
+        redirect_to admin_restaurant_open_times_path(@open_time.restaurant), notice: '已建立時段'
+      end
     end
 
     def edit
@@ -32,6 +34,7 @@ module Admin
 
     def destroy
       @open_time.destroy
+      redirect_to admin_restaurant_open_times_path(@open_time.restaurant), notice: '已刪除時段'
     end
 
     private
