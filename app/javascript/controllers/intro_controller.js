@@ -6,7 +6,7 @@ export default class extends Controller {
     const intro = introJs();
     const introCompleted = localStorage.getItem("introCompleted");
     if (introCompleted) {
-      return; // Exit the function if intro has already been completed
+      return;
     }
     intro.setOptions({
       exitOnOverlayClick: false,
@@ -69,7 +69,6 @@ export default class extends Controller {
       ],
     });
     intro.oncomplete(function () {
-      // Set introCompleted flag in localStorage
       localStorage.setItem("introCompleted", "true");
     });
     intro.onbeforeexit(function () {
