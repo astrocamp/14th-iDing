@@ -13,6 +13,7 @@
     "daisyui": "^3.7.3",
     "esbuild": "0.14.11",
     "flatpickr": "^4.6.13",
+    "intro.js": "^7.2.0",
     "stimulus-textarea-autogrow": "^4.1.0",
     "sweetalert2": "^11.7.27"
   },
