@@ -52,3 +52,13 @@
 .customer-submit-btn-void {
   @apply left-0 right-0 w-full px-4 py-2 my-2 mt-10 text-lg font-bold tracking-wider text-white bg-gray-300 rounded;
 }
+
+.highlight {
+  animation: none !important;
+  transition: none !important;
+  border: 1px solid rgb(15 118 110);
+}
+
+.tooltip {
+  width: 300px;
+}

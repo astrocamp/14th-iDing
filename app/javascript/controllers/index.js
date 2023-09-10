@@ -25,6 +25,9 @@ application.register("holdseat", HoldseatController)
 import HolidayController from "./holiday_controller"
 application.register("holiday", HolidayController)
 
+import IntroController from "./intro_controller"
+application.register("intro", IntroController)
+
 import LeaveController from "./leave_controller"
 application.register("leave", LeaveController)
 

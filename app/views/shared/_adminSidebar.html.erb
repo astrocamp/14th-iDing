@@ -14,10 +14,11 @@
         <div>
           <%= image_tag "iding_logo.png", class: "w-40 m-auto py-2" %>
           <li class="m-auto my-2 mt-6 font-semibold text-slate-700"><%= link_to '訂位列表', admin_restaurant_path(@restaurant), class: "m-auto" %></li>
-          <li class="my-2 font-semibold text-slate-700"><%= link_to '訂位搜尋', search_admin_restaurant_reservations_path(@restaurant), class: "m-auto" %></li>
-          <li class="my-2 font-semibold text-slate-700"><%= link_to '餐廳資訊', edit_admin_restaurant_path(@restaurant), class: "m-auto" %></li>
-          <li class="m-auto my-2 font-semibold text-slate-700"><%= link_to '桌號設定', admin_restaurant_tables_path(@restaurant), class: "m-auto" %></li>
-          <li class="m-auto my-2 font-semibold text-slate-700"><%= link_to '營業時間', admin_restaurant_open_times_path(@restaurant), class: "m-auto" %></li>
+          <li class="my-2 font-semibold text-slate-700 introSearch"><%= link_to '訂位搜尋', search_admin_restaurant_reservations_path(@restaurant), class: "m-auto" %></li>
+          <li class="my-2 font-semibold text-slate-700 introRestaurant"><%= link_to '餐廳資訊', edit_admin_restaurant_path(@restaurant), class: "m-auto" %></li>
+          <li class="m-auto my-2 font-semibold text-slate-700 addTime"><%= link_to '營業時間', admin_restaurant_open_times_path(@restaurant), class: "m-auto" %></li>
+          <li class="m-auto my-2 font-semibold text-slate-700 addTable"><%= link_to '桌號設定', admin_restaurant_tables_path(@restaurant), class: "m-auto" %></li>
+          
         </div>
       </ul>
     </div>
