@@ -46,7 +46,7 @@
                     <span class="flex flex-col justify-center w-full">開始時間</span> <%= f.time_field :start_time, data: {opentime_target: 'startTime', action: 'change->opentime#compare'}, class: "iding-customer-input" %>
                   </div>
                   <div class='flex'>
-                    <span class="flex flex-col justify-center w-full">結束時間</span><%= f.time_field :end_time, data: {opentime_target: 'endTime', action: 'change->opentime#compare'}, class: "iding-customer-input" %>
+                    <span class="flex flex-col justify-center w-full">結束時間</span> <%= f.time_field :end_time, data: {opentime_target: 'endTime', action: 'change->opentime#compare'}, class: "iding-customer-input" %>
                   </div>
                   <div class="my-4 text-center">
                     <%= f.submit '儲存', class: 'action-btn', data: {opentime_target: 'submit'}, disabled: true %>
