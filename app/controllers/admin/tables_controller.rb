@@ -6,7 +6,7 @@ module Admin
     before_action :set_restaurant, only: %i[index new create tablemap]
 
     def index
-      @tables = @restaurant.tables
+      @tables = @restaurant.tables.order(:id)
       @table = Table.new
     end
 
