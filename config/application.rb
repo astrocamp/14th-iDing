@@ -19,5 +19,6 @@ module IDing
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.hosts << ENV["DOMAIN"]
+    config.environment = ENV["RAILS_ENV"] || "development"
   end
 end
