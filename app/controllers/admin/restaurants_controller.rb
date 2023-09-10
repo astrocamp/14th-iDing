@@ -25,9 +25,9 @@ module Admin
     def create
       @restaurant = current_user.restaurants.new(restaurant_params)
       if @restaurant.save
-        redirect_to admin_restaurants_path, notice: '餐廳新增成功'
+        redirect_to admin_restaurant_path(@restaurant), notice: '餐廳新增成功'
       else
-        flash[:alert] = '必填欄位尚未填寫'
+        flash[:alert] = '網址名稱重複或必填欄位尚未填寫'
         render :new
       end
     end
