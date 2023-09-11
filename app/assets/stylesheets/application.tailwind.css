@@ -64,8 +64,10 @@
   animation: none !important;
   transition: none !important;
   border: 1px solid rgb(15 118 110);
+  color: black;
 }
 
 .tooltip {
   width: 300px;
+  color: black;
 }

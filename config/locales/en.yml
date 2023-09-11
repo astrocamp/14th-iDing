@@ -36,13 +36,47 @@ en:
   hours: Hours
   menu: Menu
 
+  navbar:
+    about: "About"
+    restaurants: "Restaurants"
+    Log In: "Log In"
+    Log Out: "Log Out"
+    Sign Up: "Sign Up"
+    Change Password: "Change Password"
+    My Restaurant: "My Restaurant"
+
   reservationPage:
     Next: "Next"
+    this date is fully booked: This date is fully booked
+    About: About
+    Book Now!: Book Now!
+    Menu: Menu
+    Popular Restaurants: Popular Restaurants
+    Number of Guests:  Number of Guests
+    adults: adults
+    kids: kids
+    Select Dining Date: Select Dining Date
+    Select Dining Time: Select Dining Time
+    Please Choose a Reservation Date: Please Choose a Reservation Date
+    Restaurant information: Restaurant information
     this date is fully booked: This date is fully booked
 
   customerInfo:
     Mr_: "Mr."
     Ms_: "Ms."
+    Reservation Information: Reservation Information
+    Return to Edit: Return to Edit
+    Reservation Details: Reservation Details
+    Confirm Reservation: Confirm Reservation
+    adults: adults
+    kids: kids
+    Name *: Name *
+    N/A: N/A
+    Phone *: Phone *
+    Purpose:  Purpose
+    Note: Note
+
+
 
   reservations:
     Confirm Reservation: Confirm Reservation
@@ -71,6 +105,15 @@ en:
   success:
     Cancel: "Cancel"
     minutes: "minutes"
+    Here are your booking details: Here are your booking details
+    Adult(s): Adult(s)
+    Kid(s): Kid(s)
+    Note: Note
+    Hold reservation: Hold reservation
+    Reservation confirmed: Reservation confirmed
+    Cancel: Cancel
+    The dining time is limited to: The dining time is limited to
+    menu: Menu
 
   confirmations:
     confirm_cancel: "Confirm cancellation?"
@@ -103,6 +146,7 @@ en:
     UBN: UBN
 
   index:
+    Sign up: Sign up
     Experience: Experience the Magical Formula of our Reservation System
 
     SayGoodbye: Say goodbye to cumbersome traditional paper reservations all you need is a computer! With it, you can effortlessly manage restaurant reservations, significantly enhancing your seating control. In addition to storing customer information within the system, you can also stay up-to-date with customer dynamics. Discover how iDing Reservation System keeps the flow of guests uninterrupted!
@@ -111,6 +155,12 @@ en:
 
     complex user manuals: Say goodbye to complex user manuals! No more learning curve, just intuitive human-centered design.
 
+    RaveReviews: Rave reviews from satisfied users
+    UserFriendly: User-friendly and straightforward operating procedures
+    LikeIt: If you like it, keep using it! More features continuously optimized.
+    free: Completely free of charge
+    ToYourNeeds: 100% tailored to your needs, simplifying operations and boosting efficiency
+    develop: Developed by restaurant professionals
 
   table:
     status:
