@@ -16,10 +16,10 @@ export default class extends Controller {
       tooltipClass: "tooltip",
       nextLabel: "下一步",
       prevLabel: "上一步",
-      doneLabel: "開始體驗iDing吧！",
+      doneLabel: "開始體驗 iDing 吧！",
       steps: [
         {
-          title: "歡迎加入iDing！",
+          title: "歡迎加入 iDing！",
           intro: "我們將帶您了解如何輕鬆管理您的餐廳訂位。",
         },
         {
@@ -51,19 +51,19 @@ export default class extends Controller {
         },
         {
           title: "餐廳資訊",
-          intro: "編輯您餐廳的基本資訊，<br>讓消費者更快速的了解您的餐廳。",
+          intro: "編輯您餐廳的基本資訊，<br>讓消費者馬上感受您餐廳的魅力。",
           element: ".introRestaurant",
         },
         {
           title: "設定營業時間",
           intro:
-            "為了讓消費者能夠在網頁上看到您的餐廳開放時間，請先設定營業時間。",
+            "為了讓消費者能夠在訂位頁面上看到您的餐廳開放時間，<br>請先設定營業時間。",
           element: ".addTime",
         },
         {
           title: "設定餐廳座位",
           intro:
-            "接著，請您設定餐廳內的座位。<br>設定完營業時間和座位後，消費者才能在您的網頁上預訂餐廳的位置。",
+            "接著，請您設定餐廳內的座位。<br>設定完營業時間和座位後，<br>iDing 才能自動幫您安排桌位。",
           element: ".addTable",
         },
       ],
