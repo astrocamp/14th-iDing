@@ -22,7 +22,7 @@
             <li><%= link_to t('navbar.about'), "#", class: "text-lg m-4 text-gray-800 py-6" %></li>
             <li><%= link_to t('navbar.restaurants'), restaurants_path, class: "text-lg m-4 text-gray-800 py-6" %></li>
             <li><%= link_to 'EN', root_path(locale: 'en'), class: "text-lg m-4 text-gray-800 py-6"  %></li>
-            <li><%= link_to '中文', root_path(locale: 'en'), class: "text-lg m-4 text-gray-800 py-6"  %></li>
+            <li><%= link_to '中文', root_path(locale: 'tw'), class: "text-lg m-4 text-gray-800 py-6"  %></li>
             <% if user_signed_in? %>
               <li>
                 <details>

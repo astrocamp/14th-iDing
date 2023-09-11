@@ -5,7 +5,7 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, :time_slot, only: [:filter_timelist]
 
   def index
-    @restaurants = Restaurant.all.order(id: :desc)
+    @restaurants = Restaurant.order(id: :desc)
   end
 
   def show
