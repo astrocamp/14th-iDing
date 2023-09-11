@@ -22,7 +22,7 @@ class BuildController < ApplicationController
     case step
     when :date_time_person
 
-      if params[:date].blank? || params[:time].blank? || params[:adults].blank? || params[:kids].blank?
+      if params[:date].blank? || params[:time].blank?
         redirect_to wizard_path, alert: '請選擇日期 & 時間'
         return
       end

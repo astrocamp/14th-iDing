@@ -16,9 +16,9 @@ module Admin
 
     def create
       @open_time = @restaurant.open_times.new(opentime_params)
-      if @open_time.save
-        redirect_to admin_restaurant_open_times_path(@open_time.restaurant), notice: '已建立時段'
-      end
+      return unless @open_time.save
+
+      redirect_to admin_restaurant_open_times_path(@open_time.restaurant), notice: '已建立時段'
     end
 
     def edit
