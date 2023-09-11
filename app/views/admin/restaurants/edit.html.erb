@@ -1,26 +1,82 @@
 <section data-controller="hamburger" class="h-screen lg:flex">
   <%= render "shared/adminSidebar" %> 
-
   <div>
     <%= render "/shared/adminNavbar"%>
-    <div>
-      <div class="mx-auto">
-        <div class="w-4/5 px-4 mx-auto mt-8 bg-white border-2 border-b rounded-lg shadow lg:w-2/3 lg:m-4 lg:mx-4">
-          <div>
-            <div class="flex items-center space-x-5 ">
-              <div class="flex py-4 m-auto text-xl font-semibold text-gray-700 ">
-              <%= image_tag "logo.png", class:" w-10 m-auto" %>
-                <h2 class="text-2xl leading-relaxed">修改餐廳資訊</h2>
-              </div>
+      <%= turbo_frame_tag "calendar", class: 'mx-auto lg:flex h-[calc(100%-90px)]' do %>
+        <div class="w-4/5 px-4 mx-auto mt-2 bg-white border-2 border-b rounded-lg shadow lg:w-[86vw] lg:mx-4">
+          <div class="flex items-center space-x-5 ">
+            <div class="flex py-4 m-auto text-xl font-semibold text-gray-700 ">
+              <%= image_tag "logo.png", class:"w-10 m-auto" %>
+              <h2 class="text-2xl leading-relaxed">修改餐廳資訊</h2>
             </div>
-            <div class="">
-              <div class="py-8 space-y-4 text-base leading-6 text-gray-700 sm:text-lg sm:leading-7">
-                <div class="flex flex-col">
-              <%= render 'form', model: @restaurant %>
+          </div>
+            <div class="py-8 space-y-4 text-base leading-6 text-gray-700 sm:text-lg sm:leading-7 overflow-y-auto">
+              <div class="flex">
+                <%= form_with(model: [:admin, @restaurant], data: { turbo: false }) do |f| %>
+                  <div class="block lg:flex">
+                    <div class="w-full">
+                      <div class="m-1">
+                        <%= f.label :name, "餐廳名稱*", class:"leading-loose text-base"%>
+                        <%= f.text_field :name, class: 'iding-customer-input' %>
+                      </div>
+
+                      <div class="m-1">
+                        <%= f.label :url, "網址名稱*", class:"leading-loose text-base"  %>
+                        <%= f.text_field :url, class: 'iding-customer-input' %>
+                      </div>
+
+                      <div class="m-1">
+                        <%= f.label :tel, "餐廳電話*", class: 'leading-loose text-base' %>
+                        <%= f.text_field :tel, class: 'iding-customer-input' %>
+                      </div>
+
+                      <div class="m-1">
+                        <%= f.label :address, "餐廳地址*", class: 'leading-loose text-base' %>
+                        <%= f.text_field :address, size: 50, class: 'iding-customer-input' %>
+                      </div>
+
+                      <div class="m-1">
+                        <%= f.label :ubn, "統編", class: 'leading-loose text-base' %>
+                        <%= f.text_field :ubn, class: 'iding-customer-input' %>
+                      </div>
+                    </div>
+
+                    <div class="w-full">
+                      <div class="m-1">
+                        <%= f.label :description, "餐廳介紹", class: 'leading-loose text-base' %>
+                        <%= f.text_area :description, class: 'h-32 text-black w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500 focus:border-transparent lg:h-[25.5rem]' %>
+                      </div>
+                    </div>  
+                    <div>
+                      <div class="m-1">
+                        <%= f.label :image, "餐廳形象照", class: 'leading-loose text-base' %>
+                        <span class="block text-xs "><em>(檔案類型：jpg / jpeg / gif / png)</em></span>
+                        <%= f.file_field :image, class: 'border w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none ring-gray-200 focus:ring-2 ring-offset-2 border-gray-500 focus:border-transparent' %>
+                      </div>
+                      <div class="m-1 mt-6">
+                        <%= f.label :menus, "餐廳菜單", class: 'leading-loose text-base' %><span class="text-xs"><em>(每次上傳紀錄會覆蓋)</em></span>
+                        <span class="block text-xs"><em>(檔案類型：jpg / jpeg / gif / png / avif)</em><br /></span>
+                        <%= f.file_field :menus, multiple: true, class: 'border w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none ring-gray-200 focus:ring-2 ring-offset-2 border-gray-500 focus:border-transparent' %>
+                        <% if f.object.menus? %>
+                          <div class="w-full mx-auto mt-8 carousel rounded-box lg:mt-8 px-8 border-2 border-teal-800">
+                            <% f.object.menus.each do |img| %>
+                              <div class="flex justify-center h-auto m-2 border-4 rounded-lg carousel-item">
+                                <%= link_to image_tag(img.url(:thumb)), img.url %>
+                              </div>
+                            <% end %>
+                          </div>
+                        <% end %>
+                      </div>
+                    </div> 
+                  </div>
+                  <div class="flex items-center pt-4 space-x-4">
+                    <%= f.submit  class: "flex m-auto mt-8 px-5 py-2.5 font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 ease-in-out" %>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      <% end %>      
   </div>
 </section>
