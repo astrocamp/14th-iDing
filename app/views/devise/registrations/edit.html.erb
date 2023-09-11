@@ -5,18 +5,18 @@
         <div class="card-body">
           <div class="form-control">
               <div class="flex px-10 py-2 mb-2">
-              <h1 class="text-2xl font-bold text-right text-gray-600 "><%= t('devise.Change password')%></h1>
+              <h1 class="text-2xl font-bold text-right text-gray-600 "><%= t('devise.Change password') %></h1>
               <%= image_tag "iding_logo.png", class:" inline w-36 m-auto md:w-30 xl:w-30" %>
             </div>
             <div class="field">
               <%= f.label :email, t('devise.Email'), class: "label dark:text-gray-700" %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input input-bordered  text-black w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500 focus:border-transparent dark:bg-white'  %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input input-bordered  text-black w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2 focus:border-gray-500 focus:border-transparent dark:bg-white' %>
             </div>
           </div>
 
           <div class="field">
             <%= f.label :current_password,t('devise.oldPassword'), class: 'leading-loose text-base dark:text-gray-700' %><span class="text-sm dark:text-gray-700"><em>(我們需要您的原本密碼來確認您的更改)</em></span><br />
-            <%= f.password_field :current_password, autocomplete: "current-password", class: 'iding-customer-input'  %>
+            <%= f.password_field :current_password, autocomplete: "current-password", class: 'iding-customer-input' %>
           </div>
 
           <div class="field">
@@ -26,7 +26,7 @@
 
           <div class="field">
             <%= f.label :password_confirmation, "確認新密碼", class: 'leading-loose text-base dark:text-gray-700' %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'iding-customer-input'  %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'iding-customer-input' %>
           </div>
 
           <div class="mt-2">
