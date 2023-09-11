@@ -10,6 +10,9 @@ application.register("calendar", CalendarController)
 import CheckController from "./check_controller"
 application.register("check", CheckController)
 
+import CustomerinfoController from "./customerinfo_controller"
+application.register("customerinfo", CustomerinfoController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
