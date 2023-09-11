@@ -1,59 +1,46 @@
-<%= render "shared/navbar" %> 
+<div class="min-h-screen hero bg-base-200 dark:bg-white">
+  <div class="flex-col w-full hero-content lg:flex-row-reverse">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <div class="flex-shrink-0 w-full max-w-sm shadow-2xl card bg-base-100 dark:bg-white">
+        <div class="card-body">
+          <div class="form-control">
+              <div class="flex px-10 py-2 mb-2">
+              <h1 class="text-2xl font-bold text-right text-gray-600 "><%= t('devise.Change password')%></h1>
+              <%= image_tag "iding_logo.png", class:" inline w-36 m-auto md:w-30 xl:w-30" %>
+            </div>
+            <div class="field">
+              <%= f.label :email, t('devise.Email'), class: "label dark:text-gray-700" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input input-bordered  text-black w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:shadow-outline focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500 focus:border-transparent dark:bg-white'  %>
+            </div>
+          </div>
 
-<div class="flex flex-col justify-center min-h-screen bg-gray-100 sm:py-12">
-  <div class="relative py-28 sm:max-w-xl sm:mx-auto">
-    <div class="relative px-10 py-10 mx-8 bg-white shadow md:mx-0 rounded-3xl ">
-      <div class="mx-auto ">
-        <div class="flex items-center space-x-5 ">
-          <div class="self-start block pl-2 text-xl font-semibold text-gray-700 ">
-            <h2 class="text-2xl leading-relaxed"><%= t('devise.Change Password')%></h2>
+          <div class="field">
+            <%= f.label :current_password,t('devise.oldPassword'), class: 'leading-loose text-base dark:text-gray-700' %><span class="text-sm dark:text-gray-700"><em>(我們需要您的原本密碼來確認您的更改)</em></span><br />
+            <%= f.password_field :current_password, autocomplete: "current-password", class: 'iding-customer-input'  %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password, t('devise.newpassword'), class: "label dark:text-gray-700" %> 
+            <%= f.password_field :password, autocomplete: "current-password", class: "iding-customer-input" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password_confirmation, "確認新密碼", class: 'leading-loose text-base dark:text-gray-700' %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'iding-customer-input'  %>
+          </div>
+
+          <div class="mt-2">
+            <div class="actions">
+              <%= f.submit "更新密碼", class: "flex m-auto mt-8 px-5 py-2.5 font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 ease-in-out" %>
+            </div>
           </div>
         </div>
-        <div class="divide-y divide-gray-200">
-          <div class="py-8 space-y-4 text-base leading-6 text-gray-700 sm:text-lg sm:leading-7">
-            <div class="flex flex-col">
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-
-            <%= render "devise/shared/error_messages", resource: resource %>
-
-              <div class="field">
-                <%= f.label :email, "Email", class: 'leading-loose text-base'%><br />
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'iding-customer-input'  %>
-              </div>
-
-              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-              <% end %>
-
-              <div class="field">
-                <%= f.label :current_password, t('devise.Old Password'), class: 'leading-loose text-base' %><span class="text-sm">
-                <em>(<%= t('devise.Need your current password to confirm your changes')%>)</em></span><br />
-                <%= f.password_field :current_password, autocomplete: "current-password", class: 'iding-customer-input'  %>
-              </div>
-
-              <div class="field">
-                <%= f.label :password, t('devise.New Password') , class: 'leading-loose text-base'%>
-                <% if @minimum_password_length %>
-                  <span class="text-sm"><em>( <%= t('devise.Password length limit minimum')%> <%= @minimum_password_length %> <%= t('devise.words')%> )</em></span>
-                <% end %><br />
-                <%= f.password_field :password, autocomplete: "new-password", class: 'iding-customer-input'  %>
-
-              </div>
-
-              <div class="field">
-                <%= f.label :password_confirmation, t('devise.Confirm New Password'), class: 'leading-loose text-base' %><br />
-                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'iding-customer-input'  %>
-              </div>
-
-
-
-              <div class="actions">
-                <%= f.submit t('devise.Update Password'), class: "flex m-auto mt-8 px-5 py-2.5 font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 ease-in-out" %>
-              </div>
-            <% end %>
-
-        </div>
       </div>
+    <% end %>  
+
+    <div class="hidden lg:block lg:text-left lg:w-100">
+      <%= image_tag "logo_column.png", class:" w-full py-2 m-auto md:w-30 xl:w-30" %> 
     </div>
+
   </div>
 </div>

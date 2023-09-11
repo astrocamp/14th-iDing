@@ -1,4 +1,4 @@
-<section data-controller="hamburger" class="h-screen lg:flex">
+<section data-controller="hamburger" class="h-screen lg:flex dark:text-gray-700">
   <%= render "shared/adminSidebar" %> 
 
   <div>
@@ -7,17 +7,17 @@
     <%= turbo_frame_tag "calendar", class: 'lg:flex m-3 relative h-[calc(100%-96px)]' do %>
       <div data-hamburger-target="nav" class="top-0 hidden w-4/5 mx-auto lg:block lg:w-1/3">
         <%= turbo_frame_tag "table_edit" do %>
-          <div class="mx-1 mt-5 bg-white border-2 border-b rounded-lg shadow">
+          <div class="mx-1 mt-5 bg-white border-2 border-b rounded-lg shadow dark:border-b-gray-300">
             <div class="flex justify-center">
               <div>
                 <%= image_tag "logo.png", class: "w-14 md:w-30 xl:w-30 py-2" %>
               </div>
-              <h1 class="py-5 text-2xl font-semibold">新增座位</h1>
+              <h1 class="py-5 text-2xl font-semibold dark:text-gray-600">新增座位</h1>
             </div>
             
             <%= form_with(model: @table, url: admin_restaurant_tables_path(@restaurant), method: :post, data: { turbo: false }) do |form| %>
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
-              <div class="px-5 pb-5">
+              <div class="px-5 pb-5 dark:text-gray-600">
                 <div>
                   <%= form.label :name, '桌號*' %>
                   <%= form.text_field :name , class:"iding-customer-input" %>
@@ -43,20 +43,20 @@
       </div>
     
       <div class="w-full lg:w-3/4 h-[calc(100%-90px)]">
-        <div class="top-0 w-11/12 mx-auto mt-5 overflow-y-auto bg-white rounded-lg shadow border lg:absolute lg:right-2 lg:w-4/6 lg:h-[calc(95%)]">
+        <div class="top-0 w-11/12 mx-auto mt-5 overflow-y-auto bg-white rounded-lg shadow border dark:border-b-gray-300 lg:absolute lg:right-2 lg:w-4/6 lg:h-[calc(95%)]">
           
           <div class="overflow-x-auto">
-            <table class="table">
+            <table class="table ">
               <thead>
                 <tr>
                   <th></th>
-                  <th class="text-base text-center">桌號</th>
-                  <th class="text-base text-center">使用狀態</th>
-                  <th class="text-base text-center">桌型</th>
-                  <th class="text-base text-center">上限人數</th>
+                  <th class="text-base text-center dark:text-gray-600">桌號</th>
+                  <th class="text-base text-center dark:text-gray-600">使用狀態</th>
+                  <th class="text-base text-center dark:text-gray-600">桌型</th>
+                  <th class="text-base text-center dark:text-gray-600">上限人數</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="dark:text-gray-600 ">
                 <% @tables.each do |table|%>
                   <tr>
                     <th>
