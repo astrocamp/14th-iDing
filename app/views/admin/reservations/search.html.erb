@@ -44,17 +44,12 @@
               </div>
               <div class="flex items-center justify-around lg:mx-5 sm:justify-between">
                 <div class="flex">
-                  <div class="my-auto">
-                    <%= link_to edit_admin_restaurant_reservation_path(restaurant_id: @restaurant.id, id: reservation.id), data: { turbo_frame: "reservation_edit" } do %>
-                      <i class="fa-solid fa-pen-to-square"></i>
-                    <% end %>
-                  </div>
                   <div class="mx-3 lg:w-24 lg:h-24">
                     <div class="hidden lg:inline">
                       <%= image_tag "cat-default-avatar.png" %>
                     </div>
                   </div>
-                  <div class="items-center mx-2 my-auto">
+                  <div class="items-center w-20 mx-2 my-auto lg:w-24">
                     <div class="text-sm font-bold lg:text-lg">
                       <%= reservation.name %>
                     </div>
@@ -63,11 +58,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="flex">
-                  <div>
-                    <%= reservation.adults %> 位大人<br>
-                    <%= reservation.kids %> 位小孩
-                  </div>
+                <div class="flex lg:w-16">
+                  <%= reservation.adults %> 位大人<br>
+                  <%= reservation.kids %> 位小孩
                 </div>
                 <div class="px-4 py-3 text-lg font-medium border-2 rounded-lg">
                   <% if reservation.table.present? %>
@@ -76,7 +69,7 @@
                     桌號
                   <% end %>
                 </div>
-                <div class="w-10 text-center lg:w-24">
+                <div class="w-16 text-center lg:w-24">
                   <%= reservation.note %>
                 </div>
               </div>
