@@ -18,7 +18,7 @@
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
               <div class="px-5 pb-5">
                 <%= form.text_field :name, class: "iding-input", placeholder: "姓名" %>
-                <%= form.text_field :tel, class:"iding-input", placeholder: "電話", type: "tel" %>
+                <%= form.phone_field :tel, class:"iding-input", placeholder: "電話", type: "tel" %>
                 <div class="flex gap-2">
                   <%= form.date_field :date, class: "iding-input cursor-text" %>
                   <%= form.time_field :time, class: "iding-input cursor-text" %>
@@ -45,9 +45,9 @@
       </div>
     
       <div class="w-full lg:w-3/4 h-[calc(100%-90px)]">
-        <div class="top-0 w-11/12 mx-auto mt-5 overflow-y-auto bg-white rounded-lg shadow  lg:absolute lg:right-2 lg:w-4/6 lg:h-[calc(95%)]">
+        <div class="top-0 w-11/12 mx-auto mt-5 overflow-y-auto bg-white rounded-lg shadow lg:absolute lg:right-2 lg:w-4/6 lg:h-[calc(95%)]">
           <% @reservations&.each do |reservation| %>
-            <div class="w-full mb-1 rounded">
+            <div class="w-full mb-1 rounded border-b-2">
               <div class="flex items-center justify-between px-5 py-2 font-black bg-gray-200 border lg:pl-12">
                 <div>
                   <%= reservation.date%>
@@ -87,12 +87,12 @@
                       <i class="fa-solid fa-pen-to-square"></i>
                     <% end %>
                   </div>
-                  <div class="mx-3 lg:w-24 lg:h-24">
+                  <div class="lg:mx-3 lg:w-24 lg:h-24">
                     <div class="hidden lg:inline">
                       <%= image_tag "cat-default-avatar.png" %>
                     </div>
                   </div>
-                  <div class="items-center mx-2 my-auto">
+                  <div class="items-center lg:mx-2 my-auto lg:w-24 w-20 mx-1">
                     <div class="text-sm font-bold lg:text-lg">
                       <%= reservation.name %>
                     </div>
@@ -101,11 +101,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="flex">
-                  <div>
+                <div class="flex lg:w-16">
                     <%= reservation.adults %> 位大人<br>
                     <%= reservation.kids %> 位小孩
-                  </div>
                 </div>
                 <div class="px-4 py-3 text-lg font-medium border-2 rounded-lg">
                   <% if reservation.table.present? %>
@@ -114,7 +112,7 @@
                     桌號
                   <% end %>
                 </div>
-                <div class="w-10 text-center lg:w-24">
+                <div class="w-10 text-center lg:w-24 w-16">
                   <%= reservation.note %>
                 </div>
               </div>
