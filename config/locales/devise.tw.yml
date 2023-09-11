@@ -15,7 +15,7 @@ tw:
       not_found_in_database: "無效的%{authentication_keys}或密碼。"
       timeout: "您的登入已過期。請重新登入。"
       unauthenticated: "請先登入或註冊。"
-      unconfirmed: "請先確認您的電子郵件。"
+      unconfirmed: "在您登入之前，請確保您已透過電子郵件驗證您的帳號。"
     mailer:
       confirmation_instructions:
         subject: "確認說明"
