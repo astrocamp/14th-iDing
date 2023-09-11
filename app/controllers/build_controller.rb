@@ -21,6 +21,16 @@ class BuildController < ApplicationController
   def update
     case step
     when :date_time_person
+
+      # if params[:date].blank? || params[:time].blank?
+      #   redirect_to wizard_path, alert: '請填寫必填欄位'
+      #   return
+      # end
+      if params[:date].blank? || params[:time].blank? || params[:adults].blank? || params[:kids].blank?
+        redirect_to wizard_path, alert: '請填寫必填欄位'
+        return
+      end
+
       session[:first_step_data] = {
         'date' => params[:date],
         'time' => params[:time],
@@ -39,7 +49,7 @@ class BuildController < ApplicationController
         session.delete(:first_step_data)
         SendSmsJob.perform_later(@reservation)
       else
-        render_wizard
+        redirect_to wizard_path
       end
     end
   end
