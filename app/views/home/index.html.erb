@@ -1,4 +1,4 @@
-<%= render "shared/navbar" %> 
+<%= render "shared/navbar" %>
 <div class="min-h-screen hero">
   <video width="640" height="360" autoplay muted loop class="object-cover w-full h-full">
     <source src="/cooking.mp4" type="video/mp4">
@@ -7,44 +7,44 @@
   <div class="hero-overlay bg-opacity-60"></div>
   <div class="text-center hero-content text-neutral-content">
     <div class="max-w-md">
-      <h1 class="mb-5 text-5xl font-bold">iDing</h1>
-      <p class="mb-5 text-3xl"><%= t('index.Experience')%></p>
-        <% if user_signed_in? %>
-          <%= link_to admin_restaurants_path do %>
-            <button class="btn btn-gray"><%= t('index.Restaurant Management')%></button>
-          <% end %>
-        <% else %>
-          <%= link_to new_user_registration_path do %>
-            <button class="btn btn-gray"><%= t('index.Sign Up')%></button>
-          <% end %>
+      <h1 class="mb-5 text-5xl font-bold dark:text-slate-300">iDing</h1>
+      <p class="mb-5 text-3xl dark:text-slate-300"><%= t('index.Experience')%></p>
+      <% if user_signed_in? %>
+        <%= link_to admin_restaurants_path do %>
+          <button class="btn btn-gray dark:text-slate-300"><%= t('index.Restaurant Management')%></button>
         <% end %>
+      <% else %>
+        <%= link_to new_user_registration_path do %>
+          <button class="btn btn-gray dark:text-slate-300"><%= t('index.Sign Up')%></button>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
 
-<section id="about" class="py-4 lg:py-20">
+<section id="about" class="py-4 lg:py-20 dark:bg-white">
   <div class="my-12 lg:mb-24">
     <h2 class="text-3xl font-bold text-center text-gray-700 md:text-4xl lg:text-4xl">
       <%= t('index.Experience')%>
     </h2>
   </div>
   
-  <div  class="w-10/12 m-auto lg:flex lg:w-10/12">
+  <div class="w-10/12 m-auto lg:flex lg:w-10/12">
     <div class="lg:flex lg:w-2/3">
-        <%= image_tag "officalweb.jpg", class: "w-full rounded-xl" %>
+      <%= image_tag "officalweb.jpg", class: "w-full rounded-xl" %>
     </div>
     <div class="flex flex-col justify-center mx-2 lg:mx-12 lg:w-2/3">
-      <p class="my-12 font-semibold text-gray-600 lg:text-lg lg:leading-10 ">
+      <p class="my-12 font-semibold text-gray-600 lg:text-lg lg:leading-10">
         <%= raw t('index.SayGoodbye') %>
       </p>
     </div>
   </div>
 </section>
 
-<section class="bg-neutral-100 ">
-  <div class="flex justify-between w-10/12 py-10 mx-auto sm:px-6 lg:px-8 lg:py-14 ">
-    <div class="flex flex-col justify-center ">
-      <div class="flex my-3 gap-x-5 lg:my-6 ">
+<section class="bg-neutral-100">
+  <div class="flex justify-between w-10/12 py-10 mx-auto sm:px-6 lg:px-8 lg:py-14">
+    <div class="flex flex-col justify-center">
+      <div class="flex my-3 gap-x-5 lg:my-6">
         <div>
           <%= image_tag "rebot.svg", class: "w-6" %>
         </div>
@@ -52,12 +52,12 @@
           <h3 class="text-lg font-semibold text-gray-800">
           <%= t('index.Developed by restaurant professionals')%>
           </h3>
-          <p class="mt-1 text-gray-600 ">
+          <p class="mt-1 text-gray-600">
           <%= t('index.100% tailored to your needs, simplifying operations and boosting efficiency')%>
           </p>
         </div>
       </div>
-      <div class="flex my-3 gap-x-5 lg:my-6 ">
+      <div class="flex my-3 gap-x-5 lg:my-6">
         <div>
           <%= image_tag "like.svg", class: "w-6" %>
         </div>
@@ -70,12 +70,12 @@
           </p>
         </div>
       </div>
-      <div class="flex my-3 gap-x-5 lg:my-6 ">
+      <div class="flex my-3 gap-x-5 lg:my-6">
         <div>
           <%= image_tag "paper.svg", class: "w-6" %>
         </div>
         <div class="grow">
-          <h3 class="text-lg font-semibold text-gray-800 ">
+          <h3 class="text-lg font-semibold text-gray-800">
             <%= t('index.User-friendly and straightforward operating procedures')%>
           </h3>
           <p class="pr-5 mt-1 text-gray-600">
@@ -83,7 +83,7 @@
           </p>
         </div>
       </div>
-      <div class="flex my-3 gap-x-5 lg:my-6 ">
+      <div class="flex my-3 gap-x-5 lg:my-6">
         <div>
           <%= image_tag "balloon.svg", class: "w-6" %>
         </div>
@@ -98,12 +98,11 @@
       </div>
     </div>
     <div class="hidden lg:flex lg:w-1/2">
-        <%= image_tag "waiter.jpg", class: "w-full rounded-xl ml-auto lg:w-2/3  lg:m-auto" %>
+      <%= image_tag "waiter.jpg", class: "w-full rounded-xl ml-auto lg:w-2/3 lg:m-auto" %>
     </div>
   </div>
 </section>
 
-<footer class="flex justify-center py-5">
+<footer class="flex justify-center py-5 dark:bg-white">
   <p class="text-xs text-gray-600 sm:text-sm">© 2023 iDing. A product of <%= link_to "Hello 劍龍", root_path ,class:"text-slate-900 decoration-2 hover:underline font-semibold " %></p>
 </footer>
-

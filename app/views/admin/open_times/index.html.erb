@@ -1,36 +1,37 @@
-<section data-controller="hamburger" class="h-screen lg:flex">
+<section data-controller="hamburger" class="h-screen lg:flex dark:text-gray-700">
   <%= render "shared/adminSidebar" %> 
 
   <div>
     <%= render "/shared/adminNavbar"%>
 
-  <div class="md:mx-4 md:flex justify-between">
-    <section class='max-w-xs mx-auto mt-5 bg-white border-2 rounded-lg md:mx-0 md:max-w-md md:w-1/2 lg:w-1/4 '>
-      <h2 class='py-2 text-2xl font-bold text-center border-b'>用餐時段調整</h2>
-      <div class='p-6 text-left'>
-        <div>
-          <%= form_with(model: [:admin, @restaurant], data: { turbo: false }) do |f| %>
-            <div class="w-2/3 mx-auto my-2">
-              <%= f.label :mealtime, "用餐時間", class: 'text-base'  %>
-              <%= f.number_field :mealtime, step: 5, class: 'iding-customer-input' %>
-            </div>
+    <%= turbo_frame_tag "calendar", class: 'lg:flex m-3 relative h-[calc(100%-96px)]' do %>
+    <div class="md:mx-4 md:flex dark:text-gray-700 h-[calc(100%-60px)]">
+      <section class='max-w-xs mx-auto mt-5 bg-white border-2 rounded-lg md:mx-0 md:max-w-md md:w-1/2 lg:w-1/4 '>
+        <h2 class='py-2 text-2xl font-bold text-center border-b'>用餐時段調整</h2>
+        <div class='p-6 text-left'>
+          <div>
+            <%= form_with(model: [:admin, @restaurant], data: { turbo: false }) do |f| %>
+              <div class="w-2/3 mx-auto my-2">
+                <%= f.label :mealtime, "用餐時間", class: 'text-base'  %>
+                <%= f.number_field :mealtime, step: 5, class: 'iding-customer-input' %>
+              </div>
 
-            <div class="w-2/3 mx-auto my-2">
-              <%= f.label :reserve_interval, "訂位間隔", class: ' text-base'%><span class = 'text-base'>(分鐘)</span>
-              <%= f.number_field :reserve_interval, step: 5, class: 'iding-customer-input'%>
-            </div>
+              <div class="w-2/3 mx-auto my-2">
+                <%= f.label :reserve_interval, "訂位間隔", class: ' text-base'%><span class = 'text-base'>(分鐘)</span>
+                <%= f.number_field :reserve_interval, step: 5, class: 'iding-customer-input'%>
+              </div>
 
-            <div class="w-2/3 mx-auto my-2">
-            <%= f.label :bookday_advance, '開放訂位的期間：',class:" text-base" %>
-              <%= f.number_field :bookday_advance, min: 1, class: 'iding-customer-input' %>
-            </div>
+              <div class="w-2/3 mx-auto my-2">
+                <%= f.label :bookday_advance, '開放訂位的期間：',class:" text-base" %>
+                <%= f.number_field :bookday_advance, min: 1, class: 'iding-customer-input' %>
+              </div>
               <p><em class="text-xs">(設定顧客可以訂位的期間，從幾天後到幾天內。舉例： 設定 30 天就是可以訂明天到 30 天內的位子。)</em></p>
-            <div class="flex items-center pt-4 space-x-4">
-              <%= f.submit  class: "flex m-auto mt-8 px-5 py-2.5 font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 ease-in-out" %>
-            </div>
-          <% end %>
-        </div>
-    </section>
+              <div class="flex items-center pt-4 space-x-4">
+                <%= f.submit  class: "flex m-auto mt-8 px-5 py-2.5 font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 ease-in-out" %>
+              </div>
+            <% end %>
+          </div>
+      </section>
 
       <section class='max-w-xs mx-auto mt-5 bg-white border-2 rounded-lg shadow lg:mx-5 md:mx-0 md:max-w-md md:w-1/2 lg:w-1/4'>
         <h2 class='py-2 text-2xl font-bold text-center border-b'>營業時段</h2>
@@ -90,9 +91,6 @@
         </div>
       </section>
     </div>
+    <% end %>
+  </div>
 </section>
-
-
-
-
-

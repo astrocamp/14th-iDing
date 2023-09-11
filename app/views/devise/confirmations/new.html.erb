@@ -1,46 +1,40 @@
-<div class="min-h-screen hero bg-base-200">
+<div class="min-h-screen hero bg-base-200 dark:bg-white">
   <div class="flex-col w-full hero-content lg:flex-row-reverse">
     <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="flex-shrink-0 w-full shadow-2xl card bg-base-100">
+      <div class="flex-shrink-0 w-full shadow-2xl card bg-base-100 dark:bg-white">
         <div class="card-body">
           <div class="form-control">
             <%= image_tag "iding_logo.png", class:"block w-36 m-auto md:w-30 xl:w-30" %>
             <div class="px-12 m-auto ">
-              <h1 class="my-4 text-2xl font-bold text-right text-gray-600 "><%= t('devise.Resend Verification Email')%></h1>
+              <h1 class="my-4 text-2xl font-bold text-right text-gray-600 dark:text-gray-700"><%= t('devise.Resend Verification Email')%></h1>
             </div>
           </div>  
 
           <div class="field">
-            <%= f.label :email, class: "label" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "iding-customer-input", placeholder: t('devise.Please enter your email') %>
+            <%= f.label :email, class: "label dark:text-gray-700" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "iding-customer-input text-gray-600", placeholder: t('devise.Please enter your email') %>
           </div>
 
           <div class="my-5 actions">
             <%= f.submit t('devise.Resend'), class: "w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300" %>
           </div>
-        <% end %>
+        </div>
         <hr>
         
         <div>
           <p class="font-bold text-gray-700 "><%= t("devise.If you haven't received the verification email")%></p>
-          <ul>
+          <ul class="dark:text-gray-700">
             <li class="mt-2 text-sm">1. <%= t('devise.Confirm that your email address is correct')%></li>
-            <li class="my-2 text-sm ">2. <%= t("devise.Check your email's spam or junk folder")%></li>
+            <li class="my-2 text-sm">2. <%= t("devise.Check your email's spam or junk folder")%></li>
             <li class="text-sm">3. <%= raw t("devise.tryAgain")%> </li>
           </ul>
         </div>
       </div>
     </div>  
 
-    <div class="hidden lg:block lg:text-left ">
+    <div class="hidden lg:block lg:text-left">
       <%= image_tag "logo_column.png", class:" w-full py-2 m-auto md:w-30 xl:w-30" %> 
     </div>
 </div>
-
-
-
-
-
-

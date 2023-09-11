@@ -1,10 +1,10 @@
 <!-- 餐廳圖片和資訊 -->
-<div class="grid grid-cols-1 justify-items-stretch md:grid-cols-3">
-  <div >
+<div class="grid grid-cols-1 justify-items-stretch md:grid-cols-3 text-green">
+  <div>
     <div>
       <div class="!z-5 flex m-auto rounded-[20px] bg-white bg-clip-border flex-col p-10 w-full md:pt-[92px]">
         <p class="mb-10 text-2xl font-bold text-center text-green"><%= t('customerInfo.Reservation Information')%></p>
-        <div class="h-full m-auto ">
+        <div class="h-full m-auto">
           <div class="relative w-full">
             <%= image_tag @restaurant.image_url, class: "mb-3 h-full w-full rounded-xl 3xl:h-full 3xl:w-full" if @restaurant.image? %>
           </div>
@@ -14,28 +14,30 @@
             </div>
           </div>
           <hr class="w-full py-2">
-            <div class="flex mb-2">
-              <i class="fa-solid fa-user-group green"></i><p class="ml-5 text-sm font-bold text-brand-500 green"><%= session.dig(:first_step_data, 'adults') %><span class="mx-2"><%=t('customerInfo.adults')%></span><%= session.dig(:first_step_data, 'kids') %><span class="mx-2"><%=t('customerInfo.kids')%></span></p>
-            </div>
-            <div class="flex mb-2">
-              <i class="fa-solid fa-calendar-days green"></i>
-              <p class="ml-6 text-sm font-bold text-brand-500 green">
+          <div class="flex mb-2">
+            <i class="fa-solid fa-user-group green"></i>
+            <p class="ml-5 text-sm font-bold text-brand-500 green"><%= session.dig(:first_step_data, 'adults') %><span class="mx-2"><%=t('customerInfo.adults')%></span><%= session.dig(:first_step_data, 'kids') %><span class="mx-2"><%=t('customerInfo.kids')%></span></p>
+          </div>
+          <div class="flex mb-2">
+            <i class="fa-solid fa-calendar-days green"></i>
+            <p class="ml-6 text-sm font-bold text-brand-500 green">
               <%= DateTime.parse(session.dig(:first_step_data, 'date')).strftime("%m月  %d日") %>
-              </p>
-            </div>
-            <div class="flex mb-2">
-              <i class="fa-solid fa-clock green"></i><p class="ml-5 text-sm font-bold text-brand-500 green"><%= Time.parse(session.dig(:first_step_data, 'time')).strftime("%H:%M") %></p>
-            </div>
-            <div class="m-auto ">
-              <%= link_to previous_wizard_path do %>
-                <button class="w-full py-1 font-bold tracking-wider text-white bg-gray-500 rounded px-first-letter:2 hover:bg-green"><%= t('customerInfo.Return to Edit')%></button>
-              <% end %>
+            </p>
+          </div>
+          <div class="flex mb-2">
+            <i class="fa-solid fa-clock green"></i>
+            <p class="ml-5 text-sm font-bold text-brand-500 green"><%= Time.parse(session.dig(:first_step_data, 'time')).strftime("%H:%M") %></p>
+          </div>
+          <div class="m-auto">
+            <%= link_to previous_wizard_path do %>
+              <button class="w-full py-1 font-bold tracking-wider text-white bg-gray-500 rounded px-first-letter:2 hover:bg-green"><%= t('customerInfo.Return to Edit')%></button>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
-<!--訂位資料欄-->  
+  <!-- 訂位資料欄 -->  
   <div class="grid w-5/6 grid-cols-1 p-10 mx-auto bg-white rounded-lg shadow-xl lg:m-4 md:col-span-2">
     <div class="m-10 p-15" data-controller="customerinfo">
       <%= form_with url: wizard_path, method: :patch, data: { turbo: false } do |f| %>

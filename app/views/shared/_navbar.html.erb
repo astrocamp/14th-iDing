@@ -1,6 +1,6 @@
-<header class="fixed top-0 left-0 z-30 justify-start w-full py-0 text-sm bg-white border-b border-gray-200 lg:px-20">
-  <div class="navbar bg-base-100">
-    <div class="z-10 flex justify-between drawer bg-base-100">
+<header class="fixed top-0 left-0 z-30 justify-start w-full py-0 text-sm bg-white border-b border-gray-200 lg:px-20 dark:bg-white">
+  <div class="navbar bg-base-100 dark:bg-white">
+    <div class="z-10 flex justify-between drawer bg-base-100 dark:bg-white">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div>
         <%= link_to root_path do%>
@@ -14,9 +14,9 @@
         </label>
       </div>
 
-      <div class="drawer-side">
+      <div class="drawer-side ">
         <label for="my-drawer" class="drawer-overlay"></label>
-        <ul class="h-full p-4 menu w-60 bg-base-200 text-base-content">
+        <ul class="h-full p-4 menu w-60 bg-base-200 text-base-content dark:bg-white">
           <div>
             <%= image_tag "logo_column.png", class: "w-40 m-auto py-2 lg:hidden" %>
             <li><%= link_to t('navbar.about'), "#", class: "text-lg m-4 text-gray-800 py-6" %></li>
