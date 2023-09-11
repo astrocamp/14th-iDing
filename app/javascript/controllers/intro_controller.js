@@ -33,16 +33,6 @@ export default class extends Controller {
           element: ".addreservation",
         },
         {
-          title: "訂位搜尋",
-          intro: "有了訂位搜尋功能，<br>您可以輕鬆查找和管理餐廳內的歷史訂單。",
-          element: ".introSearch",
-        },
-        {
-          title: "餐廳資訊",
-          intro: "編輯您餐廳的基本資訊，<br>讓消費者更快速的了解您的餐廳。",
-          element: ".introRestaurant",
-        },
-        {
           title: "行事曆",
           intro:
             "您可以在行事曆中查看餐廳<br>每個月的訂位分布情況，<br>並點選日期以同步篩選當天的訂位。",
@@ -53,6 +43,16 @@ export default class extends Controller {
           intro:
             "這裡可以新增餐廳的平面圖，同時查看當天的訂位情況。為您的顧客提供更好的用餐體驗。",
           element: ".introTable",
+        },
+        {
+          title: "訂位搜尋",
+          intro: "有了訂位搜尋功能，<br>您可以輕鬆查找和管理餐廳內的歷史訂單。",
+          element: ".introSearch",
+        },
+        {
+          title: "餐廳資訊",
+          intro: "編輯您餐廳的基本資訊，<br>讓消費者更快速的了解您的餐廳。",
+          element: ".introRestaurant",
         },
         {
           title: "設定營業時間",
