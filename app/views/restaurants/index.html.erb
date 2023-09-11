@@ -1,4 +1,84 @@
-<%= render "shared/navbar" %> 
+<header class="fixed top-0 left-0 z-30 justify-start w-full py-0 text-sm bg-white border-b border-gray-200 lg:px-20 dark:bg-white">
+  <div class="navbar bg-base-100 dark:bg-white">
+    <div class="z-10 flex justify-between drawer bg-base-100 dark:bg-white">
+      <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+      <div>
+        <%= link_to root_path do%>
+          <%= image_tag "logo_column.png", class: "w-28 lg:w-36" %>
+        <% end %>
+      </div>
+
+      <div class="drawer-content lg:hidden">
+        <label for="my-drawer" class="mx-12">
+          <%= image_tag "hamberger-icon.svg"%>
+        </label>
+      </div>
+
+      <div class="drawer-side">
+        <label for="my-drawer" class="drawer-overlay"></label>
+        <ul class="h-full p-4 menu w-60 bg-base-200 text-base-content dark:bg-white">
+          <div>
+            <%= image_tag "logo_column.png", class: "w-40 m-auto py-2 lg:hidden" %>
+            <li><%= link_to t('navbar.restaurants'), restaurants_path, class: "text-lg m-4 text-gray-800 py-6" %></li>
+            <li><%= link_to 'EN', root_path(locale: 'en'), class: "text-lg m-4 text-gray-800 py-6"  %></li>
+            <li><%= link_to '中文', root_path(locale: 'tw'), class: "text-lg m-4 text-gray-800 py-6"  %></li>
+            <% if user_signed_in? %>
+              <li>
+                <details>
+                  <summary class="m-4 font-medium text-gray-800 lg:my-10 hover:text-gray-600 ">
+                    <div class="flex">
+                      <div>
+                        <%= image_tag "head-icon.svg", class: "w-6" %>
+                      </div>
+                      <div class="px-4 text-lg">
+                        <%= user_name %>
+                      </div>
+                    </div>
+                  </summary>
+
+                  <ul class="w-28 lg:p-2">
+                    <li><%= link_to t('navbar.Log Out'), destroy_user_session_path, data: { turbo_method: "delete" }, class: "text-base font-medium text-gray-700 hover:text-gray-600 py-3" %></li>
+                    <li><%= link_to t('navbar.Change Password'), edit_user_registration_path, class: "font-medium text-gray-700 text-base hover:text-gray-600 py-3 " %></li>
+                    <li><%= link_to t('navbar.My Restaurant'), admin_restaurants_path, class: "font-medium text-base text-gray-700 hover:text-gray-600 py-3 " %></li>
+                  </ul>
+                </details>
+              </li>
+            <% else %>
+            <li><%= link_to t('navbar.Sign Up'), new_user_registration_path, class: 'text-lg m-4 font-medium text-gray-700 hover:text-gray-400 py-6' %></li>
+              <li><%= link_to t('navbar.Log In'), new_user_session_path, class: "text-lg m-4 font-medium text-gray-700 hover:text-gray-400 py-6" %></li>
+            <% end %>
+          </div>
+        </ul>
+      </div>
+
+      <div class="hidden lg:flex">
+        <ul class="menu menu-horizontal">
+          <li><%= link_to t('navbar.restaurants'), restaurants_path, class: "font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
+          <li><%= link_to 'EN', root_path(locale: 'en'), class: "font-medium text-gray-800 hover:text-gray-600 py-6"  %></li>
+          <li><%= link_to '中文', root_path(locale: 'tw'), class: "font-medium text-gray-800 hover:text-gray-600 py-6"  %></li>
+          <% if user_signed_in? %>
+            <li>
+              <details>
+                <summary class="py-6 font-medium text-gray-800 hover:text-gray-600">
+                  <%= image_tag "head-icon.svg", class: "w-6" %>
+                  <%= user_name %>
+                </summary>
+                <ul class="w-40 p-2 bg-gray-100">
+                  <li><%= link_to t('navbar.Log Out'), destroy_user_session_path, data: { turbo_method: "delete" }, class: "font-medium text-gray-700 hover:text-gray-600 py-3" %></li>
+                  <li><%= link_to t('navbar.Change Password'), edit_user_registration_path, class: "font-medium text-gray-700 hover:text-gray-600 py-3" %></li>
+                  <li><%= link_to t('navbar.My Restaurant'), admin_restaurants_path, class: "font-medium text-gray-700 hover:text-gray-600 py-3" %></li>
+                </ul>
+              </details>
+            </li>
+          <% else %>
+            <li><%= link_to t('navbar.Sign Up'), new_user_registration_path, class: 'font-medium text-gray-700 hover:text-gray-600 py-6' %></li>
+            <li><%= link_to t('navbar.Log In'), new_user_session_path, class: "font-medium text-gray-700 hover:text-gray-600 py-6" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
 
 <section class="w-2/3 py-32 mx-auto">
   <h1 class="text-xl md:text-2xl dark:text-gray-600">
