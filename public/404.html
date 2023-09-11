@@ -1,67 +1,269 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>The page you were looking for doesn't exist (404)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+  <head>
+    <title>404</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      .rails-default-error-page {
+        background-color: #efefef;
+        color: #2e2f30;
+        text-align: center;
+        font-family: arial, sans-serif;
+        margin: 0;
+      }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+      .rails-default-error-page div.dialog {
+        width: 95%;
+        max-width: 33em;
+        margin: 4em auto 0;
+      }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+      .rails-default-error-page div.dialog > div {
+        border: 1px solid #ccc;
+        border-right-color: #999;
+        border-left-color: #999;
+        border-bottom-color: #bbb;
+        border-top: #b00100 solid 4px;
+        border-top-left-radius: 9px;
+        border-top-right-radius: 9px;
+        background-color: white;
+        padding: 7px 12% 0;
+        box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+      }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+      .rails-default-error-page h1 {
+        font-size: 100%;
+        color: #730e15;
+        line-height: 1.5em;
+      }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
-</head>
+      .rails-default-error-page div.dialog > p {
+        margin: 0 0 1em;
+        padding: 1em;
+        background-color: #f7f7f7;
+        border: 1px solid #ccc;
+        border-right-color: #999;
+        border-left-color: #999;
+        border-bottom-color: #999;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-top-color: #dadada;
+        color: #666;
+        box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+      }
+    </style>
+  </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+  <body class="rails-default-error-page">
+    <!-- This file lives in public/404.html -->
+    <div class="navbar">
+      <header
+        class="fixed top-0 left-0 z-30 justify-start w-full py-0 text-sm bg-white border-b border-gray-200 lg:px-20"
+      >
+        <div class="navbar bg-base-100">
+          <div class="z-10 flex justify-between drawer bg-base-100">
+            <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+            <div>
+              <%= link_to root_path do%> <%= image_tag "logo_column.png", class:
+              "w-28 lg:w-36" %> <% end %>
+            </div>
+
+            <div class="drawer-content lg:hidden">
+              <label for="my-drawer" class="mx-12">
+                <%= image_tag "hamberger-icon.svg"%>
+              </label>
+            </div>
+
+            <div class="drawer-side">
+              <label for="my-drawer" class="drawer-overlay"></label>
+              <ul class="h-full p-4 menu w-60 bg-base-200 text-base-content">
+                <div>
+                  <%= image_tag "logo_column.png", class: "w-40 m-auto py-2
+                  lg:hidden" %>
+                  <li>
+                    <%= link_to t('navbar.about'), "#", class: "text-lg m-4
+                    text-gray-800 py-6" %>
+                  </li>
+                  <li>
+                    <%= link_to t('navbar.restaurants'), restaurants_path,
+                    class: "text-lg m-4 text-gray-800 py-6" %>
+                  </li>
+                  <li>
+                    <%= link_to 'EN', root_path(locale: 'en'), class: "text-lg
+                    m-4 text-gray-800 py-6" %>
+                  </li>
+                  <li>
+                    <%= link_to '中文', root_path(locale: 'en'), class: "text-lg
+                    m-4 text-gray-800 py-6" %>
+                  </li>
+                  <% if user_signed_in? %>
+                  <li>
+                    <details>
+                      <summary
+                        class="m-4 font-medium text-gray-800 lg:my-10 hover:text-gray-600"
+                      >
+                        <div class="flex">
+                          <div>
+                            <%= image_tag "head-icon.svg", class: "w-6" %>
+                          </div>
+                          <div class="px-4 text-lg"><%= user_name %></div>
+                        </div>
+                      </summary>
+
+                      <ul class="w-28 lg:p-2">
+                        <li>
+                          <%= link_to t('navbar.Log Out'),
+                          destroy_user_session_path, data: { turbo_method:
+                          "delete" }, class: "text-base font-medium
+                          text-gray-700 hover:text-gray-600 py-3" %>
+                        </li>
+                        <li>
+                          <%= link_to t('navbar.Change Password'),
+                          edit_user_registration_path, class: "font-medium
+                          text-gray-700 text-base hover:text-gray-600 py-3 " %>
+                        </li>
+                        <li>
+                          <%= link_to t('navbar.My Restaurant'),
+                          admin_restaurants_path, class: "font-medium text-base
+                          text-gray-700 hover:text-gray-600 py-3 " %>
+                        </li>
+                      </ul>
+                    </details>
+                  </li>
+                  <% else %>
+                  <li>
+                    <%= link_to t('navbar.Sign Up'), new_user_registration_path,
+                    class: 'text-lg m-4 font-medium text-gray-700
+                    hover:text-gray-400 py-6' %>
+                  </li>
+                  <li>
+                    <%= link_to t('navbar.Log In'), new_user_session_path,
+                    class: "text-lg m-4 font-medium text-gray-700
+                    hover:text-gray-400 py-6" %>
+                  </li>
+                  <% end %>
+                </div>
+              </ul>
+            </div>
+
+            <div class="hidden lg:flex">
+              <ul class="menu menu-horizontal">
+                <li>
+                  <%= link_to t('navbar.about'), "#about", class: "font-medium
+                  text-gray-800 hover:text-gray-600 py-6 " %>
+                </li>
+                <li>
+                  <%= link_to t('navbar.restaurants'), restaurants_path, class:
+                  "font-medium text-gray-800 hover:text-gray-600 py-6" %>
+                </li>
+                <li>
+                  <%= link_to 'EN', root_path(locale: 'en'), class: "font-medium
+                  text-gray-800 hover:text-gray-600 py-6" %>
+                </li>
+                <li>
+                  <%= link_to '中文', root_path(locale: 'tw'), class:
+                  "font-medium text-gray-800 hover:text-gray-600 py-6" %>
+                </li>
+                <% if user_signed_in? %>
+                <li>
+                  <details>
+                    <summary
+                      class="py-6 font-medium text-gray-800 hover:text-gray-600"
+                    >
+                      <%= image_tag "head-icon.svg", class: "w-6" %> <%=
+                      user_name %>
+                    </summary>
+                    <ul class="w-40 p-2 bg-gray-100">
+                      <li>
+                        <%= link_to t('navbar.Log Out'),
+                        destroy_user_session_path, data: { turbo_method:
+                        "delete" }, class: "font-medium text-gray-700
+                        hover:text-gray-600 py-3" %>
+                      </li>
+                      <li>
+                        <%= link_to t('navbar.Change Password'),
+                        edit_user_registration_path, class: "font-medium
+                        text-gray-700 hover:text-gray-600 py-3" %>
+                      </li>
+                      <li>
+                        <%= link_to t('navbar.My Restaurant'),
+                        admin_restaurants_path, class: "font-medium
+                        text-gray-700 hover:text-gray-600 py-3" %>
+                      </li>
+                    </ul>
+                  </details>
+                </li>
+                <% else %>
+                <li>
+                  <%= link_to t('navbar.Sign Up'), new_user_registration_path,
+                  class: 'font-medium text-gray-700 hover:text-gray-600 py-6' %>
+                </li>
+                <li>
+                  <%= link_to t('navbar.Log In'), new_user_session_path, class:
+                  "font-medium text-gray-700 hover:text-gray-600 py-6" %>
+                </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
-</body>
+    <div>
+      <main class="main" id="content" role="main">
+        <section class="site-section intro-section">
+          <div class="container intro-section__container">
+            <div class="intro-section__holder">
+              <div class="intro-section__content-part with-visual">
+                <div class="intro-section__content-holder">
+                  <h1 class="intro-section__title">「...我是誰？我在哪？」</h1>
+                  <div class="text-xl intro-section__content">
+                    <div class="intro-section__content-item">
+                      沒關係我們也不知道...
+                    </div>
+                  </div>
+                  <div class="intro-section__buttons btn-toolbar md-md-0">
+                    <div class="btn-group">
+                      <a class="btn btn-primary" href="https://iding.cc">
+                        <span>回首頁</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="intro-section__visual-part">
+                <div class="intro-section__visual">
+                  <div class="intro-section__image-holder">
+                    <img
+                      class="img-fluid"
+                      src="/assets/public-site-v2-proto/images/fill-blue-semi-circle.png?v=1690792460362"
+                      srcset="
+                        /assets/public-site-v2-proto/images/fill-blue-semi-circle@2x.png?v=1690792460362 2x
+                      "
+                    />
+                  </div>
+                  <span
+                    class="block__decoration block__decoration--half-circle-orange"
+                  >
+                    <img
+                      class="img-fluid decoration-half-circle decoration-half-circle--orange"
+                      src="/assets/public-site-v2/images/decorations/half-circle-horizontal-orange.svg?v=1690792460362"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer class="flex justify-center py-5">
+      <p class="text-xs text-gray-600 sm:text-sm">
+        © 2023 iDing. A product of <%= link_to "Hello 劍龍", root_path
+        ,class:"text-slate-900 decoration-2 hover:underline font-semibold " %>
+      </p>
+    </footer>
+  </body>
 </html>
