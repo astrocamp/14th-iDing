@@ -8,8 +8,8 @@ export default class extends Controller {
     const nameValue = this.nameInputTarget.value;
     const telValue = this.telInputTarget.value;
     const Enable = nameValue && telValue;
-    this.submitBtnTarget.classList.toggle("next-btn", Enable);
-    this.submitBtnTarget.classList.toggle("next-btn-void", !Enable);
+    this.submitBtnTarget.classList.toggle("customer-submit-btn", Enable);
+    this.submitBtnTarget.classList.toggle("customer-submit-btn-void", !Enable);
     this.submitBtnTarget.disabled = !Enable;
   }
 }
