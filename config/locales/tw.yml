@@ -136,6 +136,9 @@ tw:
     Please enter your email: 請輸入您的Email
     Resend: 重寄認證信
     NotGettingEmail: 沒有收到驗證信？
+    Change password: 修改密碼
+    oldPassword: 舊密碼
+    newpassword: 新密碼
 
   restaurant:
     Your Restaurants: 您的餐廳

@@ -1,4 +1,4 @@
-<div class="py-3 bg-gray-100">
+<div class="py-3 bg-gray-100 text-green">
   <section class="h-auto">
     <div class="pt-8 mx-auto mb-5">
       <div class="max-w-xs mx-auto mb-2">
@@ -11,69 +11,61 @@
       </div>
     </div>
     <div class="max-w-xs p-10 m-2 mx-auto bg-white rounded-lg md:max-w-md pb-14 shadow-x">
-        <div class="mb-2 text-xl text-center">
+      <div class="mb-2 text-xl text-center">
+        <% if locale == :en %>
+          <p>Hi, <%= @reservation.name %></p>
+        <% else %>
+          <p><%= @reservation.name %> 您好</p>
+        <% end %>
+        <p class="text-sm"><%= t('success.Here are your booking details')%>：</p> 
+      </div>
+      <div class="mx-4 border rounded border-slate-300">
+        <div class="py-6 text-center">
           <% if locale == :en %>
-            <p>Hi, <%= @reservation.name %></p>
+            <p class="text-2xl"><%= l(@reservation.date, format: :short)%></p>
           <% else %>
-            <p><%= @reservation.name %> 您好</p>
+            <p class="text-2xl"><%= @reservation.date.strftime("%m月%d日")%></p>
           <% end %>
-
-          <p class="text-sm"><%= t('success.Here are your booking details')%>：</p> 
+          <p class="my-3 text-5xl text-green-800"><%= @reservation.time.strftime("%H:%M") %></p>
+          <p class="text-xl"><%= @reservation.adults %> <%= t('success.Adult(s)')%></p>
+          <p class="my-3 text-xl">
+          <% if @reservation.kids.zero? %>
+            <%= '0' %> <%= t('success.Kid(s)')%>
+          <% else %>
+            <%= @reservation.kids %> <%= t('success.Kid(s)')%></p>
+          <% end %>
+          <p class="text-sm"><%= t('success.Note')%>：<%= @reservation.note unless @reservation.note.blank? %></p>
         </div>
-        <div class="mx-4 border rounded border-slate-300">
-          <div class="py-6 text-center">
-            <% if locale == :en %>
-              <p class="text-2xl"><%= l(@reservation.date, format: :short)%></p>
-            <% else %>
-              <p class="text-2xl"><%= @reservation.date.strftime("%m月%d日")%></p>
-            <% end %>
-            <p class="my-3 text-5xl text-green-800"><%= @reservation.time.strftime("%H:%M") %></p>
-
-            <p class="text-xl"><%= @reservation.adults %> <%= t('success.Adult(s)')%></p>
-
-            <p class="my-3 text-xl">
-            <% if @reservation.kids.zero? %>
-              <%= '0' %> <%= t('success.Kid(s)')%>
-            <% else %>
-              <%= @reservation.kids %> <%= t('success.Kid(s)')%></p>
-            <% end %>
-
-            <p class="text-sm"><%= t('success.Note')%>：<%= @reservation.note unless @reservation.note.blank? %></p>
-          </div>
-
-          <div data-controller="holdseat" 
-               data-holdseat-url-value="<%= @reservation.id %>"
-               class="pt-3">
-            <button data-action="click->holdseat#holdSeat"
-                    id="reservation-state-<%= @reservation.id %>"
-                    class= "block w-full py-2 mx-auto text-center border rounded border-slate-300 hover:bg-green hover:text-white" >
-                    <% if @reservation.state == "reserved" %>
-                      <%=t('success.Hold reservation')%>
-                    <% else @reservation.state == "keeped" %>
-                      <%= t('success.Reservation confirmed')%>
-                    <% end %>
-                  
-            </button>
-          </div>
-          
-          <div>
-            <%= link_to t('success.Cancel'), reservation_path(@reservation),
-                          data:{ turbo_method: 'delete',
-                                 turbo_confirm: t('confirmations.confirm_cancel') 
-                          }, class: "text-center block py-2 w-full mx-auto border rounded border-slate-300 hover:bg-green hover:text-white" %>
-          </div>
+        <div data-controller="holdseat" 
+             data-holdseat-url-value="<%= @reservation.id %>"
+             class="pt-3">
+          <button data-action="click->holdseat#holdSeat"
+                  id="reservation-state-<%= @reservation.id %>"
+                  class= "block w-full py-2 mx-auto text-center border rounded border-slate-300 hover:bg-green hover:text-white" >
+                  <% if @reservation.state == "reserved" %>
+                    <%=t('success.Hold reservation')%>
+                  <% else @reservation.state == "keeped" %>
+                    <%= t('success.Reservation confirmed')%>
+                  <% end %>
+          </button>
         </div>
-    </div>
-        <span class="block w-full py-4 mx-auto text-center text-md">
-        <%= t('success.The dining time is limited to')%> <%= @reservation.restaurant.mealtime %> <%= t('success.minutes')%></span>
-        <a
-          href="#"
-          class="block py-2 mx-auto text-lg text-center text-white rounded w-60 bg-green"
-        >
-          <i class="mr-3 fa-solid fa-arrow-right"></i>
-            <%= t('success.menu')%>
-        </a>
+        <div>
+          <%= link_to t('success.Cancel'), reservation_path(@reservation),
+                        data:{ turbo_method: 'delete',
+                               turbo_confirm: t('confirmations.confirm_cancel') 
+                        }, class: "text-center block py-2 w-full mx-auto border rounded border-slate-300 hover:bg-green hover:text-white" %>
+        </div>
       </div>
     </div>
-  </section>
-</div>
+    <span class="block w-full py-4 mx-auto text-center text-md">
+      <%= t('success.The dining time is limited to')%> <%= @reservation.restaurant.mealtime %> <%= t('success.minutes')%>
+    </span>
+    <a
+      href="#"
+      class="block py-2 mx-auto text-lg text-center text-white rounded w-60 bg-green"
+    >
+      <i class="mr-3 fa-solid fa-arrow-right"></i>
+      <%= t('success.menu')%>
+    </a>
+  </div>
+</section>

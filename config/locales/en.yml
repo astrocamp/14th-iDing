@@ -95,6 +95,9 @@ en:
     Please enter your email: Please enter your email
     Resend: Resend
     NotGettingEmail: Not getting the verification email?
+    Change password: Change Password
+    oldPassword: Old Password
+    newpassword: New Password
 
   restaurant:
     UBN: UBN

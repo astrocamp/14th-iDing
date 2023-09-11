@@ -2,7 +2,7 @@
 
 <section class="w-2/3 py-32 mx-auto">
   <div>
-    <h1 class="text-2xl"><%= t('restaurant.Your Restaurants')%></h1>
+    <h1 class="text-2xl dark:text-gray-700"><%= t('restaurant.Your Restaurants')%></h1>
 
     <%= link_to t('restaurant.Homepage'), root_path, class: "action-btn px-2" %>
     <%= link_to t('restaurant.Operate a restaurant'), new_admin_restaurant_path, class: "action-btn px-2" %>
@@ -18,7 +18,7 @@
             <%= image_tag "restaurantCoverPhoto.jpg", class: "w-full lg:rounded-lg"%>  
           <% end %>
           </div>  
-          <div class="flex flex-col justify-between m-5">
+          <div class="flex flex-col justify-between m-5 dark:text-gray-700">
             <div>
               <li class="my-2"><%= t('restaurant.Name')%>：<%= link_to restaurant.name, admin_restaurant_path(restaurant) %></li>
               <li class="my-2"><%= t('restaurant.Phone')%>：<%= restaurant.tel %></li>
@@ -43,7 +43,6 @@
                 <%= link_to admin_restaurant_path(restaurant), data: { turbo_method: 'delete', turbo_confirm: t('confirmations.confirm_cancel') }, class: "action-btn px-4" do %>
                   <i class="fa-solid fa-trash"><span class="hidden ml-2 font-normal xl:inline"><%= t('restaurant.Delete Restaurant')%></span></i>
                 <% end if policy(restaurant).destroy? %>
-
             </div>
           </div>
         </div>
