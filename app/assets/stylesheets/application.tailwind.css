@@ -44,3 +44,11 @@
 .next-btn {
   @apply left-0 right-0 w-4/5 px-4 py-2 mx-12 my-2 mt-5 text-lg font-bold tracking-wider text-white rounded cursor-pointer bg-green sm:mx-16 md:mx-24 lg:mx-40 hover:bg-emerald-900;
 }
+
+.customer-submit-btn {
+  @apply left-0 right-0 w-full px-4 py-2 my-2 mt-10 text-lg font-bold tracking-wider text-white rounded cursor-pointer bg-green hover:bg-emerald-900;
+}
+
+.customer-submit-btn-void {
+  @apply left-0 right-0 w-full px-4 py-2 my-2 mt-10 text-lg font-bold tracking-wider text-white bg-gray-300 rounded;
+}
