@@ -14,10 +14,12 @@ export default class extends Controller {
   }
 
   getDate(e) {
-    this.dateTargets.forEach((btn) => btn.classList.add("unselect-btn"));
-    this.dateTargets.forEach((btn) => btn.classList.remove("action-btn"));
-    e.target.classList.remove("unselect-btn");
-    e.target.classList.add("action-btn");
+    this.dateTargets.forEach((btn) =>
+      btn.classList.add("unselect-holiday-btn")
+    );
+    this.dateTargets.forEach((btn) => btn.classList.remove("holiday-btn"));
+    e.target.classList.remove("unselect-holiday-btn");
+    e.target.classList.add("holiday-btn");
     this.setDate(e.target.dataset.date);
   }
 

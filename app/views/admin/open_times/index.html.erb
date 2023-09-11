@@ -5,8 +5,8 @@
     <%= render "/shared/adminNavbar"%>
 
     <%= turbo_frame_tag "calendar", class: 'lg:flex m-3 relative h-[calc(100%-96px)]' do %>
-    <div class="md:mx-4 md:flex dark:text-gray-700 h-[calc(100%-60px)] ">
-      <section class='max-w-xs mx-auto mt-5 bg-white border-2 rounded-lg md:mx-0 md:max-w-md md:w-1/2 lg:w-1/4 '>
+    <div class="md:mx-4 md:flex dark:text-gray-700 h-[calc(100%-60px)]">
+      <section class='max-w-xs mx-auto mt-5 bg-white border-2 rounded-lg md:mx-0 md:max-w-md md:w-1/2 lg:w-1/3 '>
         <h2 class='py-2 text-2xl font-bold text-center border-b'>用餐時段調整</h2>
         <div class='p-6 text-left'>
           <div>
@@ -33,7 +33,7 @@
           </div>
       </section>
 
-      <section class='max-w-xs mx-auto mt-5 bg-white border-2 rounded-lg shadow lg:mx-5 md:mx-0 md:max-w-md md:w-1/2 lg:w-1/4'>
+      <section class='max-w-xs mx-auto mt-5 bg-white border-2 rounded-lg shadow lg:mx-5 md:mx-0 md:max-w-md md:w-1/2 lg:w-1/3'>
         <h2 class='py-2 text-2xl font-bold text-center border-b'>營業時段</h2>
         <div class='px-6 py-3 '>
           <div class="">
@@ -44,10 +44,10 @@
               <div data-controller='opentime' class= "mt-3">
                 <div>
                   <div class="flex">
-                    <span class="flex flex-col justify-center w-full">開始時間</span> <%= f.time_field :start_time, data: {opentime_target: 'startTime', action: 'change->opentime#compare'}, class: "iding-customer-input" %>
+                    <span class="flex flex-col justify-center w-1/2">開始時間</span> <%= f.time_field :start_time, data: {opentime_target: 'startTime', action: 'change->opentime#compare'}, class: "iding-customer-input" %>
                   </div>
                   <div class='flex'>
-                    <span class="flex flex-col justify-center w-full">結束時間</span> <%= f.time_field :end_time, data: {opentime_target: 'endTime', action: 'change->opentime#compare'}, class: "iding-customer-input" %>
+                    <span class="flex flex-col justify-center w-1/2">結束時間</span> <%= f.time_field :end_time, data: {opentime_target: 'endTime', action: 'change->opentime#compare'}, class: "iding-customer-input" %>
                   </div>
                   <div class="my-4 text-center">
                     <%= f.submit '儲存', class: 'action-btn', data: {opentime_target: 'submit'}, disabled: true %>
@@ -62,14 +62,14 @@
         </div>
       </section>
 
-      <section class='max-w-xs mx-auto lg:mx-0 md:max-w-xl mt-5 bg-white border-2 shadow rounded-lg  min-w-[40%]' data-controller='holiday'>
+      <section class='max-w-xs mx-auto mt-5 bg-white border-2 rounded-lg shadow lg:mx-0 md:max-w-xl lg:max-w-full' data-controller='holiday'>
         <h2 class='py-2 text-2xl font-bold text-center border-b'>公休日</h2>
         <div class='gap-2 p-6 text-left'>
-          <div class='text-center'>
+          <div class='w-full text-center lg:w-96'>
             <h3 class='mb-2 text-lg font-bold text-center lg:text-left'>新增公休日：</h3>
-            <div class='flex flex-wrap gap-1' id='holiday-selector'>
+            <div class='flex flex-wrap w-full gap-1' id='holiday-selector'>
               <% @week.each do |date| %>
-                <button class='inline-block w-12 mx-1 md:w-auto unselect-btn' 
+                <button class='unselect-holiday-btn' 
                       data-date='<%= date.strftime('%a') %>'
                       data-holiday-target='date'
                       data-action='click->holiday#getDate'>

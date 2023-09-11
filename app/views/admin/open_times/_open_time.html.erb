@@ -4,9 +4,6 @@
     <%= open_time.end_time.strftime('%R') %>
   </div>
   <div class="flex justify-center ">
-    <%= link_to edit_admin_open_time_path(open_time), class: 'mx-2 px-4 action-btn' do %>
-      <i class="fa-solid fa-user-pen"></i>
-    <% end %>
     <%= link_to admin_open_time_path(open_time), data: {turbo_method: 'delete', turbo_confirm: '確認刪除？'}, class: 'icon-btn' do %>
       <i class="fa-solid fa-xmark"></i>
     <% end %>
