@@ -22,12 +22,8 @@ class BuildController < ApplicationController
     case step
     when :date_time_person
 
-      # if params[:date].blank? || params[:time].blank?
-      #   redirect_to wizard_path, alert: '請填寫必填欄位'
-      #   return
-      # end
       if params[:date].blank? || params[:time].blank? || params[:adults].blank? || params[:kids].blank?
-        redirect_to wizard_path, alert: '請填寫必填欄位'
+        redirect_to wizard_path, alert: '請填寫必填欄位: 日期 時間'
         return
       end
 
@@ -41,7 +37,10 @@ class BuildController < ApplicationController
       redirect_to wizard_path(:customer_info)
 
     when :customer_info
-
+      if params[:name].blank? || params[:tel].blank?
+        redirect_to wizard_path, alert: '請填寫必填欄位: 名字, 電話'
+        return
+      end
       @reservation = @restaurant.reservations.create!(reservation_params)
 
       if step == steps.last
@@ -49,7 +48,7 @@ class BuildController < ApplicationController
         session.delete(:first_step_data)
         SendSmsJob.perform_later(@reservation)
       else
-        redirect_to wizard_path
+        render_wizard
       end
     end
   end
