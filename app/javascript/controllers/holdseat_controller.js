@@ -14,7 +14,7 @@ export default class extends Controller {
         "X-CSRF-Token": token,
       },
     }).then(() => {
-      const newStateText = I18n.t("success.Reservation confirmed");
+      const newStateText = "已保留訂位";
       const stateElement = document.querySelector(
         `#reservation-state-${this.urlValue}`
       );
