@@ -14,7 +14,7 @@
         </label>
       </div>
 
-      <div class="drawer-side ">
+      <div class="drawer-side">
         <label for="my-drawer" class="drawer-overlay"></label>
         <ul class="h-full p-4 menu w-60 bg-base-200 text-base-content dark:bg-white">
           <div>
@@ -69,11 +69,11 @@
       <div class="my-6 lg:mx-5">
         <p class="w-full my-8 text-2xl font-bold text-center text-green"><%= t('reservationPage.Number of Guests')%></p>
         <div class="flex justify-around gap-2 mx-2">
-          <div class="w-80">
+          <div class="w-full">
             <%= f.label :adults, t('reservationPage.adults'), class:"block mr-2 text-sm text-green" %>
             <%= f.select :adults, (1..8).to_a, value: session.dig(:first_step_data, 'adults').present? ? session.dig(:first_step_data, 'adults') : 1, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", min: 1 %>
           </div>
-          <div class="w-80">
+          <div class="w-full">
             <%= f.label :kids, t('reservationPage.kids'), class:"block mr-2 text-sm text-green" %>
             <%= f.select :kids, (0..4).to_a, value: session.dig(:first_step_data, 'kids').present? ? session.dig(:first_step_data, 'kids') : 0, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", min: 0 %>
           </div>

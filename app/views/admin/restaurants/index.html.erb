@@ -37,9 +37,6 @@
             <% end %>
             </div>
             <div class="flex gap-5 my-2">
-              <%= link_to edit_admin_restaurant_path(restaurant), class:"action-btn px-4" do %>
-                <i class="fa-solid fa-pen"></i><span class="hidden ml-2 font-normal xl:inline"><%= t('restaurant.Edit information')%></span>
-              <% end %>
                 <%= link_to admin_restaurant_path(restaurant), data: { turbo_method: 'delete', turbo_confirm: t('confirmations.confirm_cancel') }, class: "action-btn px-4" do %>
                   <i class="fa-solid fa-trash"><span class="hidden ml-2 font-normal xl:inline"><%= t('restaurant.Delete Restaurant')%></span></i>
                 <% end if policy(restaurant).destroy? %>
