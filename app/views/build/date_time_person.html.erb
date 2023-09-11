@@ -8,15 +8,15 @@
         <% end %>
       </div>
 
-      <div class="drawer-content lg:hidden">
+      <div class="drawer-content lg:hidden dark:bg-white">
         <label for="my-drawer" class="mx-12">
           <%= image_tag "hamberger-icon.svg"%>
         </label>
       </div>
 
-      <div class="drawer-side">
+      <div class="drawer-side ">
         <label for="my-drawer" class="drawer-overlay"></label>
-        <ul class="h-full p-4 menu w-60 bg-base-200 text-base-content">
+        <ul class="h-full p-4 menu w-60 bg-base-200 text-base-content dark:bg-white">
           <div>
             <%= image_tag "logo_column.png", class: "w-40 m-auto py-2 lg:hidden" %>
           
@@ -59,7 +59,7 @@
       <p class="m-2 my-4 text-xl text-green"><i class="mr-5 fa-solid fa-location-dot"></i><%= @restaurant.address %></p>
       <p class="m-2 my-4 text-xl text-green"><i class="mr-3 fa-solid fa-phone"></i> <%= @restaurant.tel %></p>
       <hr>
-      <p class="block mx-10 my-4 text-lg text-gray-900 textarea-wrap-physical text-green"><%= @restaurant.description %></p>
+      <p class="block mx-10 my-4 text-lg textarea-wrap-physical text-green"><%= @restaurant.description %></p>
       <hr>
     </div>
   </div>
