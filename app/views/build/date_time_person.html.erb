@@ -1,7 +1,7 @@
-<header class="fixed top-0 left-0 z-30 justify-start w-full py-0 text-sm bg-white border-b border-gray-200 lg:px-20">
-  <div class="navbar bg-base-100">
-    <div class="z-10 flex justify-between drawer bg-base-100">
-      <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+<header class="fixed top-0 left-0 z-30 justify-start w-full py-0 text-sm bg-white border-b border-gray-200 lg:px-20 dark:bg-white">
+  <div class="navbar bg-base-100 dark:bg-white">
+    <div class="z-10 flex justify-between drawer bg-base-100 dark:bg-white">
+      <input id="my-drawer" type="checkbox" class="drawer-toggle dark:bg-white"/>
       <div>
         <%= link_to root_path do%>
           <%= image_tag "logo_column.png", class: "w-28 lg:w-36" %>
@@ -24,8 +24,8 @@
             <li><%= link_to t('reservationPage.Book Now!'), '#booking', class: "text-lg m-4 text-gray-800 py-6" %></li>
             <li><%= link_to t('reservationPage.Menu'), '#menu', class: "text-lg m-4 text-gray-800 py-6" %></li>
             <li><%= link_to t('reservationPage.Popular Restaurants'), restaurants_path, class: "text-lg m-4 text-gray-800 py-6" %></li>
-            <li><%= link_to 'EN', restaurant_build_path(@restaurant,locale: 'en'), class: "text-lg m-4 text-gray-800 py-6"  %></li>
-            <li><%= link_to '中文', restaurant_build_path(@restaurant,locale: 'tw'), class: "text-lg m-4 text-gray-800 py-6"  %></li>
+            <li><%= link_to 'EN', restaurant_build_path(@restaurant, locale: 'en'), class: "text-lg m-4 text-gray-800 py-6"  %></li>
+            <li><%= link_to '中文', restaurant_build_path(@restaurant, locale: 'tw'), class: "text-lg m-4 text-gray-800 py-6"  %></li>
           </div>
         </ul>
       </div>
@@ -36,49 +36,46 @@
           <li><%= link_to t('reservationPage.Book Now!'), '#booking', class: "font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
           <li><%= link_to t('reservationPage.Menu'), '#menu', class: "font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
           <li><%= link_to t('reservationPage.Popular Restaurants'), restaurants_path, class: "font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
-          <li><%= link_to 'EN', restaurant_build_path(@restaurant,locale: 'en'), class: "font-medium text-gray-800 hover:text-gray-600 py-6"  %></li>
-          <li><%= link_to '中文', restaurant_build_path(@restaurant,locale: 'tw'), class: "font-medium text-gray-800 hover:text-gray-600 py-6"  %></li>
+          <li><%= link_to 'EN', restaurant_build_path(@restaurant, locale: 'en'), class: "font-medium text-gray-800 hover:text-gray-600 py-6"  %></li>
+          <li><%= link_to '中文', restaurant_build_path(@restaurant, locale: 'tw'), class: "font-medium text-gray-800 hover:text-gray-600 py-6"  %></li>
         </ul>
       </div>
     </div>
   </div>
 </header>
 
-<section class="w-full mx-auto lg:w-3/4">
+<section class="w-full mx-auto lg:w-3/4 dark:bg-white">
 
-  <div class="w-full mx-auto mt-20 bg-base-100 lg:mt-32 lg:px-8">
-  <figure>
-    <% if @restaurant.image_url.present? %>
-      <%= image_tag (@restaurant.image_url), class: "w-full lg:rounded-lg"%>
-    <% else %>
-      <%= image_tag "restaurantCoverPhoto.jpg", class: "w-full lg:rounded-lg" %>
-    <% end %>
-  </figure>
+  <div class="w-full mx-auto mt-20 bg-base-100 lg:mt-32 lg:px-8 dark:bg-white">
+    <figure>
+      <% if @restaurant.image_url.present? %>
+        <%= image_tag (@restaurant.image_url), class: "w-full lg:rounded-lg"%>
+      <% else %>
+        <%= image_tag "restaurantCoverPhoto.jpg", class: "w-full lg:rounded-lg" %>
+      <% end %>
+    </figure>
     <div id="infomation" class="mx-2 mt-8">
       <h1 class="my-2 text-4xl font-bold text-green"><%= @restaurant.name %></h1>
-      <p class="m-2 my-4 text-xl"><i class="mr-5 fa-solid fa-location-dot"></i><%= @restaurant.address %></p>
-      <p class="m-2 my-4 text-xl"><i class="mr-3 fa-solid fa-phone"></i> <%= @restaurant.tel %></p>
+      <p class="m-2 my-4 text-xl text-green"><i class="mr-5 fa-solid fa-location-dot "></i><%= @restaurant.address %></p>
+      <p class="m-2 my-4 text-xl text-green"><i class="mr-3 fa-solid fa-phone"></i> <%= @restaurant.tel %></p>
       <hr>
-      <p class="block mx-10 my-4 text-lg text-gray-900 textarea-wrap-physical dark:text-white"><%= @restaurant.description %></p>
+      <p class="block mx-10 my-4 text-lg text-gray-900 textarea-wrap-physical text-green"><%= @restaurant.description %></p>
       <hr>
     </div>
   </div>
 
   <div id="booking" class="m-auto mt-12 lg:mt-28" data-controller="ordertime">
-    <%= form_with url:wizard_path, method: :patch, data: { turbo: false } do |f| %>
+    <%= form_with url: wizard_path, method: :patch, data: { turbo: false } do |f| %>
       <div class="my-6 lg:mx-5">
         <p class="w-full my-8 text-2xl font-bold text-center text-green"><%= t('reservationPage.Number of Guests')%></p>
         <div class="flex justify-around gap-2 mx-2">
           <div class="w-80">
-            <%= f.label :adults,t('reservationPage.adults'), class:"block mr-2 text-sm" %>
+            <%= f.label :adults, t('reservationPage.adults'), class:"block mr-2 text-sm text-green" %>
             <%= f.select :adults, (1..8).to_a, value: session.dig(:first_step_data, 'adults').present? ? session.dig(:first_step_data, 'adults') : 1, class:"text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", min: 1 %>
           </div>
           <div class="w-80">
-            <%= f.label :kids, t('reservationPage.kids'),class:"block mr-2 text-sm " %>
-            <%= f.select :kids, (0..4).to_a,
-                    value: session.dig(:first_step_data, 'kids').present? ? session.dig(:first_step_data, 'kids') : 0,
-                    class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500",
-                    min: 0 %>
+            <%= f.label :kids, t('reservationPage.kids'), class:"block mr-2 text-sm text-green" %>
+            <%= f.select :kids, (0..4).to_a, value: session.dig(:first_step_data, 'kids').present? ? session.dig(:first_step_data, 'kids') : 0, class: "text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg bg-gray-200 focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500", min: 0 %>
           </div>
         </div>
       </div>
@@ -125,50 +122,44 @@
               referrerpolicy="no-referrer-when-downgrade"
               src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_MAP_KEY']%>
                 &q=<%= @restaurant.address%>">
-              </iframe>
+            </iframe>
+          </div>
+          <div class='flex flex-col justify-center px-4'>
+            <div class='pb-2 mb-2 border-b-2'>
+              <p class='mb-2 text-green'><i class="mx-2 fa-solid fa-map-pin"></i><%=t('location')%></p>
+              <p class='mx-4 text-gray-600'>
+                <%= @restaurant.address%>
+              </p>
             </div>
-            <div class='flex flex-col justify-center px-4'>
-              <div class='pb-2 mb-2 border-b-2'>
-              
-                <p class='mb-2'><i class="mx-2 fa-solid fa-map-pin"></i><%=t('location')%></p>
+            <div class='pb-2 mb-2 border-b-2'>
+              <p class='mb-2 text-green'><i class="mx-2 fa-solid fa-phone"></i><%=t('phone')%></p>
+              <p class='mx-4 text-gray-600'>
+                <%= @restaurant.tel%>
+              </p>
+            </div>
+            <div class='pb-2 mb-2 border-b-2'>
+              <p class='mb-2 text-green'><i class="mx-2 fa-solid fa-clock"></i><%=t('hours')%></p>
+              <% @restaurant.open_times.each do |open_time|%>
                 <p class='mx-4 text-gray-600'>
-                  <%= @restaurant.address%>
+                  <%= open_time.start_time.strftime('%R') %> - 
+                  <%= open_time.end_time.strftime('%R') %>
                 </p>
-              </div>
-              <div class='pb-2 mb-2 border-b-2'>
-                <p class='mb-2'><i class="mx-2 fa-solid fa-phone"></i><%=t('phone')%></p>
-                <p class='mx-4 text-gray-600'>
-                  <%= @restaurant.tel%>
-                  </p>
-              </div>
-              <div class='pb-2 mb-2 border-b-2'>
-                <p class='mb-2'><i class="mx-2 fa-solid fa-clock"></i><%=t('hours')%></p>
-                  <% @restaurant.open_times.each do |open_time|%>
-                    <p class='mx-4 text-gray-600'>
-                      <%= open_time.start_time.strftime('%R') %> - 
-                      <%= open_time.end_time.strftime('%R') %>
-                    </p>
-                  <% end %>
-                </p>
-              </div>
+              <% end %>
             </div>
           </div>
-        </section>
-
-        <hr>
-
-        <section class="w-4/5 mx-auto">
-          <h1 class='w-full mt-12 mb-10 text-2xl font-bold text-center text-green'><%=t('menu')%></h1>
-          <div id="menu" class="w-full mx-auto mt-8 lg:carousel rounded-box lg:mt-8 lg:px-8">
-            <% @restaurant.menus.each do |image| %>
-              <div class="flex justify-center h-auto m-2 border-4 rounded-lg lg:carousel-item">
-                <%= image_tag(image.url) %>
-              </div>
-            <% end %>
-          </div>
-        </section>
-
-
+        </div>
+      </section>
+      <hr>
+      <section class="w-4/5 mx-auto">
+        <h1 class='w-full mt-12 mb-10 text-2xl font-bold text-center text-green'><%=t('menu')%></h1>
+        <div id="menu" class="w-full mx-auto mt-8 lg:carousel rounded-box lg:mt-8 lg:px-8">
+          <% @restaurant.menus.each do |image| %>
+            <div class="flex justify-center h-auto m-2 border-4 rounded-lg lg:carousel-item">
+              <%= image_tag(image.url) %>
+            </div>
+          <% end %>
+        </div>
+      </section>
       <div class="fixed bottom-0 left-0 right-0 w-full bg-white shadow-inner">
         <div>
           <%= f.submit t('reservationPage.Next'), data: {ordertime_target: "submitBtn"}, class: 'next-btn-void', disabled: true %>  
@@ -177,11 +168,6 @@
     <% end %>
   </div>
 </section>
-
-
 <footer class="flex justify-center w-full py-5 mb-16">
   <p class="text-xs text-gray-600 sm:text-sm">© 2023 iDing. A product of <%= link_to "Hello 劍龍", root_path ,class:"text-slate-900 decoration-2 hover:underline font-semibold" %></p>
 </footer>
-
-
-

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="dark:bg-white">
   <head>
     <title>iDing</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,11 +9,10 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <script src="https://kit.fontawesome.com/683a09c054.js" crossorigin="anonymous"></script>
-
   </head>
 
   <body>
-    <main>
+    <main class="dark:bg-white">
       <div data-controller="notification"
           data-notification-notice="<%= notice %>"
           data-notification-alert="<%= alert %>">

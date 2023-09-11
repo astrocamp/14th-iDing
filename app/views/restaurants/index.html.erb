@@ -1,21 +1,20 @@
 <%= render "shared/navbar" %> 
-<section class="w-2/3 py-32 mx-auto">
-    <h1 class="text-xl md:text-2xl">
-    <%= t('partner.Partnered with iDing, now available for reservations!')%></h1>
 
-    <ul> 
-      <div class="grid gap-4 p-2 mx-auto max-w-12xl xs:grid-cols-2 xs:gap-2 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 md:gap-4 lg:grid-cols-4 lg:gap-4">
-        <% @restaurants.each do |restaurant| %> 
-        <%= link_to restaurant_build_path(restaurant, :date_time_person) do %>
+<section class="w-2/3 py-32 mx-auto">
+  <h1 class="text-xl md:text-2xl dark:text-gray-600">
+    <%= t('partner.Partnered with iDing, now available for reservations!') %>
+  </h1>
+
+  <ul class="grid gap-4 p-2 mx-auto max-w-12xl xs:grid-cols-2 xs:gap-2 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 md:gap-4 lg:grid-cols-4 lg:gap-4 dark:text-gray-600">
+    <% @restaurants.each do |restaurant| %>
+      <%= link_to restaurant_build_path(restaurant, :date_time_person) do %>
         <div class="w-full h-64 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] md:flex-row my-5">
           <div>
-          
-          <% if restaurant.image_url.present? %>
-            <%= image_tag (restaurant.image_url), class: "w-full lg:rounded-lg h-32"%>
-          <% else %>
-            <%= image_tag "restaurantCoverPhoto.jpg", class: "w-full lg:rounded-lg h-32"%> 
-          <% end %>
-          
+            <% if restaurant.image_url.present? %>
+              <%= image_tag(restaurant.image_url, class: "w-full lg:rounded-lg h-32") %>
+            <% else %>
+              <%= image_tag("restaurantCoverPhoto.jpg", class: "w-full lg:rounded-lg h-32") %> 
+            <% end %>
           </div>
           <div class="justify-between mx-2">
             <div class="my-5">
@@ -23,12 +22,11 @@
               <li class="mx-2 text-sm"><%= restaurant.url %></li>
             </div>
             <div class="flex mx-2 md:pb-5">
-              <i class="fa-solid fa-utensils"></i><span class="ml-2 font-normal"><%= t('partner.Book now')%>！</span>
+              <i class="fa-solid fa-utensils"></i><span class="ml-2 font-normal"><%= t('partner.Book now') %>！</span>
             </div>
           </div>
         </div>
-            <% end %>
-        <% end %>
-      </div>
-    </ul>
+      <% end %>
+    <% end %>
+  </ul>
 </section>
