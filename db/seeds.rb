@@ -50,7 +50,7 @@ include I18n
 end
 
 demo_user = User.create(
-  email: 'cookichiban2@gmail.com',
+  email: 'cookichiban@gmail.com',
   password: 'cookichiban123',
   confirmed_at: Time.now,
   role: 'super_admin'
@@ -59,7 +59,7 @@ demo_user = User.create(
 demo_restaurant = demo_user.restaurants.create(
   user_id: demo_user.id,
   name: "陽泉酒家",
-  url: "ichiban2",
+  url: "ichiban",
   tel: "0228825252",
   address: "台北市中正區衡陽路7號5樓",
   description: "一日，法國大廚巴傑魯造訪廣州並貶低中國料理，憤怒的劉昴星與他進行炒飯對決並擊敗了他，巴傑魯心有不甘、縱火燒燬南鮮酒家。為重建餐館，劉昴星參加廣州餃子大賽取得優勝及獎金，餐館重建更名為陽泉酒家。劉昴星依據餃子大賽評審朗文大師的建議參加特級廚師測驗，他在測驗中結交了與自己水準相當的好對手蘭飛鴻，與他一起通過測驗，成為中國史上最年輕的特級廚師。在測驗中發現自己實力尚淺的劉昴星展開修行，他造訪廣西、貴州及雲南的城鎮精進廚藝，旅途中收了四郎為徒。",
