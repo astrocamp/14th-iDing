@@ -95,7 +95,7 @@ class Reservation < ApplicationRecord
     else
       self.table = nil
       errors.add(:base, '無法找到合適的空桌')
-      return false  
+      return false
     end
   end
   
@@ -103,7 +103,7 @@ class Reservation < ApplicationRecord
     @mealtime = restaurant.mealtime.minutes
     hour_before = reservation_time - @mealtime + 1
     hour_after = reservation_time + @mealtime - 1
-  
+
     suitable_table = restaurant.tables
       .where('seat_num >= ?', guests)
       .where.not(id: reserved_table_within_time_range(reservation_date, hour_before, hour_after))
