@@ -39,7 +39,7 @@ module Admin
     def update
       # authorize :restaurant
       if @restaurant.update(restaurant_params)
-        redirect_to admin_restaurants_path, notice: '餐廳資訊已更新'
+        redirect_to admin_restaurant_path, notice: '餐廳資訊已更新'
       else
         render :edit
       end
