@@ -14,12 +14,11 @@ module Admin
 
     def create
       @reservation = @restaurant.reservations.new(reservation_params)
-
       if @reservation.save
         redirect_to admin_restaurant_path(@restaurant), notice: '訂位新增成功'
         SendSmsJob.perform_later(@reservation)
       else
-        redirect_to admin_restaurant_path(@restaurant), alert: '訂位失敗！請填寫必要欄位'
+        redirect_to admin_restaurant_path(@restaurant), alert: '請填寫必要欄位  或是<br> 該時段已無適合的空桌'
       end
     end
 
