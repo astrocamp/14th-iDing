@@ -8,7 +8,7 @@
           <div class="px-1">
             <span class="text-lg font-bold dark:text-gray-700">今日訂位</span>
           </div>
-          <div class="inline-block text-gray-500 align-baseline " data-tablemap-target='hint'>
+          <div class="hidden inline-block text-gray-500 align-baseline " data-tablemap-target='hint'>
             點選桌子後以方向鍵移動(位置將自動儲存)
           </div>
           <div class="px-1 w-fit">
@@ -21,7 +21,7 @@
                     disabled>結束編輯</button>
           </div>
         </div>
-        <div id="draggable-container" class="Tablemap_Grid">
+        <div id="draggable-container" class="bg-gray-300 Tablemap_Grid">
           <% (1056 - @tables.length * 8).times do |index| %>
             <% if @tables.any? && index < @tables.length %>
               <% table = @tables[index] %>
