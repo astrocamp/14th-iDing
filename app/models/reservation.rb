@@ -88,7 +88,7 @@ class Reservation < ApplicationRecord
   def valid_total_guests
     total_guests = adults + kids
     suitable_table = find_suitable_table(total_guests, date, time)
-  
+
     if suitable_table
       self.table = suitable_table
       return true  
@@ -98,7 +98,7 @@ class Reservation < ApplicationRecord
       return false
     end
   end
-  
+
   def find_suitable_table(guests, reservation_date, reservation_time)
     @mealtime = restaurant.mealtime.minutes
     hour_before = reservation_time - @mealtime + 1
