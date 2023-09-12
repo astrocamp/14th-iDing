@@ -41,12 +41,12 @@
              class="pt-3">
           <button data-action="click->holdseat#holdSeat"
                   id="reservation-state-<%= @reservation.id %>"
-                  class= "block w-full py-2 mx-auto text-center border rounded border-slate-300 hover:bg-green hover:text-white" >
-                  <% if @reservation.state == "reserved" %>
-                    <%= t('success.Hold reservation') %>
-                  <% else @reservation.state == "keeped" %>
-                    <%= t('success.Reservation confirmed') %>
-                  <% end %>
+                  class="block w-full py-2 mx-auto text-center border rounded border-slate-300 hover:bg-green hover:text-white" >
+            <% if @reservation.state == "reserved" %>
+              <%= t('success.Hold reservation') %>
+            <% elsif @reservation.state == "keeped" %>
+              <%= t('success.Reservation confirmed') %>
+            <% end %>
           </button>
         </div>
         <div>
