@@ -28,7 +28,7 @@ class Reservation < ApplicationRecord
   belongs_to :restaurant
   belongs_to :table, optional: true
 
-  before_create :valid_total_guests
+  before_validation :valid_total_guests
 
   validates :date, presence: true
   validates :time, presence: true
@@ -88,25 +88,26 @@ class Reservation < ApplicationRecord
   def valid_total_guests
     total_guests = adults + kids
     suitable_table = find_suitable_table(total_guests, date, time)
-
+  
     if suitable_table
       self.table = suitable_table
+      return true  
     else
       self.table = nil
       errors.add(:base, '無法找到合適的空桌')
-      false
+      return false  
     end
   end
-
+  
   def find_suitable_table(guests, reservation_date, reservation_time)
     @mealtime = restaurant.mealtime.minutes
     hour_before = reservation_time - @mealtime + 1
     hour_after = reservation_time + @mealtime - 1
-
-    restaurant.tables
-              .where('seat_num >= ?', guests)
-              .where.not(id: reserved_table_within_time_range(reservation_date, hour_before, hour_after))
-              .first
+  
+    suitable_table = restaurant.tables
+      .where('seat_num >= ?', guests)
+      .where.not(id: reserved_table_within_time_range(reservation_date, hour_before, hour_after))
+      .first
   end
 
   def reserved_table_within_time_range(date, start_time, end_time)
