@@ -91,6 +91,7 @@ class Reservation < ApplicationRecord
   
     if suitable_table
       self.table = suitable_table
+      true
     else
       self.table = nil
       errors.add(:base, '無法找到合適的空桌')
