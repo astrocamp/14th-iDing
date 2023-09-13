@@ -1,6 +1,6 @@
 <h1><%= @restaurant.name %>訂位總覽</h1>
 
-<%= link_to '新增訂位', new_restaurant_reservation_path, class: 'action-btn' %>
+<%= link_to '新增訂位', new_restaurant_reservation_path, class: 'action-btn cursor-pointer' %>
 
 <ul> 
   <% @reservations.each do |reservation| %>
@@ -28,11 +28,11 @@
         <div>
           用餐備註：<%= reservation.note %>
         </div>
-        <%= link_to '更新', edit_restaurant_reservation_path(reservation.restaurant, reservation), class: 'action-btn' %>
+        <%= link_to '更新', edit_restaurant_reservation_path(reservation.restaurant, reservation), class: 'action-btn cursor-pointer' %>
         <%= link_to '刪除', restaurant_reservation_path(reservation.restaurant,reservation), data:{ turbo_method: 'delete',
                                                 turbo_confirm: '確認刪除？'
                                                 },
-                                                class: 'action-btn' %>
+                                                class: 'action-btn cursor-pointer' %>
       </div>  
     </li>
       <%# end %> 

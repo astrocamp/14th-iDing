@@ -1,10 +1,10 @@
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to "沒有收到驗證信？", new_user_confirmation_path(resource_name) %><br />
+  <%= link_to "沒有收到驗證信？", new_user_confirmation_path(resource_name), class: "cursor-pointer" %><br />
 <% end %>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "cursor-pointer" %><br />
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>
