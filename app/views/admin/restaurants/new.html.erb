@@ -18,25 +18,25 @@
                   <div class="w-full lg:w-1/3">
                     <div class="m-1">
                       <%= f.label :name, "餐廳名稱*", class: "leading-loose text-base" %>
-                      <%= f.text_field :name, class: "iding-customer-input" %>
+                      <%= f.text_field :name, class: "iding-customer-input", required: true %>
                     </div>
 
                     <div class="m-1">
                       <%= f.label :url, "網址名稱*", class: "leading-loose text-base" %>
-                      <%= f.text_field :url, class: "iding-customer-input" %>
+                      <%= f.text_field :url, class: "iding-customer-input", required: true %>
                     </div>
 
-                    <div class="my-3 mx-1">
+                    <div class="mx-1 my-3">
                       <%= f.label :tel, "餐廳電話*", class: "leading-loose text-base" %>
                       <span class="block text-xs "><em>例 : XX-XXXX-XXXX</em></span>
-                      <%= f.phone_field :tel, pattern: "0[0-9]{1}-[0-9]{4}-[0-9]{4}", title: '請輸入您的餐廳電話', class: "iding-customer-input" %>
+                      <%= f.phone_field :tel, pattern: "0[0-9]{1}-[0-9]{4}-[0-9]{4}", title: '請輸入您的餐廳電話', class: "iding-customer-input", required: true %>
                     </div>
                   </div>
 
                   <div class="w-full lg:w-1/3">
                     <div class="m-1">
                       <%= f.label :address, "餐廳地址*", class: "leading-loose text-base" %>
-                      <%= f.text_field :address, size: 50, class: "iding-customer-input" %>
+                      <%= f.text_field :address, size: 50, class: "iding-customer-input", required: true %>
                     </div>
                     <div class="m-1">
                       <%= f.label :ubn, "統編", class: "leading-loose text-base" %>
