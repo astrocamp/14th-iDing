@@ -24,7 +24,7 @@
                 </div>
                 <div>
                   <%= form.label :seat_num, '座位數*' %>
-                  <%= form.number_field :seat_num, class:"iding-customer-input"  %>
+                  <%= form.number_field :seat_num, class:"iding-customer-input", min: 0, value: 1%>
                 </div>
                 <div>
                   <%= form.label :category, '桌型' %>
