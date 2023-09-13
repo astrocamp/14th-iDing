@@ -13,11 +13,27 @@ tw:
   hours: 營業時間
   menu: 菜單
 
+  views:
+    pagination:
+      first: "&laquo; 第一頁"
+      last: "最後頁 &raquo;"
+      previous: "&lsaquo; 上一頁"
+      next: "下一頁 &rsaquo;"
+      truncate: "&hellip;"
+
   helpers:
     submit:
       restaurant:
         create: "建立餐廳"
         update: "更新餐廳資訊"
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "未找到 %{entry_name}"
+          one: "顯示 <b>1</b> 個 %{entry_name}"
+          other: "顯示 <b>所有 %{count}</b> 個 %{entry_name}"
+      more_pages:
+        display_entries: "顯示 %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b>，總共 <b>%{total}</b> 個"
 
   index:
     Experience: "享受訂位系統的神奇方程式"
