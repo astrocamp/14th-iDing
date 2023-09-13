@@ -27,7 +27,7 @@
               </div>
               <p><em class="text-xs">(設定顧客可以訂位的期間，從幾天後到幾天內。舉例： 設定 30 天就是可以訂明天到 30 天內的位子。)</em></p>
               <div class="flex items-center pt-4 space-x-4">
-                <%= f.submit  class: "flex m-auto mt-8 px-5 py-2.5 font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 ease-in-out" %>
+                <%= f.submit  class: "cursor-pointer flex m-auto mt-8 px-5 py-2.5 font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 ease-in-out" %>
               </div>
             <% end %>
           </div>
@@ -50,7 +50,7 @@
                     <span class="flex flex-col justify-center w-1/2">結束時間</span> <%= f.time_field :end_time, data: {opentime_target: 'endTime', action: 'change->opentime#compare'}, class: "iding-customer-input" %>
                   </div>
                   <div class="my-4 text-center">
-                    <%= f.submit '儲存', class: 'action-btn', data: {opentime_target: 'submit'}, disabled: true %>
+                    <%= f.submit '儲存', class: 'action-btn cursor-pointer', data: {opentime_target: 'submit'}, disabled: true %>
                   </div>
                 </div>
               </div>
@@ -81,7 +81,7 @@
             <%= form_with(model: @holiday, 
                           url: admin_restaurant_holidays_path(@restaurant)) do |f| %>
               <%= f.hidden_field :dayoff, data: {holiday_target: 'input'}, value: '' %>
-              <%= f.submit '新增', class: 'w-16 void-btn mt-4 inline-block', data: {holiday_target: 'submit'}, disabled: true %>
+              <%= f.submit '新增', class: 'w-16 void-btn mt-4 inline-bloc cursor-pointer', data: {holiday_target: 'submit'}, disabled: true %>
             <% end %>
           </div>
           
