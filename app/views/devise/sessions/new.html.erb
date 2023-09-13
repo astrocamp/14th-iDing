@@ -30,7 +30,7 @@
           </div>
 
           <div class="pt-5">
-            <%= link_to t('devise.Forgot password?'), new_password_path(resource_name), class:"block mb-1 text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700" %>
+            <%= link_to t('devise.Forgot password?'), new_password_path(resource_name), class:"cursor-pointer block mb-1 text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700" %>
           </div>
 
 
@@ -59,11 +59,11 @@
           <% end %>
         <% end %> 
           
-        <p class="mx-2 mt-8 text-sm text-center dark:text-gray-700"><%= t('devise.Not a member?')%><%= link_to t('devise.Sign up here'), new_registration_path(resource_name), class:"text-blue-500 hover:text-blue-700 font-semibold mx-2" %> 
+        <p class="mx-2 mt-8 text-sm text-center dark:text-gray-700"><%= t('devise.Not a member?')%><%= link_to t('devise.Sign up here'), new_registration_path(resource_name), class:"cursor-pointer text-blue-500 hover:text-blue-700 font-semibold mx-2" %> 
         </p>
         <div class="m-auto">
           <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-            <%= link_to t('devise.NotGettingEmail'), new_user_confirmation_path(resource_name), class:"text-blue-500 text-sm hover:text-blue-700 font-semibold mx-2" %>
+            <%= link_to t('devise.NotGettingEmail'), new_user_confirmation_path(resource_name), class:"cursor-pointer text-blue-500 text-sm hover:text-blue-700 font-semibold mx-2" %>
           <% end %>
         </div>
     </div>

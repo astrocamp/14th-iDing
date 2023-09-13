@@ -20,24 +20,24 @@
           <div>
             <%= image_tag "logo_column.png", class: "w-40 m-auto py-2 lg:hidden" %>
           
-            <li><%= link_to t('reservationPage.About'), '#infomation', class: "text-lg m-4 text-gray-800 py-6" %></li>
-            <li><%= link_to t('reservationPage.Book Now!'), '#booking', class: "text-lg m-4 text-gray-800 py-6" %></li>
-            <li><%= link_to t('reservationPage.Menu'), '#menu', class: "text-lg m-4 text-gray-800 py-6" %></li>
-            <li><%= link_to t('reservationPage.Popular Restaurants'), restaurants_path, class: "text-lg m-4 text-gray-800 py-6" %></li>
-            <li><%= link_to 'EN', restaurant_build_path(@restaurant, locale: 'en'), class: "text-lg m-4 text-gray-800 py-6"  %></li>
-            <li><%= link_to '中文', restaurant_build_path(@restaurant, locale: 'tw'), class: "text-lg m-4 text-gray-800 py-6"  %></li>
+            <li><%= link_to t('reservationPage.About'), '#infomation', class: "cursor-pointer text-lg m-4 text-gray-800 py-6" %></li>
+            <li><%= link_to t('reservationPage.Book Now!'), '#booking', class: "cursor-pointer text-lg m-4 text-gray-800 py-6" %></li>
+            <li><%= link_to t('reservationPage.Menu'), '#menu', class: "cursor-pointer text-lg m-4 text-gray-800 py-6" %></li>
+            <li><%= link_to t('reservationPage.Popular Restaurants'), restaurants_path, class: "cursor-pointer text-lg m-4 text-gray-800 py-6" %></li>
+            <li><%= link_to 'EN', restaurant_build_path(@restaurant, locale: 'en'), class: "cursor-pointer text-lg m-4 text-gray-800 py-6"  %></li>
+            <li><%= link_to '中文', restaurant_build_path(@restaurant, locale: 'tw'), class: "cursor-pointer text-lg m-4 text-gray-800 py-6"  %></li>
           </div>
         </ul>
       </div>
 
       <div class="hidden lg:flex">
         <ul class="menu menu-horizontal">
-          <li><%= link_to t('reservationPage.About'), '#infomation', class: "font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
-          <li><%= link_to t('reservationPage.Book Now!'), '#booking', class: "font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
-          <li><%= link_to t('reservationPage.Menu'), '#menu', class: "font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
-          <li><%= link_to t('reservationPage.Popular Restaurants'), restaurants_path, class: "font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
-          <li><%= link_to 'EN', restaurant_build_path(@restaurant, locale: 'en'), class: "font-medium text-gray-800 hover:text-gray-600 py-6"  %></li>
-          <li><%= link_to '中文', restaurant_build_path(@restaurant, locale: 'tw'), class: "font-medium text-gray-800 hover:text-gray-600 py-6"  %></li>
+          <li><%= link_to t('reservationPage.About'), '#infomation', class: "cursor-pointer font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
+          <li><%= link_to t('reservationPage.Book Now!'), '#booking', class: "cursor-pointer font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
+          <li><%= link_to t('reservationPage.Menu'), '#menu', class: "cursor-pointer font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
+          <li><%= link_to t('reservationPage.Popular Restaurants'), restaurants_path, class: "cursor-pointer font-medium text-gray-800 hover:text-gray-600 py-6" %></li>
+          <li><%= link_to 'EN', restaurant_build_path(@restaurant, locale: 'en'), class: "cursor-pointer font-medium text-gray-800 hover:text-gray-600 py-6"  %></li>
+          <li><%= link_to '中文', restaurant_build_path(@restaurant, locale: 'tw'), class: "cursor-pointer font-medium text-gray-800 hover:text-gray-600 py-6"  %></li>
         </ul>
       </div>
     </div>
@@ -169,5 +169,5 @@
   </div>
 </section>
 <footer class="flex justify-center w-full py-5 mb-16">
-  <p class="text-xs text-gray-600 sm:text-sm">© 2023 iDing. A product of <%= link_to "Hello 劍龍", root_path ,class:"text-slate-900 decoration-2 hover:underline font-semibold" %></p>
+  <p class="text-xs text-gray-600 sm:text-sm">© 2023 iDing. A product of <%= link_to "Hello 劍龍", root_path ,class:"cursor-pointer text-slate-900 decoration-2 hover:underline font-semibold" %></p>
 </footer>

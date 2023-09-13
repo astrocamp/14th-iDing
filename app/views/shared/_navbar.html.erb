@@ -4,7 +4,7 @@
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div>
         <%= link_to root_path do%>
-          <%= image_tag "logo_column.png", class: "w-28 lg:w-36" %>
+          <%= image_tag "logo_column.png", class: "w-28 lg:w-36 cursor-pointer" %>
         <% end %>
       </div>
 
@@ -16,11 +16,11 @@
 
       <div class="drawer-side">
         <label for="my-drawer" class="drawer-overlay"></label>
-        <ul class="h-full p-2 menu w-2/5 bg-base-200 text-base-content dark:bg-white">
+        <ul class="w-2/5 h-full p-2 menu bg-base-200 text-base-content dark:bg-white">
           <div>
             <%= image_tag "logo_column.png", class: "w-40 m-auto py-2 lg:hidden" %>
-            <li><%= link_to t('navbar.about'), "#", class: "text-base m-1 mb-2 mt-6 text-gray-800 py-4" %></li>
-            <li><%= link_to t('navbar.restaurants'), restaurants_path, class: "text-base mx-1 my-2 text-gray-800 py-4" %></li>
+            <li><%= link_to t('navbar.about'), "#", class: "cursor-pointer text-base m-1 mb-2 mt-6 text-gray-800 py-4" %></li>
+            <li><%= link_to t('navbar.restaurants'), restaurants_path, class: "text-base mx-1 my-2 text-gray-800 py-4 cursor-pointer" %></li>
             <li><%= link_to 'EN', root_path(locale: 'en'), class: "text-base m-1 my-2 text-gray-800 py-4" %></li>
             <li><%= link_to '中文', root_path(locale: 'tw'), class: "text-base m-1 my-2 text-gray-800 py-4" %></li>
             <% if user_signed_in? %>
