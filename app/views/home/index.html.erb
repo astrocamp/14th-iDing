@@ -11,11 +11,11 @@
       <p class="mb-5 text-3xl dark:text-slate-300"><%= t('index.Experience')%></p>
       <% if user_signed_in? %>
         <%= link_to admin_restaurants_path do %>
-          <button class="btn btn-gray dark:text-slate-300"><%= t('index.Restaurant Management')%></button>
+          <button class="cursor-pointer btn btn-gray dark:text-slate-300"><%= t('index.Restaurant Management')%></button>
         <% end %>
       <% else %>
         <%= link_to new_user_registration_path do %>
-          <button class="btn btn-gray dark:text-slate-300"><%= t('index.Sign Up')%></button>
+          <button class="cursor-pointer btn btn-gray dark:text-slate-300"><%= t('index.Sign Up')%></button>
         <% end %>
       <% end %>
     </div>
@@ -104,5 +104,5 @@
 </section>
 
 <footer class="flex justify-center py-5 dark:bg-white">
-  <p class="text-xs text-gray-600 sm:text-sm">© 2023 iDing. A product of <%= link_to "Hello 劍龍", root_path ,class:"text-slate-900 decoration-2 hover:underline font-semibold " %></p>
+  <p class="text-xs text-gray-600 sm:text-sm">© 2023 iDing. A product of <%= link_to "Hello 劍龍", root_path ,class:"cursor-pointer text-slate-900 decoration-2 hover:underline font-semibold " %></p>
 </footer>
