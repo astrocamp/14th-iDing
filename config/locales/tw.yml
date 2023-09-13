@@ -1,6 +1,6 @@
 tw:
   navbar:
-    about: "關於iDing"
+    about: "關於 iDing"
     restaurants: "合作餐廳"
     Log In: "登入"
     Log Out: "登出"
@@ -44,7 +44,7 @@ tw:
     Surpassed 10,000 user registrations shortly after launch. See what our partners have to say!: "甫上市即突破 1 萬用戶註冊，歡迎參考我們的合作夥伴怎麼說"
 
   partner:
-    Partnered with iDing, now available for reservations!: 正在使用iDing的合作夥伴！
+    Partnered with iDing, now available for reservations!: 正在使用 iDing 的合作夥伴！
     Book now: 馬上訂位
 
   reservationPage:
