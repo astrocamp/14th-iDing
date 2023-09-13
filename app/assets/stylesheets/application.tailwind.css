@@ -71,3 +71,21 @@
   width: 300px;
   color: black;
 }
+
+.pagination {
+  @apply p-1 m-auto rounded w-max lg:bg-gray-100;
+}
+
+.pagination .current {
+  @apply inline-block py-3 px-4 m-3 text-white bg-teal-800 rounded select-none;
+}
+
+.pagination a {
+  @apply inline-block p-3 m-3 text-white bg-teal-600 rounded cursor-pointer select-none lg:py-3 lg:px-4 lg:m-3 hover:bg-teal-800;
+}
+
+.first,
+.page,
+.last {
+  @apply hidden lg:inline-block;
+}
