@@ -77,7 +77,7 @@
           <%= f.label :note, t('customerInfo.Note'),class:"block text-sm text-gray-00" %>
           <%= f.text_area :note, class:"iding-textarea" %>
         </div>
-        <%= f.submit t('reservations.Confirm Reservation'), data: {customerinfo_target: "submitBtn"}, class: "customer-submit-btn-void", disabled: true %>
+        <%= f.submit t('reservations.Confirm Reservation'), data: {customerinfo_target: "submitBtn"}, class: "customer-submit-btn-void cursor-pointer", disabled: true %>
       <% end %>  
     </div>
   </div>
