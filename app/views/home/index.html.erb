@@ -1,8 +1,9 @@
 <%= render "shared/navbar" %>
 <div class="min-h-screen hero">
-  <video width="640" height="360" autoplay muted loop class="object-cover w-full h-full">
+  <video width="640" height="360" autoplay muted loop class="hidden object-cover w-full h-full md:block">
     <source src="/cooking.mp4" type="video/mp4">
   </video>
+  <%= image_tag "cooking2.gif" ,class: "block md:hidden object-cover w-full h-full" %>
 
   <div class="hero-overlay bg-opacity-60"></div>
   <div class="text-center hero-content text-neutral-content">
