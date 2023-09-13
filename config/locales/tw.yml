@@ -107,7 +107,7 @@ tw:
     state:
       reserved: 已預訂
       keeped: 已保留
-      used: 入座中
+      used: 已入座
       completed: 已離席
       cancelled: 取消
 
