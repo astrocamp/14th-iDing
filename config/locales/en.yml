@@ -114,6 +114,7 @@ en:
     Cancel: Cancel
     The dining time is limited to: The dining time is limited to
     menu: Menu
+    back: Back to Restaurant List 
 
   confirmations:
     confirm_cancel: "Confirm cancellation?"

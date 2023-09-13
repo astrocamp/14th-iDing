@@ -1,6 +1,6 @@
 <div class="py-3 bg-gray-100 text-green">
   <section class="h-auto">
-    <div class="pt-8 mx-auto mb-5">
+    <div class="pt-6 mx-auto mb-5">
       <div class="max-w-xs mx-auto mb-2">
         <%= image_tag "iding_logo.png", class:"w-full"%>
       </div>
@@ -13,9 +13,9 @@
     <div class="max-w-xs p-10 m-2 mx-auto bg-white rounded-lg md:max-w-md pb-14 shadow-x">
       <div class="mb-2 text-xl text-center">
         <% if locale == :en %>
-          <p>Hi, <%= @reservation.name %></p>
+          <p>Hi, <%= gender_title(@reservation.gender) %> <%= @reservation.name %></p>
         <% else %>
-          <p><%= @reservation.name %> 您好</p>
+          <p><%= @reservation.name %> <%= gender_title(@reservation.gender) %> 您好</p>
         <% end %>
         <p class="text-sm"><%= t('success.Here are your booking details')%>：</p> 
       </div>
@@ -49,7 +49,7 @@
             <% end %>
           </button>
         </div>
-        <div>
+        <div class="mt-2">
           <%= link_to t('success.Cancel'), reservation_path(@reservation),
                         data:{ turbo_method: 'delete',
                                turbo_confirm: t('confirmations.confirm_cancel') 
@@ -57,15 +57,13 @@
         </div>
       </div>
     </div>
-    <span class="block w-full py-4 mx-auto text-center text-md">
+    <span class="block w-full py-2 mx-auto text-center text-md">
       <%= t('success.The dining time is limited to')%> <%= @reservation.restaurant.mealtime %> <%= t('success.minutes')%>
     </span>
-    <a
-      href="#"
-      class="block py-2 mx-auto text-lg text-center text-white rounded w-60 bg-green"
-    >
-      <i class="mr-3 fa-solid fa-arrow-right"></i>
-      <%= t('success.menu')%>
-    </a>
+
+    <%= link_to restaurants_path, class: "block py-2 mx-auto text-lg text-center text-white rounded w-60 bg-green" do %>
+      <p class="text-base"><i class="mr-3 fa-solid fa-arrow-right"></i><%= t('success.back')%></p>
+    <%end%>
+
   </div>
 </section>

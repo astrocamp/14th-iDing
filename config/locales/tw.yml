@@ -106,6 +106,7 @@ tw:
     The dining time is limited to: 用餐時間為
     minutes: 分鐘
     menu: 點我看菜單
+    back: 回到餐廳列表
 
   confirmations:
     confirm_cancel: "確認取消？"
