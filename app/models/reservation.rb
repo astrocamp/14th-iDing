@@ -28,7 +28,7 @@ class Reservation < ApplicationRecord
   belongs_to :restaurant
   belongs_to :table, optional: true
 
-  before_validation :valid_total_guests
+  before_validation :valid_total_guests, on: :create
 
   validates :date, presence: true
   validates :time, presence: true
@@ -88,7 +88,7 @@ class Reservation < ApplicationRecord
   def valid_total_guests
     total_guests = adults + kids
     suitable_table = find_suitable_table(total_guests, date, time)
-
+  
     if suitable_table
       self.table = suitable_table
     else

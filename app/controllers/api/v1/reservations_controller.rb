@@ -23,7 +23,7 @@ module Api
       private
 
       def set_reservation
-        @reservation = Reservation.find(params[:id])
+        @reservation = Reservation.friendly.find(params[:id])
       end
     end
   end
