@@ -158,7 +158,7 @@ export default class extends Controller {
       if (orderTarget) {
         orderTarget.classList.remove("hidden");
         const valuex = event.currentTarget.getAttribute("valuex");
-        if (parseInt(valuex) < 24) {
+        if (parseInt(valuex) < 40) {
           orderTarget.style.transform = "translate(80px, -120px)";
         } else {
           orderTarget.style.transform = "translate(-180px, -120px)";
