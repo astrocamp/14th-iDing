@@ -88,7 +88,7 @@
   <ul class="grid gap-4 p-2 mx-auto max-w-12xl xs:grid-cols-2 xs:gap-2 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 md:gap-4 lg:grid-cols-4 lg:gap-4 dark:text-gray-600">
     <% @restaurants.each do |restaurant| %>
       <%= link_to restaurant_build_path(restaurant, :date_time_person) do %>
-        <div class="w-full h-64 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] md:flex-row my-5">
+        <div class="cursor-pointer w-full h-64 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] md:flex-row my-5">
           <div>
             <% if restaurant.image_url.present? %>
               <%= image_tag(restaurant.image_url, class: "w-full lg:rounded-lg h-32") %>
