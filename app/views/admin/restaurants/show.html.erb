@@ -17,17 +17,17 @@
             <%= form_with(model: @reservation, url: admin_restaurant_reservations_path(@restaurant), method: :post, data: { turbo: false }) do |form| %>
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
               <div class="px-5 pb-5">
-                <%= form.text_field :name, class: "iding-input", placeholder: "姓名*", required:"required" , pattern: "^[a-zA-Z\u4e00-\u9fa5]+$" %>
-                <%= form.phone_field :tel, class:"iding-input", placeholder: "電話*", type: "tel", required: "required" %>
+                <%= form.text_field :name, class: "iding-input", placeholder: "姓名*", required: true , pattern: "^[a-zA-Z\u4e00-\u9fa5]+$" %>
+                <%= form.phone_field :tel, class:"iding-input", placeholder: "電話*", type: "tel", required: true %>
                 <div class="flex gap-2">
-                  <%= form.date_field :date, class: "iding-input cursor-text", required: "required"  %>
-                  <%= form.time_field :time, class: "iding-input cursor-text", required: "required" %>
+                  <%= form.date_field :date, class: "iding-input cursor-text", required: true  %>
+                  <%= form.time_field :time, class: "iding-input cursor-text", required: true %>
                 </div>
                 <div class="flex gap-2">
                   <%= form.label :adults ,"大人*",class: "w-36 flex mt-2 flex-col justify-center" %>
-                  <%= form.number_field :adults, class: "iding-input", placeholder: "大人", min: 0, value: 1  %>
+                  <%= form.number_field :adults, class: "iding-input", placeholder: "大人", min: 0, value: 1, required: true  %>
                   <%= form.label :kids ,"小孩" ,class: "w-32 flex mt-2 flex-col justify-center"%>
-                  <%= form.number_field :kids, class: "iding-input", placeholder: "小孩", min: 0, value: 0 %>
+                  <%= form.number_field :kids, class: "iding-input", placeholder: "小孩", min: 0, value: 0, required: true %>
                 </div>
                 <%= form.text_area :note, class: "iding-textarea", placeholder: "備註" %>
 
