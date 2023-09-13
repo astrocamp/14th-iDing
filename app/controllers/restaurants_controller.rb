@@ -19,12 +19,12 @@ class RestaurantsController < ApplicationController
 
     @time_period.map do |time_range|
       time_range.step(@restaurant.reserve_interval.minutes) do |time|
-        begin_time = Time.at(time - @restaurant.mealtime.minutes + 1).utc.strftime('%H:%M:%S')
-        end_time = Time.at(time + @restaurant.mealtime.minutes - 1).utc.strftime('%H:%M:%S')
+        begin_time = Time.at(time - @restaurant.mealtime.minutes + 1).strftime('%H:%M:%S')
+        end_time = Time.at(time + @restaurant.mealtime.minutes - 1).strftime('%H:%M:%S')
         reservations_count = reservations.where(time: begin_time..end_time).count
         available_tables = @restaurant.tables.count - reservations_count
 
-        @timerange << Time.at(time).utc.strftime('%R') if available_tables.positive?
+        @timerange << Time.at(time).strftime('%R') if available_tables.positive?
       end
     end
     @timerange = @timerange.filter { |time| time > (Time.now.strftime('%R')) } if selected_date.to_date == Date.today
