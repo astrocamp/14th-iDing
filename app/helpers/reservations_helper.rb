@@ -4,9 +4,9 @@ module ReservationsHelper
   def gender_title(gender)
     case gender
     when 1
-      '先生'
+      I18n.t('customerInfo.Mr_')
     when 2
-      '小姐'
+      I18n.t('customerInfo.Ms_')
     else
       ''
     end
