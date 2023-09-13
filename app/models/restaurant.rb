@@ -30,7 +30,7 @@ class Restaurant < ApplicationRecord
   validates :url, presence: true, uniqueness: true
   validates :tel, presence: true
   validates :address, presence: true
-
+  
   belongs_to :user
 
   has_many :reservations, dependent: :destroy
