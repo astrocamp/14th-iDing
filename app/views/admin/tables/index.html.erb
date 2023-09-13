@@ -20,11 +20,11 @@
               <div class="px-5 pb-5 dark:text-gray-600">
                 <div>
                   <%= form.label :name, '桌號*' %>
-                  <%= form.text_field :name , class:"iding-customer-input" %>
+                  <%= form.text_field :name , class:"iding-customer-input", required:"required"  %>
                 </div>
                 <div>
                   <%= form.label :seat_num, '座位數*' %>
-                  <%= form.number_field :seat_num, class:"iding-customer-input", min: 0, value: 1%>
+                  <%= form.number_field :seat_num, class:"iding-customer-input", min: 0, value: 1, required:"required" %>
                 </div>
                 <div>
                   <%= form.label :category, '桌型' %>
