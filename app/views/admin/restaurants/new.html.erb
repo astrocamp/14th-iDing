@@ -26,9 +26,10 @@
                       <%= f.text_field :url, class: "iding-customer-input" %>
                     </div>
 
-                    <div class="m-1 my-7">
+                    <div class="my-3 mx-1">
                       <%= f.label :tel, "餐廳電話*", class: "leading-loose text-base" %>
-                      <%= f.text_field :tel, class: "iding-customer-input" %>
+                      <span class="block text-xs "><em>例 : XX-XXXX-XXXX</em></span>
+                      <%= f.phone_field :tel, pattern: "0[0-9]{1}-[0-9]{4}-[0-9]{4}", title: '請輸入您的餐廳電話', class: "iding-customer-input" %>
                     </div>
                   </div>
 
@@ -48,7 +49,7 @@
                     </div>
                   </div>
                   <div>
-                    <div class="m-1 ">
+                    <div class="m-1">
                       <%= f.label :description, "餐廳介紹", class: "leading-loose text-base" %>
                       <%= f.text_area :description, class: "h-32 text-black w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-gray-400 focus:ring-2 ring-offset-2  focus:border-gray-500 focus:border-transparent" %>
                     </div>
@@ -57,15 +58,6 @@
                       <%= f.label :menus, "餐廳菜單", class: "leading-loose text-base" %><span class="text-xs"><em>(每次上傳紀錄會覆蓋)</em></span>
                       <span class="block text-xs"><em>(檔案類型：jpg / jpeg / gif / png / avif)</em><br /></span>
                       <%= f.file_field :menus, multiple: true, class: "border w-full px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none ring-gray-200 focus:ring-2 ring-offset-2 border-gray-500 focus:border-transparent" %>
-                      <% if f.object.menus? %>
-                        <div class="flex flex-wrap justify-center mt-1 border-2 lg:justify-between">
-                          <% f.object.menus.each do |img| %>
-                            <div class="m-1">
-                              <%= link_to image_tag(img.url(:thumb)), img.url %>
-                            </div>
-                          <% end %>
-                        </div>
-                      <% end %>
                     </div>
                   </div>
                 </div>
