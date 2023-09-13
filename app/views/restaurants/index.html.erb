@@ -80,7 +80,7 @@
   </div>
 </header>
 
-<section class="w-2/3 py-32 mx-auto">
+<section class="w-2/3 pt-32 mx-auto">
   <h1 class="text-xl md:text-2xl dark:text-gray-600">
     <%= t('partner.Partnered with iDing, now available for reservations!') %>
   </h1>
@@ -109,4 +109,8 @@
       <% end %>
     <% end %>
   </ul>
+  
 </section>
+  <div class="w-full my-20 m-auto">
+    <%= paginate @restaurants %>
+  </div>
