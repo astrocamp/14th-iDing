@@ -29,6 +29,7 @@ gem 'friendly_id', '~> 5.4.0'
 
 gem "pundit"
 gem 'faker'
+gem 'kaminari'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
