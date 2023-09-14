@@ -1,6 +1,6 @@
 <%= render "shared/navbar" %>
 <div class="min-h-screen hero">
-  <video width="640" height="360" autoplay muted loop class="hidden object-cover w-full h-full md:block">
+  <video width="640" height="360" autoplay playsinline muted loop class="hidden object-cover w-full h-full md:block">
     <source src="/cooking.mp4" type="video/mp4">
   </video>
   <%= image_tag "cooking2.gif" ,class: "block md:hidden object-cover w-full h-full" %>
@@ -53,7 +53,7 @@
           <h3 class="text-lg font-semibold text-gray-800">
           <%= t('index.develop') %>
           </h3>
-          <p class="mt-1 text-gray-600">
+          <p class="w-full mt-1 text-gray-600">
           <%= raw t('index.ToYourNeeds') %>
           </p>
         </div>
@@ -66,7 +66,7 @@
           <h3 class="text-lg font-semibold text-gray-800">
           <%= t('index.free') %>
           </h3>
-          <p class="mt-1 text-gray-600">
+          <p class="w-full mt-1 text-gray-600">
           <%= raw t('index.LikeIt') %>
           </p>
         </div>
@@ -79,7 +79,7 @@
           <h3 class="text-lg font-semibold text-gray-800">
             <%= t('index.UserFriendly') %>
           </h3>
-          <p class="pr-5 mt-1 text-gray-600">
+          <p class="w-full pr-5 mt-1 text-gray-600">
             <%= t('index.complex user manuals') %>
           </p>
         </div>
@@ -90,9 +90,9 @@
         </div>
         <div class="grow">
           <h3 class="text-lg font-semibold text-gray-800">
-          <%= t('index.RaveReviews') %>
+            <%= t('index.RaveReviews') %>
           </h3>
-          <p class="pr-5 mt-1 text-gray-600">
+          <p class="w-full pr-5 mt-1 text-gray-600 ">
             <%= t('index.Surpassed') %>
           </p>
         </div>
