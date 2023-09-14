@@ -14,7 +14,9 @@ module Admin
 
     def create
       @reservation = @restaurant.reservations.new(reservation_params)
-      if @reservation.save
+      if @reservation.name.blank? || @reservation.tel.blank? || @reservation.date.blank? || @reservation.time.blank? || @reservation.adults.blank? || @reservation.kids.blank?
+        redirect_to admin_restaurant_path(@restaurant), alert: '請填寫必要欄位'
+      elsif @reservation.save
         redirect_to admin_restaurant_path(@restaurant), notice: '訂位新增成功'
         SendSmsJob.perform_later(@reservation)
       else
