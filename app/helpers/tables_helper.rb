@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
 module TablesHelper
-  def table_image_and_name(table, restaurant)
-    Time.current
-    8.hour
-    restaurant.mealtime.minutes
+  def table_image_and_name(table, _restaurant)
     reservation = table.reservations.where(date: Date.today).where(state: 'used').order(time: :desc).first
 
     if reservation.present? && table.status == 'occupied'
