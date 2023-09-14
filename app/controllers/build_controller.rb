@@ -99,7 +99,8 @@ class BuildController < ApplicationController
   end
 
   def set_daylist
+    tomorrow = Date.today + 1
     @end_day = Date.today + @restaurant.bookday_advance
-    @daterange = (Date.today..@end_day).select { |date| @holidays.exclude?(date.strftime('%a')) }
+    @daterange = (tomorrow..@end_day).select { |date| @holidays.exclude?(date.strftime('%a')) }
   end
 end
