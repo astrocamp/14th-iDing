@@ -13,7 +13,7 @@ export default class extends Controller {
     }
 
     flatpickr(this.element, {
-      enableTime: true,
+      enableTime: inputType === "time",
       noCalendar: inputType === "time",
       dateFormat: dateFormat,
       time_24hr: inputType === "time",
