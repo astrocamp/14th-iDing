@@ -3,14 +3,14 @@
   <div>
     <%= render "/shared/adminNavbar"%>
       <%= turbo_frame_tag "calendar", class: 'mx-auto lg:flex h-[calc(100%-100px)] w-full' do %>
-        <div class="w-4/5 px-4 mx-auto mt-5 bg-white border-2 border-b rounded-lg shadow lg:w-full lg:mx-4 overflow-y-auto">
+        <div class="w-4/5 px-4 mx-auto mt-5 overflow-y-auto bg-white border-2 border-b rounded-lg shadow lg:w-full lg:mx-4">
           <div class="flex items-center space-x-5">
-            <div class="flex py-4 m-auto text-xl font-semibold text-gray-700 ">
+            <div class="flex pt-2 m-auto text-xl font-semibold text-gray-700 ">
               <%= image_tag "logo.png", class:"w-10 m-auto" %>
               <h2 class="text-2xl leading-relaxed">修改餐廳資訊</h2>
             </div>
           </div>
-            <div class="flex w-full py-2 space-y-4 overflow-y-auto text-base leading-6 text-gray-700 sm:text-lg sm:leading-7">
+            <div class="flex w-full space-y-4 overflow-y-auto text-base leading-6 text-gray-700 sm:text-lg sm:leading-7">
                 <%= form_with(model: [:admin, @restaurant], data: { turbo: false }) do |f| %>
                   <div class="block lg:flex">
                     <div class="w-1/3">
