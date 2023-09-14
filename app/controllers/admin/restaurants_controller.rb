@@ -23,12 +23,17 @@ module Admin
     end
 
     def create
-      @restaurant = current_user.restaurants.new(restaurant_params)
-      if @restaurant.save
-        redirect_to admin_restaurant_path(@restaurant), notice: '餐廳新增成功'
+      if current_user.restaurants.count < 5
+        @restaurant = current_user.restaurants.new(restaurant_params)
+        if @restaurant.save
+          redirect_to admin_restaurant_path(@restaurant), notice: '餐廳新增成功'
+        else
+          flash[:alert] = '網址名稱重複或必填欄位尚未填寫'
+          render :new
+        end
       else
-        flash[:alert] = '網址名稱重複或必填欄位尚未填寫'
-        render :new
+        flash[:alert] = '已達到餐廳數量上限，謝謝您的愛護與支持。'
+        redirect_to admin_restaurants_path
       end
     end
 
