@@ -35,6 +35,7 @@ en:
   phone: Phone number
   hours: Hours
   menu: Menu
+  root: Home Page
 
   navbar:
     about: "About"
