@@ -17,7 +17,7 @@
             <%= form_with(model: @reservation, url: admin_restaurant_reservations_path(@restaurant), method: :post, data: { turbo: false }) do |form| %>
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
               <div class="px-5 pb-5">
-                <%= form.text_field :name, class: "iding-input", placeholder: "姓名*", required: true, pattern: "^[a-zA-Z\u4e00-\u9fa5]+$", title: '名稱欄位不能有數字' %>
+                <%= form.text_field :name, class: "iding-input", placeholder: "姓名*", required: true, pattern: "^[a-zA-Z\u4e00-\u9fa5]+$", title: '姓名不得包含數字' %>
                 <%= form.phone_field :tel, class:"iding-input", placeholder: "電話*", type: "tel", required: true %>
                 <div class="flex gap-2">
                   <%= form.date_field :date, class: "iding-input cursor-text", required: true %>
