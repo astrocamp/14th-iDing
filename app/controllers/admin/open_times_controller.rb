@@ -7,7 +7,7 @@ module Admin
 
     def index
       @open_time = OpenTime.new
-      @open_times = @restaurant.open_times.includes(:restaurant).order(Arel.sql("start_time AT TIME ZONE 'Asia/Taipei'"))
+      @open_times = @restaurant.open_times.includes(:restaurant).order(:start_time)
 
       @holidays = @restaurant.holidays.includes(:restaurant)
       @holiday = Holiday.new

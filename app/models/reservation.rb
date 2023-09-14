@@ -39,7 +39,7 @@ class Reservation < ApplicationRecord
 
   scope :in_future, lambda { |current_time|
     where('date > ? OR (date = ? AND time >= ?)',
-          current_time.to_date, current_time.to_date, current_time)
+          current_time.to_date, current_time.to_date, current_time.strftime('%H:%M:%S'))
       .order(:date, :time)
   }
 
