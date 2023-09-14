@@ -158,6 +158,8 @@ tw:
     Change password: 修改密碼
     oldPassword: 舊密碼
     newpassword: 新密碼
+    Forgot password: 忘記密碼
+    ResetPassword: 重新寄送密碼認證信
 
   restaurant:
     Your Restaurants: 您的餐廳
