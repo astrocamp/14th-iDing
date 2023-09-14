@@ -1,16 +1,22 @@
 import { Controller } from "@hotwired/stimulus";
 import flatpickr from "flatpickr";
-import "flatpickr/dist/flatpickr.css";
-require("flatpickr/dist/themes/dark.css");
 
-// Connects to data-controller="flatpickr"
 export default class extends Controller {
   connect() {
+    let dateFormat = "H:i";
+    const inputType = this.element.type;
+
+    if (inputType === "date") {
+      dateFormat = "Y-m-d";
+    } else if (inputType === "time") {
+      dateFormat = "H:i";
+    }
+
     flatpickr(this.element, {
       enableTime: true,
-      noCalendar: true,
-      dateFormat: "H:i",
-      time_24hr: true,
+      noCalendar: inputType === "time",
+      dateFormat: dateFormat,
+      time_24hr: inputType === "time",
     });
   }
 }
