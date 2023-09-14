@@ -12,7 +12,7 @@ module Admin
       @reservations = if params[:date].present?
                         @restaurant.reservations.where(date: params[:date])
                       else
-                        @restaurant.reservations.in_future(Time.current)
+                        @restaurant.reservations.in_future(Time.now)
                       end
       @reservation = Reservation.new
     end
