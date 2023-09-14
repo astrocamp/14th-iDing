@@ -89,3 +89,11 @@
 .last {
   @apply hidden lg:inline-block;
 }
+
+.fc-daygrid-day-number {
+  @apply lg:text-2xl mr-auto;
+}
+
+.fc-event-title {
+  @apply hidden md:inline-block;
+}
