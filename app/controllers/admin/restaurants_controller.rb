@@ -32,8 +32,7 @@ module Admin
           render :new
         end
       else
-        flash[:alert] = '新增餐廳失敗，已達到餐廳數量上限，謝謝您的愛護與支持。'
-        redirect_to admin_restaurants_path
+        redirect_to admin_restaurants_path(@restaurant), alert: '新增餐廳失敗，已達到餐廳數量上限，謝謝您的愛護與支持。'
       end
     end
 
