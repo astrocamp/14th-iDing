@@ -9,7 +9,6 @@ module Admin
     end
 
     def show
-      # authorize :restaurant
       @reservations = if params[:date].present?
                         @restaurant.reservations.where(date: params[:date])
                       else
@@ -37,11 +36,9 @@ module Admin
     end
 
     def edit
-      # authorize :restaurant
     end
 
     def update
-      # authorize :restaurant
       if @restaurant.update(restaurant_params)
         redirect_to admin_restaurant_path, notice: '餐廳資訊已更新'
       else
@@ -50,7 +47,6 @@ module Admin
     end
 
     def destroy
-      # authorize :restaurant
       @restaurant.destroy
       redirect_to admin_restaurants_path, notice: '餐廳刪除成功'
     end

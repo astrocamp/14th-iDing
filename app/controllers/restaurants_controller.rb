@@ -29,7 +29,6 @@ class RestaurantsController < ApplicationController
     end
 
     @timerange = @timerange.filter { |time| Time.parse(time) > Time.current } if selected_date.to_date == Date.today
-
     render json: { timerange: @timerange }
   end
 
