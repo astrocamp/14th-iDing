@@ -142,6 +142,8 @@ en:
     Change password: Change Password
     oldPassword: Old Password
     newpassword: New Password
+    Forgot password: Forgot password
+    ResetPassword: Send me reset password instructions
 
   restaurant:
     UBN: UBN
