@@ -13,7 +13,6 @@ AllCops:
     - "tmp/**/*"
     - ".git/**/*"
     - "app/controllers/application_controller.rb"
-    - "app/helpers/tables_helper.rb"
 
 Style/Documentation:
   Enabled: false
