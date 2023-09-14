@@ -17,9 +17,9 @@
             <%= form.text_field :tel, class: "iding-input", placeholder: "電話", type: "tel" %>
 
             <div class="flex gap-2">
-              <%= form.date_field :date, class:"iding-input cursor-text" %>
+              <%= form.date_field :date, data:{ controller: "flatpickr" }, class:"iding-input cursor-text" %>
 
-              <%= form.time_field :time, class:"iding-input cursor-text" %>
+              <%= form.time_field :time, data:{ controller: "flatpickr" }, class:"iding-input cursor-text" %>
             </div>
 
             <div class="flex gap-2">
