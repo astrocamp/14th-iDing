@@ -12,6 +12,7 @@ tw:
   phone: 電話
   hours: 營業時間
   menu: 菜單
+  root: 回首頁
 
   views:
     pagination:
