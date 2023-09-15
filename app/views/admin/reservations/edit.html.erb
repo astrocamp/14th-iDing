@@ -12,9 +12,9 @@
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
 
           <div class="px-5 pb-5">
-            <%= form.text_field :name, class:"iding-input", placeholder: "姓名" %>
+            <%= form.text_field :name, class:"iding-input", placeholder: "姓名*", pattern: "^[a-zA-Z\u4e00-\u9fa5]+$", title: '姓名不得包含數字' %>
 
-            <%= form.text_field :tel, class: "iding-input", placeholder: "電話", type: "tel" %>
+            <%= form.text_field :tel, class: "iding-input", placeholder: "電話*", type: "tel", required: true, pattern: "[0-9]*", title: "請輸入電話號碼" %>
 
             <div class="flex gap-2">
               <%= form.date_field :date, data:{ controller: "flatpickr" }, class:"iding-input cursor-text" %>
@@ -23,9 +23,10 @@
             </div>
 
             <div class="flex gap-2">
-              <%= form.number_field :adults, class: "iding-input", placeholder: "大人", min: 0 %>
-
-              <%= form.number_field :kids, class: "iding-input", placeholder: "小孩", min: 0 %>
+              <%= form.label :adults ,"大人*",class: "w-36 flex mt-2 flex-col justify-center" %>
+              <%= form.number_field :adults, class: "iding-input", placeholder: "大人", min: 0, value: 1, required: true %>
+              <%= form.label :kids ,"小孩" ,class: "w-32 flex mt-2 flex-col justify-center"%>
+              <%= form.number_field :kids, class: "iding-input", placeholder: "小孩", min: 0, value: 0, required: true %>
             </div>
 
             <%= form.text_area :note, class:"iding-textarea", placeholder: "備註" %>
