@@ -1,8 +1,10 @@
-<span data-date='<%= holiday.dayoff %>' 
-      data-holiday-target='dayOff' class='flex items-center w-2/3 px-2 py-1 m-auto mt-2 border rounded md:w-full justify-evenly'
+<div data-date='<%= holiday.dayoff %>' 
+      data-holiday-target='dayOff' class='flex items-center w-2/3 px-2 py-1 m-auto mt-2 border rounded md:w-full justify-between'
 > 
-  <%= holiday.dayoff %>
+  <div class="m-auto">
+    <%= holiday.dayoff %>
+  </div>
   <%= link_to admin_holiday_path(holiday), data: {turbo_method: 'delete', turbo_confirm: '確認刪除？'},class: 'icon-btn' do %>
     <i class="fa-solid fa-xmark"></i>
   <% end %>
-</span>
+</div>

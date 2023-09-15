@@ -18,10 +18,10 @@
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
               <div class="px-5 pb-5">
                 <%= form.text_field :name, class: "iding-input", placeholder: "姓名*", required: true, pattern: "^[a-zA-Z\u4e00-\u9fa5]+$", title: '姓名不得包含數字' %>
-                <%= form.phone_field :tel, class:"iding-input", placeholder: "電話*", type: "tel", required: true %>
+                <%= form.text_field :tel, class: "iding-input", placeholder: "電話*", type: "tel", required: true, pattern: "[0-9]*", title: "請輸入電話號碼" %>
                 <div class="flex gap-2">
-                  <%= form.date_field :date, placeholder: "日期", data: { controller: "flatpickr" }, class: "iding-input cursor-text",required: true %>
-                  <%= form.time_field :time, placeholder: "時間", data: { controller: "flatpickr" }, class: "iding-input cursor-text", required: true %>
+                  <%= form.date_field :date, placeholder: "日期*", data: { controller: "flatpickr" }, class: "iding-input cursor-text",required: true %>
+                  <%= form.time_field :time, placeholder: "時間*", data: { controller: "flatpickr" }, class: "iding-input cursor-text", required: true %>
                 </div>
                 <div class="flex gap-2">
                   <%= form.label :adults ,"大人*",class: "w-36 flex mt-2 flex-col justify-center" %>

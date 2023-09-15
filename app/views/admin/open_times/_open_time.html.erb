@@ -3,7 +3,7 @@
     <%= open_time.start_time.strftime('%R') %> -
     <%= open_time.end_time.strftime('%R') %>
   </div>
-  <div class="flex justify-center ">
+  <div class="flex justify-center">
     <%= link_to admin_open_time_path(open_time), data: {turbo_method: 'delete', turbo_confirm: '確認刪除？'}, class: 'icon-btn' do %>
       <i class="fa-solid fa-xmark"></i>
     <% end %>
