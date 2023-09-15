@@ -29,7 +29,7 @@
                     <div class="mx-1 my-3">
                       <%= f.label :tel, "餐廳電話*", class: "leading-loose text-base" %>
                       <span class="block text-xs "><em>例 : XX-XXXX-XXXX</em></span>
-                      <%= f.phone_field :tel, pattern: "0[0-9]{1}-[0-9]{4}-[0-9]{4}", title: '請輸入您的餐廳電話', class: "iding-customer-input", required: true %>
+                      <%= f.text_field :tel, pattern: "0[0-9]{1}-[0-9]{4}-[0-9]{4}", title: '請輸入您的餐廳電話', class: "iding-customer-input", required: true %>
                     </div>
                   </div>
 
